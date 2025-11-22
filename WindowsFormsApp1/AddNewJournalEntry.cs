@@ -99,7 +99,16 @@ namespace WindowsFormsApp1
         {
             panel1.BackColor = originalPanelColor; // Reset to original color
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            ProcessFiles(files);
+            if (files != null && files.Length > 0)
+            {
+                // Only process the first file if multiple files are dropped
+                if (files.Length > 1)
+                {
+                    MessageBox.Show("Only one file can be uploaded at a time. The first file will be used.", 
+                        "Multiple Files", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                ProcessFiles(new string[] { files[0] });
+            }
         }
 
         private void Panel1_Click(object sender, EventArgs e)
@@ -107,8 +116,8 @@ namespace WindowsFormsApp1
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Supported Files|*.pdf;*.png;*.jpg;*.jpeg;*.docx|PDF Files|*.pdf|Image Files|*.png;*.jpg;*.jpeg|Word Documents|*.docx|All Files|*.*";
-                openFileDialog.Multiselect = true;
-                openFileDialog.Title = "Select Documents to Upload";
+                openFileDialog.Multiselect = false;
+                openFileDialog.Title = "Select Document to Upload";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -119,44 +128,41 @@ namespace WindowsFormsApp1
 
         private void ProcessFiles(string[] filePaths)
         {
-            foreach (string filePath in filePaths)
+            if (filePaths == null || filePaths.Length == 0)
+                return;
+
+            // Only process the first file
+            string filePath = filePaths[0];
+
+            try
             {
-                try
+                FileInfo fileInfo = new FileInfo(filePath);
+
+                // Validate file extension
+                string extension = fileInfo.Extension.ToLower();
+                if (!allowedExtensions.Contains(extension))
                 {
-                    FileInfo fileInfo = new FileInfo(filePath);
-
-                    // Validate file extension
-                    string extension = fileInfo.Extension.ToLower();
-                    if (!allowedExtensions.Contains(extension))
-                    {
-                        MessageBox.Show($"File '{fileInfo.Name}' has an unsupported file type. Supported types: PDF, PNG, JPG, DOCX", 
-                            "Invalid File Type", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        continue;
-                    }
-
-                    // Validate file size
-                    if (fileInfo.Length > MAX_FILE_SIZE)
-                    {
-                        MessageBox.Show($"File '{fileInfo.Name}' exceeds the maximum file size of 20 MB.", 
-                            "File Too Large", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        continue;
-                    }
-
-                    // Check if file already exists in the list
-                    if (uploadedFiles.Any(f => f.FullName == fileInfo.FullName))
-                    {
-                        MessageBox.Show($"File '{fileInfo.Name}' is already in the list.", 
-                            "Duplicate File", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        continue;
-                    }
-
-                    uploadedFiles.Add(fileInfo);
+                    MessageBox.Show($"File '{fileInfo.Name}' has an unsupported file type. Supported types: PDF, PNG, JPG, DOCX", 
+                        "Invalid File Type", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-                catch (Exception ex)
+
+                // Validate file size
+                if (fileInfo.Length > MAX_FILE_SIZE)
                 {
-                    MessageBox.Show($"Error processing file '{filePath}': {ex.Message}", 
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"File '{fileInfo.Name}' exceeds the maximum file size of 20 MB.", 
+                        "File Too Large", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
+
+                // Clear existing files and add the new one (only one file allowed)
+                uploadedFiles.Clear();
+                uploadedFiles.Add(fileInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error processing file '{filePath}': {ex.Message}", 
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             UpdateFileList();
