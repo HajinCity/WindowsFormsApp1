@@ -53,12 +53,17 @@
             this.customRoundedPanel8 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.customRoundedPanel1.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel4.SuspendLayout();
             this.customRoundedPanel5.SuspendLayout();
             this.customRoundedPanel6.SuspendLayout();
+            this.customRoundedPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -305,6 +310,9 @@
             // customRoundedPanel8
             // 
             this.customRoundedPanel8.BorderRadius = 10;
+            this.customRoundedPanel8.Controls.Add(this.label11);
+            this.customRoundedPanel8.Controls.Add(this.label10);
+            this.customRoundedPanel8.Controls.Add(this.pictureBox1);
             this.customRoundedPanel8.Location = new System.Drawing.Point(22, 592);
             this.customRoundedPanel8.Name = "customRoundedPanel8";
             this.customRoundedPanel8.Size = new System.Drawing.Size(746, 191);
@@ -333,6 +341,38 @@
             this.label9.Size = new System.Drawing.Size(324, 17);
             this.label9.TabIndex = 24;
             this.label9.Text = "Upload Documents (Contracts, Tax, Forms ,etc.)";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
+            this.pictureBox1.Location = new System.Drawing.Point(321, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(87, 77);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(264, 146);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(201, 17);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "PDF,JPG,PNG,DOCX (20MB)";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label11.Location = new System.Drawing.Point(257, 114);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(214, 17);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Click to upload or drag and drop";
             // 
             // AddSupplier
             // 
@@ -375,6 +415,9 @@
             this.customRoundedPanel5.PerformLayout();
             this.customRoundedPanel6.ResumeLayout(false);
             this.customRoundedPanel6.PerformLayout();
+            this.customRoundedPanel8.ResumeLayout(false);
+            this.customRoundedPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,5 +450,8 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }
