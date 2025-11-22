@@ -44,9 +44,11 @@
             this.customRoundedButton2 = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.customRoundedButton1 = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.customRoundedPanel4.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -227,12 +229,23 @@
             this.textBox2.Size = new System.Drawing.Size(670, 18);
             this.textBox2.TabIndex = 1;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
+            this.pictureBox1.Location = new System.Drawing.Point(362, 639);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(87, 77);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // AddNewJournalEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(804, 884);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.customRoundedButton2);
             this.Controls.Add(this.customRoundedButton1);
             this.Controls.Add(this.label6);
@@ -250,12 +263,14 @@
             this.Name = "AddNewJournalEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddNewJournalEntry";
+            this.Load += new System.EventHandler(this.AddNewJournalEntry_Load);
             this.customRoundedPanel4.ResumeLayout(false);
             this.customRoundedPanel4.PerformLayout();
             this.customRoundedPanel3.ResumeLayout(false);
             this.customRoundedPanel3.PerformLayout();
             this.customRoundedPanel1.ResumeLayout(false);
             this.customRoundedPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,5 +294,6 @@
         private Controls.CustomRoundedButton customRoundedButton2;
         private Controls.CustomRoundedButton customRoundedButton1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

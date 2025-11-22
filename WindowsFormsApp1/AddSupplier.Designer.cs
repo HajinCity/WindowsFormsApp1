@@ -52,6 +52,7 @@
             this.customRoundedButton2 = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.customRoundedPanel8 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.customRoundedPanel1.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
@@ -262,7 +263,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(19, 440);
+            this.label8.Location = new System.Drawing.Point(19, 455);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 17);
             this.label8.TabIndex = 20;
@@ -304,9 +305,9 @@
             // customRoundedPanel8
             // 
             this.customRoundedPanel8.BorderRadius = 10;
-            this.customRoundedPanel8.Location = new System.Drawing.Point(22, 524);
+            this.customRoundedPanel8.Location = new System.Drawing.Point(22, 592);
             this.customRoundedPanel8.Name = "customRoundedPanel8";
-            this.customRoundedPanel8.Size = new System.Drawing.Size(746, 259);
+            this.customRoundedPanel8.Size = new System.Drawing.Size(746, 191);
             this.customRoundedPanel8.TabIndex = 23;
             // 
             // comboBox1
@@ -322,12 +323,24 @@
             this.comboBox1.Size = new System.Drawing.Size(745, 25);
             this.comboBox1.TabIndex = 0;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(19, 572);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(324, 17);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Upload Documents (Contracts, Tax, Forms ,etc.)";
+            // 
             // AddSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(804, 884);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.customRoundedPanel8);
             this.Controls.Add(this.customRoundedButton2);
@@ -393,5 +406,6 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label9;
     }
 }
