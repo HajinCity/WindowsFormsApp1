@@ -312,7 +312,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label11.Location = new System.Drawing.Point(250, 116);
+            this.label11.Location = new System.Drawing.Point(245, 53);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(214, 17);
             this.label11.TabIndex = 25;
@@ -323,7 +323,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(257, 148);
+            this.label10.Location = new System.Drawing.Point(252, 85);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(201, 17);
             this.label10.TabIndex = 25;
@@ -332,9 +332,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
-            this.pictureBox1.Location = new System.Drawing.Point(317, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(327, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(87, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(52, 47);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
@@ -357,7 +357,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(19, 572);
+            this.label9.Location = new System.Drawing.Point(19, 538);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(324, 17);
             this.label9.TabIndex = 24;
@@ -368,9 +368,9 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Location = new System.Drawing.Point(30, 608);
+            this.panel1.Location = new System.Drawing.Point(31, 558);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(706, 197);
+            this.panel1.Size = new System.Drawing.Size(706, 119);
             this.panel1.TabIndex = 26;
             // 
             // AddSupplier
