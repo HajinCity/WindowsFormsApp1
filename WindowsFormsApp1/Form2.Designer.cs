@@ -114,7 +114,7 @@
             this.SupplierBtn.HoverColor = System.Drawing.Color.Gainsboro;
             this.SupplierBtn.Image = global::WindowsFormsApp1.Properties.Resources.Group;
             this.SupplierBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SupplierBtn.Location = new System.Drawing.Point(22, 186);
+            this.SupplierBtn.Location = new System.Drawing.Point(22, 223);
             this.SupplierBtn.Name = "SupplierBtn";
             this.SupplierBtn.Size = new System.Drawing.Size(237, 50);
             this.SupplierBtn.TabIndex = 2;
@@ -133,7 +133,7 @@
             this.ReportsBtn.HoverColor = System.Drawing.Color.Gainsboro;
             this.ReportsBtn.Image = global::WindowsFormsApp1.Properties.Resources.Graph_Report;
             this.ReportsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportsBtn.Location = new System.Drawing.Point(22, 522);
+            this.ReportsBtn.Location = new System.Drawing.Point(22, 559);
             this.ReportsBtn.Name = "ReportsBtn";
             this.ReportsBtn.Size = new System.Drawing.Size(237, 50);
             this.ReportsBtn.TabIndex = 8;
@@ -152,7 +152,7 @@
             this.IARBtn.HoverColor = System.Drawing.Color.Gainsboro;
             this.IARBtn.Image = global::WindowsFormsApp1.Properties.Resources.Pass;
             this.IARBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.IARBtn.Location = new System.Drawing.Point(22, 298);
+            this.IARBtn.Location = new System.Drawing.Point(22, 335);
             this.IARBtn.Name = "IARBtn";
             this.IARBtn.Size = new System.Drawing.Size(237, 50);
             this.IARBtn.TabIndex = 4;
@@ -171,7 +171,7 @@
             this.DashboardBtn.HoverColor = System.Drawing.Color.Gainsboro;
             this.DashboardBtn.Image = global::WindowsFormsApp1.Properties.Resources.Dashboard_Layout;
             this.DashboardBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DashboardBtn.Location = new System.Drawing.Point(22, 130);
+            this.DashboardBtn.Location = new System.Drawing.Point(22, 167);
             this.DashboardBtn.Name = "DashboardBtn";
             this.DashboardBtn.Size = new System.Drawing.Size(237, 50);
             this.DashboardBtn.TabIndex = 1;
@@ -190,7 +190,7 @@
             this.ORSBtn.HoverColor = System.Drawing.Color.Gainsboro;
             this.ORSBtn.Image = global::WindowsFormsApp1.Properties.Resources.Document1;
             this.ORSBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ORSBtn.Location = new System.Drawing.Point(22, 354);
+            this.ORSBtn.Location = new System.Drawing.Point(22, 391);
             this.ORSBtn.Name = "ORSBtn";
             this.ORSBtn.Size = new System.Drawing.Size(237, 50);
             this.ORSBtn.TabIndex = 5;
@@ -209,7 +209,7 @@
             this.DVBtn.HoverColor = System.Drawing.Color.Gainsboro;
             this.DVBtn.Image = global::WindowsFormsApp1.Properties.Resources.Credit_Card;
             this.DVBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DVBtn.Location = new System.Drawing.Point(22, 466);
+            this.DVBtn.Location = new System.Drawing.Point(22, 503);
             this.DVBtn.Name = "DVBtn";
             this.DVBtn.Size = new System.Drawing.Size(237, 50);
             this.DVBtn.TabIndex = 7;
@@ -228,7 +228,7 @@
             this.GJBtn.HoverColor = System.Drawing.Color.Gainsboro;
             this.GJBtn.Image = global::WindowsFormsApp1.Properties.Resources.Document1;
             this.GJBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.GJBtn.Location = new System.Drawing.Point(22, 242);
+            this.GJBtn.Location = new System.Drawing.Point(22, 279);
             this.GJBtn.Name = "GJBtn";
             this.GJBtn.Size = new System.Drawing.Size(237, 50);
             this.GJBtn.TabIndex = 3;
@@ -247,7 +247,7 @@
             this.JEVBtn.HoverColor = System.Drawing.Color.Gainsboro;
             this.JEVBtn.Image = global::WindowsFormsApp1.Properties.Resources.Document1;
             this.JEVBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.JEVBtn.Location = new System.Drawing.Point(22, 410);
+            this.JEVBtn.Location = new System.Drawing.Point(22, 447);
             this.JEVBtn.Name = "JEVBtn";
             this.JEVBtn.Size = new System.Drawing.Size(237, 50);
             this.JEVBtn.TabIndex = 6;
