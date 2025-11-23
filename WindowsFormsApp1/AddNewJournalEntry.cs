@@ -24,6 +24,10 @@ namespace WindowsFormsApp1
         private int originalButton1Top;
         private int originalButton2Top;
         
+        // Store original panel1 position and size
+        private Point originalPanel1Location;
+        private Size originalPanel1Size;
+        
         // ComboBox filtering fields
         private List<string> originalComboBoxItems = new List<string>();
         private bool isFiltering = false;
@@ -243,6 +247,10 @@ namespace WindowsFormsApp1
             // Store original button positions
             originalButton1Top = customRoundedButton1.Top;
             originalButton2Top = customRoundedButton2.Top;
+            
+            // Store original panel1 position and size
+            originalPanel1Location = panel1.Location;
+            originalPanel1Size = panel1.Size;
 
             // Enable drag and drop on panel1
             panel1.AllowDrop = true;
@@ -265,11 +273,11 @@ namespace WindowsFormsApp1
                 control.Cursor = Cursors.Hand;
             }
 
-            // Create file list panel below upload area
+            // Create file list panel at the same location as panel1 (will be positioned when files are uploaded)
             fileListPanel = new Panel
             {
-                Location = new Point(39, panel1.Bottom + 10),
-                Size = new Size(706, 100),
+                Location = originalPanel1Location,
+                Size = originalPanel1Size,
                 AutoSize = true,
                 AutoScroll = true,
                 Visible = false
@@ -384,11 +392,20 @@ namespace WindowsFormsApp1
 
             if (uploadedFiles.Count == 0)
             {
+                // No files uploaded - hide file list panel and show panel1
                 fileListPanel.Visible = false;
+                panel1.Visible = true;
+                panel1.Location = originalPanel1Location;
+                panel1.Size = originalPanel1Size;
                 return;
             }
 
+            // Files are uploaded - hide panel1 and show file list panel in its place
+            panel1.Visible = false;
             fileListPanel.Visible = true;
+            fileListPanel.Location = originalPanel1Location;
+            fileListPanel.Width = originalPanel1Size.Width;
+            
             int yPosition = 0;
             int itemHeight = 50;
             int spacing = 5;
@@ -401,7 +418,7 @@ namespace WindowsFormsApp1
             }
 
             // Calculate maximum height to prevent overlapping with buttons
-            // Buttons are at originalButton1Top, so we have space from panel1.Bottom to button top
+            // Buttons are at originalButton1Top, so we have space from panel1 location to button top
             int maxAvailableHeight = originalButton1Top - fileListPanel.Top - 20; // 20px padding before buttons
             
             // Update file list panel height (limit to available space)
@@ -417,7 +434,7 @@ namespace WindowsFormsApp1
             Panel itemPanel = new Panel
             {
                 Location = new Point(0, yPosition),
-                Size = new Size(706, 50),
+                Size = new Size(originalPanel1Size.Width, 50),
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle
             };
