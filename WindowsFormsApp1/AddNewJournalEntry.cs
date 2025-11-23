@@ -297,5 +297,10 @@ namespace WindowsFormsApp1
         {
             return new List<FileInfo>(uploadedFiles);
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
