@@ -29,9 +29,11 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.customRoundedButton1 = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.SignInBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label4 = new System.Windows.Forms.Label();
             this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -40,14 +42,12 @@ namespace WindowsFormsApp1
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.customRoundedPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel1
@@ -64,13 +64,24 @@ namespace WindowsFormsApp1
             this.gradientPanel1.Size = new System.Drawing.Size(716, 629);
             this.gradientPanel1.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Close;
+            this.pictureBox1.Location = new System.Drawing.Point(684, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // customRoundedPanel1
             // 
             this.customRoundedPanel1.BackColor = System.Drawing.Color.White;
             this.customRoundedPanel1.BorderRadius = 20;
             this.customRoundedPanel1.Controls.Add(this.pictureBox2);
             this.customRoundedPanel1.Controls.Add(this.label5);
-            this.customRoundedPanel1.Controls.Add(this.customRoundedButton1);
+            this.customRoundedPanel1.Controls.Add(this.SignInBtn);
             this.customRoundedPanel1.Controls.Add(this.label4);
             this.customRoundedPanel1.Controls.Add(this.customRoundedPanel3);
             this.customRoundedPanel1.Controls.Add(this.customRoundedPanel2);
@@ -81,6 +92,16 @@ namespace WindowsFormsApp1
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(453, 530);
             this.customRoundedPanel1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Document;
+            this.pictureBox2.Location = new System.Drawing.Point(194, 22);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(67, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
             // 
             // label5
             // 
@@ -93,23 +114,23 @@ namespace WindowsFormsApp1
             this.label5.TabIndex = 7;
             this.label5.Text = "For authorized personnel only";
             // 
-            // customRoundedButton1
+            // SignInBtn
             // 
-            this.customRoundedButton1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.customRoundedButton1.BorderRadius = 10;
-            this.customRoundedButton1.ClickedColor = System.Drawing.Color.Green;
-            this.customRoundedButton1.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton1.ForeColor = System.Drawing.Color.White;
-            this.customRoundedButton1.HoverColor = System.Drawing.Color.SeaGreen;
-            this.customRoundedButton1.Location = new System.Drawing.Point(94, 381);
-            this.customRoundedButton1.Name = "customRoundedButton1";
-            this.customRoundedButton1.Size = new System.Drawing.Size(255, 52);
-            this.customRoundedButton1.TabIndex = 6;
-            this.customRoundedButton1.Text = "Sign In";
-            this.customRoundedButton1.UseVisualStyleBackColor = false;
-            this.customRoundedButton1.Click += new System.EventHandler(this.customRoundedButton1_Click);
+            this.SignInBtn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.SignInBtn.BorderRadius = 10;
+            this.SignInBtn.ClickedColor = System.Drawing.Color.Green;
+            this.SignInBtn.FlatAppearance.BorderSize = 0;
+            this.SignInBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SignInBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignInBtn.ForeColor = System.Drawing.Color.White;
+            this.SignInBtn.HoverColor = System.Drawing.Color.SeaGreen;
+            this.SignInBtn.Location = new System.Drawing.Point(94, 381);
+            this.SignInBtn.Name = "SignInBtn";
+            this.SignInBtn.Size = new System.Drawing.Size(255, 52);
+            this.SignInBtn.TabIndex = 6;
+            this.SignInBtn.Text = "Sign In";
+            this.SignInBtn.UseVisualStyleBackColor = false;
+            this.SignInBtn.Click += new System.EventHandler(this.SignInBtn_Click);
             // 
             // label4
             // 
@@ -196,27 +217,6 @@ namespace WindowsFormsApp1
             this.label1.TabIndex = 0;
             this.label1.Text = "Accounts Payable System";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Close;
-            this.pictureBox1.Location = new System.Drawing.Point(684, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Document;
-            this.pictureBox2.Location = new System.Drawing.Point(194, 22);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(67, 64);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,14 +229,14 @@ namespace WindowsFormsApp1
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.gradientPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.customRoundedPanel1.ResumeLayout(false);
             this.customRoundedPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.customRoundedPanel3.ResumeLayout(false);
             this.customRoundedPanel3.PerformLayout();
             this.customRoundedPanel2.ResumeLayout(false);
             this.customRoundedPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -254,7 +254,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private Controls.CustomRoundedButton customRoundedButton1;
+        private Controls.CustomRoundedButton SignInBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
     }

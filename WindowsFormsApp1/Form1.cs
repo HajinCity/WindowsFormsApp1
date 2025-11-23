@@ -26,30 +26,6 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
-        private void customRoundedButton1_Click(object sender, EventArgs e)
-        {
-            // Get entered username and password
-            string enteredUsername = textBox1.Text.Trim();
-            string enteredPassword = textBox2.Text;
-
-            // Validate credentials
-            if (ValidateCredentials(enteredUsername, enteredPassword))
-            {
-                // Credentials are correct - open Dashboard
-                OpenDashboard();
-            }
-            else
-            {
-                // Credentials are incorrect - show error message
-                MessageBox.Show(
-                    "Invalid username or password.",
-                    "Login Failed",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-            }
-        }
-
         /// <summary>
         /// Validates the entered username and password against the static credentials
         /// </summary>
@@ -76,6 +52,30 @@ namespace WindowsFormsApp1
 
             // Close the login form
             this.Hide();
+        }
+
+        private void SignInBtn_Click(object sender, EventArgs e)
+        {
+            // Get entered username and password
+            string enteredUsername = textBox1.Text.Trim();
+            string enteredPassword = textBox2.Text;
+
+            // Validate credentials
+            if (ValidateCredentials(enteredUsername, enteredPassword))
+            {
+                // Credentials are correct - open Dashboard
+                OpenDashboard();
+            }
+            else
+            {
+                // Credentials are incorrect - show error message
+                MessageBox.Show(
+                    "Invalid username or password.",
+                    "Login Failed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
         }
     }
 }
