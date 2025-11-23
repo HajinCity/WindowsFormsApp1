@@ -88,7 +88,7 @@ namespace WindowsFormsApp1
         // ============================================================
         private void OpenDashboard()
         {
-            Dashboard dashboard = new Dashboard();
+            Form2 dashboard = new Form2();
             dashboard.WindowState = FormWindowState.Maximized;
             dashboard.Show();
 
