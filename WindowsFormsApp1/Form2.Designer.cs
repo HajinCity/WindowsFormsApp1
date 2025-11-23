@@ -39,12 +39,14 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.customRoundedButton9 = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // customRoundedButton8
             // 
+            this.customRoundedButton8.BackColor = System.Drawing.Color.Turquoise;
             this.customRoundedButton8.BorderRadius = 10;
             this.customRoundedButton8.ClickedColor = System.Drawing.Color.PaleGreen;
             this.customRoundedButton8.FlatAppearance.BorderSize = 0;
@@ -61,6 +63,7 @@
             // 
             // customRoundedButton7
             // 
+            this.customRoundedButton7.BackColor = System.Drawing.Color.Turquoise;
             this.customRoundedButton7.BorderRadius = 10;
             this.customRoundedButton7.ClickedColor = System.Drawing.Color.PaleGreen;
             this.customRoundedButton7.FlatAppearance.BorderSize = 0;
@@ -77,6 +80,7 @@
             // 
             // customRoundedButton6
             // 
+            this.customRoundedButton6.BackColor = System.Drawing.Color.Turquoise;
             this.customRoundedButton6.BorderRadius = 10;
             this.customRoundedButton6.ClickedColor = System.Drawing.Color.PaleGreen;
             this.customRoundedButton6.FlatAppearance.BorderSize = 0;
@@ -93,6 +97,7 @@
             // 
             // customRoundedButton5
             // 
+            this.customRoundedButton5.BackColor = System.Drawing.Color.Turquoise;
             this.customRoundedButton5.BorderRadius = 10;
             this.customRoundedButton5.ClickedColor = System.Drawing.Color.PaleGreen;
             this.customRoundedButton5.FlatAppearance.BorderSize = 0;
@@ -109,6 +114,7 @@
             // 
             // customRoundedButton4
             // 
+            this.customRoundedButton4.BackColor = System.Drawing.Color.Turquoise;
             this.customRoundedButton4.BorderRadius = 10;
             this.customRoundedButton4.ClickedColor = System.Drawing.Color.PaleGreen;
             this.customRoundedButton4.FlatAppearance.BorderSize = 0;
@@ -125,6 +131,7 @@
             // 
             // customRoundedButton3
             // 
+            this.customRoundedButton3.BackColor = System.Drawing.Color.Turquoise;
             this.customRoundedButton3.BorderRadius = 10;
             this.customRoundedButton3.ClickedColor = System.Drawing.Color.PaleGreen;
             this.customRoundedButton3.FlatAppearance.BorderSize = 0;
@@ -141,6 +148,7 @@
             // 
             // customRoundedButton2
             // 
+            this.customRoundedButton2.BackColor = System.Drawing.Color.Turquoise;
             this.customRoundedButton2.BorderRadius = 10;
             this.customRoundedButton2.ClickedColor = System.Drawing.Color.PaleGreen;
             this.customRoundedButton2.FlatAppearance.BorderSize = 0;
@@ -157,6 +165,7 @@
             // 
             // customRoundedButton1
             // 
+            this.customRoundedButton1.BackColor = System.Drawing.Color.Turquoise;
             this.customRoundedButton1.BorderRadius = 10;
             this.customRoundedButton1.ClickedColor = System.Drawing.Color.PaleGreen;
             this.customRoundedButton1.FlatAppearance.BorderSize = 0;
@@ -183,7 +192,8 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.panel1.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.panel1.Controls.Add(this.customRoundedButton9);
             this.panel1.Controls.Add(this.customRoundedButton2);
             this.panel1.Controls.Add(this.customRoundedButton8);
             this.panel1.Controls.Add(this.customRoundedButton4);
@@ -205,6 +215,23 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(591, 718);
             this.panel3.TabIndex = 10;
+            // 
+            // customRoundedButton9
+            // 
+            this.customRoundedButton9.BackColor = System.Drawing.Color.Turquoise;
+            this.customRoundedButton9.BorderRadius = 10;
+            this.customRoundedButton9.ClickedColor = System.Drawing.Color.PaleGreen;
+            this.customRoundedButton9.FlatAppearance.BorderSize = 0;
+            this.customRoundedButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customRoundedButton9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customRoundedButton9.ForeColor = System.Drawing.Color.White;
+            this.customRoundedButton9.HoverColor = System.Drawing.Color.SpringGreen;
+            this.customRoundedButton9.Location = new System.Drawing.Point(22, 620);
+            this.customRoundedButton9.Name = "customRoundedButton9";
+            this.customRoundedButton9.Size = new System.Drawing.Size(237, 50);
+            this.customRoundedButton9.TabIndex = 9;
+            this.customRoundedButton9.Text = "Sign Out";
+            this.customRoundedButton9.UseVisualStyleBackColor = false;
             // 
             // Form2
             // 
@@ -233,5 +260,6 @@
         private Controls.CustomRoundedButton customRoundedButton1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
+        private Controls.CustomRoundedButton customRoundedButton9;
     }
 }
