@@ -31,6 +31,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.SignOutBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.SupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.ReportsBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
@@ -40,7 +41,7 @@
             this.DVBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.GJBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.JEVBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.UserManagementBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +68,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.UserManagementBtn);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.SignOutBtn);
             this.panel1.Controls.Add(this.SupplierBtn);
@@ -82,6 +84,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(278, 778);
             this.panel1.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.label1.Location = new System.Drawing.Point(28, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(231, 22);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Accounts Payable System";
             // 
             // SignOutBtn
             // 
@@ -254,16 +267,24 @@
             this.JEVBtn.Text = "JEV";
             this.JEVBtn.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // UserManagementBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.label1.Location = new System.Drawing.Point(28, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(231, 22);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Accounts Payable System";
+            this.UserManagementBtn.BackColor = System.Drawing.Color.White;
+            this.UserManagementBtn.BorderRadius = 10;
+            this.UserManagementBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.UserManagementBtn.FlatAppearance.BorderSize = 0;
+            this.UserManagementBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UserManagementBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserManagementBtn.ForeColor = System.Drawing.Color.Black;
+            this.UserManagementBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.UserManagementBtn.Image = global::WindowsFormsApp1.Properties.Resources.Settings;
+            this.UserManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.UserManagementBtn.Location = new System.Drawing.Point(22, 615);
+            this.UserManagementBtn.Name = "UserManagementBtn";
+            this.UserManagementBtn.Size = new System.Drawing.Size(237, 50);
+            this.UserManagementBtn.TabIndex = 10;
+            this.UserManagementBtn.Text = "System Management";
+            this.UserManagementBtn.UseVisualStyleBackColor = false;
             // 
             // Form2
             // 
@@ -295,5 +316,6 @@
         private System.Windows.Forms.Panel panel3;
         private Controls.CustomRoundedButton SignOutBtn;
         private System.Windows.Forms.Label label1;
+        private Controls.CustomRoundedButton UserManagementBtn;
     }
 }
