@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+namespace WindowsFormsApp1
 {
     partial class Form1
     {
@@ -109,6 +109,7 @@
             this.customRoundedButton1.TabIndex = 6;
             this.customRoundedButton1.Text = "Sign In";
             this.customRoundedButton1.UseVisualStyleBackColor = false;
+            this.customRoundedButton1.Click += new System.EventHandler(this.customRoundedButton1_Click);
             // 
             // label4
             // 
