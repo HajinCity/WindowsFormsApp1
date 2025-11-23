@@ -159,5 +159,29 @@
   <ItemGroup>
     <None Include="Resources\Document.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Credit Card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashboard Layout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Graph Report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logout.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
