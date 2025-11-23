@@ -18,6 +18,10 @@ namespace WindowsFormsApp1
         private Color originalPanelColor;
         private const long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20 MB in bytes
         private readonly string[] allowedExtensions = { ".pdf", ".png", ".jpg", ".jpeg", ".docx" };
+        
+        // Store original button positions
+        private int originalButton1Top;
+        private int originalButton2Top;
 
         public AddSupplier()
         {
@@ -29,6 +33,10 @@ namespace WindowsFormsApp1
         {
             // Store original panel color
             originalPanelColor = panel1.BackColor;
+            
+            // Store original button positions
+            originalButton1Top = customRoundedButton1.Top;
+            originalButton2Top = customRoundedButton2.Top;
 
             // Enable drag and drop on panel1
             panel1.AllowDrop = true;
@@ -186,19 +194,16 @@ namespace WindowsFormsApp1
                 yPosition += itemHeight + spacing;
             }
 
-            // Update file list panel height
-            fileListPanel.Height = Math.Min(yPosition, 200); // Max height with scroll
-
-            // Adjust form size if needed
-            int newBottom = fileListPanel.Bottom + 20;
-            if (newBottom > this.Height)
-            {
-                this.Height = newBottom + 100; // Add some padding
-            }
-
-            // Adjust button positions
-            customRoundedButton1.Top = fileListPanel.Bottom + 20;
-            customRoundedButton2.Top = fileListPanel.Bottom + 20;
+            // Calculate maximum height to prevent overlapping with buttons
+            // Buttons are at originalButton1Top, so we have space from panel1.Bottom to button top
+            int maxAvailableHeight = originalButton1Top - fileListPanel.Top - 20; // 20px padding before buttons
+            
+            // Update file list panel height (limit to available space)
+            fileListPanel.Height = Math.Min(yPosition, Math.Max(50, maxAvailableHeight));
+            
+            // Ensure buttons stay in their original positions
+            customRoundedButton1.Top = originalButton1Top;
+            customRoundedButton2.Top = originalButton2Top;
         }
 
         private Panel CreateFileItemPanel(FileInfo file, int yPosition)
