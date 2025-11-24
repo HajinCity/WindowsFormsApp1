@@ -31,23 +31,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
             this.gradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -84,16 +84,6 @@
             this.gradientPanel1.Size = new System.Drawing.Size(1139, 93);
             this.gradientPanel1.TabIndex = 7;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
-            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -120,8 +110,8 @@
             this.Column3,
             this.Column4,
             this.Column5,
-            this.Column6,
-            this.Column7});
+            this.BtnEdit,
+            this.BtnView});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -157,6 +147,16 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Supplier List";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
+            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -187,19 +187,19 @@
             this.Column5.HeaderText = "Bank Name";
             this.Column5.Name = "Column5";
             // 
-            // Column6
+            // BtnEdit
             // 
-            this.Column6.HeaderText = "";
-            this.Column6.Name = "Column6";
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.BtnEdit.HeaderText = "";
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BtnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // Column7
+            // BtnView
             // 
-            this.Column7.HeaderText = "";
-            this.Column7.Name = "Column7";
-            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.BtnView.HeaderText = "";
+            this.BtnView.Name = "BtnView";
+            this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // SupplierForm
             // 
@@ -219,9 +219,9 @@
             this.Text = "SupplierForm";
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,7 +243,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewImageColumn Column6;
-        private System.Windows.Forms.DataGridViewImageColumn Column7;
+        private System.Windows.Forms.DataGridViewImageColumn BtnEdit;
+        private System.Windows.Forms.DataGridViewImageColumn BtnView;
     }
 }
