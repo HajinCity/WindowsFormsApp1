@@ -196,6 +196,9 @@
     <EmbeddedResource Include="AddIARForm.resx">
       <DependentUpon>AddIARForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddJEVEntry.resx">
+      <DependentUpon>AddJEVEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddNewJournalEntry.resx">
       <DependentUpon>AddNewJournalEntry.cs</DependentUpon>
     </EmbeddedResource>
