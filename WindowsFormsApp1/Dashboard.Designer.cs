@@ -70,7 +70,7 @@
             this.gradientPanel1.Controls.Add(this.textBox1);
             this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
-            this.gradientPanel1.Location = new System.Drawing.Point(32, 119);
+            this.gradientPanel1.Location = new System.Drawing.Point(45, 123);
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Size = new System.Drawing.Size(1139, 93);
             this.gradientPanel1.TabIndex = 10;
@@ -96,7 +96,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(32, 256);
+            this.panel1.Location = new System.Drawing.Point(52, 271);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1139, 333);
             this.panel1.TabIndex = 12;
