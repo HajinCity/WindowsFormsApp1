@@ -31,12 +31,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,10 +42,12 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.gradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -84,6 +84,16 @@
             this.gradientPanel1.Size = new System.Drawing.Size(1139, 93);
             this.gradientPanel1.TabIndex = 7;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
+            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,44 +128,6 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(1131, 333);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // addSupplierBtn
-            // 
-            this.addSupplierBtn.BackColor = System.Drawing.Color.Turquoise;
-            this.addSupplierBtn.BorderRadius = 10;
-            this.addSupplierBtn.ClickedColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.addSupplierBtn.FlatAppearance.BorderSize = 0;
-            this.addSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
-            this.addSupplierBtn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(205)))), ((int)(((byte)(255)))));
-            this.addSupplierBtn.Location = new System.Drawing.Point(988, 31);
-            this.addSupplierBtn.Name = "addSupplierBtn";
-            this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
-            this.addSupplierBtn.TabIndex = 9;
-            this.addSupplierBtn.Text = "Add Supplier";
-            this.addSupplierBtn.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(49, 235);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 18);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Supplier List";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
-            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // Column1
             // 
@@ -201,6 +173,34 @@
             this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // addSupplierBtn
+            // 
+            this.addSupplierBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.addSupplierBtn.BorderRadius = 10;
+            this.addSupplierBtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.addSupplierBtn.FlatAppearance.BorderSize = 0;
+            this.addSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
+            this.addSupplierBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.addSupplierBtn.Location = new System.Drawing.Point(988, 31);
+            this.addSupplierBtn.Name = "addSupplierBtn";
+            this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
+            this.addSupplierBtn.TabIndex = 9;
+            this.addSupplierBtn.Text = "Add Supplier";
+            this.addSupplierBtn.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(49, 235);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 18);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Supplier List";
+            // 
             // SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,9 +219,9 @@
             this.Text = "SupplierForm";
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

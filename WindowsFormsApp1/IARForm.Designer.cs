@@ -106,12 +106,12 @@
             // 
             this.addIARbtn.BackColor = System.Drawing.Color.Turquoise;
             this.addIARbtn.BorderRadius = 10;
-            this.addIARbtn.ClickedColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.addIARbtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
             this.addIARbtn.FlatAppearance.BorderSize = 0;
             this.addIARbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addIARbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addIARbtn.ForeColor = System.Drawing.Color.White;
-            this.addIARbtn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(205)))), ((int)(((byte)(255)))));
+            this.addIARbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
             this.addIARbtn.Location = new System.Drawing.Point(988, 31);
             this.addIARbtn.Name = "addIARbtn";
             this.addIARbtn.Size = new System.Drawing.Size(204, 55);
