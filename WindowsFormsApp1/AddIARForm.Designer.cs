@@ -398,7 +398,7 @@
             // 
             this.panel3.Location = new System.Drawing.Point(52, 1427);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1041, 44);
+            this.panel3.Size = new System.Drawing.Size(616, 44);
             this.panel3.TabIndex = 116;
             // 
             // label4
@@ -421,7 +421,7 @@
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.HoverColor = System.Drawing.Color.LightGray;
-            this.cancel.Location = new System.Drawing.Point(736, 1370);
+            this.cancel.Location = new System.Drawing.Point(736, 1408);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(158, 51);
             this.cancel.TabIndex = 114;
@@ -489,7 +489,7 @@
             this.createIAREntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createIAREntryBtn.ForeColor = System.Drawing.Color.White;
             this.createIAREntryBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.createIAREntryBtn.Location = new System.Drawing.Point(900, 1370);
+            this.createIAREntryBtn.Location = new System.Drawing.Point(900, 1408);
             this.createIAREntryBtn.Name = "createIAREntryBtn";
             this.createIAREntryBtn.Size = new System.Drawing.Size(215, 51);
             this.createIAREntryBtn.TabIndex = 113;
