@@ -15,6 +15,15 @@ namespace WindowsFormsApp1
         public SupplierForm()
         {
             InitializeComponent();
+            addSupplierBtn.Click += AddSupplierBtn_Click;
+        }
+
+        private void AddSupplierBtn_Click(object sender, EventArgs e)
+        {
+            using (var addSupplierForm = new AddSupplier())
+            {
+                addSupplierForm.ShowDialog(this);
+            }
         }
     }
 }
