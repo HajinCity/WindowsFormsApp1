@@ -195,9 +195,9 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(49, 235);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 18);
+            this.label1.Size = new System.Drawing.Size(111, 18);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Supplier List";
+            this.label1.Text = "Journal Entries";
             // 
             // GeneralJournal
             // 
