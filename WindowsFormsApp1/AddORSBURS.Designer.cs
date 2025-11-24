@@ -57,10 +57,10 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.customRoundedPanel9 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.customRoundedPanel10 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.customRoundedPanel11 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
@@ -185,7 +185,7 @@
             this.iar_date.Location = new System.Drawing.Point(36, 141);
             this.iar_date.Name = "iar_date";
             this.iar_date.Size = new System.Drawing.Size(354, 25);
-            this.iar_date.TabIndex = 92;
+            this.iar_date.TabIndex = 0;
             // 
             // customRoundedPanel1
             // 
@@ -394,6 +394,16 @@
             this.customRoundedPanel9.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel9.TabIndex = 99;
             // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(22, 13);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(477, 18);
+            this.textBox6.TabIndex = 0;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -426,16 +436,6 @@
             this.customRoundedPanel10.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel10.TabIndex = 111;
             // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(22, 13);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(477, 18);
-            this.textBox6.TabIndex = 1;
-            // 
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.Color.Gainsboro;
@@ -444,7 +444,7 @@
             this.textBox7.Location = new System.Drawing.Point(26, 12);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(465, 18);
-            this.textBox7.TabIndex = 1;
+            this.textBox7.TabIndex = 0;
             // 
             // label13
             // 
@@ -475,7 +475,7 @@
             this.textBox8.Location = new System.Drawing.Point(22, 13);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(477, 18);
-            this.textBox8.TabIndex = 1;
+            this.textBox8.TabIndex = 0;
             // 
             // customRoundedPanel12
             // 

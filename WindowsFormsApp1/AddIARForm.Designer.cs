@@ -146,7 +146,7 @@
             this.RequisitioningOffice.Location = new System.Drawing.Point(26, 12);
             this.RequisitioningOffice.Name = "RequisitioningOffice";
             this.RequisitioningOffice.Size = new System.Drawing.Size(654, 18);
-            this.RequisitioningOffice.TabIndex = 0;
+            this.RequisitioningOffice.TabIndex = 4;
             // 
             // label8
             // 
@@ -219,7 +219,7 @@
             this.supplierName.Location = new System.Drawing.Point(26, 13);
             this.supplierName.Name = "supplierName";
             this.supplierName.Size = new System.Drawing.Size(654, 18);
-            this.supplierName.TabIndex = 0;
+            this.supplierName.TabIndex = 2;
             // 
             // customRoundedPanel6
             // 
@@ -292,7 +292,7 @@
             this.iar_date.Location = new System.Drawing.Point(27, 141);
             this.iar_date.Name = "iar_date";
             this.iar_date.Size = new System.Drawing.Size(354, 25);
-            this.iar_date.TabIndex = 78;
+            this.iar_date.TabIndex = 3;
             // 
             // customRoundedPanel1
             // 
@@ -312,7 +312,7 @@
             this.iarNo.Location = new System.Drawing.Point(26, 13);
             this.iarNo.Name = "iarNo";
             this.iarNo.Size = new System.Drawing.Size(307, 18);
-            this.iarNo.TabIndex = 0;
+            this.iarNo.TabIndex = 1;
             // 
             // label1
             // 

@@ -1304,7 +1304,7 @@
             this.uacs_Code.Location = new System.Drawing.Point(15, 8);
             this.uacs_Code.Name = "uacs_Code";
             this.uacs_Code.Size = new System.Drawing.Size(682, 25);
-            this.uacs_Code.TabIndex = 2;
+            this.uacs_Code.TabIndex = 0;
             // 
             // customRoundedPanel1
             // 
