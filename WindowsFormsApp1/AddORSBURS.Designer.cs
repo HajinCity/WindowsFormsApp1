@@ -68,6 +68,14 @@
             this.customRoundedPanel12 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cancel = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.createIAREntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.customRoundedPanel5.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
@@ -81,6 +89,8 @@
             this.customRoundedPanel10.SuspendLayout();
             this.customRoundedPanel11.SuspendLayout();
             this.customRoundedPanel12.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -211,7 +221,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
-            this.pictureBox2.Location = new System.Drawing.Point(1132, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(1120, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -499,6 +509,99 @@
             this.label14.TabIndex = 111;
             this.label14.Text = "Remarks";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Location = new System.Drawing.Point(38, 723);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1073, 96);
+            this.panel1.TabIndex = 116;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
+            this.pictureBox1.Location = new System.Drawing.Point(518, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(52, 47);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label18.Location = new System.Drawing.Point(436, 53);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(214, 17);
+            this.label18.TabIndex = 25;
+            this.label18.Text = "Click to upload or drag and drop";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Gray;
+            this.label19.Location = new System.Drawing.Point(444, 70);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(201, 17);
+            this.label19.TabIndex = 25;
+            this.label19.Text = "PDF,JPG,PNG,DOCX (20MB)";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(20, 692);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(207, 17);
+            this.label20.TabIndex = 115;
+            this.label20.Text = "Upload Supporting Documents";
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(104, 911);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(395, 82);
+            this.panel2.TabIndex = 117;
+            // 
+            // cancel
+            // 
+            this.cancel.BackColor = System.Drawing.Color.Gainsboro;
+            this.cancel.BorderRadius = 10;
+            this.cancel.ClickedColor = System.Drawing.Color.LightGray;
+            this.cancel.FlatAppearance.BorderSize = 0;
+            this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancel.HoverColor = System.Drawing.Color.LightGray;
+            this.cancel.Location = new System.Drawing.Point(745, 925);
+            this.cancel.Name = "cancel";
+            this.cancel.Size = new System.Drawing.Size(158, 51);
+            this.cancel.TabIndex = 119;
+            this.cancel.Text = "Cancel";
+            this.cancel.UseVisualStyleBackColor = false;
+            // 
+            // createIAREntryBtn
+            // 
+            this.createIAREntryBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.createIAREntryBtn.BorderRadius = 10;
+            this.createIAREntryBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.createIAREntryBtn.FlatAppearance.BorderSize = 0;
+            this.createIAREntryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createIAREntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createIAREntryBtn.ForeColor = System.Drawing.Color.White;
+            this.createIAREntryBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.createIAREntryBtn.Location = new System.Drawing.Point(909, 925);
+            this.createIAREntryBtn.Name = "createIAREntryBtn";
+            this.createIAREntryBtn.Size = new System.Drawing.Size(215, 51);
+            this.createIAREntryBtn.TabIndex = 118;
+            this.createIAREntryBtn.Text = "Create ORS-BURS Entry";
+            this.createIAREntryBtn.UseVisualStyleBackColor = false;
+            // 
             // AddORSBURS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,6 +609,11 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1168, 924);
+            this.Controls.Add(this.cancel);
+            this.Controls.Add(this.createIAREntryBtn);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.customRoundedPanel12);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -563,6 +671,9 @@
             this.customRoundedPanel11.PerformLayout();
             this.customRoundedPanel12.ResumeLayout(false);
             this.customRoundedPanel12.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -610,5 +721,13 @@
         private Controls.CustomRoundedPanel customRoundedPanel12;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Panel panel2;
+        private Controls.CustomRoundedButton cancel;
+        private Controls.CustomRoundedButton createIAREntryBtn;
     }
 }
