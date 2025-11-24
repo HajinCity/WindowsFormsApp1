@@ -242,8 +242,20 @@
     <EmbeddedResource Include="SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateGJ.resx">
+      <DependentUpon>UpdateGJ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateIARForm.resx">
       <DependentUpon>UpdateIARForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateORSBURSForm.resx">
+      <DependentUpon>UpdateORSBURSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateSupplierInfo.resx">
+      <DependentUpon>UpdateSupplierInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewGJEntry.resx">
+      <DependentUpon>ViewGJEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewIAR.resx">
       <DependentUpon>ViewIAR.cs</DependentUpon>
