@@ -114,6 +114,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(52, 271);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1132, 333);
