@@ -193,6 +193,9 @@
     <Compile Include="ViewSupplier.Designer.cs">
       <DependentUpon>ViewSupplier.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddDevEntry.resx">
+      <DependentUpon>AddDevEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddIARForm.resx">
       <DependentUpon>AddIARForm.cs</DependentUpon>
     </EmbeddedResource>
