@@ -15,6 +15,15 @@ namespace WindowsFormsApp1
         public JEVForm()
         {
             InitializeComponent();
+            addJEVbtn.Click += AddJEVbtn_Click;
+        }
+
+        private void AddJEVbtn_Click(object sender, EventArgs e)
+        {
+            using (var addJevEntry = new AddJEVEntry())
+            {
+                addJevEntry.ShowDialog(this);
+            }
         }
     }
 }

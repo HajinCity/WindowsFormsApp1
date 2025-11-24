@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         private GeneralJournal generalJournalForm;
         private IARForm iarForm;
         private OrsBursForm orsBursForm;
+        private JEVForm jevForm;
         private bool shouldLoadDashboardOnShow = false;
 
         public Form2()
@@ -28,6 +29,7 @@ namespace WindowsFormsApp1
             GJBtn.Click += GJBtn_Click;
             IARBtn.Click += IARBtn_Click;
             ORSBtn.Click += ORSBtn_Click;
+            JEVBtn.Click += JEVBtn_Click;
             this.Shown += Form2_Shown;
         }
 
@@ -246,6 +248,47 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading ORS-BURS Form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void JEVBtn_Click(object sender, EventArgs e)
+        {
+            LoadJEVForm();
+        }
+
+        public void LoadJEVForm()
+        {
+            try
+            {
+                panel3.Controls.Clear();
+
+                DisposeForm(dashboardForm);
+                dashboardForm = null;
+                DisposeForm(supplierForm);
+                supplierForm = null;
+                DisposeForm(generalJournalForm);
+                generalJournalForm = null;
+                DisposeForm(iarForm);
+                iarForm = null;
+                DisposeForm(orsBursForm);
+                orsBursForm = null;
+
+                DisposeForm(jevForm);
+                jevForm = null;
+
+                jevForm = new JEVForm();
+                jevForm.TopLevel = false;
+                jevForm.FormBorderStyle = FormBorderStyle.None;
+                jevForm.Dock = DockStyle.Fill;
+                jevForm.Visible = true;
+
+                panel3.Controls.Add(jevForm);
+                jevForm.Show();
+                panel3.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading JEV Form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
