@@ -39,8 +39,8 @@ namespace WindowsFormsApp1
             originalPanelColor = panel1.BackColor;
             
             // Store original button positions
-            originalButton1Top = customRoundedButton1.Top;
-            originalButton2Top = customRoundedButton2.Top;
+            originalButton1Top = createSupplierBtn.Top;
+            originalButton2Top = cancel.Top;
             
             // Store original panel1 position and size
             originalPanel1Location = panel1.Location;
@@ -219,8 +219,8 @@ namespace WindowsFormsApp1
             fileListPanel.Height = Math.Min(yPosition, Math.Max(50, maxAvailableHeight));
             
             // Ensure buttons stay in their original positions
-            customRoundedButton1.Top = originalButton1Top;
-            customRoundedButton2.Top = originalButton2Top;
+            createSupplierBtn.Top = originalButton1Top;
+            cancel.Top = originalButton2Top;
         }
 
         private Panel CreateFileItemPanel(FileInfo file, int yPosition)
