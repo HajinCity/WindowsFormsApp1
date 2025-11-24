@@ -345,5 +345,8 @@
   <ItemGroup>
     <None Include="Resources\Edit.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BackendModel\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
