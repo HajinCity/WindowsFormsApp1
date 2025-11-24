@@ -35,8 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.addJEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +42,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.addDEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -129,34 +129,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1131, 333);
             this.dataGridView1.TabIndex = 0;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(48, 232);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(174, 18);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Disbursement Vouchers";
-            // 
-            // addJEVbtn
-            // 
-            this.addJEVbtn.BackColor = System.Drawing.Color.Turquoise;
-            this.addJEVbtn.BorderRadius = 10;
-            this.addJEVbtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.addJEVbtn.FlatAppearance.BorderSize = 0;
-            this.addJEVbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addJEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addJEVbtn.ForeColor = System.Drawing.Color.White;
-            this.addJEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addJEVbtn.Location = new System.Drawing.Point(987, 28);
-            this.addJEVbtn.Name = "addJEVbtn";
-            this.addJEVbtn.Size = new System.Drawing.Size(204, 55);
-            this.addJEVbtn.TabIndex = 21;
-            this.addJEVbtn.Text = "Add JEV";
-            this.addJEVbtn.UseVisualStyleBackColor = false;
-            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -203,6 +175,34 @@
             this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(48, 232);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(174, 18);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Disbursement Vouchers";
+            // 
+            // addDEVbtn
+            // 
+            this.addDEVbtn.BackColor = System.Drawing.Color.Turquoise;
+            this.addDEVbtn.BorderRadius = 10;
+            this.addDEVbtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.addDEVbtn.FlatAppearance.BorderSize = 0;
+            this.addDEVbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addDEVbtn.ForeColor = System.Drawing.Color.White;
+            this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.addDEVbtn.Location = new System.Drawing.Point(987, 28);
+            this.addDEVbtn.Name = "addDEVbtn";
+            this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
+            this.addDEVbtn.TabIndex = 21;
+            this.addDEVbtn.Text = "Add DEV";
+            this.addDEVbtn.UseVisualStyleBackColor = false;
+            // 
             // DEVForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,7 +214,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.addJEVbtn);
+            this.Controls.Add(this.addDEVbtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DEVForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -239,7 +239,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label4;
-        private Controls.CustomRoundedButton addJEVbtn;
+        private Controls.CustomRoundedButton addDEVbtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
