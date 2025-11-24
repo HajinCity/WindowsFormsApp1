@@ -51,14 +51,14 @@ namespace WindowsFormsApp1
         {
             // Store original items
             originalComboBoxItems.Clear();
-            foreach (object item in comboBox1.Items)
+            foreach (object item in uacs_Code.Items)
             {
                 originalComboBoxItems.Add(item.ToString());
             }
 
             // Enable typing in ComboBox
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDown;
-            comboBox1.AutoCompleteMode = AutoCompleteMode.None; // We'll handle filtering manually
+            uacs_Code.DropDownStyle = ComboBoxStyle.DropDown;
+            uacs_Code.AutoCompleteMode = AutoCompleteMode.None; // We'll handle filtering manually
 
             // Initialize timer for opening dropdown
             dropdownTimer = new Timer();
@@ -66,25 +66,25 @@ namespace WindowsFormsApp1
             dropdownTimer.Tick += DropdownTimer_Tick;
 
             // Attach event handlers
-            comboBox1.TextChanged += ComboBox1_TextChanged;
-            comboBox1.KeyDown += ComboBox1_KeyDown;
-            comboBox1.KeyUp += ComboBox1_KeyUp;
-            comboBox1.DropDown += ComboBox1_DropDown;
-            comboBox1.SelectionChangeCommitted += ComboBox1_SelectionChangeCommitted;
-            comboBox1.Enter += ComboBox1_Enter;
+            uacs_Code.TextChanged += ComboBox1_TextChanged;
+            uacs_Code.KeyDown += ComboBox1_KeyDown;
+            uacs_Code.KeyUp += ComboBox1_KeyUp;
+            uacs_Code.DropDown += ComboBox1_DropDown;
+            uacs_Code.SelectionChangeCommitted += ComboBox1_SelectionChangeCommitted;
+            uacs_Code.Enter += ComboBox1_Enter;
         }
 
         private void DropdownTimer_Tick(object sender, EventArgs e)
         {
             dropdownTimer.Stop();
-            if (!string.IsNullOrWhiteSpace(comboBox1.Text) && !comboBox1.DroppedDown)
+            if (!string.IsNullOrWhiteSpace(uacs_Code.Text) && !uacs_Code.DroppedDown)
             {
                 try
                 {
-                    comboBox1.DroppedDown = true;
+                    uacs_Code.DroppedDown = true;
                     // Set cursor position after opening
-                    comboBox1.SelectionStart = comboBox1.Text.Length;
-                    comboBox1.SelectionLength = 0;
+                    uacs_Code.SelectionStart = uacs_Code.Text.Length;
+                    uacs_Code.SelectionLength = 0;
                 }
                 catch { }
             }
@@ -94,18 +94,18 @@ namespace WindowsFormsApp1
         {
             if (isFiltering) return;
 
-            string searchText = comboBox1.Text;
+            string searchText = uacs_Code.Text;
             isFiltering = true;
 
             // Clear current items
-            comboBox1.Items.Clear();
+            uacs_Code.Items.Clear();
 
             if (string.IsNullOrWhiteSpace(searchText))
             {
                 // If search is empty, show all items
-                comboBox1.Items.AddRange(originalComboBoxItems.ToArray());
+                uacs_Code.Items.AddRange(originalComboBoxItems.ToArray());
                 // Close dropdown when text is cleared
-                comboBox1.DroppedDown = false;
+                uacs_Code.DroppedDown = false;
             }
             else
             {
@@ -114,17 +114,17 @@ namespace WindowsFormsApp1
                     .Where(item => item.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
                     .ToArray();
 
-                comboBox1.Items.AddRange(filteredItems);
+                uacs_Code.Items.AddRange(filteredItems);
 
                 // Always open dropdown when user is typing (even if no matches)
                 // Use BeginInvoke to ensure it happens after the current event processing
                 this.BeginInvoke(new Action(() =>
                 {
-                    if (!string.IsNullOrWhiteSpace(comboBox1.Text) && !comboBox1.DroppedDown)
+                    if (!string.IsNullOrWhiteSpace(uacs_Code.Text) && !uacs_Code.DroppedDown)
                     {
                         try
                         {
-                            comboBox1.DroppedDown = true;
+                            uacs_Code.DroppedDown = true;
                         }
                         catch
                         {
@@ -142,8 +142,8 @@ namespace WindowsFormsApp1
                 // Set cursor position to end of typed text
                 this.BeginInvoke(new Action(() =>
                 {
-                    comboBox1.SelectionStart = comboBox1.Text.Length;
-                    comboBox1.SelectionLength = 0;
+                    uacs_Code.SelectionStart = uacs_Code.Text.Length;
+                    uacs_Code.SelectionLength = 0;
                 }));
             }
 
@@ -161,20 +161,20 @@ namespace WindowsFormsApp1
             }
 
             // If Enter is pressed and dropdown is open, select the first item
-            if (e.KeyCode == Keys.Enter && comboBox1.DroppedDown)
+            if (e.KeyCode == Keys.Enter && uacs_Code.DroppedDown)
             {
-                if (comboBox1.Items.Count > 0)
+                if (uacs_Code.Items.Count > 0)
                 {
-                    comboBox1.SelectedIndex = 0;
-                    comboBox1.DroppedDown = false;
+                    uacs_Code.SelectedIndex = 0;
+                    uacs_Code.DroppedDown = false;
                     e.Handled = true;
                 }
             }
 
             // If Escape is pressed, close dropdown
-            if (e.KeyCode == Keys.Escape && comboBox1.DroppedDown)
+            if (e.KeyCode == Keys.Escape && uacs_Code.DroppedDown)
             {
-                comboBox1.DroppedDown = false;
+                uacs_Code.DroppedDown = false;
                 e.Handled = true;
             }
 
@@ -186,7 +186,7 @@ namespace WindowsFormsApp1
                               e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete ||
                               e.KeyCode == Keys.Space;
 
-            if (isTypingKey && !comboBox1.DroppedDown)
+            if (isTypingKey && !uacs_Code.DroppedDown)
             {
                 // Start timer to open dropdown after text updates
                 dropdownTimer.Stop();
@@ -197,11 +197,11 @@ namespace WindowsFormsApp1
         private void ComboBox1_DropDown(object sender, EventArgs e)
         {
             // When dropdown opens, ensure all items are available for selection
-            if (string.IsNullOrWhiteSpace(comboBox1.Text))
+            if (string.IsNullOrWhiteSpace(uacs_Code.Text))
             {
                 isFiltering = true;
-                comboBox1.Items.Clear();
-                comboBox1.Items.AddRange(originalComboBoxItems.ToArray());
+                uacs_Code.Items.Clear();
+                uacs_Code.Items.AddRange(originalComboBoxItems.ToArray());
                 isFiltering = false;
             }
         }
@@ -209,19 +209,19 @@ namespace WindowsFormsApp1
         private void ComboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             // When user selects an item, update the text
-            if (comboBox1.SelectedIndex >= 0)
+            if (uacs_Code.SelectedIndex >= 0)
             {
                 isFiltering = true;
-                comboBox1.Text = comboBox1.SelectedItem.ToString();
+                uacs_Code.Text = uacs_Code.SelectedItem.ToString();
                 isFiltering = false;
-                comboBox1.DroppedDown = false;
+                uacs_Code.DroppedDown = false;
             }
         }
 
         private void ComboBox1_KeyUp(object sender, KeyEventArgs e)
         {
             // Ensure dropdown opens after key is released (handles typing)
-            if (!string.IsNullOrWhiteSpace(comboBox1.Text) && !comboBox1.DroppedDown)
+            if (!string.IsNullOrWhiteSpace(uacs_Code.Text) && !uacs_Code.DroppedDown)
             {
                 // Use timer to open dropdown
                 dropdownTimer.Stop();
@@ -232,7 +232,7 @@ namespace WindowsFormsApp1
         private void ComboBox1_Enter(object sender, EventArgs e)
         {
             // When ComboBox gets focus, if there's text, open dropdown
-            if (!string.IsNullOrWhiteSpace(comboBox1.Text))
+            if (!string.IsNullOrWhiteSpace(uacs_Code.Text))
             {
                 dropdownTimer.Stop();
                 dropdownTimer.Start();
@@ -245,8 +245,8 @@ namespace WindowsFormsApp1
             originalPanelColor = panel1.BackColor;
             
             // Store original button positions
-            originalButton1Top = customRoundedButton1.Top;
-            originalButton2Top = customRoundedButton2.Top;
+            originalButton1Top = createEntryBtn.Top;
+            originalButton2Top = cancel.Top;
             
             // Store original panel1 position and size
             originalPanel1Location = panel1.Location;
@@ -425,8 +425,8 @@ namespace WindowsFormsApp1
             fileListPanel.Height = Math.Min(yPosition, Math.Max(50, maxAvailableHeight));
             
             // Ensure buttons stay in their original positions
-            customRoundedButton1.Top = originalButton1Top;
-            customRoundedButton2.Top = originalButton2Top;
+            createEntryBtn.Top = originalButton1Top;
+            cancel.Top = originalButton2Top;
         }
 
         private Panel CreateFileItemPanel(FileInfo file, int yPosition)
