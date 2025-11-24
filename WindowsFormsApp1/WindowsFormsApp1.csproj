@@ -83,6 +83,7 @@
     <Compile Include="AddSupplier.Designer.cs">
       <DependentUpon>AddSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackendModel\RDBSMConnection.cs" />
     <Compile Include="Controls\CustomRoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -355,8 +356,6 @@
   <ItemGroup>
     <None Include="Resources\Edit.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BackendModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
