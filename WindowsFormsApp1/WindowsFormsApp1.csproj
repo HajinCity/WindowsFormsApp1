@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddIARForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddIARForm.Designer.cs">
+      <DependentUpon>AddIARForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddNewJournalEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     <Compile Include="SupplierForm.Designer.cs">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddIARForm.resx">
+      <DependentUpon>AddIARForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddNewJournalEntry.resx">
       <DependentUpon>AddNewJournalEntry.cs</DependentUpon>
     </EmbeddedResource>
