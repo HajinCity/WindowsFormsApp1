@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
             {
                 Location = originalPanel1Location,
                 Size = originalPanel1Size,
-                AutoSize = false,
+                AutoSize = true,
                 AutoScroll = true,
                 Visible = false
             };
