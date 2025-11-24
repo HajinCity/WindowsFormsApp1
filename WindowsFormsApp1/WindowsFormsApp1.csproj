@@ -163,6 +163,18 @@
     <Compile Include="ViewIAR.Designer.cs">
       <DependentUpon>ViewIAR.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewORSBURS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewORSBURS.Designer.cs">
+      <DependentUpon>ViewORSBURS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewSupplier.Designer.cs">
+      <DependentUpon>ViewSupplier.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddIARForm.resx">
       <DependentUpon>AddIARForm.cs</DependentUpon>
     </EmbeddedResource>
