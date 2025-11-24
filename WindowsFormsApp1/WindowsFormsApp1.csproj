@@ -245,6 +245,15 @@
     <EmbeddedResource Include="UpdateIARForm.resx">
       <DependentUpon>UpdateIARForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewIAR.resx">
+      <DependentUpon>ViewIAR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewORSBURS.resx">
+      <DependentUpon>ViewORSBURS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewSupplier.resx">
+      <DependentUpon>ViewSupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
