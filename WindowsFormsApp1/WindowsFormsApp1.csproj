@@ -145,6 +145,12 @@
     <Compile Include="SupplierForm.Designer.cs">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateDEV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateDEV.Designer.cs">
+      <DependentUpon>UpdateDEV.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateGJ.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,12 @@
     </Compile>
     <Compile Include="UpdateSupplierInfo.Designer.cs">
       <DependentUpon>UpdateSupplierInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDEV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDEV.Designer.cs">
+      <DependentUpon>ViewDEV.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewGJEntry.cs">
       <SubType>Form</SubType>
