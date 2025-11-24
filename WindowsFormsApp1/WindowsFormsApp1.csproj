@@ -208,6 +208,9 @@
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DEVForm.resx">
+      <DependentUpon>DEVForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IARForm.resx">
       <DependentUpon>IARForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JEVForm.resx">
+      <DependentUpon>JEVForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrsBursForm.resx">
       <DependentUpon>OrsBursForm.cs</DependentUpon>
