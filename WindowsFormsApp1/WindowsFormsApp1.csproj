@@ -109,6 +109,12 @@
     <Compile Include="SupplierForm.Designer.cs">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateIARForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateIARForm.Designer.cs">
+      <DependentUpon>UpdateIARForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddIARForm.resx">
       <DependentUpon>AddIARForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +151,9 @@
     </Compile>
     <EmbeddedResource Include="SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateIARForm.resx">
+      <DependentUpon>UpdateIARForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
