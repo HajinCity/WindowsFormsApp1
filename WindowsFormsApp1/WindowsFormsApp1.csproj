@@ -58,6 +58,12 @@
     <Compile Include="AddNewJournalEntry.Designer.cs">
       <DependentUpon>AddNewJournalEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddORSBURS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddORSBURS.Designer.cs">
+      <DependentUpon>AddORSBURS.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddNewJournalEntry.resx">
       <DependentUpon>AddNewJournalEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddORSBURS.resx">
+      <DependentUpon>AddORSBURS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddSupplier.resx">
       <DependentUpon>AddSupplier.cs</DependentUpon>
