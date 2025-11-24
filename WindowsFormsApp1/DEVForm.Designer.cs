@@ -47,6 +47,8 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -83,7 +85,7 @@
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(51, 268);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1131, 333);
+            this.panel1.Size = new System.Drawing.Size(1131, 428);
             this.panel1.TabIndex = 20;
             // 
             // dataGridView1
@@ -96,13 +98,15 @@
             this.Column4,
             this.Column5,
             this.Column6,
+            this.Column7,
+            this.Column8,
             this.BtnEdit,
             this.BtnView});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(1131, 428);
             this.dataGridView1.TabIndex = 0;
             // 
             // label4
@@ -240,6 +244,16 @@
             this.Column6.HeaderText = "Office";
             this.Column6.Name = "Column6";
             // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "MOP";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Amount";
+            this.Column8.Name = "Column8";
+            // 
             // BtnEdit
             // 
             this.BtnEdit.HeaderText = "";
@@ -261,7 +275,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1226, 624);
+            this.ClientSize = new System.Drawing.Size(1226, 880);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -302,6 +316,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewImageColumn BtnEdit;
         private System.Windows.Forms.DataGridViewImageColumn BtnView;
     }
