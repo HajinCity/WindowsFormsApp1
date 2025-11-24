@@ -15,6 +15,13 @@ namespace WindowsFormsApp1
         public IARForm()
         {
             InitializeComponent();
+            addIARbtn.Click += AddIARbtn_Click;
+        }
+
+        private void AddIARbtn_Click(object sender, EventArgs e)
+        {
+            AddIARForm addIARForm = new AddIARForm();
+            addIARForm.ShowDialog();
         }
     }
 }
