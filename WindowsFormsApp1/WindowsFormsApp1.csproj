@@ -145,6 +145,12 @@
     <Compile Include="SupplierForm.Designer.cs">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateGJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateGJ.Designer.cs">
+      <DependentUpon>UpdateGJ.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateIARForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,18 @@
     </Compile>
     <Compile Include="UpdateORSBURSForm.Designer.cs">
       <DependentUpon>UpdateORSBURSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateSupplierInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateSupplierInfo.Designer.cs">
+      <DependentUpon>UpdateSupplierInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewGJEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewGJEntry.Designer.cs">
+      <DependentUpon>ViewGJEntry.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewIAR.cs">
       <SubType>Form</SubType>
