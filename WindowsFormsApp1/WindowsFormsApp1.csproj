@@ -83,6 +83,12 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DEVForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DEVForm.Designer.cs">
+      <DependentUpon>DEVForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,12 @@
     </Compile>
     <Compile Include="IARForm.Designer.cs">
       <DependentUpon>IARForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JEVForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JEVForm.Designer.cs">
+      <DependentUpon>JEVForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OrsBursForm.cs">
       <SubType>Form</SubType>
