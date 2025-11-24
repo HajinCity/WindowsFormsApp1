@@ -30,43 +30,43 @@
         {
             this.label3 = new System.Windows.Forms.Label();
             this.customRoundedPanel5 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.RequisitioningOffice = new System.Windows.Forms.TextBox();
+            this.Office = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.supplierName = new System.Windows.Forms.TextBox();
+            this.Payee = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.iar_date = new System.Windows.Forms.DateTimePicker();
+            this.date = new System.Windows.Forms.DateTimePicker();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.iarNo = new System.Windows.Forms.TextBox();
+            this.serialNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.FundCluster = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Address = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.customRoundedPanel6 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.ResponsibilityCenter = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.customRoundedPanel7 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.Particulars = new System.Windows.Forms.TextBox();
             this.customRoundedPanel8 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.MFOPAP = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.customRoundedPanel9 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.uacscode = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.customRoundedPanel10 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.amount = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.customRoundedPanel11 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.approvingOfficer = new System.Windows.Forms.TextBox();
             this.customRoundedPanel12 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.remarks = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -75,7 +75,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cancel = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.createIAREntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.createORSBURSEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.customRoundedPanel5.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
@@ -108,21 +108,21 @@
             // 
             this.customRoundedPanel5.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel5.BorderRadius = 10;
-            this.customRoundedPanel5.Controls.Add(this.RequisitioningOffice);
+            this.customRoundedPanel5.Controls.Add(this.Office);
             this.customRoundedPanel5.Location = new System.Drawing.Point(423, 131);
             this.customRoundedPanel5.Name = "customRoundedPanel5";
             this.customRoundedPanel5.Size = new System.Drawing.Size(701, 41);
             this.customRoundedPanel5.TabIndex = 99;
             // 
-            // RequisitioningOffice
+            // Office
             // 
-            this.RequisitioningOffice.BackColor = System.Drawing.Color.Gainsboro;
-            this.RequisitioningOffice.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RequisitioningOffice.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RequisitioningOffice.Location = new System.Drawing.Point(26, 12);
-            this.RequisitioningOffice.Name = "RequisitioningOffice";
-            this.RequisitioningOffice.Size = new System.Drawing.Size(654, 18);
-            this.RequisitioningOffice.TabIndex = 0;
+            this.Office.BackColor = System.Drawing.Color.Gainsboro;
+            this.Office.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Office.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Office.Location = new System.Drawing.Point(26, 12);
+            this.Office.Name = "Office";
+            this.Office.Size = new System.Drawing.Size(654, 18);
+            this.Office.TabIndex = 0;
             // 
             // label8
             // 
@@ -139,21 +139,21 @@
             // 
             this.customRoundedPanel3.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel3.BorderRadius = 10;
-            this.customRoundedPanel3.Controls.Add(this.supplierName);
+            this.customRoundedPanel3.Controls.Add(this.Payee);
             this.customRoundedPanel3.Location = new System.Drawing.Point(423, 67);
             this.customRoundedPanel3.Name = "customRoundedPanel3";
             this.customRoundedPanel3.Size = new System.Drawing.Size(701, 41);
             this.customRoundedPanel3.TabIndex = 97;
             // 
-            // supplierName
+            // Payee
             // 
-            this.supplierName.BackColor = System.Drawing.Color.Gainsboro;
-            this.supplierName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.supplierName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supplierName.Location = new System.Drawing.Point(26, 13);
-            this.supplierName.Name = "supplierName";
-            this.supplierName.Size = new System.Drawing.Size(654, 18);
-            this.supplierName.TabIndex = 0;
+            this.Payee.BackColor = System.Drawing.Color.Gainsboro;
+            this.Payee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Payee.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Payee.Location = new System.Drawing.Point(26, 13);
+            this.Payee.Name = "Payee";
+            this.Payee.Size = new System.Drawing.Size(654, 18);
+            this.Payee.TabIndex = 0;
             // 
             // label5
             // 
@@ -177,35 +177,35 @@
             this.label2.TabIndex = 95;
             this.label2.Text = "Date";
             // 
-            // iar_date
+            // date
             // 
-            this.iar_date.CalendarFont = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iar_date.CalendarMonthBackground = System.Drawing.Color.Gainsboro;
-            this.iar_date.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iar_date.Location = new System.Drawing.Point(36, 141);
-            this.iar_date.Name = "iar_date";
-            this.iar_date.Size = new System.Drawing.Size(354, 25);
-            this.iar_date.TabIndex = 0;
+            this.date.CalendarFont = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.CalendarMonthBackground = System.Drawing.Color.Gainsboro;
+            this.date.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Location = new System.Drawing.Point(36, 141);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(354, 25);
+            this.date.TabIndex = 0;
             // 
             // customRoundedPanel1
             // 
             this.customRoundedPanel1.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel1.BorderRadius = 10;
-            this.customRoundedPanel1.Controls.Add(this.iarNo);
+            this.customRoundedPanel1.Controls.Add(this.serialNo);
             this.customRoundedPanel1.Location = new System.Drawing.Point(36, 67);
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(354, 41);
             this.customRoundedPanel1.TabIndex = 94;
             // 
-            // iarNo
+            // serialNo
             // 
-            this.iarNo.BackColor = System.Drawing.Color.Gainsboro;
-            this.iarNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.iarNo.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iarNo.Location = new System.Drawing.Point(26, 13);
-            this.iarNo.Name = "iarNo";
-            this.iarNo.Size = new System.Drawing.Size(307, 18);
-            this.iarNo.TabIndex = 0;
+            this.serialNo.BackColor = System.Drawing.Color.Gainsboro;
+            this.serialNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.serialNo.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serialNo.Location = new System.Drawing.Point(26, 13);
+            this.serialNo.Name = "serialNo";
+            this.serialNo.Size = new System.Drawing.Size(307, 18);
+            this.serialNo.TabIndex = 0;
             // 
             // label1
             // 
@@ -232,21 +232,21 @@
             // 
             this.customRoundedPanel2.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel2.BorderRadius = 10;
-            this.customRoundedPanel2.Controls.Add(this.textBox1);
+            this.customRoundedPanel2.Controls.Add(this.FundCluster);
             this.customRoundedPanel2.Location = new System.Drawing.Point(36, 203);
             this.customRoundedPanel2.Name = "customRoundedPanel2";
             this.customRoundedPanel2.Size = new System.Drawing.Size(354, 41);
             this.customRoundedPanel2.TabIndex = 96;
             // 
-            // textBox1
+            // FundCluster
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(26, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(307, 18);
-            this.textBox1.TabIndex = 0;
+            this.FundCluster.BackColor = System.Drawing.Color.Gainsboro;
+            this.FundCluster.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.FundCluster.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FundCluster.Location = new System.Drawing.Point(26, 13);
+            this.FundCluster.Name = "FundCluster";
+            this.FundCluster.Size = new System.Drawing.Size(307, 18);
+            this.FundCluster.TabIndex = 0;
             // 
             // label4
             // 
@@ -263,21 +263,21 @@
             // 
             this.customRoundedPanel4.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel4.BorderRadius = 10;
-            this.customRoundedPanel4.Controls.Add(this.textBox2);
+            this.customRoundedPanel4.Controls.Add(this.Address);
             this.customRoundedPanel4.Location = new System.Drawing.Point(423, 203);
             this.customRoundedPanel4.Name = "customRoundedPanel4";
             this.customRoundedPanel4.Size = new System.Drawing.Size(701, 41);
             this.customRoundedPanel4.TabIndex = 101;
             // 
-            // textBox2
+            // Address
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(26, 12);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(654, 18);
-            this.textBox2.TabIndex = 0;
+            this.Address.BackColor = System.Drawing.Color.Gainsboro;
+            this.Address.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Address.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Address.Location = new System.Drawing.Point(26, 12);
+            this.Address.Name = "Address";
+            this.Address.Size = new System.Drawing.Size(654, 18);
+            this.Address.TabIndex = 0;
             // 
             // label6
             // 
@@ -294,21 +294,21 @@
             // 
             this.customRoundedPanel6.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel6.BorderRadius = 10;
-            this.customRoundedPanel6.Controls.Add(this.textBox3);
+            this.customRoundedPanel6.Controls.Add(this.ResponsibilityCenter);
             this.customRoundedPanel6.Location = new System.Drawing.Point(423, 274);
             this.customRoundedPanel6.Name = "customRoundedPanel6";
             this.customRoundedPanel6.Size = new System.Drawing.Size(701, 41);
             this.customRoundedPanel6.TabIndex = 103;
             // 
-            // textBox3
+            // ResponsibilityCenter
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(26, 12);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(654, 18);
-            this.textBox3.TabIndex = 0;
+            this.ResponsibilityCenter.BackColor = System.Drawing.Color.Gainsboro;
+            this.ResponsibilityCenter.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ResponsibilityCenter.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResponsibilityCenter.Location = new System.Drawing.Point(26, 12);
+            this.ResponsibilityCenter.Name = "ResponsibilityCenter";
+            this.ResponsibilityCenter.Size = new System.Drawing.Size(654, 18);
+            this.ResponsibilityCenter.TabIndex = 0;
             // 
             // label7
             // 
@@ -336,42 +336,42 @@
             // 
             this.customRoundedPanel7.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel7.BorderRadius = 10;
-            this.customRoundedPanel7.Controls.Add(this.textBox4);
+            this.customRoundedPanel7.Controls.Add(this.Particulars);
             this.customRoundedPanel7.Location = new System.Drawing.Point(36, 331);
             this.customRoundedPanel7.Name = "customRoundedPanel7";
             this.customRoundedPanel7.Size = new System.Drawing.Size(1088, 83);
             this.customRoundedPanel7.TabIndex = 104;
             // 
-            // textBox4
+            // Particulars
             // 
-            this.textBox4.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(26, 16);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(1041, 52);
-            this.textBox4.TabIndex = 0;
+            this.Particulars.BackColor = System.Drawing.Color.Gainsboro;
+            this.Particulars.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Particulars.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Particulars.Location = new System.Drawing.Point(26, 16);
+            this.Particulars.Multiline = true;
+            this.Particulars.Name = "Particulars";
+            this.Particulars.Size = new System.Drawing.Size(1041, 52);
+            this.Particulars.TabIndex = 0;
             // 
             // customRoundedPanel8
             // 
             this.customRoundedPanel8.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel8.BorderRadius = 10;
-            this.customRoundedPanel8.Controls.Add(this.textBox5);
+            this.customRoundedPanel8.Controls.Add(this.MFOPAP);
             this.customRoundedPanel8.Location = new System.Drawing.Point(36, 448);
             this.customRoundedPanel8.Name = "customRoundedPanel8";
             this.customRoundedPanel8.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel8.TabIndex = 98;
             // 
-            // textBox5
+            // MFOPAP
             // 
-            this.textBox5.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(26, 13);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(465, 18);
-            this.textBox5.TabIndex = 0;
+            this.MFOPAP.BackColor = System.Drawing.Color.Gainsboro;
+            this.MFOPAP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MFOPAP.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MFOPAP.Location = new System.Drawing.Point(26, 13);
+            this.MFOPAP.Name = "MFOPAP";
+            this.MFOPAP.Size = new System.Drawing.Size(465, 18);
+            this.MFOPAP.TabIndex = 0;
             // 
             // label10
             // 
@@ -388,21 +388,21 @@
             // 
             this.customRoundedPanel9.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel9.BorderRadius = 10;
-            this.customRoundedPanel9.Controls.Add(this.textBox6);
+            this.customRoundedPanel9.Controls.Add(this.uacscode);
             this.customRoundedPanel9.Location = new System.Drawing.Point(612, 448);
             this.customRoundedPanel9.Name = "customRoundedPanel9";
             this.customRoundedPanel9.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel9.TabIndex = 99;
             // 
-            // textBox6
+            // uacscode
             // 
-            this.textBox6.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(22, 13);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(477, 18);
-            this.textBox6.TabIndex = 0;
+            this.uacscode.BackColor = System.Drawing.Color.Gainsboro;
+            this.uacscode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.uacscode.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uacscode.Location = new System.Drawing.Point(22, 13);
+            this.uacscode.Name = "uacscode";
+            this.uacscode.Size = new System.Drawing.Size(477, 18);
+            this.uacscode.TabIndex = 0;
             // 
             // label11
             // 
@@ -430,21 +430,21 @@
             // 
             this.customRoundedPanel10.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel10.BorderRadius = 10;
-            this.customRoundedPanel10.Controls.Add(this.textBox7);
+            this.customRoundedPanel10.Controls.Add(this.amount);
             this.customRoundedPanel10.Location = new System.Drawing.Point(36, 524);
             this.customRoundedPanel10.Name = "customRoundedPanel10";
             this.customRoundedPanel10.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel10.TabIndex = 111;
             // 
-            // textBox7
+            // amount
             // 
-            this.textBox7.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(26, 12);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(465, 18);
-            this.textBox7.TabIndex = 0;
+            this.amount.BackColor = System.Drawing.Color.Gainsboro;
+            this.amount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.amount.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amount.Location = new System.Drawing.Point(26, 12);
+            this.amount.Name = "amount";
+            this.amount.Size = new System.Drawing.Size(465, 18);
+            this.amount.TabIndex = 0;
             // 
             // label13
             // 
@@ -461,42 +461,42 @@
             // 
             this.customRoundedPanel11.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel11.BorderRadius = 10;
-            this.customRoundedPanel11.Controls.Add(this.textBox8);
+            this.customRoundedPanel11.Controls.Add(this.approvingOfficer);
             this.customRoundedPanel11.Location = new System.Drawing.Point(612, 524);
             this.customRoundedPanel11.Name = "customRoundedPanel11";
             this.customRoundedPanel11.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel11.TabIndex = 113;
             // 
-            // textBox8
+            // approvingOfficer
             // 
-            this.textBox8.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(22, 13);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(477, 18);
-            this.textBox8.TabIndex = 0;
+            this.approvingOfficer.BackColor = System.Drawing.Color.Gainsboro;
+            this.approvingOfficer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.approvingOfficer.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.approvingOfficer.Location = new System.Drawing.Point(22, 13);
+            this.approvingOfficer.Name = "approvingOfficer";
+            this.approvingOfficer.Size = new System.Drawing.Size(477, 18);
+            this.approvingOfficer.TabIndex = 0;
             // 
             // customRoundedPanel12
             // 
             this.customRoundedPanel12.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel12.BorderRadius = 10;
-            this.customRoundedPanel12.Controls.Add(this.textBox9);
+            this.customRoundedPanel12.Controls.Add(this.remarks);
             this.customRoundedPanel12.Location = new System.Drawing.Point(36, 598);
             this.customRoundedPanel12.Name = "customRoundedPanel12";
             this.customRoundedPanel12.Size = new System.Drawing.Size(1088, 83);
             this.customRoundedPanel12.TabIndex = 110;
             // 
-            // textBox9
+            // remarks
             // 
-            this.textBox9.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(26, 16);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(1041, 52);
-            this.textBox9.TabIndex = 0;
+            this.remarks.BackColor = System.Drawing.Color.Gainsboro;
+            this.remarks.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.remarks.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remarks.Location = new System.Drawing.Point(26, 16);
+            this.remarks.Multiline = true;
+            this.remarks.Name = "remarks";
+            this.remarks.Size = new System.Drawing.Size(1041, 52);
+            this.remarks.TabIndex = 0;
             // 
             // label14
             // 
@@ -585,22 +585,22 @@
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = false;
             // 
-            // createIAREntryBtn
+            // createORSBURSEntryBtn
             // 
-            this.createIAREntryBtn.BackColor = System.Drawing.Color.SeaGreen;
-            this.createIAREntryBtn.BorderRadius = 10;
-            this.createIAREntryBtn.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.createIAREntryBtn.FlatAppearance.BorderSize = 0;
-            this.createIAREntryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createIAREntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createIAREntryBtn.ForeColor = System.Drawing.Color.White;
-            this.createIAREntryBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.createIAREntryBtn.Location = new System.Drawing.Point(909, 925);
-            this.createIAREntryBtn.Name = "createIAREntryBtn";
-            this.createIAREntryBtn.Size = new System.Drawing.Size(215, 51);
-            this.createIAREntryBtn.TabIndex = 118;
-            this.createIAREntryBtn.Text = "Create ORS-BURS Entry";
-            this.createIAREntryBtn.UseVisualStyleBackColor = false;
+            this.createORSBURSEntryBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.createORSBURSEntryBtn.BorderRadius = 10;
+            this.createORSBURSEntryBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.createORSBURSEntryBtn.FlatAppearance.BorderSize = 0;
+            this.createORSBURSEntryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createORSBURSEntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createORSBURSEntryBtn.ForeColor = System.Drawing.Color.White;
+            this.createORSBURSEntryBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.createORSBURSEntryBtn.Location = new System.Drawing.Point(909, 925);
+            this.createORSBURSEntryBtn.Name = "createORSBURSEntryBtn";
+            this.createORSBURSEntryBtn.Size = new System.Drawing.Size(215, 51);
+            this.createORSBURSEntryBtn.TabIndex = 118;
+            this.createORSBURSEntryBtn.Text = "Create ORS-BURS Entry";
+            this.createORSBURSEntryBtn.UseVisualStyleBackColor = false;
             // 
             // AddORSBURS
             // 
@@ -610,7 +610,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1168, 924);
             this.Controls.Add(this.cancel);
-            this.Controls.Add(this.createIAREntryBtn);
+            this.Controls.Add(this.createORSBURSEntryBtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label20);
@@ -638,7 +638,7 @@
             this.Controls.Add(this.customRoundedPanel3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.iar_date);
+            this.Controls.Add(this.date);
             this.Controls.Add(this.customRoundedPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
@@ -683,43 +683,43 @@
 
         private System.Windows.Forms.Label label3;
         private Controls.CustomRoundedPanel customRoundedPanel5;
-        private System.Windows.Forms.TextBox RequisitioningOffice;
+        private System.Windows.Forms.TextBox Office;
         private System.Windows.Forms.Label label8;
         private Controls.CustomRoundedPanel customRoundedPanel3;
-        private System.Windows.Forms.TextBox supplierName;
+        private System.Windows.Forms.TextBox Payee;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker iar_date;
+        private System.Windows.Forms.DateTimePicker date;
         private Controls.CustomRoundedPanel customRoundedPanel1;
-        private System.Windows.Forms.TextBox iarNo;
+        private System.Windows.Forms.TextBox serialNo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Controls.CustomRoundedPanel customRoundedPanel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox FundCluster;
         private System.Windows.Forms.Label label4;
         private Controls.CustomRoundedPanel customRoundedPanel4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Address;
         private System.Windows.Forms.Label label6;
         private Controls.CustomRoundedPanel customRoundedPanel6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox ResponsibilityCenter;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private Controls.CustomRoundedPanel customRoundedPanel7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox Particulars;
         private Controls.CustomRoundedPanel customRoundedPanel8;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox MFOPAP;
         private System.Windows.Forms.Label label10;
         private Controls.CustomRoundedPanel customRoundedPanel9;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox uacscode;
         private System.Windows.Forms.Label label12;
         private Controls.CustomRoundedPanel customRoundedPanel10;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox amount;
         private System.Windows.Forms.Label label13;
         private Controls.CustomRoundedPanel customRoundedPanel11;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox approvingOfficer;
         private Controls.CustomRoundedPanel customRoundedPanel12;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox remarks;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -728,6 +728,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Panel panel2;
         private Controls.CustomRoundedButton cancel;
-        private Controls.CustomRoundedButton createIAREntryBtn;
+        private Controls.CustomRoundedButton createORSBURSEntryBtn;
     }
 }
