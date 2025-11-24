@@ -90,7 +90,7 @@
             this.date.Location = new System.Drawing.Point(441, 92);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(304, 25);
-            this.date.TabIndex = 0;
+            this.date.TabIndex = 1;
             // 
             // label2
             // 
@@ -148,7 +148,7 @@
             this.cancel.Location = new System.Drawing.Point(444, 810);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(158, 51);
-            this.cancel.TabIndex = 24;
+            this.cancel.TabIndex = 6;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = false;
             // 
@@ -165,7 +165,7 @@
             this.createEntryBtn.Location = new System.Drawing.Point(608, 810);
             this.createEntryBtn.Name = "createEntryBtn";
             this.createEntryBtn.Size = new System.Drawing.Size(158, 51);
-            this.createEntryBtn.TabIndex = 23;
+            this.createEntryBtn.TabIndex = 5;
             this.createEntryBtn.Text = "Create Entry";
             this.createEntryBtn.UseVisualStyleBackColor = false;
             // 
@@ -177,7 +177,8 @@
             this.customRoundedPanel4.Location = new System.Drawing.Point(33, 238);
             this.customRoundedPanel4.Name = "customRoundedPanel4";
             this.customRoundedPanel4.Size = new System.Drawing.Size(712, 41);
-            this.customRoundedPanel4.TabIndex = 16;
+            this.customRoundedPanel4.TabIndex = 3;
+            this.customRoundedPanel4.TabStop = false;
             // 
             // amount
             // 
@@ -187,7 +188,7 @@
             this.amount.Location = new System.Drawing.Point(26, 13);
             this.amount.Name = "amount";
             this.amount.Size = new System.Drawing.Size(670, 18);
-            this.amount.TabIndex = 0;
+            this.amount.TabIndex = 3;
             // 
             // customRoundedPanel3
             // 
@@ -197,7 +198,8 @@
             this.customRoundedPanel3.Location = new System.Drawing.Point(33, 159);
             this.customRoundedPanel3.Name = "customRoundedPanel3";
             this.customRoundedPanel3.Size = new System.Drawing.Size(712, 41);
-            this.customRoundedPanel3.TabIndex = 14;
+            this.customRoundedPanel3.TabIndex = 2;
+            this.customRoundedPanel3.TabStop = false;
             // 
             // uacs_Code
             // 
@@ -1304,7 +1306,7 @@
             this.uacs_Code.Location = new System.Drawing.Point(15, 8);
             this.uacs_Code.Name = "uacs_Code";
             this.uacs_Code.Size = new System.Drawing.Size(682, 25);
-            this.uacs_Code.TabIndex = 0;
+            this.uacs_Code.TabIndex = 2;
             // 
             // customRoundedPanel1
             // 
@@ -1314,7 +1316,8 @@
             this.customRoundedPanel1.Location = new System.Drawing.Point(33, 85);
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(354, 41);
-            this.customRoundedPanel1.TabIndex = 12;
+            this.customRoundedPanel1.TabIndex = 0;
+            this.customRoundedPanel1.TabStop = false;
             // 
             // gjno
             // 
@@ -1334,7 +1337,8 @@
             this.panel1.Location = new System.Drawing.Point(39, 494);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 119);
-            this.panel1.TabIndex = 27;
+            this.panel1.TabIndex = 7;
+            this.panel1.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -1387,7 +1391,8 @@
             this.customRoundedPanel2.Location = new System.Drawing.Point(33, 311);
             this.customRoundedPanel2.Name = "customRoundedPanel2";
             this.customRoundedPanel2.Size = new System.Drawing.Size(712, 134);
-            this.customRoundedPanel2.TabIndex = 18;
+            this.customRoundedPanel2.TabIndex = 4;
+            this.customRoundedPanel2.TabStop = false;
             // 
             // particulars
             // 
@@ -1398,7 +1403,7 @@
             this.particulars.Multiline = true;
             this.particulars.Name = "particulars";
             this.particulars.Size = new System.Drawing.Size(670, 107);
-            this.particulars.TabIndex = 0;
+            this.particulars.TabIndex = 4;
             // 
             // label7
             // 
