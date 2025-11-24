@@ -27,7 +27,8 @@ namespace WindowsFormsApp1
         {
             if (shouldLoadDashboardOnShow)
             {
-                LoadDashboard();
+                // Programmatically trigger DashboardBtn click to update visual state and load dashboard
+                DashboardBtn.PerformClick();
                 shouldLoadDashboardOnShow = false;
             }
         }

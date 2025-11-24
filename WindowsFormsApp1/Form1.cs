@@ -90,6 +90,7 @@ namespace WindowsFormsApp1
         {
             Form2 dashboard = new Form2();
             dashboard.WindowState = FormWindowState.Maximized;
+            dashboard.SetAutoLoadDashboard(true);
             dashboard.Show();
 
             this.Hide();
