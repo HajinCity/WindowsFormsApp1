@@ -81,6 +81,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.customRoundedPanel12.SuspendLayout();
             this.customRoundedPanel11.SuspendLayout();
@@ -96,6 +103,8 @@
             this.customRoundedPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // cancel
@@ -107,7 +116,7 @@
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.HoverColor = System.Drawing.Color.LightGray;
-            this.cancel.Location = new System.Drawing.Point(737, 860);
+            this.cancel.Location = new System.Drawing.Point(737, 1369);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(158, 51);
             this.cancel.TabIndex = 74;
@@ -175,7 +184,7 @@
             this.createIAREntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createIAREntryBtn.ForeColor = System.Drawing.Color.White;
             this.createIAREntryBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.createIAREntryBtn.Location = new System.Drawing.Point(901, 860);
+            this.createIAREntryBtn.Location = new System.Drawing.Point(901, 1369);
             this.createIAREntryBtn.Name = "createIAREntryBtn";
             this.createIAREntryBtn.Size = new System.Drawing.Size(215, 51);
             this.createIAREntryBtn.TabIndex = 73;
@@ -198,7 +207,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label19);
-            this.panel1.Location = new System.Drawing.Point(43, 707);
+            this.panel1.Location = new System.Drawing.Point(43, 1216);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1073, 96);
             this.panel1.TabIndex = 72;
@@ -219,7 +228,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(25, 676);
+            this.label20.Location = new System.Drawing.Point(25, 1185);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(207, 17);
             this.label20.TabIndex = 71;
@@ -230,7 +239,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(25, 499);
+            this.label15.Location = new System.Drawing.Point(25, 997);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(115, 17);
             this.label15.TabIndex = 56;
@@ -252,9 +261,9 @@
             this.customRoundedPanel12.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel12.BorderRadius = 10;
             this.customRoundedPanel12.Controls.Add(this.textBox11);
-            this.customRoundedPanel12.Location = new System.Drawing.Point(416, 592);
+            this.customRoundedPanel12.Location = new System.Drawing.Point(28, 1090);
             this.customRoundedPanel12.Name = "customRoundedPanel12";
-            this.customRoundedPanel12.Size = new System.Drawing.Size(700, 83);
+            this.customRoundedPanel12.Size = new System.Drawing.Size(1088, 83);
             this.customRoundedPanel12.TabIndex = 60;
             // 
             // label17
@@ -262,7 +271,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(413, 572);
+            this.label17.Location = new System.Drawing.Point(25, 1070);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(68, 17);
             this.label17.TabIndex = 63;
@@ -273,7 +282,7 @@
             this.customRoundedPanel11.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel11.BorderRadius = 10;
             this.customRoundedPanel11.Controls.Add(this.TotalAmount);
-            this.customRoundedPanel11.Location = new System.Drawing.Point(415, 519);
+            this.customRoundedPanel11.Location = new System.Drawing.Point(415, 1017);
             this.customRoundedPanel11.Name = "customRoundedPanel11";
             this.customRoundedPanel11.Size = new System.Drawing.Size(701, 41);
             this.customRoundedPanel11.TabIndex = 54;
@@ -283,7 +292,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(413, 499);
+            this.label16.Location = new System.Drawing.Point(413, 997);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(91, 17);
             this.label16.TabIndex = 70;
@@ -294,7 +303,7 @@
             this.customRoundedPanel10.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel10.BorderRadius = 10;
             this.customRoundedPanel10.Controls.Add(this.ReceivedStatus);
-            this.customRoundedPanel10.Location = new System.Drawing.Point(28, 519);
+            this.customRoundedPanel10.Location = new System.Drawing.Point(28, 1017);
             this.customRoundedPanel10.Name = "customRoundedPanel10";
             this.customRoundedPanel10.Size = new System.Drawing.Size(354, 41);
             this.customRoundedPanel10.TabIndex = 52;
@@ -645,7 +654,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
-            this.pictureBox2.Location = new System.Drawing.Point(1121, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(1087, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -663,12 +672,70 @@
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(28, 506);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1088, 465);
+            this.panel2.TabIndex = 75;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(1088, 465);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "Stock Number";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Description";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Unit";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.HeaderText = "Quantity";
+            this.Column4.Name = "Column4";
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(53, 1426);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1041, 44);
+            this.panel3.TabIndex = 76;
+            // 
             // UpdateIARForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1151, 924);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.createIAREntryBtn);
@@ -739,6 +806,8 @@
             this.customRoundedPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -799,5 +868,12 @@
         private Controls.CustomRoundedPanel customRoundedPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Panel panel3;
     }
 }
