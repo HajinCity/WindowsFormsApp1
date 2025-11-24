@@ -47,7 +47,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(21, 25);
+            this.label3.Location = new System.Drawing.Point(37, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(624, 37);
             this.label3.TabIndex = 8;
@@ -58,7 +58,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(25, 72);
+            this.label2.Location = new System.Drawing.Point(44, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(388, 18);
             this.label2.TabIndex = 7;
@@ -71,7 +71,7 @@
             this.gradientPanel1.Controls.Add(this.textBox1);
             this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
-            this.gradientPanel1.Location = new System.Drawing.Point(28, 122);
+            this.gradientPanel1.Location = new System.Drawing.Point(45, 123);
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Size = new System.Drawing.Size(1139, 93);
             this.gradientPanel1.TabIndex = 9;
@@ -104,7 +104,7 @@
             this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
             this.addSupplierBtn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(205)))), ((int)(((byte)(255)))));
-            this.addSupplierBtn.Location = new System.Drawing.Point(963, 23);
+            this.addSupplierBtn.Location = new System.Drawing.Point(988, 31);
             this.addSupplierBtn.Name = "addSupplierBtn";
             this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
             this.addSupplierBtn.TabIndex = 10;
@@ -114,9 +114,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(28, 279);
+            this.panel1.Location = new System.Drawing.Point(52, 271);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1139, 333);
+            this.panel1.Size = new System.Drawing.Size(1132, 333);
             this.panel1.TabIndex = 11;
             // 
             // dataGridView1
@@ -125,7 +125,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1139, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(1132, 333);
             this.dataGridView1.TabIndex = 0;
             // 
             // IARForm
