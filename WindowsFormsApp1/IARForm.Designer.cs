@@ -33,7 +33,7 @@
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.addIARbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gradientPanel1.SuspendLayout();
@@ -94,22 +94,22 @@
             this.textBox1.Size = new System.Drawing.Size(1037, 26);
             this.textBox1.TabIndex = 0;
             // 
-            // addSupplierBtn
+            // addIARbtn
             // 
-            this.addSupplierBtn.BackColor = System.Drawing.Color.Turquoise;
-            this.addSupplierBtn.BorderRadius = 10;
-            this.addSupplierBtn.ClickedColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
-            this.addSupplierBtn.FlatAppearance.BorderSize = 0;
-            this.addSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
-            this.addSupplierBtn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(205)))), ((int)(((byte)(255)))));
-            this.addSupplierBtn.Location = new System.Drawing.Point(988, 31);
-            this.addSupplierBtn.Name = "addSupplierBtn";
-            this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
-            this.addSupplierBtn.TabIndex = 10;
-            this.addSupplierBtn.Text = "Add IAR";
-            this.addSupplierBtn.UseVisualStyleBackColor = false;
+            this.addIARbtn.BackColor = System.Drawing.Color.Turquoise;
+            this.addIARbtn.BorderRadius = 10;
+            this.addIARbtn.ClickedColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(50)))), ((int)(((byte)(168)))));
+            this.addIARbtn.FlatAppearance.BorderSize = 0;
+            this.addIARbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addIARbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addIARbtn.ForeColor = System.Drawing.Color.White;
+            this.addIARbtn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(205)))), ((int)(((byte)(255)))));
+            this.addIARbtn.Location = new System.Drawing.Point(988, 31);
+            this.addIARbtn.Name = "addIARbtn";
+            this.addIARbtn.Size = new System.Drawing.Size(204, 55);
+            this.addIARbtn.TabIndex = 10;
+            this.addIARbtn.Text = "Add IAR";
+            this.addIARbtn.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -135,7 +135,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1226, 624);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.addSupplierBtn);
+            this.Controls.Add(this.addIARbtn);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -160,7 +160,7 @@
         private Controls.GradientPanel gradientPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private Controls.CustomRoundedButton addSupplierBtn;
+        private Controls.CustomRoundedButton addIARbtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
