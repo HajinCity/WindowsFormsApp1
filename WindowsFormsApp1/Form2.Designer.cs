@@ -31,6 +31,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.UserManagementBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label1 = new System.Windows.Forms.Label();
             this.SignOutBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.SupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
@@ -41,7 +42,6 @@
             this.DVBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.GJBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.JEVBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.UserManagementBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +84,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(278, 778);
             this.panel1.TabIndex = 9;
+            // 
+            // UserManagementBtn
+            // 
+            this.UserManagementBtn.BackColor = System.Drawing.Color.White;
+            this.UserManagementBtn.BorderRadius = 10;
+            this.UserManagementBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.UserManagementBtn.FlatAppearance.BorderSize = 0;
+            this.UserManagementBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UserManagementBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserManagementBtn.ForeColor = System.Drawing.Color.Black;
+            this.UserManagementBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.UserManagementBtn.Image = global::WindowsFormsApp1.Properties.Resources.Settings;
+            this.UserManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.UserManagementBtn.Location = new System.Drawing.Point(22, 615);
+            this.UserManagementBtn.Name = "UserManagementBtn";
+            this.UserManagementBtn.Size = new System.Drawing.Size(237, 50);
+            this.UserManagementBtn.TabIndex = 10;
+            this.UserManagementBtn.Text = "System Management";
+            this.UserManagementBtn.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -266,25 +285,6 @@
             this.JEVBtn.TabIndex = 6;
             this.JEVBtn.Text = "JEV";
             this.JEVBtn.UseVisualStyleBackColor = false;
-            // 
-            // UserManagementBtn
-            // 
-            this.UserManagementBtn.BackColor = System.Drawing.Color.White;
-            this.UserManagementBtn.BorderRadius = 10;
-            this.UserManagementBtn.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.UserManagementBtn.FlatAppearance.BorderSize = 0;
-            this.UserManagementBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UserManagementBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserManagementBtn.ForeColor = System.Drawing.Color.Black;
-            this.UserManagementBtn.HoverColor = System.Drawing.Color.Gainsboro;
-            this.UserManagementBtn.Image = global::WindowsFormsApp1.Properties.Resources.Settings;
-            this.UserManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.UserManagementBtn.Location = new System.Drawing.Point(22, 615);
-            this.UserManagementBtn.Name = "UserManagementBtn";
-            this.UserManagementBtn.Size = new System.Drawing.Size(237, 50);
-            this.UserManagementBtn.TabIndex = 10;
-            this.UserManagementBtn.Text = "System Management";
-            this.UserManagementBtn.UseVisualStyleBackColor = false;
             // 
             // Form2
             // 

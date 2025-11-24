@@ -15,6 +15,15 @@ namespace WindowsFormsApp1
         public OrsBursForm()
         {
             InitializeComponent();
+            addEntryBtn.Click += AddEntryBtn_Click;
+        }
+
+        private void AddEntryBtn_Click(object sender, EventArgs e)
+        {
+            using (var addForm = new AddORSBURS())
+            {
+                addForm.ShowDialog(this);
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         private SupplierForm supplierForm;
         private GeneralJournal generalJournalForm;
         private IARForm iarForm;
+        private OrsBursForm orsBursForm;
         private bool shouldLoadDashboardOnShow = false;
 
         public Form2()
@@ -26,6 +27,7 @@ namespace WindowsFormsApp1
             SupplierBtn.Click += SupplierBtn_Click;
             GJBtn.Click += GJBtn_Click;
             IARBtn.Click += IARBtn_Click;
+            ORSBtn.Click += ORSBtn_Click;
             this.Shown += Form2_Shown;
         }
 
@@ -205,6 +207,45 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading IAR Form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ORSBtn_Click(object sender, EventArgs e)
+        {
+            LoadOrsBursForm();
+        }
+
+        public void LoadOrsBursForm()
+        {
+            try
+            {
+                panel3.Controls.Clear();
+
+                DisposeForm(dashboardForm);
+                dashboardForm = null;
+                DisposeForm(supplierForm);
+                supplierForm = null;
+                DisposeForm(generalJournalForm);
+                generalJournalForm = null;
+                DisposeForm(iarForm);
+                iarForm = null;
+
+                DisposeForm(orsBursForm);
+                orsBursForm = null;
+
+                orsBursForm = new OrsBursForm();
+                orsBursForm.TopLevel = false;
+                orsBursForm.FormBorderStyle = FormBorderStyle.None;
+                orsBursForm.Dock = DockStyle.Fill;
+                orsBursForm.Visible = true;
+
+                panel3.Controls.Add(orsBursForm);
+                orsBursForm.Show();
+                panel3.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading ORS-BURS Form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
