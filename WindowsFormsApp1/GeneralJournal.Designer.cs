@@ -37,21 +37,22 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.addEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
@@ -87,7 +88,7 @@
             this.panel1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(52, 271);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1131, 482);
+            this.panel1.Size = new System.Drawing.Size(1287, 482);
             this.panel1.TabIndex = 13;
             // 
             // dataGridView1
@@ -106,7 +107,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 482);
+            this.dataGridView1.Size = new System.Drawing.Size(1287, 482);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -139,6 +140,24 @@
             this.Column5.HeaderText = "Amount";
             this.Column5.Name = "Column5";
             // 
+            // BtnEdit
+            // 
+            this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BtnEdit.HeaderText = "";
+            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
+            this.BtnEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Width = 5;
+            // 
+            // BtnView
+            // 
+            this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BtnView.HeaderText = "";
+            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
+            this.BtnView.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.BtnView.Name = "BtnView";
+            this.BtnView.Width = 5;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -160,7 +179,7 @@
             this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExportToCSV.ForeColor = System.Drawing.Color.White;
             this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.ExportToCSV.Location = new System.Drawing.Point(979, 780);
+            this.ExportToCSV.Location = new System.Drawing.Point(1135, 772);
             this.ExportToCSV.Name = "ExportToCSV";
             this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
             this.ExportToCSV.TabIndex = 13;
@@ -170,6 +189,7 @@
             // gradientPanel1
             // 
             this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel1.Controls.Add(this.ParseRangeBtn);
             this.gradientPanel1.Controls.Add(this.pictureBox2);
             this.gradientPanel1.Controls.Add(this.label4);
             this.gradientPanel1.Controls.Add(this.label5);
@@ -181,8 +201,18 @@
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
             this.gradientPanel1.Location = new System.Drawing.Point(44, 120);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1139, 93);
+            this.gradientPanel1.Size = new System.Drawing.Size(1295, 93);
             this.gradientPanel1.TabIndex = 19;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
+            this.pictureBox2.Location = new System.Drawing.Point(452, 22);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 22;
+            this.pictureBox2.TabStop = false;
             // 
             // label4
             // 
@@ -222,6 +252,16 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(262, 25);
             this.dateTimePicker1.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
+            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,7 +280,7 @@
             this.addEntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addEntryBtn.ForeColor = System.Drawing.Color.White;
             this.addEntryBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addEntryBtn.Location = new System.Drawing.Point(988, 31);
+            this.addEntryBtn.Location = new System.Drawing.Point(1135, 48);
             this.addEntryBtn.Name = "addEntryBtn";
             this.addEntryBtn.Size = new System.Drawing.Size(204, 55);
             this.addEntryBtn.TabIndex = 14;
@@ -254,7 +294,6 @@
             this.dataGridViewImageColumn1.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 5;
             // 
             // dataGridViewImageColumn2
             // 
@@ -263,52 +302,30 @@
             this.dataGridViewImageColumn2.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Width = 5;
             // 
-            // pictureBox2
+            // ParseRangeBtn
             // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
-            this.pictureBox2.Location = new System.Drawing.Point(452, 22);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
-            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // BtnEdit
-            // 
-            this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BtnEdit.HeaderText = "";
-            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
-            this.BtnEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Width = 5;
-            // 
-            // BtnView
-            // 
-            this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BtnView.HeaderText = "";
-            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
-            this.BtnView.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.BtnView.Name = "BtnView";
-            this.BtnView.Width = 5;
+            this.ParseRangeBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.BorderRadius = 10;
+            this.ParseRangeBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.FlatAppearance.BorderSize = 0;
+            this.ParseRangeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
+            this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.ParseRangeBtn.Location = new System.Drawing.Point(1148, 21);
+            this.ParseRangeBtn.Name = "ParseRangeBtn";
+            this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
+            this.ParseRangeBtn.TabIndex = 23;
+            this.ParseRangeBtn.Text = "Enter";
+            this.ParseRangeBtn.UseVisualStyleBackColor = false;
             // 
             // GeneralJournal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1226, 864);
+            this.ClientSize = new System.Drawing.Size(1351, 864);
             this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.label1);
@@ -356,5 +373,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private Controls.CustomRoundedButton ParseRangeBtn;
     }
 }

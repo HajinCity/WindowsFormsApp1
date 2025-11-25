@@ -31,15 +31,30 @@ namespace WindowsFormsApp1
             InitializeComponent();
             addEntryBtn.Click += AddEntryBtn_Click;
             textBox1.TextChanged += TextBox1_TextChanged;
-            dateTimePicker1.ValueChanged += DateFilter_ValueChanged;
-            dateTimePicker2.ValueChanged += DateFilter_ValueChanged;
             ExportToCSV.Click += ExportToCSV_Click;
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
+            pictureBox2.Click += PictureBox2_Click;
+            ParseRangeBtn.Click += ParseRange_Click;
             this.Load += GeneralJournal_Load;
         }
 
         private void GeneralJournal_Load(object sender, EventArgs e)
         {
+            // Set initial date range to show all data (wide range)
+            if (!hasInitializedDateRange)
+            {
+                suppressFilterEvents = true;
+                try
+                {
+                    dateTimePicker1.Value = DateTime.Today.AddYears(-10); // Start date: 10 years ago
+                    dateTimePicker2.Value = DateTime.Today.AddYears(1); // End date: 1 year from now
+                }
+                finally
+                {
+                    suppressFilterEvents = false;
+                    hasInitializedDateRange = true;
+                }
+            }
             LoadJournalEntries();
         }
 
@@ -84,13 +99,8 @@ namespace WindowsFormsApp1
                     }
                 }
 
-                if (!hasInitializedDateRange)
-                {
-                    SetInitialDateRange();
-                    hasInitializedDateRange = true;
-                }
-
-                ApplyJournalFilter();
+                // Display all data initially
+                DisplayAllData();
             }
             catch (Exception ex)
             {
@@ -107,17 +117,20 @@ namespace WindowsFormsApp1
             ApplyJournalFilter();
         }
 
-        private void DateFilter_ValueChanged(object sender, EventArgs e)
+        private void ParseRange_Click(object sender, EventArgs e)
         {
-            if (suppressFilterEvents)
+            // Validate date range
+            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
             {
+                MessageBox.Show(
+                    "Start date cannot be greater than end date. Please adjust the date range.",
+                    "Invalid Date Range",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
                 return;
             }
 
-            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
-            {
-                dateTimePicker2.Value = dateTimePicker1.Value.Date;
-            }
+            // Apply the date range filter
             ApplyJournalFilter();
         }
 
@@ -146,6 +159,22 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void DisplayAllData()
+        {
+            // Display all data from general_journal table without any filtering
+            dataGridView1.Rows.Clear();
+            foreach (var entry in journalCache)
+            {
+                int rowIndex = dataGridView1.Rows.Add(
+                    entry.GJNumber,
+                    entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
+                    entry.Particulars,
+                    entry.UacsCode,
+                    entry.Amount);
+                dataGridView1.Rows[rowIndex].Tag = entry.Id;
+            }
+        }
+
         private void ApplyJournalFilter()
         {
             string term = (textBox1.Text ?? string.Empty).Trim().ToLowerInvariant();
@@ -171,6 +200,28 @@ namespace WindowsFormsApp1
                     entry.Amount);
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            // Refresh and display all data from general_journal table
+            suppressFilterEvents = true;
+            try
+            {
+                // Reset date pickers to wide range to show all data
+                dateTimePicker1.Value = DateTime.Today.AddYears(-10);
+                dateTimePicker2.Value = DateTime.Today.AddYears(1);
+            }
+            finally
+            {
+                suppressFilterEvents = false;
+            }
+            
+            // Clear search text
+            textBox1.Clear();
+            
+            // Reload and display all data
+            LoadJournalEntries();
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
