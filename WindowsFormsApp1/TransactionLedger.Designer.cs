@@ -133,7 +133,7 @@
             this.customRoundedPanel2.Controls.Add(this.label6);
             this.customRoundedPanel2.Controls.Add(this.label7);
             this.customRoundedPanel2.Controls.Add(this.label8);
-            this.customRoundedPanel2.Location = new System.Drawing.Point(393, 141);
+            this.customRoundedPanel2.Location = new System.Drawing.Point(364, 129);
             this.customRoundedPanel2.Name = "customRoundedPanel2";
             this.customRoundedPanel2.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel2.TabIndex = 44;
@@ -288,7 +288,7 @@
             this.customRoundedPanel1.Controls.Add(this.label5);
             this.customRoundedPanel1.Controls.Add(this.label17);
             this.customRoundedPanel1.Controls.Add(this.label18);
-            this.customRoundedPanel1.Location = new System.Drawing.Point(103, 141);
+            this.customRoundedPanel1.Location = new System.Drawing.Point(39, 129);
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel1.TabIndex = 43;
@@ -325,7 +325,7 @@
             this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDEVbtn.ForeColor = System.Drawing.Color.White;
             this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(1098, 973);
+            this.addDEVbtn.Location = new System.Drawing.Point(1098, 975);
             this.addDEVbtn.Name = "addDEVbtn";
             this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
             this.addDEVbtn.TabIndex = 49;
@@ -339,7 +339,7 @@
             this.customRoundedPanel3.Controls.Add(this.label9);
             this.customRoundedPanel3.Controls.Add(this.label10);
             this.customRoundedPanel3.Controls.Add(this.label11);
-            this.customRoundedPanel3.Location = new System.Drawing.Point(683, 141);
+            this.customRoundedPanel3.Location = new System.Drawing.Point(691, 129);
             this.customRoundedPanel3.Name = "customRoundedPanel3";
             this.customRoundedPanel3.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel3.TabIndex = 45;
@@ -432,7 +432,7 @@
             this.customRoundedPanel4.Controls.Add(this.label12);
             this.customRoundedPanel4.Controls.Add(this.label13);
             this.customRoundedPanel4.Controls.Add(this.label14);
-            this.customRoundedPanel4.Location = new System.Drawing.Point(973, 141);
+            this.customRoundedPanel4.Location = new System.Drawing.Point(1018, 129);
             this.customRoundedPanel4.Name = "customRoundedPanel4";
             this.customRoundedPanel4.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel4.TabIndex = 46;

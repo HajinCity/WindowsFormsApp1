@@ -169,7 +169,7 @@
             this.ReportsBtn.Name = "ReportsBtn";
             this.ReportsBtn.Size = new System.Drawing.Size(237, 50);
             this.ReportsBtn.TabIndex = 8;
-            this.ReportsBtn.Text = "Reports";
+            this.ReportsBtn.Text = "Transaction Ledger";
             this.ReportsBtn.UseVisualStyleBackColor = false;
             // 
             // IARBtn
