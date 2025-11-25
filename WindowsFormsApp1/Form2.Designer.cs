@@ -28,202 +28,323 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.customRoundedButton1 = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.customRoundedButton2 = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.customRoundedButton3 = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.customRoundedButton4 = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.customRoundedButton5 = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.customRoundedButton6 = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.customRoundedButton7 = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.customRoundedButton8 = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.UserManagementBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SignOutBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.SupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.TransactionLedger = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.IARBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.DashboardBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.ORSBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.DVBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.GJBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.JEVBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.customRoundedButton8);
-            this.panel1.Controls.Add(this.customRoundedButton7);
-            this.panel1.Controls.Add(this.customRoundedButton6);
-            this.panel1.Controls.Add(this.customRoundedButton5);
-            this.panel1.Controls.Add(this.customRoundedButton4);
-            this.panel1.Controls.Add(this.customRoundedButton3);
-            this.panel1.Controls.Add(this.customRoundedButton2);
-            this.panel1.Controls.Add(this.customRoundedButton1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(247, 718);
-            this.panel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 72);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(247, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(622, 718);
+            this.panel2.Size = new System.Drawing.Size(869, 778);
             this.panel2.TabIndex = 1;
             // 
-            // customRoundedButton1
+            // panel3
             // 
-            this.customRoundedButton1.BorderRadius = 10;
-            this.customRoundedButton1.ClickedColor = System.Drawing.Color.PaleGreen;
-            this.customRoundedButton1.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton1.HoverColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedButton1.Location = new System.Drawing.Point(17, 98);
-            this.customRoundedButton1.Name = "customRoundedButton1";
-            this.customRoundedButton1.Size = new System.Drawing.Size(214, 50);
-            this.customRoundedButton1.TabIndex = 1;
-            this.customRoundedButton1.Text = "Dashboard";
-            this.customRoundedButton1.UseVisualStyleBackColor = false;
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(298, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(571, 778);
+            this.panel3.TabIndex = 10;
             // 
-            // customRoundedButton2
+            // panel1
             // 
-            this.customRoundedButton2.BorderRadius = 10;
-            this.customRoundedButton2.ClickedColor = System.Drawing.Color.PaleGreen;
-            this.customRoundedButton2.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton2.HoverColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedButton2.Location = new System.Drawing.Point(17, 154);
-            this.customRoundedButton2.Name = "customRoundedButton2";
-            this.customRoundedButton2.Size = new System.Drawing.Size(214, 50);
-            this.customRoundedButton2.TabIndex = 2;
-            this.customRoundedButton2.Text = "Supplier";
-            this.customRoundedButton2.UseVisualStyleBackColor = false;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.UserManagementBtn);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.SignOutBtn);
+            this.panel1.Controls.Add(this.SupplierBtn);
+            this.panel1.Controls.Add(this.TransactionLedger);
+            this.panel1.Controls.Add(this.IARBtn);
+            this.panel1.Controls.Add(this.DashboardBtn);
+            this.panel1.Controls.Add(this.ORSBtn);
+            this.panel1.Controls.Add(this.DVBtn);
+            this.panel1.Controls.Add(this.GJBtn);
+            this.panel1.Controls.Add(this.JEVBtn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(298, 778);
+            this.panel1.TabIndex = 9;
             // 
-            // customRoundedButton3
+            // UserManagementBtn
             // 
-            this.customRoundedButton3.BorderRadius = 10;
-            this.customRoundedButton3.ClickedColor = System.Drawing.Color.PaleGreen;
-            this.customRoundedButton3.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton3.HoverColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedButton3.Location = new System.Drawing.Point(17, 210);
-            this.customRoundedButton3.Name = "customRoundedButton3";
-            this.customRoundedButton3.Size = new System.Drawing.Size(214, 50);
-            this.customRoundedButton3.TabIndex = 3;
-            this.customRoundedButton3.Text = "General";
-            this.customRoundedButton3.UseVisualStyleBackColor = false;
+            this.UserManagementBtn.BackColor = System.Drawing.Color.White;
+            this.UserManagementBtn.BorderRadius = 10;
+            this.UserManagementBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.UserManagementBtn.FlatAppearance.BorderSize = 0;
+            this.UserManagementBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UserManagementBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserManagementBtn.ForeColor = System.Drawing.Color.Black;
+            this.UserManagementBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.UserManagementBtn.Image = global::WindowsFormsApp1.Properties.Resources.Settings;
+            this.UserManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.UserManagementBtn.Location = new System.Drawing.Point(22, 615);
+            this.UserManagementBtn.Name = "UserManagementBtn";
+            this.UserManagementBtn.Size = new System.Drawing.Size(253, 50);
+            this.UserManagementBtn.TabIndex = 10;
+            this.UserManagementBtn.Text = "System Management";
+            this.UserManagementBtn.UseVisualStyleBackColor = false;
             // 
-            // customRoundedButton4
+            // label1
             // 
-            this.customRoundedButton4.BorderRadius = 10;
-            this.customRoundedButton4.ClickedColor = System.Drawing.Color.PaleGreen;
-            this.customRoundedButton4.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton4.HoverColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedButton4.Location = new System.Drawing.Point(17, 266);
-            this.customRoundedButton4.Name = "customRoundedButton4";
-            this.customRoundedButton4.Size = new System.Drawing.Size(214, 50);
-            this.customRoundedButton4.TabIndex = 4;
-            this.customRoundedButton4.Text = "IAR";
-            this.customRoundedButton4.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.label1.Location = new System.Drawing.Point(44, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(231, 22);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Accounts Payable System";
             // 
-            // customRoundedButton5
+            // SignOutBtn
             // 
-            this.customRoundedButton5.BorderRadius = 10;
-            this.customRoundedButton5.ClickedColor = System.Drawing.Color.PaleGreen;
-            this.customRoundedButton5.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton5.HoverColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedButton5.Location = new System.Drawing.Point(17, 322);
-            this.customRoundedButton5.Name = "customRoundedButton5";
-            this.customRoundedButton5.Size = new System.Drawing.Size(214, 50);
-            this.customRoundedButton5.TabIndex = 5;
-            this.customRoundedButton5.Text = "ORS-BURS";
-            this.customRoundedButton5.UseVisualStyleBackColor = false;
+            this.SignOutBtn.BackColor = System.Drawing.Color.White;
+            this.SignOutBtn.BorderRadius = 10;
+            this.SignOutBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.SignOutBtn.FlatAppearance.BorderSize = 0;
+            this.SignOutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SignOutBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignOutBtn.ForeColor = System.Drawing.Color.Black;
+            this.SignOutBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.SignOutBtn.Image = global::WindowsFormsApp1.Properties.Resources.Logout;
+            this.SignOutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SignOutBtn.Location = new System.Drawing.Point(22, 707);
+            this.SignOutBtn.Name = "SignOutBtn";
+            this.SignOutBtn.Size = new System.Drawing.Size(253, 50);
+            this.SignOutBtn.TabIndex = 9;
+            this.SignOutBtn.Text = "Sign Out";
+            this.SignOutBtn.UseVisualStyleBackColor = false;
             // 
-            // customRoundedButton6
+            // SupplierBtn
             // 
-            this.customRoundedButton6.BorderRadius = 10;
-            this.customRoundedButton6.ClickedColor = System.Drawing.Color.PaleGreen;
-            this.customRoundedButton6.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton6.HoverColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedButton6.Location = new System.Drawing.Point(17, 378);
-            this.customRoundedButton6.Name = "customRoundedButton6";
-            this.customRoundedButton6.Size = new System.Drawing.Size(214, 50);
-            this.customRoundedButton6.TabIndex = 6;
-            this.customRoundedButton6.Text = "JEV";
-            this.customRoundedButton6.UseVisualStyleBackColor = false;
+            this.SupplierBtn.BackColor = System.Drawing.Color.White;
+            this.SupplierBtn.BorderRadius = 10;
+            this.SupplierBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.SupplierBtn.FlatAppearance.BorderSize = 0;
+            this.SupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SupplierBtn.ForeColor = System.Drawing.Color.Black;
+            this.SupplierBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.SupplierBtn.Image = global::WindowsFormsApp1.Properties.Resources.Group;
+            this.SupplierBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SupplierBtn.Location = new System.Drawing.Point(22, 223);
+            this.SupplierBtn.Name = "SupplierBtn";
+            this.SupplierBtn.Size = new System.Drawing.Size(253, 50);
+            this.SupplierBtn.TabIndex = 2;
+            this.SupplierBtn.Text = "Supplier";
+            this.SupplierBtn.UseVisualStyleBackColor = false;
             // 
-            // customRoundedButton7
+            // TransactionLedger
             // 
-            this.customRoundedButton7.BorderRadius = 10;
-            this.customRoundedButton7.ClickedColor = System.Drawing.Color.PaleGreen;
-            this.customRoundedButton7.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton7.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton7.HoverColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedButton7.Location = new System.Drawing.Point(17, 434);
-            this.customRoundedButton7.Name = "customRoundedButton7";
-            this.customRoundedButton7.Size = new System.Drawing.Size(214, 50);
-            this.customRoundedButton7.TabIndex = 7;
-            this.customRoundedButton7.Text = "Disbursement Voucher";
-            this.customRoundedButton7.UseVisualStyleBackColor = false;
+            this.TransactionLedger.BackColor = System.Drawing.Color.White;
+            this.TransactionLedger.BorderRadius = 10;
+            this.TransactionLedger.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.TransactionLedger.FlatAppearance.BorderSize = 0;
+            this.TransactionLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TransactionLedger.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransactionLedger.ForeColor = System.Drawing.Color.Black;
+            this.TransactionLedger.HoverColor = System.Drawing.Color.Gainsboro;
+            this.TransactionLedger.Image = global::WindowsFormsApp1.Properties.Resources.Graph_Report;
+            this.TransactionLedger.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TransactionLedger.Location = new System.Drawing.Point(22, 559);
+            this.TransactionLedger.Name = "TransactionLedger";
+            this.TransactionLedger.Size = new System.Drawing.Size(253, 50);
+            this.TransactionLedger.TabIndex = 8;
+            this.TransactionLedger.Text = "Transaction Ledger";
+            this.TransactionLedger.UseVisualStyleBackColor = false;
             // 
-            // customRoundedButton8
+            // IARBtn
             // 
-            this.customRoundedButton8.BorderRadius = 10;
-            this.customRoundedButton8.ClickedColor = System.Drawing.Color.PaleGreen;
-            this.customRoundedButton8.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton8.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton8.HoverColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedButton8.Location = new System.Drawing.Point(17, 490);
-            this.customRoundedButton8.Name = "customRoundedButton8";
-            this.customRoundedButton8.Size = new System.Drawing.Size(214, 50);
-            this.customRoundedButton8.TabIndex = 8;
-            this.customRoundedButton8.Text = "Reports";
-            this.customRoundedButton8.UseVisualStyleBackColor = false;
+            this.IARBtn.BackColor = System.Drawing.Color.White;
+            this.IARBtn.BorderRadius = 10;
+            this.IARBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.IARBtn.FlatAppearance.BorderSize = 0;
+            this.IARBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IARBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IARBtn.ForeColor = System.Drawing.Color.Black;
+            this.IARBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.IARBtn.Image = global::WindowsFormsApp1.Properties.Resources.Pass;
+            this.IARBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.IARBtn.Location = new System.Drawing.Point(22, 335);
+            this.IARBtn.Name = "IARBtn";
+            this.IARBtn.Size = new System.Drawing.Size(253, 50);
+            this.IARBtn.TabIndex = 4;
+            this.IARBtn.Text = "IAR";
+            this.IARBtn.UseVisualStyleBackColor = false;
+            // 
+            // DashboardBtn
+            // 
+            this.DashboardBtn.BackColor = System.Drawing.Color.White;
+            this.DashboardBtn.BorderRadius = 10;
+            this.DashboardBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.DashboardBtn.FlatAppearance.BorderSize = 0;
+            this.DashboardBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DashboardBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DashboardBtn.ForeColor = System.Drawing.Color.Black;
+            this.DashboardBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.DashboardBtn.Image = global::WindowsFormsApp1.Properties.Resources.Dashboard_Layout;
+            this.DashboardBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DashboardBtn.Location = new System.Drawing.Point(22, 167);
+            this.DashboardBtn.Name = "DashboardBtn";
+            this.DashboardBtn.Size = new System.Drawing.Size(253, 50);
+            this.DashboardBtn.TabIndex = 1;
+            this.DashboardBtn.Text = "Dashboard";
+            this.DashboardBtn.UseVisualStyleBackColor = false;
+            // 
+            // ORSBtn
+            // 
+            this.ORSBtn.BackColor = System.Drawing.Color.White;
+            this.ORSBtn.BorderRadius = 10;
+            this.ORSBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.ORSBtn.FlatAppearance.BorderSize = 0;
+            this.ORSBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ORSBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ORSBtn.ForeColor = System.Drawing.Color.Black;
+            this.ORSBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.ORSBtn.Image = global::WindowsFormsApp1.Properties.Resources.Document1;
+            this.ORSBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ORSBtn.Location = new System.Drawing.Point(22, 391);
+            this.ORSBtn.Name = "ORSBtn";
+            this.ORSBtn.Size = new System.Drawing.Size(253, 50);
+            this.ORSBtn.TabIndex = 5;
+            this.ORSBtn.Text = "ORS-BURS";
+            this.ORSBtn.UseVisualStyleBackColor = false;
+            // 
+            // DVBtn
+            // 
+            this.DVBtn.BackColor = System.Drawing.Color.White;
+            this.DVBtn.BorderRadius = 10;
+            this.DVBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.DVBtn.FlatAppearance.BorderSize = 0;
+            this.DVBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DVBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DVBtn.ForeColor = System.Drawing.Color.Black;
+            this.DVBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.DVBtn.Image = global::WindowsFormsApp1.Properties.Resources.Credit_Card;
+            this.DVBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DVBtn.Location = new System.Drawing.Point(22, 503);
+            this.DVBtn.Name = "DVBtn";
+            this.DVBtn.Size = new System.Drawing.Size(253, 50);
+            this.DVBtn.TabIndex = 7;
+            this.DVBtn.Text = "Disbursement Voucher";
+            this.DVBtn.UseVisualStyleBackColor = false;
+            // 
+            // GJBtn
+            // 
+            this.GJBtn.BackColor = System.Drawing.Color.White;
+            this.GJBtn.BorderRadius = 10;
+            this.GJBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.GJBtn.FlatAppearance.BorderSize = 0;
+            this.GJBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GJBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GJBtn.ForeColor = System.Drawing.Color.Black;
+            this.GJBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.GJBtn.Image = global::WindowsFormsApp1.Properties.Resources.Document1;
+            this.GJBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.GJBtn.Location = new System.Drawing.Point(22, 279);
+            this.GJBtn.Name = "GJBtn";
+            this.GJBtn.Size = new System.Drawing.Size(253, 50);
+            this.GJBtn.TabIndex = 3;
+            this.GJBtn.Text = "General Journal";
+            this.GJBtn.UseVisualStyleBackColor = false;
+            // 
+            // JEVBtn
+            // 
+            this.JEVBtn.BackColor = System.Drawing.Color.White;
+            this.JEVBtn.BorderRadius = 10;
+            this.JEVBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.JEVBtn.FlatAppearance.BorderSize = 0;
+            this.JEVBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.JEVBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.JEVBtn.ForeColor = System.Drawing.Color.Black;
+            this.JEVBtn.HoverColor = System.Drawing.Color.Gainsboro;
+            this.JEVBtn.Image = global::WindowsFormsApp1.Properties.Resources.Document1;
+            this.JEVBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.JEVBtn.Location = new System.Drawing.Point(22, 447);
+            this.JEVBtn.Name = "JEVBtn";
+            this.JEVBtn.Size = new System.Drawing.Size(253, 50);
+            this.JEVBtn.TabIndex = 6;
+            this.JEVBtn.Text = "JEV";
+            this.JEVBtn.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(44, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 22);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Welcome";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(45, 103);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(179, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Accounts Payable System";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 718);
+            this.ClientSize = new System.Drawing.Size(869, 778);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
+            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private Controls.CustomRoundedButton customRoundedButton8;
-        private Controls.CustomRoundedButton customRoundedButton7;
-        private Controls.CustomRoundedButton customRoundedButton6;
-        private Controls.CustomRoundedButton customRoundedButton5;
-        private Controls.CustomRoundedButton customRoundedButton4;
-        private Controls.CustomRoundedButton customRoundedButton3;
-        private Controls.CustomRoundedButton customRoundedButton2;
-        private Controls.CustomRoundedButton customRoundedButton1;
+        private Controls.CustomRoundedButton TransactionLedger;
+        private Controls.CustomRoundedButton DVBtn;
+        private Controls.CustomRoundedButton JEVBtn;
+        private Controls.CustomRoundedButton ORSBtn;
+        private Controls.CustomRoundedButton IARBtn;
+        private Controls.CustomRoundedButton GJBtn;
+        private Controls.CustomRoundedButton SupplierBtn;
+        private Controls.CustomRoundedButton DashboardBtn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private Controls.CustomRoundedButton SignOutBtn;
+        private System.Windows.Forms.Label label1;
+        private Controls.CustomRoundedButton UserManagementBtn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -15,6 +15,15 @@ namespace WindowsFormsApp1
         public GeneralJournal()
         {
             InitializeComponent();
+            addEntryBtn.Click += AddEntryBtn_Click;
+        }
+
+        private void AddEntryBtn_Click(object sender, EventArgs e)
+        {
+            using (var addEntryForm = new AddNewJournalEntry())
+            {
+                addEntryForm.ShowDialog(this);
+            }
         }
     }
 }

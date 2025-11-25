@@ -13,27 +13,244 @@ namespace WindowsFormsApp1
 {
     public partial class AddNewJournalEntry : Form
     {
+        // File upload fields
         private List<FileInfo> uploadedFiles = new List<FileInfo>();
         private Panel fileListPanel;
         private Color originalPanelColor;
         private const long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20 MB in bytes
         private readonly string[] allowedExtensions = { ".pdf", ".png", ".jpg", ".jpeg", ".docx" };
+        
+        // Store original button positions
+        private int originalButton1Top;
+        private int originalButton2Top;
+        
+        // Store original panel1 position and size
+        private Point originalPanel1Location;
+        private Size originalPanel1Size;
+        
+        // ComboBox filtering fields
+        private List<string> originalComboBoxItems = new List<string>();
+        private bool isFiltering = false;
+        private Timer dropdownTimer;
 
         public AddNewJournalEntry()
         {
             InitializeComponent();
             InitializeFileUpload();
+            InitializeComboBoxFiltering();
         }
 
         private void AddNewJournalEntry_Load(object sender, EventArgs e)
         {
 
         }
+        // ============================================================
+        //  COMBOBOX FILTERING FUNCTIONALITY
+        // ============================================================
+        private void InitializeComboBoxFiltering()
+        {
+            // Store original items
+            originalComboBoxItems.Clear();
+            foreach (object item in uacs_Code.Items)
+            {
+                originalComboBoxItems.Add(item.ToString());
+            }
+
+            // Enable typing in ComboBox
+            uacs_Code.DropDownStyle = ComboBoxStyle.DropDown;
+            uacs_Code.AutoCompleteMode = AutoCompleteMode.None; // We'll handle filtering manually
+
+            // Initialize timer for opening dropdown
+            dropdownTimer = new Timer();
+            dropdownTimer.Interval = 50; // 50ms delay
+            dropdownTimer.Tick += DropdownTimer_Tick;
+
+            // Attach event handlers
+            uacs_Code.TextChanged += ComboBox1_TextChanged;
+            uacs_Code.KeyDown += ComboBox1_KeyDown;
+            uacs_Code.KeyUp += ComboBox1_KeyUp;
+            uacs_Code.DropDown += ComboBox1_DropDown;
+            uacs_Code.SelectionChangeCommitted += ComboBox1_SelectionChangeCommitted;
+            uacs_Code.Enter += ComboBox1_Enter;
+        }
+
+        private void DropdownTimer_Tick(object sender, EventArgs e)
+        {
+            dropdownTimer.Stop();
+            if (!string.IsNullOrWhiteSpace(uacs_Code.Text) && !uacs_Code.DroppedDown)
+            {
+                try
+                {
+                    uacs_Code.DroppedDown = true;
+                    // Set cursor position after opening
+                    uacs_Code.SelectionStart = uacs_Code.Text.Length;
+                    uacs_Code.SelectionLength = 0;
+                }
+                catch { }
+            }
+        }
+
+        private void ComboBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (isFiltering) return;
+
+            string searchText = uacs_Code.Text;
+            isFiltering = true;
+
+            // Clear current items
+            uacs_Code.Items.Clear();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // If search is empty, show all items
+                uacs_Code.Items.AddRange(originalComboBoxItems.ToArray());
+                // Close dropdown when text is cleared
+                uacs_Code.DroppedDown = false;
+            }
+            else
+            {
+                // Filter items that contain the search text (case-insensitive)
+                var filteredItems = originalComboBoxItems
+                    .Where(item => item.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    .ToArray();
+
+                uacs_Code.Items.AddRange(filteredItems);
+
+                // Always open dropdown when user is typing (even if no matches)
+                // Use BeginInvoke to ensure it happens after the current event processing
+                this.BeginInvoke(new Action(() =>
+                {
+                    if (!string.IsNullOrWhiteSpace(uacs_Code.Text) && !uacs_Code.DroppedDown)
+                    {
+                        try
+                        {
+                            uacs_Code.DroppedDown = true;
+                        }
+                        catch
+                        {
+                            // If BeginInvoke fails, use timer as fallback
+                            dropdownTimer.Stop();
+                            dropdownTimer.Start();
+                        }
+                    }
+                }));
+
+                // Also use timer as backup to ensure it opens
+                dropdownTimer.Stop();
+                dropdownTimer.Start();
+
+                // Set cursor position to end of typed text
+                this.BeginInvoke(new Action(() =>
+                {
+                    uacs_Code.SelectionStart = uacs_Code.Text.Length;
+                    uacs_Code.SelectionLength = 0;
+                }));
+            }
+
+            isFiltering = false;
+        }
+
+        private void ComboBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Allow navigation keys to work normally
+            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||
+                e.KeyCode == Keys.PageUp || e.KeyCode == Keys.PageDown ||
+                e.KeyCode == Keys.Home || e.KeyCode == Keys.End)
+            {
+                return;
+            }
+
+            // If Enter is pressed and dropdown is open, select the first item
+            if (e.KeyCode == Keys.Enter && uacs_Code.DroppedDown)
+            {
+                if (uacs_Code.Items.Count > 0)
+                {
+                    uacs_Code.SelectedIndex = 0;
+                    uacs_Code.DroppedDown = false;
+                    e.Handled = true;
+                }
+            }
+
+            // If Escape is pressed, close dropdown
+            if (e.KeyCode == Keys.Escape && uacs_Code.DroppedDown)
+            {
+                uacs_Code.DroppedDown = false;
+                e.Handled = true;
+            }
+
+            // For regular typing keys, ensure dropdown opens immediately
+            // This handles the case when user starts typing after clicking
+            bool isTypingKey = (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z) ||
+                              (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9) ||
+                              (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9) ||
+                              e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete ||
+                              e.KeyCode == Keys.Space;
+
+            if (isTypingKey && !uacs_Code.DroppedDown)
+            {
+                // Start timer to open dropdown after text updates
+                dropdownTimer.Stop();
+                dropdownTimer.Start();
+            }
+        }
+
+        private void ComboBox1_DropDown(object sender, EventArgs e)
+        {
+            // When dropdown opens, ensure all items are available for selection
+            if (string.IsNullOrWhiteSpace(uacs_Code.Text))
+            {
+                isFiltering = true;
+                uacs_Code.Items.Clear();
+                uacs_Code.Items.AddRange(originalComboBoxItems.ToArray());
+                isFiltering = false;
+            }
+        }
+
+        private void ComboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            // When user selects an item, update the text
+            if (uacs_Code.SelectedIndex >= 0)
+            {
+                isFiltering = true;
+                uacs_Code.Text = uacs_Code.SelectedItem.ToString();
+                isFiltering = false;
+                uacs_Code.DroppedDown = false;
+            }
+        }
+
+        private void ComboBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            // Ensure dropdown opens after key is released (handles typing)
+            if (!string.IsNullOrWhiteSpace(uacs_Code.Text) && !uacs_Code.DroppedDown)
+            {
+                // Use timer to open dropdown
+                dropdownTimer.Stop();
+                dropdownTimer.Start();
+            }
+        }
+
+        private void ComboBox1_Enter(object sender, EventArgs e)
+        {
+            // When ComboBox gets focus, if there's text, open dropdown
+            if (!string.IsNullOrWhiteSpace(uacs_Code.Text))
+            {
+                dropdownTimer.Stop();
+                dropdownTimer.Start();
+            }
+        }
 
         private void InitializeFileUpload()
         {
             // Store original panel color
             originalPanelColor = panel1.BackColor;
+            
+            // Store original button positions
+            originalButton1Top = createEntryBtn.Top;
+            originalButton2Top = cancel.Top;
+            
+            // Store original panel1 position and size
+            originalPanel1Location = panel1.Location;
+            originalPanel1Size = panel1.Size;
 
             // Enable drag and drop on panel1
             panel1.AllowDrop = true;
@@ -56,11 +273,11 @@ namespace WindowsFormsApp1
                 control.Cursor = Cursors.Hand;
             }
 
-            // Create file list panel below upload area
+            // Create file list panel at the same location as panel1 (will be positioned when files are uploaded)
             fileListPanel = new Panel
             {
-                Location = new Point(39, panel1.Bottom + 10),
-                Size = new Size(706, 100),
+                Location = originalPanel1Location,
+                Size = originalPanel1Size,
                 AutoSize = true,
                 AutoScroll = true,
                 Visible = false
@@ -175,11 +392,20 @@ namespace WindowsFormsApp1
 
             if (uploadedFiles.Count == 0)
             {
+                // No files uploaded - hide file list panel and show panel1
                 fileListPanel.Visible = false;
+                panel1.Visible = true;
+                panel1.Location = originalPanel1Location;
+                panel1.Size = originalPanel1Size;
                 return;
             }
 
+            // Files are uploaded - hide panel1 and show file list panel in its place
+            panel1.Visible = false;
             fileListPanel.Visible = true;
+            fileListPanel.Location = originalPanel1Location;
+            fileListPanel.Width = originalPanel1Size.Width;
+            
             int yPosition = 0;
             int itemHeight = 50;
             int spacing = 5;
@@ -191,19 +417,16 @@ namespace WindowsFormsApp1
                 yPosition += itemHeight + spacing;
             }
 
-            // Update file list panel height
-            fileListPanel.Height = Math.Min(yPosition, 200); // Max height with scroll
-
-            // Adjust form size if needed
-            int newBottom = fileListPanel.Bottom + 20;
-            if (newBottom > this.Height)
-            {
-                this.Height = newBottom + 100; // Add some padding
-            }
-
-            // Adjust button positions
-            customRoundedButton1.Top = fileListPanel.Bottom + 20;
-            customRoundedButton2.Top = fileListPanel.Bottom + 20;
+            // Calculate maximum height to prevent overlapping with buttons
+            // Buttons are at originalButton1Top, so we have space from panel1 location to button top
+            int maxAvailableHeight = originalButton1Top - fileListPanel.Top - 20; // 20px padding before buttons
+            
+            // Update file list panel height (limit to available space)
+            fileListPanel.Height = Math.Min(yPosition, Math.Max(50, maxAvailableHeight));
+            
+            // Ensure buttons stay in their original positions
+            createEntryBtn.Top = originalButton1Top;
+            cancel.Top = originalButton2Top;
         }
 
         private Panel CreateFileItemPanel(FileInfo file, int yPosition)
@@ -211,7 +434,7 @@ namespace WindowsFormsApp1
             Panel itemPanel = new Panel
             {
                 Location = new Point(0, yPosition),
-                Size = new Size(706, 50),
+                Size = new Size(originalPanel1Size.Width, 50),
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle
             };
@@ -296,6 +519,11 @@ namespace WindowsFormsApp1
         public List<FileInfo> GetUploadedFiles()
         {
             return new List<FileInfo>(uploadedFiles);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

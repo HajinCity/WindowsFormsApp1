@@ -33,8 +33,55 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.32.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.32.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.8\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=9.5.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.9.5.0\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,13 +91,40 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ZstdSharp, Version=0.8.6.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.6\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDevEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDevEntry.Designer.cs">
+      <DependentUpon>AddDevEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddIARForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddIARForm.Designer.cs">
+      <DependentUpon>AddIARForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddJEVEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddJEVEntry.Designer.cs">
+      <DependentUpon>AddJEVEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddNewJournalEntry.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddNewJournalEntry.Designer.cs">
       <DependentUpon>AddNewJournalEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddORSBURS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddORSBURS.Designer.cs">
+      <DependentUpon>AddORSBURS.cs</DependentUpon>
     </Compile>
     <Compile Include="AddSupplier.cs">
       <SubType>Form</SubType>
@@ -58,6 +132,7 @@
     <Compile Include="AddSupplier.Designer.cs">
       <DependentUpon>AddSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackendModel\RDBSMConnection.cs" />
     <Compile Include="Controls\CustomRoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -70,6 +145,12 @@
     </Compile>
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DEVForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DEVForm.Designer.cs">
+      <DependentUpon>DEVForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -89,6 +170,24 @@
     <Compile Include="GeneralJournal.Designer.cs">
       <DependentUpon>GeneralJournal.cs</DependentUpon>
     </Compile>
+    <Compile Include="IARForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IARForm.Designer.cs">
+      <DependentUpon>IARForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JEVForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JEVForm.Designer.cs">
+      <DependentUpon>JEVForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrsBursForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrsBursForm.Designer.cs">
+      <DependentUpon>OrsBursForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierForm.cs">
@@ -97,14 +196,101 @@
     <Compile Include="SupplierForm.Designer.cs">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransactionLedger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransactionLedger.Designer.cs">
+      <DependentUpon>TransactionLedger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateDEV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateDEV.Designer.cs">
+      <DependentUpon>UpdateDEV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateGJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateGJ.Designer.cs">
+      <DependentUpon>UpdateGJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateIARForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateIARForm.Designer.cs">
+      <DependentUpon>UpdateIARForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateORSBURSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateORSBURSForm.Designer.cs">
+      <DependentUpon>UpdateORSBURSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateSupplierInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateSupplierInfo.Designer.cs">
+      <DependentUpon>UpdateSupplierInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDEV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDEV.Designer.cs">
+      <DependentUpon>ViewDEV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewGJEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewGJEntry.Designer.cs">
+      <DependentUpon>ViewGJEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewIAR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewIAR.Designer.cs">
+      <DependentUpon>ViewIAR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewORSBURS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewORSBURS.Designer.cs">
+      <DependentUpon>ViewORSBURS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewSupplier.Designer.cs">
+      <DependentUpon>ViewSupplier.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddDevEntry.resx">
+      <DependentUpon>AddDevEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddIARForm.resx">
+      <DependentUpon>AddIARForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddJEVEntry.resx">
+      <DependentUpon>AddJEVEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddNewJournalEntry.resx">
       <DependentUpon>AddNewJournalEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddORSBURS.resx">
+      <DependentUpon>AddORSBURS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddSupplier.resx">
       <DependentUpon>AddSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DEVForm.resx">
+      <DependentUpon>DEVForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -114,6 +300,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GeneralJournal.resx">
       <DependentUpon>GeneralJournal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IARForm.resx">
+      <DependentUpon>IARForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JEVForm.resx">
+      <DependentUpon>JEVForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrsBursForm.resx">
+      <DependentUpon>OrsBursForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,6 +323,37 @@
     <EmbeddedResource Include="SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TransactionLedger.resx">
+      <DependentUpon>TransactionLedger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateGJ.resx">
+      <DependentUpon>UpdateGJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateIARForm.resx">
+      <DependentUpon>UpdateIARForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateORSBURSForm.resx">
+      <DependentUpon>UpdateORSBURSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateSupplierInfo.resx">
+      <DependentUpon>UpdateSupplierInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewGJEntry.resx">
+      <DependentUpon>ViewGJEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewIAR.resx">
+      <DependentUpon>ViewIAR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewORSBURS.resx">
+      <DependentUpon>ViewORSBURS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewSupplier.resx">
+      <DependentUpon>ViewSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -150,5 +376,45 @@
   <ItemGroup>
     <None Include="Resources\Upload.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Credit Card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashboard Layout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Graph Report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using WindowsFormsApp1.BackendModel;
 
 namespace WindowsFormsApp1
 {
@@ -18,17 +20,44 @@ namespace WindowsFormsApp1
         private Color originalPanelColor;
         private const long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20 MB in bytes
         private readonly string[] allowedExtensions = { ".pdf", ".png", ".jpg", ".jpeg", ".docx" };
+        
+        // Store original button positions
+        private int originalButton1Top;
+        private int originalButton2Top;
+        
+        // Store original panel1 position and size
+        private Point originalPanel1Location;
+        private Size originalPanel1Size;
 
         public AddSupplier()
         {
             InitializeComponent();
             InitializeFileUpload();
+            InitializeStatusDropdown();
+            createSupplierBtn.Click += CreateSupplierBtn_Click;
+        }
+
+        private void InitializeStatusDropdown()
+        {
+            status.Items.Clear();
+            status.Items.AddRange(new object[] { "Active", "Inactive" });
+            status.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            status.AutoCompleteSource = AutoCompleteSource.ListItems;
+            status.DropDownStyle = ComboBoxStyle.DropDown;
         }
 
         private void InitializeFileUpload()
         {
             // Store original panel color
             originalPanelColor = panel1.BackColor;
+            
+            // Store original button positions
+            originalButton1Top = createSupplierBtn.Top;
+            originalButton2Top = cancel.Top;
+            
+            // Store original panel1 position and size
+            originalPanel1Location = panel1.Location;
+            originalPanel1Size = panel1.Size;
 
             // Enable drag and drop on panel1
             panel1.AllowDrop = true;
@@ -51,11 +80,11 @@ namespace WindowsFormsApp1
                 control.Cursor = Cursors.Hand;
             }
 
-            // Create file list panel below upload area
+            // Create file list panel at the same location as panel1 (will be positioned when files are uploaded)
             fileListPanel = new Panel
             {
-                Location = new Point(30, panel1.Bottom + 10),
-                Size = new Size(706, 100),
+                Location = originalPanel1Location,
+                Size = originalPanel1Size,
                 AutoSize = true,
                 AutoScroll = true,
                 Visible = false
@@ -170,11 +199,20 @@ namespace WindowsFormsApp1
 
             if (uploadedFiles.Count == 0)
             {
+                // No files uploaded - hide file list panel and show panel1
                 fileListPanel.Visible = false;
+                panel1.Visible = true;
+                panel1.Location = originalPanel1Location;
+                panel1.Size = originalPanel1Size;
                 return;
             }
 
+            // Files are uploaded - hide panel1 and show file list panel in its place
+            panel1.Visible = false;
             fileListPanel.Visible = true;
+            fileListPanel.Location = originalPanel1Location;
+            fileListPanel.Width = originalPanel1Size.Width;
+            
             int yPosition = 0;
             int itemHeight = 50;
             int spacing = 5;
@@ -186,19 +224,16 @@ namespace WindowsFormsApp1
                 yPosition += itemHeight + spacing;
             }
 
-            // Update file list panel height
-            fileListPanel.Height = Math.Min(yPosition, 200); // Max height with scroll
-
-            // Adjust form size if needed
-            int newBottom = fileListPanel.Bottom + 20;
-            if (newBottom > this.Height)
-            {
-                this.Height = newBottom + 100; // Add some padding
-            }
-
-            // Adjust button positions
-            customRoundedButton1.Top = fileListPanel.Bottom + 20;
-            customRoundedButton2.Top = fileListPanel.Bottom + 20;
+            // Calculate maximum height to prevent overlapping with buttons
+            // Buttons are at originalButton1Top, so we have space from panel1 location to button top
+            int maxAvailableHeight = originalButton1Top - fileListPanel.Top - 20; // 20px padding before buttons
+            
+            // Update file list panel height (limit to available space)
+            fileListPanel.Height = Math.Min(yPosition, Math.Max(50, maxAvailableHeight));
+            
+            // Ensure buttons stay in their original positions
+            createSupplierBtn.Top = originalButton1Top;
+            cancel.Top = originalButton2Top;
         }
 
         private Panel CreateFileItemPanel(FileInfo file, int yPosition)
@@ -206,7 +241,7 @@ namespace WindowsFormsApp1
             Panel itemPanel = new Panel
             {
                 Location = new Point(0, yPosition),
-                Size = new Size(706, 50),
+                Size = new Size(originalPanel1Size.Width, 50),
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle
             };
@@ -291,6 +326,138 @@ namespace WindowsFormsApp1
         public List<FileInfo> GetUploadedFiles()
         {
             return new List<FileInfo>(uploadedFiles);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CreateSupplierBtn_Click(object sender, EventArgs e)
+        {
+            if (!AreRequiredFieldsFilled(out string validationMessage))
+            {
+                MessageBox.Show(validationMessage, "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirmResult = MessageBox.Show(
+                "Are you sure you want to create this supplier?",
+                "Confirm Supplier Creation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmResult != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                SaveSupplier();
+                MessageBox.Show(
+                    "Supplier has been successfully saved.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to save supplier: {ex.Message}",
+                    "Save Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private bool AreRequiredFieldsFilled(out string message)
+        {
+            var requiredFields = new List<(string Value, string Label)>
+            {
+                (supplierName.Text, "Supplier Name"),
+                (supplierAddress.Text, "Address"),
+                (contactPerson.Text, "Contact Person"),
+                (contactInfo.Text, "Contact Information"),
+                (emailAdd.Text, "Email"),
+                (tinNumber.Text, "TIN Number"),
+                (bankName.Text, "Bank Name"),
+                (accountNum.Text, "Account Number")
+            };
+
+            foreach (var field in requiredFields)
+            {
+                if (string.IsNullOrWhiteSpace(field.Value))
+                {
+                    message = $"{field.Label} is required.";
+                    return false;
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(status.Text))
+            {
+                message = "Status is required.";
+                return false;
+            }
+
+            message = string.Empty;
+            return true;
+        }
+
+        private void SaveSupplier()
+        {
+            byte[] documentBytes = GetDocumentBytes();
+
+            using (MySqlConnection connection = RDBSMConnection.GetConnection())
+            {
+                string query = @"INSERT INTO suppliers 
+                                (name, address, contact_person, contact_number, email, tin, bank_name, account_number, status, documents)
+                                VALUES 
+                                (@name, @address, @contactPerson, @contactNumber, @email, @tin, @bankName, @accountNumber, @status, @documents)";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@name", supplierName.Text.Trim());
+                    command.Parameters.AddWithValue("@address", supplierAddress.Text.Trim());
+                    command.Parameters.AddWithValue("@contactPerson", contactPerson.Text.Trim());
+                    command.Parameters.AddWithValue("@contactNumber", contactInfo.Text.Trim());
+                    command.Parameters.AddWithValue("@email", emailAdd.Text.Trim());
+                    command.Parameters.AddWithValue("@tin", tinNumber.Text.Trim());
+                    command.Parameters.AddWithValue("@bankName", bankName.Text.Trim());
+                    command.Parameters.AddWithValue("@accountNumber", accountNum.Text.Trim());
+                    command.Parameters.AddWithValue("@status", status.Text.Trim());
+
+                    if (documentBytes == null || documentBytes.Length == 0)
+                    {
+                        command.Parameters.Add("@documents", MySqlDbType.Blob).Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        command.Parameters.Add("@documents", MySqlDbType.Blob).Value = documentBytes;
+                    }
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private byte[] GetDocumentBytes()
+        {
+            if (uploadedFiles.Count == 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                return File.ReadAllBytes(uploadedFiles[0].FullName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Unable to read the uploaded document: {ex.Message}", ex);
+            }
         }
     }
 }
