@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.label12 = new System.Windows.Forms.Label();
@@ -47,33 +45,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.customRoundedPanel5 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.customRoundedPanel4.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(37, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(183, 37);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Dashboard";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(44, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(300, 18);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Overview of your accounts payable system";
             // 
             // panel2
             // 
@@ -89,7 +68,7 @@
             this.customRoundedPanel4.Controls.Add(this.label12);
             this.customRoundedPanel4.Controls.Add(this.label13);
             this.customRoundedPanel4.Controls.Add(this.label14);
-            this.customRoundedPanel4.Location = new System.Drawing.Point(902, 113);
+            this.customRoundedPanel4.Location = new System.Drawing.Point(898, 281);
             this.customRoundedPanel4.Name = "customRoundedPanel4";
             this.customRoundedPanel4.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel4.TabIndex = 23;
@@ -134,7 +113,7 @@
             this.customRoundedPanel3.Controls.Add(this.label9);
             this.customRoundedPanel3.Controls.Add(this.label10);
             this.customRoundedPanel3.Controls.Add(this.label11);
-            this.customRoundedPanel3.Location = new System.Drawing.Point(612, 113);
+            this.customRoundedPanel3.Location = new System.Drawing.Point(608, 281);
             this.customRoundedPanel3.Name = "customRoundedPanel3";
             this.customRoundedPanel3.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel3.TabIndex = 22;
@@ -179,7 +158,7 @@
             this.customRoundedPanel2.Controls.Add(this.label6);
             this.customRoundedPanel2.Controls.Add(this.label7);
             this.customRoundedPanel2.Controls.Add(this.label8);
-            this.customRoundedPanel2.Location = new System.Drawing.Point(322, 113);
+            this.customRoundedPanel2.Location = new System.Drawing.Point(318, 281);
             this.customRoundedPanel2.Name = "customRoundedPanel2";
             this.customRoundedPanel2.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel2.TabIndex = 21;
@@ -224,7 +203,7 @@
             this.customRoundedPanel1.Controls.Add(this.label5);
             this.customRoundedPanel1.Controls.Add(this.label4);
             this.customRoundedPanel1.Controls.Add(this.label1);
-            this.customRoundedPanel1.Location = new System.Drawing.Point(32, 113);
+            this.customRoundedPanel1.Location = new System.Drawing.Point(28, 281);
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel1.TabIndex = 14;
@@ -262,6 +241,36 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Total Payables";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(25, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(605, 37);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Subsidiary Ledger Payment Obligation";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(32, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(229, 18);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Overview Transaction Payments";
+            // 
+            // customRoundedPanel5
+            // 
+            this.customRoundedPanel5.BorderRadius = 10;
+            this.customRoundedPanel5.Location = new System.Drawing.Point(28, 118);
+            this.customRoundedPanel5.Name = "customRoundedPanel5";
+            this.customRoundedPanel5.Size = new System.Drawing.Size(1153, 143);
+            this.customRoundedPanel5.TabIndex = 26;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,13 +278,14 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1226, 624);
+            this.Controls.Add(this.customRoundedPanel5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.customRoundedPanel4);
             this.Controls.Add(this.customRoundedPanel3);
             this.Controls.Add(this.customRoundedPanel2);
             this.Controls.Add(this.customRoundedPanel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -294,9 +304,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private Controls.CustomRoundedPanel customRoundedPanel1;
         private System.Windows.Forms.Label label1;
@@ -314,5 +321,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private Controls.CustomRoundedPanel customRoundedPanel5;
     }
 }
