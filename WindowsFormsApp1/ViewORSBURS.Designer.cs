@@ -101,12 +101,13 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Location = new System.Drawing.Point(47, 732);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1073, 96);
+            this.panel1.Size = new System.Drawing.Size(1073, 140);
             this.panel1.TabIndex = 182;
             // 
             // pictureBox1
@@ -579,7 +580,7 @@
             this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExportToCSV.ForeColor = System.Drawing.Color.White;
             this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.ExportToCSV.Location = new System.Drawing.Point(916, 878);
+            this.ExportToCSV.Location = new System.Drawing.Point(929, 892);
             this.ExportToCSV.Name = "ExportToCSV";
             this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
             this.ExportToCSV.TabIndex = 184;

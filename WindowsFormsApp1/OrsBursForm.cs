@@ -140,9 +140,12 @@ namespace WindowsFormsApp1
             string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
             if (columnName == "BtnEdit")
             {
-                using (var updateForm = new UpdateORSBURSForm())
+                using (var updateForm = new UpdateORSBURSForm(orsBursId))
                 {
-                    updateForm.ShowDialog(this);
+                    if (updateForm.ShowDialog(this) == DialogResult.OK)
+                    {
+                        LoadOrsBursData();
+                    }
                 }
             }
             else if (columnName == "BtnView")
