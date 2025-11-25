@@ -19,6 +19,9 @@ namespace WindowsFormsApp1
         private IARForm iarForm;
         private OrsBursForm orsBursForm;
         private JEVForm jevForm;
+        private DEVForm devForm;
+        private TransactionLedger transactionLedgerForm;
+        private UserManagement userManagementForm;
         private bool shouldLoadDashboardOnShow = false;
 
         public Form2()
@@ -30,6 +33,9 @@ namespace WindowsFormsApp1
             IARBtn.Click += IARBtn_Click;
             ORSBtn.Click += ORSBtn_Click;
             JEVBtn.Click += JEVBtn_Click;
+            DVBtn.Click += DVBtn_Click;
+            TransactionLedger.Click += TransactionLedgerBtn_Click;
+            UserManagementBtn.Click += UserManagementBtn_Click;
             this.Shown += Form2_Shown;
         }
 
@@ -62,6 +68,16 @@ namespace WindowsFormsApp1
                 generalJournalForm = null;
                 DisposeForm(iarForm);
                 iarForm = null;
+                DisposeForm(orsBursForm);
+                orsBursForm = null;
+                DisposeForm(jevForm);
+                jevForm = null;
+                DisposeForm(devForm);
+                devForm = null;
+                DisposeForm(transactionLedgerForm);
+                transactionLedgerForm = null;
+                DisposeForm(userManagementForm);
+                userManagementForm = null;
 
                 // Dispose existing dashboard if it exists
                 DisposeForm(dashboardForm);
@@ -111,6 +127,19 @@ namespace WindowsFormsApp1
                 generalJournalForm = null;
                 DisposeForm(iarForm);
                 iarForm = null;
+                DisposeForm(orsBursForm);
+                orsBursForm = null;
+                DisposeForm(jevForm);
+                jevForm = null;
+                DisposeForm(devForm);
+                devForm = null;
+                DisposeForm(transactionLedgerForm);
+                transactionLedgerForm = null;
+                DisposeForm(userManagementForm);
+                userManagementForm = null;
+
+                DisposeForm(supplierForm);
+                supplierForm = null;
 
                 // Create and configure SupplierForm
                 supplierForm = new SupplierForm();
@@ -151,6 +180,19 @@ namespace WindowsFormsApp1
                 supplierForm = null;
                 DisposeForm(iarForm);
                 iarForm = null;
+                DisposeForm(orsBursForm);
+                orsBursForm = null;
+                DisposeForm(jevForm);
+                jevForm = null;
+                DisposeForm(devForm);
+                devForm = null;
+                DisposeForm(transactionLedgerForm);
+                transactionLedgerForm = null;
+                DisposeForm(userManagementForm);
+                userManagementForm = null;
+
+                DisposeForm(generalJournalForm);
+                generalJournalForm = null;
 
                 // Create and configure GeneralJournal form
                 generalJournalForm = new GeneralJournal();
@@ -191,6 +233,19 @@ namespace WindowsFormsApp1
                 supplierForm = null;
                 DisposeForm(generalJournalForm);
                 generalJournalForm = null;
+                DisposeForm(orsBursForm);
+                orsBursForm = null;
+                DisposeForm(jevForm);
+                jevForm = null;
+                DisposeForm(devForm);
+                devForm = null;
+                DisposeForm(transactionLedgerForm);
+                transactionLedgerForm = null;
+                DisposeForm(userManagementForm);
+                userManagementForm = null;
+
+                DisposeForm(iarForm);
+                iarForm = null;
 
                 // Create and configure IARForm
                 iarForm = new IARForm();
@@ -235,6 +290,15 @@ namespace WindowsFormsApp1
                 DisposeForm(orsBursForm);
                 orsBursForm = null;
 
+                DisposeForm(jevForm);
+                jevForm = null;
+                DisposeForm(devForm);
+                devForm = null;
+                DisposeForm(transactionLedgerForm);
+                transactionLedgerForm = null;
+                DisposeForm(userManagementForm);
+                userManagementForm = null;
+
                 orsBursForm = new OrsBursForm();
                 orsBursForm.TopLevel = false;
                 orsBursForm.FormBorderStyle = FormBorderStyle.None;
@@ -272,6 +336,12 @@ namespace WindowsFormsApp1
                 iarForm = null;
                 DisposeForm(orsBursForm);
                 orsBursForm = null;
+                DisposeForm(devForm);
+                devForm = null;
+                DisposeForm(transactionLedgerForm);
+                transactionLedgerForm = null;
+                DisposeForm(userManagementForm);
+                userManagementForm = null;
 
                 DisposeForm(jevForm);
                 jevForm = null;
@@ -289,6 +359,147 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading JEV Form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DVBtn_Click(object sender, EventArgs e)
+        {
+            LoadDEVForm();
+        }
+
+        public void LoadDEVForm()
+        {
+            try
+            {
+                panel3.Controls.Clear();
+
+                DisposeForm(dashboardForm);
+                dashboardForm = null;
+                DisposeForm(supplierForm);
+                supplierForm = null;
+                DisposeForm(generalJournalForm);
+                generalJournalForm = null;
+                DisposeForm(iarForm);
+                iarForm = null;
+                DisposeForm(orsBursForm);
+                orsBursForm = null;
+                DisposeForm(jevForm);
+                jevForm = null;
+                DisposeForm(transactionLedgerForm);
+                transactionLedgerForm = null;
+                DisposeForm(userManagementForm);
+                userManagementForm = null;
+
+                DisposeForm(devForm);
+                devForm = null;
+
+                devForm = new DEVForm();
+                devForm.TopLevel = false;
+                devForm.FormBorderStyle = FormBorderStyle.None;
+                devForm.Dock = DockStyle.Fill;
+                devForm.Visible = true;
+
+                panel3.Controls.Add(devForm);
+                devForm.Show();
+                panel3.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading DEV Form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TransactionLedgerBtn_Click(object sender, EventArgs e)
+        {
+            LoadTransactionLedger();
+        }
+
+        public void LoadTransactionLedger()
+        {
+            try
+            {
+                panel3.Controls.Clear();
+
+                DisposeForm(dashboardForm);
+                dashboardForm = null;
+                DisposeForm(supplierForm);
+                supplierForm = null;
+                DisposeForm(generalJournalForm);
+                generalJournalForm = null;
+                DisposeForm(iarForm);
+                iarForm = null;
+                DisposeForm(orsBursForm);
+                orsBursForm = null;
+                DisposeForm(jevForm);
+                jevForm = null;
+                DisposeForm(devForm);
+                devForm = null;
+                DisposeForm(userManagementForm);
+                userManagementForm = null;
+
+                DisposeForm(transactionLedgerForm);
+                transactionLedgerForm = null;
+
+                transactionLedgerForm = new TransactionLedger();
+                transactionLedgerForm.TopLevel = false;
+                transactionLedgerForm.FormBorderStyle = FormBorderStyle.None;
+                transactionLedgerForm.Dock = DockStyle.Fill;
+                transactionLedgerForm.Visible = true;
+
+                panel3.Controls.Add(transactionLedgerForm);
+                transactionLedgerForm.Show();
+                panel3.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading Transaction Ledger: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UserManagementBtn_Click(object sender, EventArgs e)
+        {
+            LoadUserManagement();
+        }
+
+        public void LoadUserManagement()
+        {
+            try
+            {
+                panel3.Controls.Clear();
+
+                DisposeForm(dashboardForm);
+                dashboardForm = null;
+                DisposeForm(supplierForm);
+                supplierForm = null;
+                DisposeForm(generalJournalForm);
+                generalJournalForm = null;
+                DisposeForm(iarForm);
+                iarForm = null;
+                DisposeForm(orsBursForm);
+                orsBursForm = null;
+                DisposeForm(jevForm);
+                jevForm = null;
+                DisposeForm(devForm);
+                devForm = null;
+                DisposeForm(transactionLedgerForm);
+                transactionLedgerForm = null;
+
+                DisposeForm(userManagementForm);
+                userManagementForm = null;
+
+                userManagementForm = new UserManagement();
+                userManagementForm.TopLevel = false;
+                userManagementForm.FormBorderStyle = FormBorderStyle.None;
+                userManagementForm.Dock = DockStyle.Fill;
+                userManagementForm.Visible = true;
+
+                panel3.Controls.Add(userManagementForm);
+                userManagementForm.Show();
+                panel3.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading User Management: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
