@@ -28,23 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -72,14 +63,16 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.addDEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.customRoundedPanel4.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.customRoundedPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -96,9 +89,9 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(25, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(605, 37);
+            this.label3.Size = new System.Drawing.Size(183, 37);
             this.label3.TabIndex = 25;
-            this.label3.Text = "Subsidiary Ledger Payment Obligation";
+            this.label3.Text = "Dashboard";
             // 
             // label2
             // 
@@ -107,112 +100,9 @@
             this.label2.ForeColor = System.Drawing.Color.Gray;
             this.label2.Location = new System.Drawing.Point(32, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(229, 18);
+            this.label2.Size = new System.Drawing.Size(300, 18);
             this.label2.TabIndex = 24;
-            this.label2.Text = "Overview Transaction Payments";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Status";
-            this.Column12.Name = "Column12";
-            // 
-            // Column10
-            // 
-            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column10.HeaderText = "Amount Paid";
-            this.Column10.Name = "Column10";
-            // 
-            // Column9
-            // 
-            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column9.HeaderText = "Date Paid";
-            this.Column9.Name = "Column9";
-            // 
-            // Column8
-            // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column8.HeaderText = "Check No./ADA No.";
-            this.Column8.Name = "Column8";
-            // 
-            // Column7
-            // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column7.HeaderText = "JEV No.";
-            this.Column7.Name = "Column7";
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "DV No.";
-            this.Column6.Name = "Column6";
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.HeaderText = "Responsibility Center Code";
-            this.Column5.Name = "Column5";
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "ORS-BURS No.";
-            this.Column4.Name = "Column4";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "PO Amount";
-            this.Column3.Name = "Column3";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Supplier";
-            this.Column2.Name = "Column2";
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "PO No.";
-            this.Column1.Name = "Column1";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1258, 536);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // Column11
-            // 
-            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column11.HeaderText = "Balance";
-            this.Column11.Name = "Column11";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(44, 431);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1258, 536);
-            this.panel1.TabIndex = 38;
+            this.label2.Text = "Overview of your accounts payable system";
             // 
             // label16
             // 
@@ -256,7 +146,7 @@
             this.customRoundedPanel4.Controls.Add(this.label12);
             this.customRoundedPanel4.Controls.Add(this.label13);
             this.customRoundedPanel4.Controls.Add(this.label14);
-            this.customRoundedPanel4.Location = new System.Drawing.Point(973, 141);
+            this.customRoundedPanel4.Location = new System.Drawing.Point(1014, 233);
             this.customRoundedPanel4.Name = "customRoundedPanel4";
             this.customRoundedPanel4.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel4.TabIndex = 36;
@@ -301,7 +191,7 @@
             this.customRoundedPanel3.Controls.Add(this.label9);
             this.customRoundedPanel3.Controls.Add(this.label10);
             this.customRoundedPanel3.Controls.Add(this.label11);
-            this.customRoundedPanel3.Location = new System.Drawing.Point(683, 141);
+            this.customRoundedPanel3.Location = new System.Drawing.Point(691, 233);
             this.customRoundedPanel3.Name = "customRoundedPanel3";
             this.customRoundedPanel3.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel3.TabIndex = 35;
@@ -346,7 +236,7 @@
             this.customRoundedPanel2.Controls.Add(this.label6);
             this.customRoundedPanel2.Controls.Add(this.label7);
             this.customRoundedPanel2.Controls.Add(this.label8);
-            this.customRoundedPanel2.Location = new System.Drawing.Point(393, 141);
+            this.customRoundedPanel2.Location = new System.Drawing.Point(361, 233);
             this.customRoundedPanel2.Name = "customRoundedPanel2";
             this.customRoundedPanel2.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel2.TabIndex = 34;
@@ -398,7 +288,7 @@
             this.gradientPanel1.Controls.Add(this.textBox1);
             this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
-            this.gradientPanel1.Location = new System.Drawing.Point(39, 298);
+            this.gradientPanel1.Location = new System.Drawing.Point(35, 121);
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Size = new System.Drawing.Size(1263, 93);
             this.gradientPanel1.TabIndex = 37;
@@ -466,7 +356,7 @@
             this.customRoundedPanel1.Controls.Add(this.label5);
             this.customRoundedPanel1.Controls.Add(this.label17);
             this.customRoundedPanel1.Controls.Add(this.label18);
-            this.customRoundedPanel1.Location = new System.Drawing.Point(103, 141);
+            this.customRoundedPanel1.Location = new System.Drawing.Point(35, 233);
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(284, 135);
             this.customRoundedPanel1.TabIndex = 33;
@@ -514,12 +404,44 @@
             this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDEVbtn.ForeColor = System.Drawing.Color.White;
             this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(1098, 973);
+            this.addDEVbtn.Location = new System.Drawing.Point(1094, 974);
             this.addDEVbtn.Name = "addDEVbtn";
             this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
             this.addDEVbtn.TabIndex = 39;
             this.addDEVbtn.Text = "Export Excel";
             this.addDEVbtn.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.chart1);
+            this.panel1.Location = new System.Drawing.Point(35, 426);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1263, 521);
+            this.panel1.TabIndex = 40;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(10, 6);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series2";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series3";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(1237, 503);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
             // 
             // Dashboard
             // 
@@ -528,8 +450,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1376, 1103);
-            this.Controls.Add(this.addDEVbtn);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.addDEVbtn);
             this.Controls.Add(this.customRoundedPanel4);
             this.Controls.Add(this.customRoundedPanel3);
             this.Controls.Add(this.customRoundedPanel2);
@@ -542,8 +464,6 @@
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.customRoundedPanel4.ResumeLayout(false);
             this.customRoundedPanel4.PerformLayout();
             this.customRoundedPanel3.ResumeLayout(false);
@@ -555,6 +475,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.customRoundedPanel1.ResumeLayout(false);
             this.customRoundedPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -564,20 +486,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -605,5 +513,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private Controls.CustomRoundedButton addDEVbtn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
