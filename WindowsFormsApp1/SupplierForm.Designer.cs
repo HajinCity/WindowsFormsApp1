@@ -214,7 +214,7 @@
             // 
             this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.BtnEdit.HeaderText = "";
-            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
+            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Dashboard_Layout;
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -224,7 +224,7 @@
             // 
             this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.BtnView.HeaderText = "";
-            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
+            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Credit_Card;
             this.BtnView.Name = "BtnView";
             this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
