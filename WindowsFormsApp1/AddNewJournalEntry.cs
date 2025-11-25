@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using WindowsFormsApp1.BackendModel;
 
 namespace WindowsFormsApp1
 {
@@ -28,217 +30,18 @@ namespace WindowsFormsApp1
         private Point originalPanel1Location;
         private Size originalPanel1Size;
         
-        // ComboBox filtering fields
-        private List<string> originalComboBoxItems = new List<string>();
-        private bool isFiltering = false;
-        private Timer dropdownTimer;
-
         public AddNewJournalEntry()
         {
             InitializeComponent();
             InitializeFileUpload();
-            InitializeComboBoxFiltering();
+            createEntryBtn.Click += CreateEntryBtn_Click;
+            cancel.Click += (s, e) => this.Close();
         }
 
         private void AddNewJournalEntry_Load(object sender, EventArgs e)
         {
 
         }
-        // ============================================================
-        //  COMBOBOX FILTERING FUNCTIONALITY
-        // ============================================================
-        private void InitializeComboBoxFiltering()
-        {
-            // Store original items
-            originalComboBoxItems.Clear();
-            foreach (object item in uacs_Code.Items)
-            {
-                originalComboBoxItems.Add(item.ToString());
-            }
-
-            // Enable typing in ComboBox
-            uacs_Code.DropDownStyle = ComboBoxStyle.DropDown;
-            uacs_Code.AutoCompleteMode = AutoCompleteMode.None; // We'll handle filtering manually
-
-            // Initialize timer for opening dropdown
-            dropdownTimer = new Timer();
-            dropdownTimer.Interval = 50; // 50ms delay
-            dropdownTimer.Tick += DropdownTimer_Tick;
-
-            // Attach event handlers
-            uacs_Code.TextChanged += ComboBox1_TextChanged;
-            uacs_Code.KeyDown += ComboBox1_KeyDown;
-            uacs_Code.KeyUp += ComboBox1_KeyUp;
-            uacs_Code.DropDown += ComboBox1_DropDown;
-            uacs_Code.SelectionChangeCommitted += ComboBox1_SelectionChangeCommitted;
-            uacs_Code.Enter += ComboBox1_Enter;
-        }
-
-        private void DropdownTimer_Tick(object sender, EventArgs e)
-        {
-            dropdownTimer.Stop();
-            if (!string.IsNullOrWhiteSpace(uacs_Code.Text) && !uacs_Code.DroppedDown)
-            {
-                try
-                {
-                    uacs_Code.DroppedDown = true;
-                    // Set cursor position after opening
-                    uacs_Code.SelectionStart = uacs_Code.Text.Length;
-                    uacs_Code.SelectionLength = 0;
-                }
-                catch { }
-            }
-        }
-
-        private void ComboBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (isFiltering) return;
-
-            string searchText = uacs_Code.Text;
-            isFiltering = true;
-
-            // Clear current items
-            uacs_Code.Items.Clear();
-
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                // If search is empty, show all items
-                uacs_Code.Items.AddRange(originalComboBoxItems.ToArray());
-                // Close dropdown when text is cleared
-                uacs_Code.DroppedDown = false;
-            }
-            else
-            {
-                // Filter items that contain the search text (case-insensitive)
-                var filteredItems = originalComboBoxItems
-                    .Where(item => item.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
-                    .ToArray();
-
-                uacs_Code.Items.AddRange(filteredItems);
-
-                // Always open dropdown when user is typing (even if no matches)
-                // Use BeginInvoke to ensure it happens after the current event processing
-                this.BeginInvoke(new Action(() =>
-                {
-                    if (!string.IsNullOrWhiteSpace(uacs_Code.Text) && !uacs_Code.DroppedDown)
-                    {
-                        try
-                        {
-                            uacs_Code.DroppedDown = true;
-                        }
-                        catch
-                        {
-                            // If BeginInvoke fails, use timer as fallback
-                            dropdownTimer.Stop();
-                            dropdownTimer.Start();
-                        }
-                    }
-                }));
-
-                // Also use timer as backup to ensure it opens
-                dropdownTimer.Stop();
-                dropdownTimer.Start();
-
-                // Set cursor position to end of typed text
-                this.BeginInvoke(new Action(() =>
-                {
-                    uacs_Code.SelectionStart = uacs_Code.Text.Length;
-                    uacs_Code.SelectionLength = 0;
-                }));
-            }
-
-            isFiltering = false;
-        }
-
-        private void ComboBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            // Allow navigation keys to work normally
-            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||
-                e.KeyCode == Keys.PageUp || e.KeyCode == Keys.PageDown ||
-                e.KeyCode == Keys.Home || e.KeyCode == Keys.End)
-            {
-                return;
-            }
-
-            // If Enter is pressed and dropdown is open, select the first item
-            if (e.KeyCode == Keys.Enter && uacs_Code.DroppedDown)
-            {
-                if (uacs_Code.Items.Count > 0)
-                {
-                    uacs_Code.SelectedIndex = 0;
-                    uacs_Code.DroppedDown = false;
-                    e.Handled = true;
-                }
-            }
-
-            // If Escape is pressed, close dropdown
-            if (e.KeyCode == Keys.Escape && uacs_Code.DroppedDown)
-            {
-                uacs_Code.DroppedDown = false;
-                e.Handled = true;
-            }
-
-            // For regular typing keys, ensure dropdown opens immediately
-            // This handles the case when user starts typing after clicking
-            bool isTypingKey = (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z) ||
-                              (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9) ||
-                              (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9) ||
-                              e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete ||
-                              e.KeyCode == Keys.Space;
-
-            if (isTypingKey && !uacs_Code.DroppedDown)
-            {
-                // Start timer to open dropdown after text updates
-                dropdownTimer.Stop();
-                dropdownTimer.Start();
-            }
-        }
-
-        private void ComboBox1_DropDown(object sender, EventArgs e)
-        {
-            // When dropdown opens, ensure all items are available for selection
-            if (string.IsNullOrWhiteSpace(uacs_Code.Text))
-            {
-                isFiltering = true;
-                uacs_Code.Items.Clear();
-                uacs_Code.Items.AddRange(originalComboBoxItems.ToArray());
-                isFiltering = false;
-            }
-        }
-
-        private void ComboBox1_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            // When user selects an item, update the text
-            if (uacs_Code.SelectedIndex >= 0)
-            {
-                isFiltering = true;
-                uacs_Code.Text = uacs_Code.SelectedItem.ToString();
-                isFiltering = false;
-                uacs_Code.DroppedDown = false;
-            }
-        }
-
-        private void ComboBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            // Ensure dropdown opens after key is released (handles typing)
-            if (!string.IsNullOrWhiteSpace(uacs_Code.Text) && !uacs_Code.DroppedDown)
-            {
-                // Use timer to open dropdown
-                dropdownTimer.Stop();
-                dropdownTimer.Start();
-            }
-        }
-
-        private void ComboBox1_Enter(object sender, EventArgs e)
-        {
-            // When ComboBox gets focus, if there's text, open dropdown
-            if (!string.IsNullOrWhiteSpace(uacs_Code.Text))
-            {
-                dropdownTimer.Stop();
-                dropdownTimer.Start();
-            }
-        }
-
         private void InitializeFileUpload()
         {
             // Store original panel color
@@ -524,6 +327,116 @@ namespace WindowsFormsApp1
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CreateEntryBtn_Click(object sender, EventArgs e)
+        {
+            if (!AreInputsValid(out string validationMessage))
+            {
+                MessageBox.Show(validationMessage, "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to save this general journal entry?",
+                "Confirm Entry",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                SaveJournalEntry();
+                MessageBox.Show("Journal entry saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to save journal entry: {ex.Message}",
+                    "Save Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private bool AreInputsValid(out string message)
+        {
+            var requiredFields = new List<(string Value, string Label)>
+            {
+                (gjno.Text, "GJ Number"),
+                (uacs_Code.Text, "UACS Code"),
+                (amount.Text, "Amount"),
+                (particulars.Text, "Particulars")
+            };
+
+            foreach (var field in requiredFields)
+            {
+                if (string.IsNullOrWhiteSpace(field.Value))
+                {
+                    message = $"{field.Label} is required.";
+                    return false;
+                }
+            }
+
+            message = string.Empty;
+            return true;
+        }
+
+        private byte[] GetDocumentBytes()
+        {
+            if (uploadedFiles.Count == 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                return File.ReadAllBytes(uploadedFiles[0].FullName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Unable to read the uploaded document: {ex.Message}", ex);
+            }
+        }
+
+        private void SaveJournalEntry()
+        {
+            byte[] documentBytes = GetDocumentBytes();
+
+            using (MySqlConnection connection = RDBSMConnection.GetConnection())
+            {
+                string query = @"INSERT INTO general_journal 
+                                (gj_no, particulars, uacs_code, amount, date, documents)
+                                VALUES 
+                                (@gj_no, @particulars, @uacs_code, @amount, @date, @documents)";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@gj_no", gjno.Text.Trim());
+                    command.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
+                    command.Parameters.AddWithValue("@uacs_code", uacs_Code.Text.Trim());
+                    command.Parameters.AddWithValue("@amount", amount.Text.Trim());
+                    command.Parameters.AddWithValue("@date", date.Value.Date);
+
+                    var documentParam = command.Parameters.Add("@documents", MySqlDbType.LongBlob);
+                    if (documentBytes == null || documentBytes.Length == 0)
+                    {
+                        documentParam.Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        documentParam.Value = documentBytes;
+                    }
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

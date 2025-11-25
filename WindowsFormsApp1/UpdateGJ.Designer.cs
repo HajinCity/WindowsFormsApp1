@@ -28,22 +28,1456 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.particulars = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cancel = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.createEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.amount = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.gjno = new System.Windows.Forms.TextBox();
+            this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.uacs_Code = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.date = new System.Windows.Forms.DateTimePicker();
+            this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.customRoundedPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.customRoundedPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.customRoundedPanel3.SuspendLayout();
+            this.customRoundedPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // customRoundedPanel2
+            // 
+            this.customRoundedPanel2.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel2.BorderRadius = 10;
+            this.customRoundedPanel2.Controls.Add(this.particulars);
+            this.customRoundedPanel2.Location = new System.Drawing.Point(34, 312);
+            this.customRoundedPanel2.Name = "customRoundedPanel2";
+            this.customRoundedPanel2.Size = new System.Drawing.Size(712, 134);
+            this.customRoundedPanel2.TabIndex = 33;
+            // 
+            // particulars
+            // 
+            this.particulars.BackColor = System.Drawing.Color.Gainsboro;
+            this.particulars.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.particulars.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.particulars.Location = new System.Drawing.Point(26, 13);
+            this.particulars.Multiline = true;
+            this.particulars.Name = "particulars";
+            this.particulars.Size = new System.Drawing.Size(670, 107);
+            this.particulars.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(31, 292);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 17);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "Particulars";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
+            this.pictureBox2.Location = new System.Drawing.Point(776, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 44;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label11.Location = new System.Drawing.Point(245, 53);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(214, 17);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Click to upload or drag and drop";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(252, 85);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(201, 17);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "PDF,JPG,PNG,DOCX (20MB)";
+            // 
+            // cancel
+            // 
+            this.cancel.BackColor = System.Drawing.Color.Gainsboro;
+            this.cancel.BorderRadius = 10;
+            this.cancel.ClickedColor = System.Drawing.Color.LightGray;
+            this.cancel.FlatAppearance.BorderSize = 0;
+            this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancel.HoverColor = System.Drawing.Color.LightGray;
+            this.cancel.Location = new System.Drawing.Point(445, 811);
+            this.cancel.Name = "cancel";
+            this.cancel.Size = new System.Drawing.Size(158, 51);
+            this.cancel.TabIndex = 35;
+            this.cancel.Text = "Cancel";
+            this.cancel.UseVisualStyleBackColor = false;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
+            // 
+            // createEntryBtn
+            // 
+            this.createEntryBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.createEntryBtn.BorderRadius = 10;
+            this.createEntryBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.createEntryBtn.FlatAppearance.BorderSize = 0;
+            this.createEntryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createEntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createEntryBtn.ForeColor = System.Drawing.Color.White;
+            this.createEntryBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.createEntryBtn.Location = new System.Drawing.Point(609, 811);
+            this.createEntryBtn.Name = "createEntryBtn";
+            this.createEntryBtn.Size = new System.Drawing.Size(158, 51);
+            this.createEntryBtn.TabIndex = 34;
+            this.createEntryBtn.Text = "Update Entry";
+            this.createEntryBtn.UseVisualStyleBackColor = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(22, 475);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(207, 17);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Upload Supporting Documents";
+            // 
+            // customRoundedPanel4
+            // 
+            this.customRoundedPanel4.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel4.BorderRadius = 10;
+            this.customRoundedPanel4.Controls.Add(this.amount);
+            this.customRoundedPanel4.Location = new System.Drawing.Point(34, 239);
+            this.customRoundedPanel4.Name = "customRoundedPanel4";
+            this.customRoundedPanel4.Size = new System.Drawing.Size(712, 41);
+            this.customRoundedPanel4.TabIndex = 32;
+            // 
+            // amount
+            // 
+            this.amount.BackColor = System.Drawing.Color.Gainsboro;
+            this.amount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.amount.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amount.Location = new System.Drawing.Point(26, 13);
+            this.amount.Name = "amount";
+            this.amount.Size = new System.Drawing.Size(670, 18);
+            this.amount.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(31, 219);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 17);
+            this.label5.TabIndex = 41;
+            this.label5.Text = "Amount";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
+            this.pictureBox1.Location = new System.Drawing.Point(327, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(52, 47);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Location = new System.Drawing.Point(40, 495);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(706, 119);
+            this.panel1.TabIndex = 36;
+            // 
+            // gjno
+            // 
+            this.gjno.BackColor = System.Drawing.Color.Gainsboro;
+            this.gjno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gjno.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gjno.Location = new System.Drawing.Point(26, 13);
+            this.gjno.Name = "gjno";
+            this.gjno.Size = new System.Drawing.Size(307, 18);
+            this.gjno.TabIndex = 0;
+            // 
+            // customRoundedPanel3
+            // 
+            this.customRoundedPanel3.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel3.BorderRadius = 10;
+            this.customRoundedPanel3.Controls.Add(this.uacs_Code);
+            this.customRoundedPanel3.Location = new System.Drawing.Point(34, 160);
+            this.customRoundedPanel3.Name = "customRoundedPanel3";
+            this.customRoundedPanel3.Size = new System.Drawing.Size(712, 41);
+            this.customRoundedPanel3.TabIndex = 31;
+            // 
+            // uacs_Code
+            // 
+            this.uacs_Code.BackColor = System.Drawing.Color.Gainsboro;
+            this.uacs_Code.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.uacs_Code.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uacs_Code.FormattingEnabled = true;
+            this.uacs_Code.Items.AddRange(new object[] {
+            "10000000-00",
+            "10000000-01",
+            "10000000-02",
+            "10100000-00",
+            "10101000-00",
+            "10101010-00",
+            "10101020-00",
+            "10102000-00",
+            "10102020-00",
+            "10102020-16",
+            "10102020-24",
+            "10102020-29",
+            "10102020-32",
+            "10102030-00",
+            "10102030-01",
+            "10102030-02",
+            "10102030-03",
+            "10102030-04",
+            "10102030-07",
+            "10102040-00",
+            "10102040-01",
+            "10102040-02",
+            "10102040-03",
+            "10102040-04",
+            "10102040-05",
+            "10104000-00",
+            "10104010-00",
+            "10104030-00",
+            "10104040-00",
+            "10104050-00",
+            "10104060-00",
+            "10104070-00",
+            "10105000-00",
+            "10105010-00",
+            "10207000-00",
+            "10207010-00",
+            "10300000-00",
+            "10301000-00",
+            "10301010-00",
+            "10301011-00",
+            "10301020-00",
+            "10301021-00",
+            "10301030-00",
+            "10301031-00",
+            "10301040-00",
+            "10301041-00",
+            "10301050-00",
+            "10301051-00",
+            "10301990-00",
+            "10302000-00",
+            "10302010-00",
+            "10302011-00",
+            "10302020-00",
+            "10302021-00",
+            "10303000-00",
+            "10303010-00",
+            "10303020-00",
+            "10303030-00",
+            "10303040-00",
+            "10304000-00",
+            "10304010-00",
+            "10304020-00",
+            "10304030-00",
+            "10304040-00",
+            "10305000-00",
+            "10305010-00",
+            "10305020-00",
+            "10305030-00",
+            "10305091-00",
+            "10305990-00",
+            "10400000-00",
+            "10401000-00",
+            "10401010-00",
+            "10401010-01",
+            "10401010-02",
+            "10401010-03",
+            "10401010-04",
+            "10401010-05",
+            "10401010-99",
+            "10402000-00",
+            "10402010-00",
+            "10402020-00",
+            "10402030-00",
+            "10402040-00",
+            "10402050-00",
+            "10402060-00",
+            "10402070-00",
+            "10402080-00",
+            "10402090-00",
+            "10402990-00",
+            "10404000-00",
+            "10404010-00",
+            "10404020-00",
+            "10404030-00",
+            "10404040-00",
+            "10404050-00",
+            "10404060-00",
+            "10404070-00",
+            "10404080-00",
+            "10404090-00",
+            "10404100-00",
+            "10404110-00",
+            "10404120-00",
+            "10404130-00",
+            "10404990-00",
+            "10405000-00",
+            "10405010-00",
+            "10405020-00",
+            "10405030-00",
+            "10405040-00",
+            "10405050-00",
+            "10405060-00",
+            "10405070-00",
+            "10405080-00",
+            "10405090-00",
+            "10405100-00",
+            "10405110-00",
+            "10405120-00",
+            "10405130-00",
+            "10405190-00",
+            "10406010-00",
+            "10406020-00",
+            "10500000-00",
+            "10501000-00",
+            "10501010-00",
+            "10501011-00",
+            "10501020-00",
+            "10501021-00",
+            "10501022-00",
+            "10600000-00",
+            "10601000-00",
+            "10601010-00",
+            "10602000-00",
+            "10602010-00",
+            "10602011-00",
+            "10602012-00",
+            "10602020-00",
+            "10602021-00",
+            "10602990-00",
+            "10602991-00",
+            "10602992-00",
+            "10603000-00",
+            "10603010-00",
+            "10603011-00",
+            "10603012-00",
+            "10603020-00",
+            "10603021-00",
+            "10603022-00",
+            "10603030-00",
+            "10603031-00",
+            "10603032-00",
+            "10603040-00",
+            "10603041-00",
+            "10603042-00",
+            "10603050-00",
+            "10603051-00",
+            "10603052-00",
+            "10603060-00",
+            "10603061-00",
+            "10603062-00",
+            "10603070-00",
+            "10603071-00",
+            "10603072-00",
+            "10603080-00",
+            "10603081-00",
+            "10603082-00",
+            "10603090-00",
+            "10603091-00",
+            "10603092-00",
+            "10603990-00",
+            "10603991-00",
+            "10603992-00",
+            "10604000-00",
+            "10604010-00",
+            "10604011-00",
+            "10604012-00",
+            "10604020-00",
+            "10604021-00",
+            "10604022-00",
+            "10604030-00",
+            "10604031-00",
+            "10604032-00",
+            "10604040-00",
+            "10604041-00",
+            "10604042-00",
+            "10604050-00",
+            "10604051-00",
+            "10604052-00",
+            "10604060-00",
+            "10604061-00",
+            "10604062-00",
+            "10604990-00",
+            "10604991-00",
+            "10604992-00",
+            "10605000-00",
+            "10605010-00",
+            "10605011-00",
+            "10605012-00",
+            "10605020-00",
+            "10605021-00",
+            "10605022-00",
+            "10605030-00",
+            "10605031-00",
+            "10605032-00",
+            "10605040-00",
+            "10605041-00",
+            "10605042-00",
+            "10605050-00",
+            "10605051-00",
+            "10605052-00",
+            "10605060-00",
+            "10605061-00",
+            "10605062-00",
+            "10605070-00",
+            "10605071-00",
+            "10605072-00",
+            "10605080-00",
+            "10605081-00",
+            "10605082-00",
+            "10605090-00",
+            "10605090-01",
+            "10605090-02",
+            "10605090-03",
+            "10605090-04",
+            "10605090-05",
+            "10605091-00",
+            "10605092-00",
+            "10605100-00",
+            "10605101-00",
+            "10605102-00",
+            "10605110-00",
+            "10605111-00",
+            "10605112-00",
+            "10605120-00",
+            "10605121-00",
+            "10605122-00",
+            "10605130-00",
+            "10605131-00",
+            "10605132-00",
+            "10605140-00",
+            "10605141-00",
+            "10605142-00",
+            "10605990-00",
+            "10605991-00",
+            "10605992-00",
+            "10606000-00",
+            "10606010-00",
+            "10606011-00",
+            "10606012-00",
+            "10606020-00",
+            "10606021-00",
+            "10606022-00",
+            "10606030-00",
+            "10606031-00",
+            "10606032-00",
+            "10606040-00",
+            "10606041-00",
+            "10606042-00",
+            "10606990-00",
+            "10606991-00",
+            "10606992-00",
+            "10607000-00",
+            "10607010-00",
+            "10607011-00",
+            "10607012-00",
+            "10607020-00",
+            "10607021-00",
+            "10607022-00",
+            "10608000-00",
+            "10608010-00",
+            "10608020-00",
+            "10608021-00",
+            "10608022-00",
+            "10608030-00",
+            "10608031-00",
+            "10608032-00",
+            "10608040-00",
+            "10608041-00",
+            "10608042-00",
+            "10608990-00",
+            "10608991-00",
+            "10608992-00",
+            "10609000-00",
+            "10609010-00",
+            "10609011-00",
+            "10609012-00",
+            "10609020-00",
+            "10609021-00",
+            "10609022-00",
+            "10609990-00",
+            "10609991-00",
+            "10609992-00",
+            "10610000-00",
+            "10610010-00",
+            "10610020-00",
+            "10610030-00",
+            "10610040-00",
+            "10610050-00",
+            "10611000-00",
+            "10611010-00",
+            "10611011-00",
+            "10611012-00",
+            "10611020-00",
+            "10611021-00",
+            "10611022-00",
+            "10611990-00",
+            "10611991-00",
+            "10611992-00",
+            "10699000-00",
+            "10699010-00",
+            "10699030-00",
+            "10699011-00",
+            "10699012-00",
+            "10699990-00",
+            "10699991-00",
+            "10699992-00",
+            "10700000-00",
+            "10701000-00",
+            "10701010-00",
+            "10701011-00",
+            "10701020-00",
+            "10701021-00",
+            "10701030-00",
+            "10701031-00",
+            "10701040-00",
+            "10701041-00",
+            "10701990-00",
+            "10701991-00",
+            "10702000-00",
+            "10702010-00",
+            "10702011-00",
+            "10702020-00",
+            "10702021-00",
+            "10702030-00",
+            "10702031-00",
+            "10702040-00",
+            "10702041-00",
+            "10702990-00",
+            "10702991-00",
+            "10800000-00",
+            "10801000-00",
+            "10801010-00",
+            "10801011-00",
+            "10801020-00",
+            "10801021-00",
+            "10801990-00",
+            "10801991-00",
+            "19900000-00",
+            "19901000-00",
+            "19901010-00",
+            "19901020-00",
+            "19901030-00",
+            "19901040-00",
+            "19902000-00",
+            "19902010-00",
+            "19902020-00",
+            "19902030-00",
+            "19902040-00",
+            "19902050-00",
+            "19902990-00",
+            "19903000-00",
+            "19903010-00",
+            "19903020-00",
+            "19903990-00",
+            "19999000-00",
+            "19999010-00",
+            "19999011-00",
+            "19999020-00",
+            "19999021-00",
+            "19999030-00",
+            "19999031-00",
+            "19999040-00",
+            "19999041-00",
+            "19999050-00",
+            "19999051-00",
+            "19999990-00",
+            "19999991-00",
+            "20000000-00",
+            "20000000-01",
+            "20000000-02",
+            "20100000-00",
+            "20101000-00",
+            "20101010-00",
+            "20101020-00",
+            "20101030-00",
+            "20101040-00",
+            "20101050-00",
+            "20101060-00",
+            "20101070-00",
+            "20101080-00",
+            "20102000-00",
+            "20102010-00",
+            "20102020-00",
+            "20102021-00",
+            "20102022-00",
+            "20102030-00",
+            "20102031-00",
+            "20102032-00",
+            "20102040-00",
+            "20102050-00",
+            "20103010-00",
+            "20200000-00",
+            "20201000-00",
+            "20201010-00",
+            "20201020-00",
+            "20201020-01",
+            "20201020-02",
+            "20201020-03",
+            "20201020-04",
+            "20201030-00",
+            "20201030-01",
+            "20201030-02",
+            "20201030-03",
+            "20201040-00",
+            "20201050-00",
+            "20201060-00",
+            "20201070-00",
+            "20201080-00",
+            "20300000-00",
+            "20301000-00",
+            "20301010-00",
+            "20301020-00",
+            "20301030-00",
+            "20301040-00",
+            "20400000-00",
+            "20401000-00",
+            "20401010-00",
+            "20401020-00",
+            "20401030-00",
+            "20401040-00",
+            "20401050-00",
+            "20500000-00",
+            "20501000-00",
+            "20501010-00",
+            "20501990-00",
+            "20502000-00",
+            "20502010-00",
+            "20502990-00",
+            "20600000-00",
+            "20601000-00",
+            "20601010-00",
+            "20601020-00",
+            "20601030-00",
+            "20601990-00",
+            "29900000-00",
+            "29999000-00",
+            "29999990-00",
+            "30000000-00",
+            "30100000-00",
+            "30101000-00",
+            "30101010-00",
+            "30101010-99",
+            "30101019-99",
+            "30200000-00",
+            "30201000-00",
+            "30201010-00",
+            "30300000-00",
+            "30301000-00",
+            "30301010-00",
+            "30400000-00",
+            "30401000-00",
+            "30401010-00",
+            "40000000-00",
+            "40200000-00",
+            "40201000-00",
+            "40201010-00",
+            "40201010-01",
+            "40201010-02",
+            "40201010-99",
+            "40201020-00",
+            "40201030-04",
+            "40201040-00",
+            "40201040-01",
+            "40201040-02",
+            "40201040-03",
+            "40201060-00",
+            "40201070-00",
+            "40201080-00",
+            "40201090-00",
+            "40201100-00",
+            "40201110-00",
+            "40201110-01",
+            "40201110-99",
+            "40201130-00",
+            "40201130-01",
+            "40201130-02",
+            "40201130-03",
+            "40201130-04",
+            "40201130-05",
+            "40201130-07",
+            "40201130-09",
+            "40201130-10",
+            "40201130-11",
+            "40201130-12",
+            "40201130-99",
+            "40201140-00",
+            "40201990-00",
+            "40201990-01",
+            "40201990-03",
+            "40201990-04",
+            "40201990-99",
+            "40202000-00",
+            "40202010-00",
+            "40202010-01",
+            "40202010-02",
+            "40202010-03",
+            "40202010-99",
+            "40202020-00",
+            "40202030-00",
+            "40202040-00",
+            "40202050-00",
+            "40202060-00",
+            "40202070-00",
+            "40202080-00",
+            "40202090-00",
+            "40202100-00",
+            "40202110-00",
+            "40202120-00",
+            "40202130-00",
+            "40202140-00",
+            "40202150-00",
+            "40202160-00",
+            "40202160-01",
+            "40202160-02",
+            "40202160-03",
+            "40202160-04",
+            "40202160-05",
+            "40202160-06",
+            "40202160-07",
+            "40202160-08",
+            "40202160-99",
+            "40202161-00",
+            "40202170-99",
+            "40202180-00",
+            "40202190-00",
+            "40202200-00",
+            "40202210-00",
+            "40202210-01",
+            "40202210-02",
+            "40202210-99",
+            "40202230-00",
+            "40202990-00",
+            "40202990-01",
+            "40202990-02",
+            "40202990-03",
+            "40202990-99",
+            "40300000-00",
+            "40301000-00",
+            "40301010-00",
+            "40301020-00",
+            "40301030-00",
+            "40301040-00",
+            "40301050-00",
+            "40400000-00",
+            "40401000-00",
+            "40401010-00",
+            "40401010-04",
+            "40402000-00",
+            "40402010-00",
+            "40402020-00",
+            "40500000-00",
+            "40501000-00",
+            "40501010-00",
+            "40501020-00",
+            "40501030-00",
+            "40501040-00",
+            "40501050-00",
+            "40501060-00",
+            "40501070-00",
+            "40501080-00",
+            "40501090-00",
+            "40501100-00",
+            "40501990-00",
+            "40600000-00",
+            "40601000-00",
+            "40601010-00",
+            "40609990-00",
+            "50000000-00",
+            "50100000-00",
+            "50101000-00",
+            "50101010-00",
+            "50101010-01",
+            "50101020-00",
+            "50102000-00",
+            "50102010-00",
+            "50102010-01",
+            "50102020-00",
+            "50102030-00",
+            "50102030-01",
+            "50102030-02",
+            "50102040-00",
+            "50102040-01",
+            "50102040-02",
+            "50102050-00",
+            "50102050-02",
+            "50102050-03",
+            "50102050-04",
+            "50102060-00",
+            "50102060-01",
+            "50102060-03",
+            "50102060-04",
+            "50102060-05",
+            "50102070-00",
+            "50102070-01",
+            "50102070-03",
+            "50102070-04",
+            "50102070-05",
+            "50102080-00",
+            "50102080-01",
+            "50102090-00",
+            "50102090-01",
+            "50102100-00",
+            "50102100-01",
+            "50102100-02",
+            "50102100-03",
+            "50102100-04",
+            "50102100-05",
+            "50102110-00",
+            "50102110-01",
+            "50102110-02",
+            "50102110-04",
+            "50102110-05",
+            "50102110-06",
+            "50102110-07",
+            "50102110-08",
+            "50102110-09",
+            "50102120-00",
+            "50102120-01",
+            "50102120-03",
+            "50102120-04",
+            "50102120-05",
+            "50102130-00",
+            "50102130-01",
+            "50102130-02",
+            "50102140-00",
+            "50102140-01",
+            "50102150-00",
+            "50102150-01",
+            "50102160-01",
+            "50102990-00",
+            "50102990-01",
+            "50102990-02",
+            "50102990-03",
+            "50102990-04",
+            "50102990-05",
+            "50102990-06",
+            "50102990-07",
+            "50102990-11",
+            "50102990-12",
+            "50102990-14",
+            "50102990-21",
+            "50102990-22",
+            "50102990-23",
+            "50102990-25",
+            "50102990-27",
+            "50102990-28",
+            "50102990-29",
+            "50102990-30",
+            "50102990-31",
+            "50102990-32",
+            "50102990-33",
+            "50103000-00",
+            "50103010-00",
+            "50103020-00",
+            "50103020-01",
+            "50103030-00",
+            "50103030-01",
+            "50103040-00",
+            "50103040-01",
+            "50103050-00",
+            "50104000-00",
+            "50104010-00",
+            "50104010-01",
+            "50104010-03",
+            "50104020-00",
+            "50104020-01",
+            "50104030-00",
+            "50104030-01",
+            "50104990-00",
+            "50104990-01",
+            "50104990-03",
+            "50104990-04",
+            "50104990-05",
+            "50104990-06",
+            "50104990-07",
+            "50104990-08",
+            "50104990-09",
+            "50104990-10",
+            "50104990-11",
+            "50104990-12",
+            "50104990-15",
+            "50104990-99",
+            "50200000-00",
+            "50201000-00",
+            "50201010-00",
+            "50201020-00",
+            "50202000-00",
+            "50202010-00",
+            "50202020-00",
+            "50203000-00",
+            "50203010-00",
+            "50203020-00",
+            "50203030-00",
+            "50203040-00",
+            "50203050-00",
+            "50203060-00",
+            "50203070-00",
+            "50203080-00",
+            "50203090-00",
+            "50203100-00",
+            "50203110-00",
+            "50203110-01",
+            "50203110-02",
+            "50203120-00",
+            "50203130-00",
+            "50203210-00",
+            "50203210-01",
+            "50203210-02",
+            "50203210-03",
+            "50203210-04",
+            "50203210-05",
+            "50203210-06",
+            "50203210-07",
+            "50203210-08",
+            "50203210-09",
+            "50203210-10",
+            "50203210-11",
+            "50203210-12",
+            "50203210-13",
+            "50203210-99",
+            "50203220-00",
+            "50203220-01",
+            "50203220-02",
+            "50203990-00",
+            "50204000-00",
+            "50204010-00",
+            "50204020-00",
+            "50205000-00",
+            "50205010-00",
+            "50205020-00",
+            "50205020-01",
+            "50205020-02",
+            "50205030-00",
+            "50205040-00",
+            "50206000-00",
+            "50206010-00",
+            "50206010-01",
+            "50206010-02",
+            "50206020-00",
+            "50207000-00",
+            "50207010-00",
+            "50207020-00",
+            "50208000-00",
+            "50208010-00",
+            "50208020-00",
+            "50209000-00",
+            "50209010-00",
+            "50210000-00",
+            "50210010-00",
+            "50210020-00",
+            "50210030-00",
+            "50211000-00",
+            "50211010-00",
+            "50211020-00",
+            "50211030-00",
+            "50211990-00",
+            "50212000-00",
+            "50212010-00",
+            "50212020-00",
+            "50212030-00",
+            "50212990-00",
+            "50213000-00",
+            "50213010-00",
+            "50213020-00",
+            "50213020-01",
+            "50213020-02",
+            "50213020-99",
+            "50213030-00",
+            "50213030-01",
+            "50213030-02",
+            "50213030-03",
+            "50213030-04",
+            "50213030-05",
+            "50213030-06",
+            "50213030-07",
+            "50213030-08",
+            "50213030-09",
+            "50213030-99",
+            "50213040-00",
+            "50213040-01",
+            "50213040-02",
+            "50213040-03",
+            "50213040-04",
+            "50213040-05",
+            "50213040-06",
+            "50213040-99",
+            "50213050-00",
+            "50213050-01",
+            "50213050-02",
+            "50213050-03",
+            "50213050-04",
+            "50213050-05",
+            "50213050-06",
+            "50213050-07",
+            "50213050-08",
+            "50213050-09",
+            "50213050-10",
+            "50213050-11",
+            "50213050-12",
+            "50213050-13",
+            "50213050-14",
+            "50213050-99",
+            "50213060-00",
+            "50213060-01",
+            "50213060-02",
+            "50213060-03",
+            "50213060-04",
+            "50213060-99",
+            "50213070-00",
+            "50213080-00",
+            "50213080-01",
+            "50213080-02",
+            "50213080-03",
+            "50213080-99",
+            "50213090-00",
+            "50213090-01",
+            "50213090-02",
+            "50213090-99",
+            "50213100-00",
+            "50213100-01",
+            "50213100-02",
+            "50213100-99",
+            "50213990-00",
+            "50213990-01",
+            "50213990-99",
+            "50214000-00",
+            "50214010-00",
+            "50214020-00",
+            "50214030-00",
+            "50214030-01",
+            "50214030-02",
+            "50214030-03",
+            "50214030-04",
+            "50214030-05",
+            "50214030-06",
+            "50214030-07",
+            "50214030-08",
+            "50214030-09",
+            "50214030-10",
+            "50214040-00",
+            "50214040-01",
+            "50214040-02",
+            "50214040-03",
+            "50214040-04",
+            "50214040-05",
+            "50214040-06",
+            "50214040-07",
+            "50214040-08",
+            "50214040-09",
+            "50214040-10",
+            "50214040-99",
+            "50214050-00",
+            "50214060-00",
+            "50214080-00",
+            "50214990-00",
+            "50215000-00",
+            "50215010-00",
+            "50215010-01",
+            "50215010-02",
+            "50215020-00",
+            "50215030-00",
+            "50216000-00",
+            "50216010-00",
+            "50299000-00",
+            "50299010-00",
+            "50299020-00",
+            "50299030-00",
+            "50299040-00",
+            "50299050-00",
+            "50299050-01",
+            "50299050-02",
+            "50299050-03",
+            "50299050-04",
+            "50299050-05",
+            "50299050-06",
+            "50299050-07",
+            "50299060-00",
+            "50299070-00",
+            "50299080-00",
+            "50299090-00",
+            "50299990-00",
+            "50299990-01",
+            "50299990-99",
+            "50300000-00",
+            "50301000-00",
+            "50301010-00",
+            "50301020-00",
+            "50301020-01",
+            "50301020-02",
+            "50301020-03",
+            "50301030-00",
+            "50301040-00",
+            "50301050-00",
+            "50301990-00",
+            "50500000-00",
+            "50501000-00",
+            "50501010-00",
+            "50501020-00",
+            "50501020-01",
+            "50501020-02",
+            "50501020-99",
+            "50501030-00",
+            "50501030-01",
+            "50501030-02",
+            "50501030-03",
+            "50501030-04",
+            "50501030-05",
+            "50501030-06",
+            "50501030-07",
+            "50501030-08",
+            "50501030-09",
+            "50501030-99",
+            "50501040-00",
+            "50501040-01",
+            "50501040-02",
+            "50501040-03",
+            "50501040-04",
+            "50501040-05",
+            "50501040-06",
+            "50501040-99",
+            "50501050-00",
+            "50501050-01",
+            "50501050-02",
+            "50501050-03",
+            "50501050-04",
+            "50501050-05",
+            "50501050-06",
+            "50501050-07",
+            "50501050-08",
+            "50501050-09",
+            "50501050-10",
+            "50501050-11",
+            "50501050-12",
+            "50501050-13",
+            "50501050-14",
+            "50501050-99",
+            "50501060-00",
+            "50501060-01",
+            "50501060-02",
+            "50501060-03",
+            "50501060-04",
+            "50501060-99",
+            "50501070-00",
+            "50501070-01",
+            "50501070-02",
+            "50501080-00",
+            "50501080-01",
+            "50501080-02",
+            "50501080-03",
+            "50501080-99",
+            "50501090-00",
+            "50501090-01",
+            "50501090-02",
+            "50501090-99",
+            "50501100-00",
+            "50501100-01",
+            "50501100-02",
+            "50501100-99",
+            "50501990-00",
+            "50501990-01",
+            "50501990-99",
+            "50502000-00",
+            "50502010-00",
+            "50502010-01",
+            "50502010-02",
+            "50502010-99",
+            "50503000-00",
+            "50503010-00",
+            "50503020-00",
+            "50503030-00",
+            "50503040-00",
+            "50503050-00",
+            "50503060-00",
+            "50503070-00",
+            "50503080-00",
+            "50503090-00",
+            "50503100-00",
+            "50503110-00",
+            "50503120-00",
+            "50503990-00",
+            "50504000-00",
+            "50504010-00",
+            "50504020-00",
+            "50504030-00",
+            "50504040-00",
+            "50504050-00",
+            "50504060-00",
+            "50504070-00",
+            "50504080-00",
+            "50504090-00",
+            "50504100-00",
+            "50504990-00",
+            "50600000-00",
+            "50601000-00",
+            "50601010-00",
+            "50601010-01",
+            "50601010-02",
+            "50601010-03",
+            "50601010-04",
+            "50601010-05",
+            "50601010-06",
+            "50601010-07",
+            "50601010-08",
+            "50601010-09",
+            "50601010-10",
+            "50601010-99",
+            "50601020-00",
+            "50602000-00",
+            "50602010-00",
+            "50602020-00",
+            "50602990-00",
+            "50603000-00",
+            "50603010-00",
+            "50603010-01",
+            "50603010-02",
+            "50604000-00",
+            "50604010-00",
+            "50604010-01",
+            "50604020-00",
+            "50604020-01",
+            "50604020-02",
+            "50604020-99",
+            "50604030-00",
+            "50604030-01",
+            "50604030-02",
+            "50604030-03",
+            "50604030-04",
+            "50604030-05",
+            "50604030-06",
+            "50604030-07",
+            "50604030-08",
+            "50604030-09",
+            "50604030-99",
+            "50604040-00",
+            "50604040-01",
+            "50604040-02",
+            "50604040-03",
+            "50604040-04",
+            "50604040-05",
+            "50604040-06",
+            "50604040-07",
+            "50604040-99",
+            "50604050-00",
+            "50604050-01",
+            "50604050-02",
+            "50604050-03",
+            "50604050-04",
+            "50604050-05",
+            "50604050-06",
+            "50604050-07",
+            "50604050-08",
+            "50604050-09",
+            "50604050-10",
+            "50604050-11",
+            "50604050-12",
+            "50604050-13",
+            "50604050-14",
+            "50604050-99",
+            "50604060-00",
+            "50604060-01",
+            "50604060-02",
+            "50604060-03",
+            "50604060-04",
+            "50604060-99",
+            "50604070-00",
+            "50604070-01",
+            "50604070-02",
+            "50604080-00",
+            "50604080-01",
+            "50604080-02",
+            "50604080-99",
+            "50604090-00",
+            "50604090-01",
+            "50604090-99",
+            "50605000-00",
+            "50605010-00",
+            "50605010-01",
+            "50605010-02",
+            "50605010-03",
+            "50605010-04",
+            "50605010-99",
+            "50606000-00",
+            "50606010-00",
+            "50606020-00",
+            "50606990-00"});
+            this.uacs_Code.Location = new System.Drawing.Point(15, 8);
+            this.uacs_Code.Name = "uacs_Code";
+            this.uacs_Code.Size = new System.Drawing.Size(682, 25);
+            this.uacs_Code.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(31, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 17);
+            this.label4.TabIndex = 39;
+            this.label4.Text = "UASC Code";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(439, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 17);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Date";
+            // 
+            // date
+            // 
+            this.date.CalendarFont = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.CalendarMonthBackground = System.Drawing.Color.Gainsboro;
+            this.date.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Location = new System.Drawing.Point(442, 93);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(304, 25);
+            this.date.TabIndex = 30;
+            // 
+            // customRoundedPanel1
+            // 
+            this.customRoundedPanel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel1.BorderRadius = 10;
+            this.customRoundedPanel1.Controls.Add(this.gjno);
+            this.customRoundedPanel1.Location = new System.Drawing.Point(34, 86);
+            this.customRoundedPanel1.Name = "customRoundedPanel1";
+            this.customRoundedPanel1.Size = new System.Drawing.Size(354, 41);
+            this.customRoundedPanel1.TabIndex = 29;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(31, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 17);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "GJ Number";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(21, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(343, 24);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Update Journal Entry Information";
             // 
             // UpdateGJ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1226, 624);
+            this.ClientSize = new System.Drawing.Size(804, 884);
+            this.Controls.Add(this.customRoundedPanel2);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.cancel);
+            this.Controls.Add(this.createEntryBtn);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.customRoundedPanel4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.customRoundedPanel3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.date);
+            this.Controls.Add(this.customRoundedPanel1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UpdateGJ";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateGJ";
+            this.customRoundedPanel2.ResumeLayout(false);
+            this.customRoundedPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.customRoundedPanel4.ResumeLayout(false);
+            this.customRoundedPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.customRoundedPanel3.ResumeLayout(false);
+            this.customRoundedPanel1.ResumeLayout(false);
+            this.customRoundedPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private Controls.CustomRoundedPanel customRoundedPanel2;
+        private System.Windows.Forms.TextBox particulars;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private Controls.CustomRoundedButton cancel;
+        private Controls.CustomRoundedButton createEntryBtn;
+        private System.Windows.Forms.Label label6;
+        private Controls.CustomRoundedPanel customRoundedPanel4;
+        private System.Windows.Forms.TextBox amount;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox gjno;
+        private Controls.CustomRoundedPanel customRoundedPanel3;
+        private System.Windows.Forms.ComboBox uacs_Code;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker date;
+        private Controls.CustomRoundedPanel customRoundedPanel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }
