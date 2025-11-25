@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
             var columnName = dataGridView1.Columns[e.ColumnIndex].Name;
             if (columnName == nameof(BtnEdit))
             {
-                using (var updateForm = new UpdateSupplierInfo())
+                using (var updateForm = new UpdateSupplierInfo(supplierId))
                 {
                     updateForm.ShowDialog(this);
                 }
@@ -105,7 +105,7 @@ namespace WindowsFormsApp1
             }
             else if (columnName == nameof(BtnView))
             {
-                using (var viewForm = new ViewSupplier())
+                using (var viewForm = new ViewSupplier(supplierId))
                 {
                     viewForm.ShowDialog(this);
                 }
