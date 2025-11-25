@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             MakeFieldsReadOnly();
             InitializeDocumentControls();
+            ExportToCSV.Click += ExportToCSV_Click;
         }
 
         public ViewIAR(int iarId) : this()
@@ -347,6 +348,89 @@ namespace WindowsFormsApp1
                 : iarNo.Text.Trim().Replace(" ", "_");
 
             return $"{baseName}{extension}";
+        }
+
+        private void ExportToCSV_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Export IAR Data to CSV";
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                string iarNumber = string.IsNullOrWhiteSpace(iarNo.Text) ? "IAR" : iarNo.Text.Trim().Replace(" ", "_");
+                saveFileDialog.FileName = $"IAR_{iarNumber}_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                try
+                {
+                    using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                    {
+                        // Write IAR Header Information Section
+                        writer.WriteLine("IAR INFORMATION");
+                        writer.WriteLine("================");
+                        writer.WriteLine($"IAR Number,{EscapeForCsv(iarNo.Text)}");
+                        writer.WriteLine($"IAR Date,{EscapeForCsv(iar_date.Value.ToShortDateString())}");
+                        writer.WriteLine($"Fund Cluster,{EscapeForCsv(FundCluster.Text)}");
+                        writer.WriteLine($"Supplier Name,{EscapeForCsv(supplierName.Text)}");
+                        writer.WriteLine($"PO Number,{EscapeForCsv(po_number.Text)}");
+                        writer.WriteLine($"PO Date,{EscapeForCsv(po_date.Value.ToShortDateString())}");
+                        writer.WriteLine($"Requisitioning Office,{EscapeForCsv(RequisitioningOffice.Text)}");
+                        writer.WriteLine($"Requisitioning Center Code,{EscapeForCsv(RequistioningCnterCode.Text)}");
+                        writer.WriteLine($"Invoice Number,{EscapeForCsv(InvoiceNumber.Text)}");
+                        writer.WriteLine($"Date Inspected,{EscapeForCsv(date_inspected.Value.ToShortDateString())}");
+                        writer.WriteLine($"Inspector Officer,{EscapeForCsv(InspectorOfficer.Text)}");
+                        writer.WriteLine($"Date Received,{EscapeForCsv(date_received.Value.ToShortDateString())}");
+                        writer.WriteLine($"Property Custodian Officer,{EscapeForCsv(PropertyCustodianOfficer.Text)}");
+                        writer.WriteLine($"Received Status,{EscapeForCsv(ReceivedStatus.Text)}");
+                        writer.WriteLine($"Total Amount,{EscapeForCsv(TotalAmount.Text)}");
+                        writer.WriteLine($"Remarks,{EscapeForCsv(textBox11.Text)}");
+                        writer.WriteLine(); // Empty line separator
+
+                        // Write Stock Items Section
+                        writer.WriteLine("STOCK ITEMS");
+                        writer.WriteLine("===========");
+                        writer.WriteLine("Stock Number,Description,Unit,Quantity");
+
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.IsNewRow)
+                            {
+                                continue;
+                            }
+
+                            string stockNo = EscapeForCsv(row.Cells[0].Value?.ToString());
+                            string description = EscapeForCsv(row.Cells[1].Value?.ToString());
+                            string unit = EscapeForCsv(row.Cells[2].Value?.ToString());
+                            string quantity = EscapeForCsv(row.Cells[3].Value?.ToString());
+
+                            writer.WriteLine($"{stockNo},{description},{unit},{quantity}");
+                        }
+                    }
+
+                    MessageBox.Show("IAR data exported successfully.", "Export Complete",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Unable to export IAR data: {ex.Message}", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private string EscapeForCsv(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+
+            bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
+            string escaped = value.Replace("\"", "\"\"");
+            return mustQuote ? $"\"{escaped}\"" : escaped;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
