@@ -101,7 +101,16 @@ namespace WindowsFormsApp1
 
                                 // Since password_hash is not hashed yet, compare directly
                                 string storedPassword = reader["password_hash"]?.ToString() ?? "";
-                                return password.Equals(storedPassword);
+                                if (password.Equals(storedPassword))
+                                {
+                                    MessageBox.Show(
+                                        "Welcome user!",
+                                        "Login Successful",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information
+                                    );
+                                    return true;
+                                }
                             }
                         }
                     }
@@ -110,9 +119,10 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Login error: {ex.Message}");
                 MessageBox.Show(
-                    $"Database error: {ex.Message}",
-                    "Connection Error",
+                    "We could not complete the sign-in right now. Please try again or contact your system administrator.",
+                    "Connection Issue",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
