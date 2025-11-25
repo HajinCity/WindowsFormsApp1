@@ -47,12 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapter\Dashboard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Adapter\Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
-    </Compile>
     <Compile Include="AddDevEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,9 +219,6 @@
     <Compile Include="ViewSupplier.Designer.cs">
       <DependentUpon>ViewSupplier.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Adapter\Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AddDevEntry.resx">
       <DependentUpon>AddDevEntry.cs</DependentUpon>
     </EmbeddedResource>
