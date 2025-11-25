@@ -33,13 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,7 +42,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.addEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
@@ -116,51 +116,22 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Journal Entries";
             // 
-            // Column1
+            // ExportToCSV
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "GJ Number";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Date";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Particulars";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "UACS Code";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.HeaderText = "Amount";
-            this.Column5.Name = "Column5";
-            // 
-            // BtnEdit
-            // 
-            this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BtnEdit.HeaderText = "";
-            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
-            this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Width = 5;
-            // 
-            // BtnView
-            // 
-            this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BtnView.HeaderText = "";
-            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
-            this.BtnView.Name = "BtnView";
-            this.BtnView.Width = 5;
+            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
+            this.ExportToCSV.BorderRadius = 10;
+            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportToCSV.FlatAppearance.BorderSize = 0;
+            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportToCSV.Location = new System.Drawing.Point(979, 662);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportToCSV.TabIndex = 13;
+            this.ExportToCSV.Text = "Export to Excel";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
             // 
             // gradientPanel1
             // 
@@ -251,22 +222,53 @@
             this.addEntryBtn.Text = "Add Entry";
             this.addEntryBtn.UseVisualStyleBackColor = false;
             // 
-            // ExportToCSV
+            // Column1
             // 
-            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
-            this.ExportToCSV.BorderRadius = 10;
-            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.ExportToCSV.FlatAppearance.BorderSize = 0;
-            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
-            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.ExportToCSV.Location = new System.Drawing.Point(979, 662);
-            this.ExportToCSV.Name = "ExportToCSV";
-            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
-            this.ExportToCSV.TabIndex = 13;
-            this.ExportToCSV.Text = "Export to Excel";
-            this.ExportToCSV.UseVisualStyleBackColor = false;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "GJ Number";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Date";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Particulars";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.HeaderText = "UACS Code";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.HeaderText = "Amount";
+            this.Column5.Name = "Column5";
+            // 
+            // BtnEdit
+            // 
+            this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BtnEdit.HeaderText = "";
+            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
+            this.BtnEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Width = 5;
+            // 
+            // BtnView
+            // 
+            this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BtnView.HeaderText = "";
+            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
+            this.BtnView.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.BtnView.Name = "BtnView";
+            this.BtnView.Width = 5;
             // 
             // GeneralJournal
             // 
@@ -309,6 +311,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
+        private Controls.CustomRoundedButton ExportToCSV;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -316,6 +319,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewImageColumn BtnEdit;
         private System.Windows.Forms.DataGridViewImageColumn BtnView;
-        private Controls.CustomRoundedButton ExportToCSV;
     }
 }
