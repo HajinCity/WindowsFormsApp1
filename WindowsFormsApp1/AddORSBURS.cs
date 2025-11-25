@@ -445,11 +445,11 @@ namespace WindowsFormsApp1
                 string query = @"INSERT INTO ora_burono
                                 (serial_no, date, fund_cluster, payee, office, address,
                                  responsibility_center, particulars, mfo_pap, uacs_oc,
-                                 amount, approving_officer, remarks, documents)
+                                 amount, approving_officer, remarks, documents, status)
                                 VALUES
                                 (@serial_no, @date, @fund_cluster, @payee, @office, @address,
                                  @responsibility_center, @particulars, @mfo_pap, @uacs_oc,
-                                 @amount, @approving_officer, @remarks, @documents)";
+                                 @amount, @approving_officer, @remarks, @documents, @status)";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
@@ -466,6 +466,7 @@ namespace WindowsFormsApp1
                     command.Parameters.AddWithValue("@amount", amountValue);
                     command.Parameters.AddWithValue("@approving_officer", approvingOfficer.Text.Trim());
                     command.Parameters.AddWithValue("@remarks", remarks.Text.Trim());
+                    command.Parameters.AddWithValue("@status", "Pending");
 
                     var documentParam = command.Parameters.Add("@documents", MySqlDbType.LongBlob);
                     if (documentBytes == null || documentBytes.Length == 0)

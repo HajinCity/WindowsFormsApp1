@@ -43,7 +43,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.addDEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.ExportCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
@@ -249,22 +249,22 @@
             this.textBox1.Size = new System.Drawing.Size(296, 26);
             this.textBox1.TabIndex = 0;
             // 
-            // addDEVbtn
+            // ExportCSV
             // 
-            this.addDEVbtn.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.addDEVbtn.BorderRadius = 10;
-            this.addDEVbtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.addDEVbtn.FlatAppearance.BorderSize = 0;
-            this.addDEVbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addDEVbtn.ForeColor = System.Drawing.Color.White;
-            this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(1220, 795);
-            this.addDEVbtn.Name = "addDEVbtn";
-            this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
-            this.addDEVbtn.TabIndex = 51;
-            this.addDEVbtn.Text = "Export Excel";
-            this.addDEVbtn.UseVisualStyleBackColor = false;
+            this.ExportCSV.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ExportCSV.BorderRadius = 10;
+            this.ExportCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportCSV.FlatAppearance.BorderSize = 0;
+            this.ExportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportCSV.Location = new System.Drawing.Point(1220, 795);
+            this.ExportCSV.Name = "ExportCSV";
+            this.ExportCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportCSV.TabIndex = 51;
+            this.ExportCSV.Text = "Export Excel";
+            this.ExportCSV.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -359,7 +359,7 @@
             this.BtnEdit.HeaderText = "";
             this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Width = 21;
+            this.BtnEdit.Width = 5;
             // 
             // BtnView
             // 
@@ -367,7 +367,7 @@
             this.BtnView.HeaderText = "";
             this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
             this.BtnView.Name = "BtnView";
-            this.BtnView.Width = 21;
+            this.BtnView.Width = 5;
             // 
             // OrsBursForm
             // 
@@ -376,7 +376,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1475, 894);
-            this.Controls.Add(this.addDEVbtn);
+            this.Controls.Add(this.ExportCSV);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
@@ -413,7 +413,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private Controls.CustomRoundedButton addDEVbtn;
+        private Controls.CustomRoundedButton ExportCSV;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Controls.CustomRoundedButton ParseRangeBtn;
