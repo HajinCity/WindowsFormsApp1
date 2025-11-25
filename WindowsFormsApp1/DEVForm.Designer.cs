@@ -133,7 +133,7 @@
             this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDEVbtn.ForeColor = System.Drawing.Color.White;
             this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(987, 28);
+            this.addDEVbtn.Location = new System.Drawing.Point(1137, 45);
             this.addDEVbtn.Name = "addDEVbtn";
             this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
             this.addDEVbtn.TabIndex = 21;
