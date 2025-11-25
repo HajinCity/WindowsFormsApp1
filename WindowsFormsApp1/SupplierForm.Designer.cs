@@ -41,7 +41,6 @@
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.PrintData = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -182,23 +181,6 @@
             this.ExportToCSV.Text = "Export to Excel";
             this.ExportToCSV.UseVisualStyleBackColor = false;
             // 
-            // PrintData
-            // 
-            this.PrintData.BackColor = System.Drawing.Color.Turquoise;
-            this.PrintData.BorderRadius = 10;
-            this.PrintData.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.PrintData.FlatAppearance.BorderSize = 0;
-            this.PrintData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PrintData.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrintData.ForeColor = System.Drawing.Color.White;
-            this.PrintData.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.PrintData.Location = new System.Drawing.Point(769, 772);
-            this.PrintData.Name = "PrintData";
-            this.PrintData.Size = new System.Drawing.Size(204, 55);
-            this.PrintData.TabIndex = 11;
-            this.PrintData.Text = "Print Data";
-            this.PrintData.UseVisualStyleBackColor = false;
-            // 
             // addSupplierBtn
             // 
             this.addSupplierBtn.BackColor = System.Drawing.Color.Turquoise;
@@ -253,7 +235,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1226, 876);
             this.Controls.Add(this.ExportToCSV);
-            this.Controls.Add(this.PrintData);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addSupplierBtn);
             this.Controls.Add(this.panel1);
@@ -292,7 +273,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewImageColumn BtnEdit;
         private System.Windows.Forms.DataGridViewImageColumn BtnView;
-        private Controls.CustomRoundedButton PrintData;
         private Controls.CustomRoundedButton ExportToCSV;
     }
 }

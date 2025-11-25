@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using WindowsFormsApp1.BackendModel;
@@ -29,11 +31,77 @@ namespace WindowsFormsApp1
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             ConfigureActionColumns();
             textBox1.TextChanged += TextBox1_TextChanged;
+            ExportToCSV.Click += ExportToCSV_Click;
         }
 
         private void SupplierForm_Load(object sender, EventArgs e)
         {
             LoadSuppliers();
+        }
+
+        private void ExportToCSV_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("There is no data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Export Suppliers";
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                saveFileDialog.FileName = $"suppliers_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                try
+                {
+                    using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                    {
+                        writer.WriteLine("Supplier Name,Address,Contact Person,Contact Info,Bank Name");
+
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.IsNewRow)
+                            {
+                                continue;
+                            }
+
+                            string name = EscapeForCsv(row.Cells["Column1"].Value?.ToString());
+                            string address = EscapeForCsv(row.Cells["Column2"].Value?.ToString());
+                            string contactPerson = EscapeForCsv(row.Cells["Column3"].Value?.ToString());
+                            string contactInfo = EscapeForCsv(row.Cells["Column4"].Value?.ToString());
+                            string bankName = EscapeForCsv(row.Cells["Column5"].Value?.ToString());
+
+                            writer.WriteLine($"{name},{address},{contactPerson},{contactInfo},{bankName}");
+                        }
+                    }
+
+                    MessageBox.Show("Suppliers exported successfully.", "Export Complete",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Unable to export suppliers: {ex.Message}", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private string EscapeForCsv(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+
+            bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
+            string escaped = value.Replace("\"", "\"\"");
+            return mustQuote ? $"\"{escaped}\"" : escaped;
         }
 
         private void ConfigureActionColumns()
