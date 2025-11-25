@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,9 @@ namespace WindowsFormsApp1
             this.Load += OrsBursForm_Load;
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             pictureBox2.Click += PictureBox2_Click;
+            textBox1.TextChanged += TextBox1_TextChanged;
+            ParseRangeBtn.Click += ParseRangeBtn_Click;
+            ExportCSV.Click += ExportToCSV_Click;
         }
 
         private void OrsBursForm_Load(object sender, EventArgs e)
@@ -66,7 +70,7 @@ namespace WindowsFormsApp1
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
                     string query = @"SELECT ora_burono, serial_no, date, fund_cluster, payee, office, 
-                                     responsibility_center, approving_officer, amount
+                                     responsibility_center, approving_officer, amount, status
                                      FROM ora_burono
                                      ORDER BY date DESC, serial_no";
 
@@ -86,7 +90,7 @@ namespace WindowsFormsApp1
                                 ResponsibilityCenter = reader["responsibility_center"]?.ToString(),
                                 ApprovingOfficer = reader["approving_officer"]?.ToString(),
                                 Amount = reader["amount"]?.ToString(),
-                                Status = "" // Status column doesn't exist in table, leaving empty for now
+                                Status = reader["status"]?.ToString() ?? ""
                             });
                         }
                     }
@@ -157,13 +161,153 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            ApplyOrsBursFilter();
+        }
+
+        private void ApplyOrsBursFilter()
+        {
+            string term = (textBox1.Text ?? string.Empty).Trim().ToLowerInvariant();
+            DateTime startDate = dateTimePicker1.Value.Date;
+            DateTime endDate = dateTimePicker2.Value.Date;
+            string selectedStatus = comboBox1.SelectedItem?.ToString();
+
+            var filtered = orsBursCache.Where(entry =>
+            {
+                // Date range filter
+                bool dateMatch = (entry.Date == DateTime.MinValue) ||
+                                 (entry.Date.Date >= startDate && entry.Date.Date <= endDate);
+
+                // Status filter
+                bool statusMatch = string.IsNullOrEmpty(selectedStatus) ||
+                                   (entry.Status ?? "").Equals(selectedStatus, StringComparison.OrdinalIgnoreCase);
+
+                // Search term filter
+                bool searchMatch = string.IsNullOrEmpty(term) ||
+                                   (entry.SerialNo ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.FundCluster ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.Payee ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.Office ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.ResponsibilityCenter ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.ApprovingOfficer ?? string.Empty).ToLowerInvariant().Contains(term);
+
+                return dateMatch && statusMatch && searchMatch;
+            });
+
+            dataGridView1.Rows.Clear();
+            foreach (var entry in filtered)
+            {
+                int rowIndex = dataGridView1.Rows.Add(
+                    entry.SerialNo,
+                    entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
+                    entry.FundCluster,
+                    entry.Payee,
+                    entry.Office,
+                    entry.ResponsibilityCenter,
+                    entry.ApprovingOfficer,
+                    entry.Amount,
+                    entry.Status);
+                dataGridView1.Rows[rowIndex].Tag = entry.Id;
+            }
+        }
+
+        private void ParseRangeBtn_Click(object sender, EventArgs e)
+        {
+            // Validate date range
+            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
+            {
+                MessageBox.Show(
+                    "Start date cannot be greater than end date. Please adjust the date range.",
+                    "Invalid Date Range",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Apply the filters (date range, status, and search)
+            ApplyOrsBursFilter();
+        }
+
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             // Refresh and display all data from ora_burono table
             dateTimePicker1.Value = DateTime.Today.AddYears(-10);
             dateTimePicker2.Value = DateTime.Today.AddYears(1);
             textBox1.Clear();
+            comboBox1.SelectedIndex = -1; // Clear status filter
             LoadOrsBursData();
+        }
+
+        private void ExportToCSV_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("There is no data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Export ORS-BURS Data";
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                saveFileDialog.FileName = $"ors_burs_data_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                try
+                {
+                    using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                    {
+                        // Write header row
+                        writer.WriteLine("Serial No.,Date,Fund Cluster,Payee,Office,Responsibility Center,Approving Officer,Total Amount,Status");
+
+                        // Write data rows
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.IsNewRow)
+                            {
+                                continue;
+                            }
+
+                            string serialNo = EscapeForCsv(row.Cells[0].Value?.ToString());
+                            string date = EscapeForCsv(row.Cells[1].Value?.ToString());
+                            string fundCluster = EscapeForCsv(row.Cells[2].Value?.ToString());
+                            string payee = EscapeForCsv(row.Cells[3].Value?.ToString());
+                            string office = EscapeForCsv(row.Cells[4].Value?.ToString());
+                            string responsibilityCenter = EscapeForCsv(row.Cells[5].Value?.ToString());
+                            string approvingOfficer = EscapeForCsv(row.Cells[6].Value?.ToString());
+                            string amount = EscapeForCsv(row.Cells[7].Value?.ToString());
+                            string status = EscapeForCsv(row.Cells[8].Value?.ToString());
+
+                            writer.WriteLine($"{serialNo},{date},{fundCluster},{payee},{office},{responsibilityCenter},{approvingOfficer},{amount},{status}");
+                        }
+                    }
+
+                    MessageBox.Show("ORS-BURS data exported successfully.", "Export Complete",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Unable to export ORS-BURS data: {ex.Message}", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private string EscapeForCsv(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+
+            bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
+            string escaped = value.Replace("\"", "\"\"");
+            return mustQuote ? $"\"{escaped}\"" : escaped;
         }
     }
 }
