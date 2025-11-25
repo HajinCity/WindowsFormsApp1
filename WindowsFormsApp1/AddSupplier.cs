@@ -429,13 +429,14 @@ namespace WindowsFormsApp1
                     command.Parameters.AddWithValue("@accountNumber", accountNum.Text.Trim());
                     command.Parameters.AddWithValue("@status", status.Text.Trim());
 
+                    var documentParam = command.Parameters.Add("@documents", MySqlDbType.LongBlob);
                     if (documentBytes == null || documentBytes.Length == 0)
                     {
-                        command.Parameters.Add("@documents", MySqlDbType.Blob).Value = DBNull.Value;
+                        documentParam.Value = DBNull.Value;
                     }
                     else
                     {
-                        command.Parameters.Add("@documents", MySqlDbType.Blob).Value = documentBytes;
+                        documentParam.Value = documentBytes;
                     }
 
                     command.ExecuteNonQuery();

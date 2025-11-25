@@ -99,9 +99,11 @@ namespace WindowsFormsApp1
             {
                 using (var updateForm = new UpdateSupplierInfo(supplierId))
                 {
-                    updateForm.ShowDialog(this);
+                    if (updateForm.ShowDialog(this) == DialogResult.OK)
+                    {
+                        LoadSuppliers();
+                    }
                 }
-                LoadSuppliers();
             }
             else if (columnName == nameof(BtnView))
             {

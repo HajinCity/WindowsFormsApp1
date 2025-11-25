@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
     {
         private readonly int supplierId;
         private byte[] documentBytes;
+        private string storedDocumentExtension;
         private Button downloadDocumentButton;
         private Label documentStatusLabel;
 
@@ -153,6 +154,7 @@ namespace WindowsFormsApp1
                             {
                                 documentBytes = null;
                             }
+                            storedDocumentExtension = GuessFileExtension(documentBytes);
 
                             UpdateDocumentSection();
                         }
@@ -182,8 +184,17 @@ namespace WindowsFormsApp1
 
             if (hasDocument)
             {
-                documentStatusLabel.Text = "Document available. Click the button above to download or view it.";
+                string displayExtension = storedDocumentExtension;
+                if (string.IsNullOrEmpty(displayExtension))
+                {
+                    displayExtension = GuessFileExtension(documentBytes);
+                }
+                documentStatusLabel.Text = string.IsNullOrEmpty(displayExtension)
+                    ? "Document available. Click the button below to download."
+                    : $"Document available ({displayExtension}). Click the button below to download.";
             }
+
+            PositionDocumentControls();
         }
 
         private void DownloadDocumentButton_Click(object sender, EventArgs e)
@@ -198,11 +209,11 @@ namespace WindowsFormsApp1
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Title = "Save Supplier Document";
-                saveFileDialog.Filter = "All Files|*.*";
-                string defaultName = string.IsNullOrWhiteSpace(supplierName.Text)
-                    ? "supplier_document"
-                    : $"{supplierName.Text.Trim().Replace(" ", "_")}_document";
-                saveFileDialog.FileName = defaultName;
+                string suggestedName = GetSuggestedDocumentFileName();
+                string extension = Path.GetExtension(suggestedName);
+                saveFileDialog.Filter = $"Document (*{extension})|*{extension}|All Files|*.*";
+                saveFileDialog.DefaultExt = extension.TrimStart('.');
+                saveFileDialog.FileName = suggestedName;
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -239,6 +250,54 @@ namespace WindowsFormsApp1
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private string GuessFileExtension(byte[] data)
+        {
+            if (data == null || data.Length < 4)
+            {
+                return ".bin";
+            }
+
+            if (data[0] == 0x25 && data[1] == 0x50 && data[2] == 0x44 && data[3] == 0x46)
+                return ".pdf";
+
+            if (data[0] == 0x89 && data[1] == 0x50 && data[2] == 0x4E && data[3] == 0x47)
+                return ".png";
+
+            if (data[0] == 0xFF && data[1] == 0xD8)
+                return ".jpg";
+
+            if (data[0] == 0x50 && data[1] == 0x4B && data[2] == 0x03 && data[3] == 0x04)
+                return ".docx";
+
+            if (data[0] == 0xD0 && data[1] == 0xCF && data[2] == 0x11 && data[3] == 0xE0)
+                return ".doc";
+
+            return ".bin";
+        }
+
+        private string GetSuggestedDocumentFileName()
+        {
+            string extension = storedDocumentExtension;
+            if (string.IsNullOrEmpty(extension))
+            {
+                extension = GuessFileExtension(documentBytes);
+            }
+            if (string.IsNullOrEmpty(extension))
+            {
+                extension = ".bin";
+            }
+            if (!extension.StartsWith("."))
+            {
+                extension = "." + extension;
+            }
+
+            string baseName = string.IsNullOrWhiteSpace(supplierName.Text)
+                ? "supplier_document"
+                : supplierName.Text.Trim().Replace(" ", "_");
+
+            return $"{baseName}{extension}";
         }
     }
 }
