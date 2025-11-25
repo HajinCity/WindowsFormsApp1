@@ -34,9 +34,10 @@
             this.ReceivedStatus = new System.Windows.Forms.TextBox();
             this.TotalAmount = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            this.createIAREntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.UpdateIARbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label19 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -80,7 +81,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +89,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.customRoundedPanel12.SuspendLayout();
             this.customRoundedPanel11.SuspendLayout();
             this.customRoundedPanel10.SuspendLayout();
@@ -102,7 +103,6 @@
             this.customRoundedPanel2.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -174,22 +174,22 @@
             this.textBox11.Size = new System.Drawing.Size(653, 52);
             this.textBox11.TabIndex = 0;
             // 
-            // createIAREntryBtn
+            // UpdateIARbtn
             // 
-            this.createIAREntryBtn.BackColor = System.Drawing.Color.SeaGreen;
-            this.createIAREntryBtn.BorderRadius = 10;
-            this.createIAREntryBtn.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.createIAREntryBtn.FlatAppearance.BorderSize = 0;
-            this.createIAREntryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createIAREntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createIAREntryBtn.ForeColor = System.Drawing.Color.White;
-            this.createIAREntryBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.createIAREntryBtn.Location = new System.Drawing.Point(901, 1369);
-            this.createIAREntryBtn.Name = "createIAREntryBtn";
-            this.createIAREntryBtn.Size = new System.Drawing.Size(215, 51);
-            this.createIAREntryBtn.TabIndex = 73;
-            this.createIAREntryBtn.Text = "Create IAR Entry";
-            this.createIAREntryBtn.UseVisualStyleBackColor = false;
+            this.UpdateIARbtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.UpdateIARbtn.BorderRadius = 10;
+            this.UpdateIARbtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.UpdateIARbtn.FlatAppearance.BorderSize = 0;
+            this.UpdateIARbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateIARbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateIARbtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateIARbtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.UpdateIARbtn.Location = new System.Drawing.Point(901, 1369);
+            this.UpdateIARbtn.Name = "UpdateIARbtn";
+            this.UpdateIARbtn.Size = new System.Drawing.Size(215, 51);
+            this.UpdateIARbtn.TabIndex = 73;
+            this.UpdateIARbtn.Text = "Update IAR Entry";
+            this.UpdateIARbtn.UseVisualStyleBackColor = false;
             // 
             // label19
             // 
@@ -211,6 +211,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1073, 96);
             this.panel1.TabIndex = 72;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
+            this.pictureBox1.Location = new System.Drawing.Point(518, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(52, 47);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
             // 
             // label18
             // 
@@ -662,16 +672,6 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
-            this.pictureBox1.Location = new System.Drawing.Point(518, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(52, 47);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dataGridView1);
@@ -738,7 +738,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.cancel);
-            this.Controls.Add(this.createIAREntryBtn);
+            this.Controls.Add(this.UpdateIARbtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label15);
@@ -780,6 +780,7 @@
             this.Text = "UpdateIARForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.customRoundedPanel12.ResumeLayout(false);
             this.customRoundedPanel12.PerformLayout();
             this.customRoundedPanel11.ResumeLayout(false);
@@ -805,7 +806,6 @@
             this.customRoundedPanel1.ResumeLayout(false);
             this.customRoundedPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -822,7 +822,7 @@
         private System.Windows.Forms.TextBox ReceivedStatus;
         private System.Windows.Forms.TextBox TotalAmount;
         private System.Windows.Forms.TextBox textBox11;
-        private Controls.CustomRoundedButton createIAREntryBtn;
+        private Controls.CustomRoundedButton UpdateIARbtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel1;

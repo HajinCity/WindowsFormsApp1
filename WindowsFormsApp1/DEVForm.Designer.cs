@@ -85,7 +85,7 @@
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(51, 268);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1131, 569);
+            this.panel1.Size = new System.Drawing.Size(1131, 482);
             this.panel1.TabIndex = 20;
             // 
             // dataGridView1
@@ -106,7 +106,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 569);
+            this.dataGridView1.Size = new System.Drawing.Size(1131, 482);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
