@@ -32,16 +32,11 @@
             this.particulars = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.cancel = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.createEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.label6 = new System.Windows.Forms.Label();
             this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.amount = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.gjno = new System.Windows.Forms.TextBox();
             this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.uacs_Code = new System.Windows.Forms.ComboBox();
@@ -51,13 +46,18 @@
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.customRoundedPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.customRoundedPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // customRoundedPanel2
@@ -103,28 +103,6 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label11.Location = new System.Drawing.Point(245, 53);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(214, 17);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Click to upload or drag and drop";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(252, 85);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(201, 17);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "PDF,JPG,PNG,DOCX (20MB)";
-            // 
             // cancel
             // 
             this.cancel.BackColor = System.Drawing.Color.Gainsboro;
@@ -159,17 +137,6 @@
             this.createEntryBtn.Text = "Update Entry";
             this.createEntryBtn.UseVisualStyleBackColor = false;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(22, 475);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(207, 17);
-            this.label6.TabIndex = 43;
-            this.label6.Text = "Upload Supporting Documents";
-            // 
             // customRoundedPanel4
             // 
             this.customRoundedPanel4.BackColor = System.Drawing.Color.Gainsboro;
@@ -200,26 +167,6 @@
             this.label5.Size = new System.Drawing.Size(58, 17);
             this.label5.TabIndex = 41;
             this.label5.Text = "Amount";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
-            this.pictureBox1.Location = new System.Drawing.Point(327, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(52, 47);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Location = new System.Drawing.Point(40, 495);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(706, 119);
-            this.panel1.TabIndex = 36;
             // 
             // gjno
             // 
@@ -1412,6 +1359,59 @@
             this.label3.TabIndex = 37;
             this.label3.Text = "Update Journal Entry Information";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(252, 85);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(201, 17);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "PDF,JPG,PNG,DOCX (20MB)";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label11.Location = new System.Drawing.Point(245, 53);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(214, 17);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Click to upload or drag and drop";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
+            this.pictureBox1.Location = new System.Drawing.Point(327, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(52, 47);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Location = new System.Drawing.Point(40, 495);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(706, 119);
+            this.panel1.TabIndex = 36;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(22, 475);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(207, 17);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Upload Supporting Documents";
+            // 
             // UpdateGJ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1443,12 +1443,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.customRoundedPanel4.ResumeLayout(false);
             this.customRoundedPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.customRoundedPanel3.ResumeLayout(false);
             this.customRoundedPanel1.ResumeLayout(false);
             this.customRoundedPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1460,16 +1460,11 @@
         private System.Windows.Forms.TextBox particulars;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private Controls.CustomRoundedButton cancel;
         private Controls.CustomRoundedButton createEntryBtn;
-        private System.Windows.Forms.Label label6;
         private Controls.CustomRoundedPanel customRoundedPanel4;
         private System.Windows.Forms.TextBox amount;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox gjno;
         private Controls.CustomRoundedPanel customRoundedPanel3;
         private System.Windows.Forms.ComboBox uacs_Code;
@@ -1479,5 +1474,10 @@
         private Controls.CustomRoundedPanel customRoundedPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label6;
     }
 }
