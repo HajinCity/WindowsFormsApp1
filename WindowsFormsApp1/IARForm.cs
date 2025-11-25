@@ -32,14 +32,30 @@ namespace WindowsFormsApp1
             InitializeComponent();
             addIARbtn.Click += AddIARbtn_Click;
             textBox1.TextChanged += TextBox1_TextChanged;
-            dateTimePicker1.ValueChanged += DateFilter_ValueChanged;
-            dateTimePicker2.ValueChanged += DateFilter_ValueChanged;
+            ExportToCSV.Click += ExportToCSV_Click;
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
+            pictureBox2.Click += PictureBox2_Click;
+            ParseRangeBtn.Click += ParseRangeBtn_Click;
             this.Load += IARForm_Load;
         }
 
         private void IARForm_Load(object sender, EventArgs e)
         {
+            // Set initial date range to show all data (wide range)
+            if (!hasInitializedRange)
+            {
+                suppressFilterEvents = true;
+                try
+                {
+                    dateTimePicker1.Value = DateTime.Today.AddYears(-10); // Start date: 10 years ago
+                    dateTimePicker2.Value = DateTime.Today.AddYears(1); // End date: 1 year from now
+                }
+                finally
+                {
+                    suppressFilterEvents = false;
+                    hasInitializedRange = true;
+                }
+            }
             LoadIarReports();
         }
 
@@ -85,13 +101,8 @@ namespace WindowsFormsApp1
                     }
                 }
 
-                if (!hasInitializedRange)
-                {
-                    SetInitialDateRange();
-                    hasInitializedRange = true;
-                }
-
-                ApplyIarFilter();
+                // Display all data initially
+                DisplayAllData();
             }
             catch (Exception ex)
             {
@@ -108,43 +119,20 @@ namespace WindowsFormsApp1
             ApplyIarFilter();
         }
 
-        private void DateFilter_ValueChanged(object sender, EventArgs e)
+        private void DisplayAllData()
         {
-            if (suppressFilterEvents)
+            // Display all data from inspection_acceptance_report table without any filtering
+            dataGridView1.Rows.Clear();
+            foreach (var entry in iarCache)
             {
-                return;
-            }
-
-            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
-            {
-                dateTimePicker2.Value = dateTimePicker1.Value.Date;
-            }
-
-            ApplyIarFilter();
-        }
-
-        private void SetInitialDateRange()
-        {
-            suppressFilterEvents = true;
-            try
-            {
-                var datedEntries = iarCache.Where(entry => entry.Date != DateTime.MinValue).ToList();
-                DateTime today = DateTime.Today;
-
-                if (datedEntries.Count > 0)
-                {
-                    dateTimePicker1.Value = datedEntries.Min(entry => entry.Date).Date;
-                    dateTimePicker2.Value = datedEntries.Max(entry => entry.Date).Date;
-                }
-                else
-                {
-                    dateTimePicker1.Value = today.AddYears(-1);
-                    dateTimePicker2.Value = today;
-                }
-            }
-            finally
-            {
-                suppressFilterEvents = false;
+                int rowIndex = dataGridView1.Rows.Add(
+                    entry.IarNo,
+                    entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
+                    entry.Supplier,
+                    entry.PoNumber,
+                    entry.RequisitioningOffice,
+                    entry.TotalAmount);
+                dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
 
@@ -176,6 +164,113 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void ParseRangeBtn_Click(object sender, EventArgs e)
+        {
+            // Validate date range
+            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
+            {
+                MessageBox.Show(
+                    "Start date cannot be greater than end date. Please adjust the date range.",
+                    "Invalid Date Range",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Apply the date range filter
+            ApplyIarFilter();
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            // Refresh and display all data from inspection_acceptance_report table
+            suppressFilterEvents = true;
+            try
+            {
+                // Reset date pickers to wide range to show all data
+                dateTimePicker1.Value = DateTime.Today.AddYears(-10);
+                dateTimePicker2.Value = DateTime.Today.AddYears(1);
+            }
+            finally
+            {
+                suppressFilterEvents = false;
+            }
+
+            // Clear search text
+            textBox1.Clear();
+
+            // Reload and display all data
+            LoadIarReports();
+        }
+
+        private void ExportToCSV_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("There is no data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Export IAR Data";
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                saveFileDialog.FileName = $"iar_data_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                try
+                {
+                    using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                    {
+                        // Write header row
+                        writer.WriteLine("IAR Number,Date,Supplier,PO Number,Requisitioning Office,Total Amount");
+
+                        // Write data rows
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.IsNewRow)
+                            {
+                                continue;
+                            }
+
+                            string iarNo = EscapeForCsv(row.Cells[0].Value?.ToString());
+                            string date = EscapeForCsv(row.Cells[1].Value?.ToString());
+                            string supplier = EscapeForCsv(row.Cells[2].Value?.ToString());
+                            string poNumber = EscapeForCsv(row.Cells[3].Value?.ToString());
+                            string requisitioningOffice = EscapeForCsv(row.Cells[4].Value?.ToString());
+                            string totalAmount = EscapeForCsv(row.Cells[5].Value?.ToString());
+
+                            writer.WriteLine($"{iarNo},{date},{supplier},{poNumber},{requisitioningOffice},{totalAmount}");
+                        }
+                    }
+
+                    MessageBox.Show("IAR data exported successfully.", "Export Complete",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Unable to export IAR data: {ex.Message}", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private string EscapeForCsv(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+
+            bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
+            string escaped = value.Replace("\"", "\"\"");
+            return mustQuote ? $"\"{escaped}\"" : escaped;
+        }
+
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
@@ -198,6 +293,13 @@ namespace WindowsFormsApp1
                     {
                         LoadIarReports();
                     }
+                }
+            }
+            else if (columnName == "BtnView")
+            {
+                using (var viewForm = new ViewIAR(iarId))
+                {
+                    viewForm.ShowDialog(this);
                 }
             }
         }
