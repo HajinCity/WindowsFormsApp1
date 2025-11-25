@@ -43,8 +43,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.ComboBox();
-            this.cancel = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.createSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label8 = new System.Windows.Forms.Label();
             this.customRoundedPanel6 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.label7 = new System.Windows.Forms.Label();
@@ -232,39 +230,6 @@
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(745, 25);
             this.status.TabIndex = 58;
-            // 
-            // cancel
-            // 
-            this.cancel.BackColor = System.Drawing.Color.Gainsboro;
-            this.cancel.BorderRadius = 10;
-            this.cancel.ClickedColor = System.Drawing.Color.LightGray;
-            this.cancel.FlatAppearance.BorderSize = 0;
-            this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancel.HoverColor = System.Drawing.Color.LightGray;
-            this.cancel.Location = new System.Drawing.Point(451, 807);
-            this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(158, 51);
-            this.cancel.TabIndex = 61;
-            this.cancel.Text = "Cancel";
-            this.cancel.UseVisualStyleBackColor = false;
-            // 
-            // createSupplierBtn
-            // 
-            this.createSupplierBtn.BackColor = System.Drawing.Color.SeaGreen;
-            this.createSupplierBtn.BorderRadius = 10;
-            this.createSupplierBtn.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.createSupplierBtn.FlatAppearance.BorderSize = 0;
-            this.createSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createSupplierBtn.ForeColor = System.Drawing.Color.White;
-            this.createSupplierBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.createSupplierBtn.Location = new System.Drawing.Point(615, 807);
-            this.createSupplierBtn.Name = "createSupplierBtn";
-            this.createSupplierBtn.Size = new System.Drawing.Size(158, 51);
-            this.createSupplierBtn.TabIndex = 60;
-            this.createSupplierBtn.Text = "Create Supplier";
-            this.createSupplierBtn.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -467,8 +432,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.status);
-            this.Controls.Add(this.cancel);
-            this.Controls.Add(this.createSupplierBtn);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.customRoundedPanel6);
             this.Controls.Add(this.label7);
@@ -532,8 +495,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox status;
-        private Controls.CustomRoundedButton cancel;
-        private Controls.CustomRoundedButton createSupplierBtn;
         private System.Windows.Forms.Label label8;
         private Controls.CustomRoundedPanel customRoundedPanel6;
         private System.Windows.Forms.Label label7;

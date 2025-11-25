@@ -30,11 +30,13 @@
         {
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,12 +44,10 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
-            this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.gradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.gradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -71,6 +71,62 @@
             this.label2.Size = new System.Drawing.Size(341, 18);
             this.label2.TabIndex = 5;
             this.label2.Text = "Manage supplier information and documentation";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(52, 271);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1131, 333);
+            this.panel1.TabIndex = 8;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.BtnEdit,
+            this.BtnView});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(1131, 333);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(49, 235);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 18);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Supplier List";
+            // 
+            // addSupplierBtn
+            // 
+            this.addSupplierBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.addSupplierBtn.BorderRadius = 10;
+            this.addSupplierBtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.addSupplierBtn.FlatAppearance.BorderSize = 0;
+            this.addSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
+            this.addSupplierBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.addSupplierBtn.Location = new System.Drawing.Point(988, 31);
+            this.addSupplierBtn.Name = "addSupplierBtn";
+            this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
+            this.addSupplierBtn.TabIndex = 9;
+            this.addSupplierBtn.Text = "Add Supplier";
+            this.addSupplierBtn.UseVisualStyleBackColor = false;
             // 
             // gradientPanel1
             // 
@@ -102,33 +158,6 @@
             this.textBox1.Size = new System.Drawing.Size(1037, 26);
             this.textBox1.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(52, 271);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1131, 333);
-            this.panel1.TabIndex = 8;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.BtnEdit,
-            this.BtnView});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 333);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -137,69 +166,49 @@
             // 
             // Column2
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column2.HeaderText = "Address";
             this.Column2.Name = "Column2";
+            this.Column2.Width = 92;
             // 
             // Column3
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column3.HeaderText = "Contact Person";
             this.Column3.Name = "Column3";
+            this.Column3.Width = 129;
             // 
             // Column4
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column4.HeaderText = "Contact Info";
             this.Column4.Name = "Column4";
+            this.Column4.Width = 106;
             // 
             // Column5
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column5.HeaderText = "Bank Name";
             this.Column5.Name = "Column5";
+            this.Column5.Width = 106;
             // 
             // BtnEdit
             // 
+            this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.BtnEdit.HeaderText = "";
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.BtnEdit.Width = 19;
             // 
             // BtnView
             // 
+            this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.BtnView.HeaderText = "";
             this.BtnView.Name = "BtnView";
             this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // addSupplierBtn
-            // 
-            this.addSupplierBtn.BackColor = System.Drawing.Color.Turquoise;
-            this.addSupplierBtn.BorderRadius = 10;
-            this.addSupplierBtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.addSupplierBtn.FlatAppearance.BorderSize = 0;
-            this.addSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
-            this.addSupplierBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addSupplierBtn.Location = new System.Drawing.Point(988, 31);
-            this.addSupplierBtn.Name = "addSupplierBtn";
-            this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
-            this.addSupplierBtn.TabIndex = 9;
-            this.addSupplierBtn.Text = "Add Supplier";
-            this.addSupplierBtn.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(49, 235);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 18);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Supplier List";
+            this.BtnView.Width = 19;
             // 
             // SupplierForm
             // 
@@ -217,11 +226,11 @@
             this.Name = "SupplierForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SupplierForm";
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
