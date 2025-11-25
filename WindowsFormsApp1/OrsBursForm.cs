@@ -150,7 +150,7 @@ namespace WindowsFormsApp1
             }
             else if (columnName == "BtnView")
             {
-                using (var viewForm = new ViewORSBURS())
+                using (var viewForm = new ViewORSBURS(orsBursId))
                 {
                     viewForm.ShowDialog(this);
                 }
