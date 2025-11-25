@@ -1,13 +1,12 @@
 using System;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using WindowsFormsApp1.BackendModel;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        // Static login credentials
-        private const string VALID_USERNAME = "cpa";
-        private const string VALID_PASSWORD = "KDAahri";
 
         public Form1()
         {
@@ -79,8 +78,46 @@ namespace WindowsFormsApp1
 
         private bool ValidateCredentials(string username, string password)
         {
-            return username.Equals(VALID_USERNAME, StringComparison.OrdinalIgnoreCase) &&
-                   password.Equals(VALID_PASSWORD);
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = "SELECT password_hash, status FROM users WHERE username = @username";
+                    
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@username", username);
+                        
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Check if user account is active
+                                string status = reader["status"]?.ToString() ?? "";
+                                if (status.ToLower() != "active")
+                                {
+                                    return false;
+                                }
+
+                                // Since password_hash is not hashed yet, compare directly
+                                string storedPassword = reader["password_hash"]?.ToString() ?? "";
+                                return password.Equals(storedPassword);
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Database error: {ex.Message}",
+                    "Connection Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return false;
+            }
         }
 
         // ============================================================
