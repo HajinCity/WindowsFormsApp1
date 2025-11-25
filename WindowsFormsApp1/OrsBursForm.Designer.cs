@@ -107,10 +107,11 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(32, 271);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1392, 429);
+            this.panel1.Size = new System.Drawing.Size(1392, 508);
             this.panel1.TabIndex = 19;
             // 
             // dataGridView1
@@ -132,7 +133,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1392, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(1392, 508);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -324,7 +325,7 @@
             this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDEVbtn.ForeColor = System.Drawing.Color.White;
             this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(1220, 706);
+            this.addDEVbtn.Location = new System.Drawing.Point(1220, 795);
             this.addDEVbtn.Name = "addDEVbtn";
             this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
             this.addDEVbtn.TabIndex = 51;
@@ -333,9 +334,9 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(183, 752);
+            this.panel2.Location = new System.Drawing.Point(195, 608);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
+            this.panel2.Size = new System.Drawing.Size(200, 88);
             this.panel2.TabIndex = 50;
             // 
             // pictureBox2
@@ -371,9 +372,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1475, 709);
+            this.ClientSize = new System.Drawing.Size(1475, 894);
             this.Controls.Add(this.addDEVbtn);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
