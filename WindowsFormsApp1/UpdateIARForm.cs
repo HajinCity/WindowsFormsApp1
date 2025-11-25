@@ -325,8 +325,9 @@ namespace WindowsFormsApp1
             panel1.Visible = false;
             fileListPanel.Visible = true;
             fileListPanel.Location = originalPanel1Location;
-            fileListPanel.Size = originalPanel1Size;
             fileListPanel.Controls.Clear();
+            fileListPanel.Height = 0;  // Reset before adding files
+            fileListPanel.Width = originalPanel1Size.Width;
 
             int yPosition = 0;
             foreach (FileInfo file in uploadedFiles)
@@ -335,6 +336,7 @@ namespace WindowsFormsApp1
                 fileListPanel.Controls.Add(fileItemPanel);
                 yPosition += fileItemPanel.Height + 5;
             }
+            fileListPanel.Height = yPosition; // Auto resize panel to exact height
         }
 
         private Panel CreateFileItemPanel(FileInfo file, int yPosition)
@@ -397,10 +399,18 @@ namespace WindowsFormsApp1
             uploadedFiles.Remove(file);
             if (uploadedFiles.Count == 0)
             {
+                fileListPanel.Controls.Clear();
+                fileListPanel.Height = 0; // shrink
+                fileListPanel.Visible = false;
+                panel1.Visible = true;   // original layout restored
                 uploadedDocumentName = null;
                 uploadedDocumentExtension = null;
                 documentBytes = originalDocumentBytes;
                 storedDocumentExtension = GuessFileExtension(originalDocumentBytes);
+            }
+            else
+            {
+                ShowFileList();
             }
             UpdateDocumentSection();
         }
