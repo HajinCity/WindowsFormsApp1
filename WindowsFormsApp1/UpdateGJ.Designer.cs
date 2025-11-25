@@ -33,7 +33,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cancel = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.createEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.createUpdateEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.amount = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -120,22 +120,22 @@
             this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
-            // createEntryBtn
+            // createUpdateEntryBtn
             // 
-            this.createEntryBtn.BackColor = System.Drawing.Color.SeaGreen;
-            this.createEntryBtn.BorderRadius = 10;
-            this.createEntryBtn.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.createEntryBtn.FlatAppearance.BorderSize = 0;
-            this.createEntryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createEntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createEntryBtn.ForeColor = System.Drawing.Color.White;
-            this.createEntryBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.createEntryBtn.Location = new System.Drawing.Point(609, 811);
-            this.createEntryBtn.Name = "createEntryBtn";
-            this.createEntryBtn.Size = new System.Drawing.Size(158, 51);
-            this.createEntryBtn.TabIndex = 34;
-            this.createEntryBtn.Text = "Update Entry";
-            this.createEntryBtn.UseVisualStyleBackColor = false;
+            this.createUpdateEntryBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.createUpdateEntryBtn.BorderRadius = 10;
+            this.createUpdateEntryBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.createUpdateEntryBtn.FlatAppearance.BorderSize = 0;
+            this.createUpdateEntryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createUpdateEntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createUpdateEntryBtn.ForeColor = System.Drawing.Color.White;
+            this.createUpdateEntryBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.createUpdateEntryBtn.Location = new System.Drawing.Point(609, 811);
+            this.createUpdateEntryBtn.Name = "createUpdateEntryBtn";
+            this.createUpdateEntryBtn.Size = new System.Drawing.Size(158, 51);
+            this.createUpdateEntryBtn.TabIndex = 34;
+            this.createUpdateEntryBtn.Text = "Update Entry";
+            this.createUpdateEntryBtn.UseVisualStyleBackColor = false;
             // 
             // customRoundedPanel4
             // 
@@ -1422,7 +1422,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.cancel);
-            this.Controls.Add(this.createEntryBtn);
+            this.Controls.Add(this.createUpdateEntryBtn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.customRoundedPanel4);
             this.Controls.Add(this.label5);
@@ -1461,7 +1461,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Controls.CustomRoundedButton cancel;
-        private Controls.CustomRoundedButton createEntryBtn;
+        private Controls.CustomRoundedButton createUpdateEntryBtn;
         private Controls.CustomRoundedPanel customRoundedPanel4;
         private System.Windows.Forms.TextBox amount;
         private System.Windows.Forms.Label label5;
