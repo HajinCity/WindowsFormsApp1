@@ -35,7 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SignOutBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.SupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.ReportsBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.TransactionLedger = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.IARBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.DashboardBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.ORSBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
@@ -72,7 +72,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.SignOutBtn);
             this.panel1.Controls.Add(this.SupplierBtn);
-            this.panel1.Controls.Add(this.ReportsBtn);
+            this.panel1.Controls.Add(this.TransactionLedger);
             this.panel1.Controls.Add(this.IARBtn);
             this.panel1.Controls.Add(this.DashboardBtn);
             this.panel1.Controls.Add(this.ORSBtn);
@@ -153,24 +153,24 @@
             this.SupplierBtn.Text = "Supplier";
             this.SupplierBtn.UseVisualStyleBackColor = false;
             // 
-            // ReportsBtn
+            // TransactionLedger
             // 
-            this.ReportsBtn.BackColor = System.Drawing.Color.White;
-            this.ReportsBtn.BorderRadius = 10;
-            this.ReportsBtn.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.ReportsBtn.FlatAppearance.BorderSize = 0;
-            this.ReportsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReportsBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReportsBtn.ForeColor = System.Drawing.Color.Black;
-            this.ReportsBtn.HoverColor = System.Drawing.Color.Gainsboro;
-            this.ReportsBtn.Image = global::WindowsFormsApp1.Properties.Resources.Graph_Report;
-            this.ReportsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportsBtn.Location = new System.Drawing.Point(22, 559);
-            this.ReportsBtn.Name = "ReportsBtn";
-            this.ReportsBtn.Size = new System.Drawing.Size(237, 50);
-            this.ReportsBtn.TabIndex = 8;
-            this.ReportsBtn.Text = "Transaction Ledger";
-            this.ReportsBtn.UseVisualStyleBackColor = false;
+            this.TransactionLedger.BackColor = System.Drawing.Color.White;
+            this.TransactionLedger.BorderRadius = 10;
+            this.TransactionLedger.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.TransactionLedger.FlatAppearance.BorderSize = 0;
+            this.TransactionLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TransactionLedger.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransactionLedger.ForeColor = System.Drawing.Color.Black;
+            this.TransactionLedger.HoverColor = System.Drawing.Color.Gainsboro;
+            this.TransactionLedger.Image = global::WindowsFormsApp1.Properties.Resources.Graph_Report;
+            this.TransactionLedger.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TransactionLedger.Location = new System.Drawing.Point(22, 559);
+            this.TransactionLedger.Name = "TransactionLedger";
+            this.TransactionLedger.Size = new System.Drawing.Size(237, 50);
+            this.TransactionLedger.TabIndex = 8;
+            this.TransactionLedger.Text = "Transaction Ledger";
+            this.TransactionLedger.UseVisualStyleBackColor = false;
             // 
             // IARBtn
             // 
@@ -304,7 +304,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel2;
-        private Controls.CustomRoundedButton ReportsBtn;
+        private Controls.CustomRoundedButton TransactionLedger;
         private Controls.CustomRoundedButton DVBtn;
         private Controls.CustomRoundedButton JEVBtn;
         private Controls.CustomRoundedButton ORSBtn;
