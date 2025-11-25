@@ -78,10 +78,21 @@ namespace WindowsFormsApp1
                 Size = originalPanel1Size,
                 AutoSize = false,
                 AutoScroll = true,
-                Visible = false
+                Visible = false,
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right // No bottom anchor to prevent sticking to bottom
             };
 
-            Controls.Add(fileListPanel);
+            // Insert at the same index as panel1 to ensure proper Z-order
+            int panel1Index = Controls.IndexOf(panel1);
+            if (panel1Index >= 0)
+            {
+                Controls.Add(fileListPanel);
+                Controls.SetChildIndex(fileListPanel, panel1Index + 1);
+            }
+            else
+            {
+                Controls.Add(fileListPanel);
+            }
             fileListPanel.BringToFront();
         }
 
@@ -196,95 +207,127 @@ namespace WindowsFormsApp1
 
         private void UpdateFileList()
         {
-            Point scrollPosition = AutoScrollPosition;
-
-            fileListPanel.Controls.Clear();
-
-            if (uploadedFiles.Count == 0)
+            SuspendLayout();
+            
+            try
             {
-                fileListPanel.Visible = false;
-                panel1.Visible = true;
-                panel1.Location = originalPanel1Location;
-                panel1.Size = originalPanel1Size;
+                Point scrollPosition = AutoScrollPosition;
+
+                fileListPanel.Controls.Clear();
+
+                if (uploadedFiles.Count == 0)
+                {
+                    fileListPanel.Controls.Clear();
+                    fileListPanel.Height = 0; // shrink
+                    fileListPanel.Visible = false;
+                    panel1.Visible = true;
+                    panel1.Location = originalPanel1Location;
+                    panel1.Size = originalPanel1Size;
+                    AutoScrollPosition = new Point(Math.Abs(scrollPosition.X), Math.Abs(scrollPosition.Y));
+                    return;
+                }
+
+                // Get current location and size of panel1 before hiding it (in case form was resized/scrolled)
+                Point currentPanelLocation = panel1.Location;
+                Size currentPanelSize = panel1.Size;
+
+                // Hide panel1 completely to remove the gap
+                panel1.Visible = false;
+
+                // Position file list exactly where panel1 was - use absolute coordinates
+                fileListPanel.Location = currentPanelLocation;
+                fileListPanel.Size = new Size(currentPanelSize.Width, 0); // Start with 0 height
+                fileListPanel.Visible = true;
+                // Set anchor to prevent panel from moving (no bottom anchor)
+                fileListPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+                int yPosition = 0;
+                foreach (FileInfo file in uploadedFiles)
+                {
+                    Panel fileItemPanel = CreateFileItemPanel(file, yPosition);
+                    fileListPanel.Controls.Add(fileItemPanel);
+                    yPosition += fileItemPanel.Height + 5;
+                }
+                fileListPanel.Height = yPosition; // Auto resize panel to exact height
+
+                // Ensure buttons stay in their original positions
+                createIAREntryBtn.Top = originalCreateButtonTop;
+                cancel.Top = originalCancelButtonTop;
+
+                // Ensure it's in the correct Z-order and visible
+                fileListPanel.BringToFront();
                 AutoScrollPosition = new Point(Math.Abs(scrollPosition.X), Math.Abs(scrollPosition.Y));
-                return;
             }
-
-            panel1.Visible = false;
-            fileListPanel.Visible = true;
-            fileListPanel.Location = originalPanel1Location;
-            fileListPanel.Width = originalPanel1Size.Width;
-
-            int yPosition = 0;
-            int itemHeight = 50;
-            int spacing = 5;
-
-            foreach (FileInfo file in uploadedFiles)
+            finally
             {
-                Panel fileItemPanel = CreateFileItemPanel(file, yPosition);
-                fileListPanel.Controls.Add(fileItemPanel);
-                yPosition += itemHeight + spacing;
+                ResumeLayout(true);
+                fileListPanel.Refresh(); // Force a refresh to ensure it's displayed
             }
-
-            int maxAvailableHeight = originalCreateButtonTop - fileListPanel.Top - 20;
-            fileListPanel.Height = Math.Min(yPosition, Math.Max(50, maxAvailableHeight));
-
-            createIAREntryBtn.Top = originalCreateButtonTop;
-            cancel.Top = originalCancelButtonTop;
-
-            AutoScrollPosition = new Point(Math.Abs(scrollPosition.X), Math.Abs(scrollPosition.Y));
         }
 
         private Panel CreateFileItemPanel(FileInfo file, int yPosition)
         {
+            const int panelHeight = 50;
+            const int horizontalPadding = 15;
+            int panelWidth = originalPanel1Size.Width;
+            
             Panel itemPanel = new Panel
             {
                 Location = new Point(0, yPosition),
-                Size = new Size(originalPanel1Size.Width, 50),
+                Size = new Size(panelWidth, panelHeight),
                 BackColor = Color.White,
-                BorderStyle = BorderStyle.FixedSingle
+                BorderStyle = BorderStyle.FixedSingle,
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right // Fill width
             };
 
+            // File name label - left aligned
             Label fileNameLabel = new Label
             {
                 Text = file.Name,
-                Location = new Point(10, 15),
-                Size = new Size(300, 20),
+                Location = new Point(horizontalPadding, (panelHeight - 20) / 2), // Vertically centered
+                Size = new Size(400, 20),
                 Font = new Font("Arial", 10, FontStyle.Regular),
-                ForeColor = Color.Black
+                ForeColor = Color.Black,
+                AutoEllipsis = true // Truncate with ellipsis if too long
             };
             itemPanel.Controls.Add(fileNameLabel);
 
+            // File type label - positioned after file name
             Label fileTypeLabel = new Label
             {
                 Text = file.Extension.ToUpper().TrimStart('.'),
-                Location = new Point(320, 15),
-                Size = new Size(80, 20),
+                Location = new Point(420, (panelHeight - 20) / 2), // Vertically centered
+                Size = new Size(60, 20),
                 Font = new Font("Arial", 10, FontStyle.Regular),
-                ForeColor = Color.Gray
+                ForeColor = Color.FromArgb(128, 128, 128), // Lighter gray
+                TextAlign = ContentAlignment.MiddleLeft
             };
             itemPanel.Controls.Add(fileTypeLabel);
 
+            // File size label - positioned after file type
             Label fileSizeLabel = new Label
             {
                 Text = FormatFileSize(file.Length),
-                Location = new Point(410, 15),
+                Location = new Point(490, (panelHeight - 20) / 2), // Vertically centered
                 Size = new Size(100, 20),
                 Font = new Font("Arial", 10, FontStyle.Regular),
-                ForeColor = Color.Gray
+                ForeColor = Color.FromArgb(128, 128, 128), // Lighter gray
+                TextAlign = ContentAlignment.MiddleLeft
             };
             itemPanel.Controls.Add(fileSizeLabel);
 
+            // Remove button - right aligned
             Button removeButton = new Button
             {
                 Text = "Remove",
-                Location = new Point(600, 10),
+                Location = new Point(panelWidth - 100 - horizontalPadding, (panelHeight - 30) / 2), // Vertically centered, right aligned
                 Size = new Size(90, 30),
                 BackColor = Color.FromArgb(220, 53, 69),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
-                Font = new Font("Arial", 9, FontStyle.Bold),
-                Cursor = Cursors.Hand
+                Cursor = Cursors.Hand,
+                Font = new Font("Arial", 9, FontStyle.Regular),
+                Anchor = AnchorStyles.Top | AnchorStyles.Right // Keep right aligned when panel resizes
             };
             removeButton.FlatAppearance.BorderSize = 0;
             removeButton.Click += (s, e) => RemoveFile(file);
@@ -296,6 +339,12 @@ namespace WindowsFormsApp1
         private void RemoveFile(FileInfo file)
         {
             uploadedFiles.Remove(file);
+            if (uploadedFiles.Count == 0)
+            {
+                fileListPanel.Controls.Clear();
+                fileListPanel.Height = 0; // shrink
+                fileListPanel.Visible = false;
+            }
             UpdateFileList();
         }
 
