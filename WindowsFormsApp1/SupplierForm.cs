@@ -7,6 +7,18 @@ namespace WindowsFormsApp1
 {
     public partial class SupplierForm : Form
     {
+        private class SupplierRecord
+        {
+            public int SupplierId { get; set; }
+            public string Name { get; set; }
+            public string Address { get; set; }
+            public string ContactPerson { get; set; }
+            public string ContactInfo { get; set; }
+            public string BankName { get; set; }
+        }
+
+        private readonly List<SupplierRecord> supplierCache = new List<SupplierRecord>();
+
         public SupplierForm()
         {
             InitializeComponent();
@@ -14,6 +26,7 @@ namespace WindowsFormsApp1
             this.Load += SupplierForm_Load;
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             ConfigureActionColumns();
+            textBox1.TextChanged += TextBox1_TextChanged;
         }
 
         private void SupplierForm_Load(object sender, EventArgs e)
@@ -36,11 +49,16 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            ApplySupplierFilter(textBox1.Text);
+        }
+
         private void LoadSuppliers()
         {
             try
             {
-                dataGridView1.Rows.Clear();
+                supplierCache.Clear();
 
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
@@ -53,27 +71,20 @@ namespace WindowsFormsApp1
                     {
                         while (reader.Read())
                         {
-                            int supplierId = reader.GetInt32("supplier_id");
-                            string name = reader["name"]?.ToString();
-                            string address = reader["address"]?.ToString();
-                            string contactPerson = reader["contact_person"]?.ToString();
-                            string contactInfo = reader["contact_number"]?.ToString();
-                            string bankName = reader["bank_name"]?.ToString();
-
-                            int rowIndex = dataGridView1.Rows.Add(
-                                name,
-                                address,
-                                contactPerson,
-                                contactInfo,
-                                bankName,
-                                Properties.Resources.Edit,
-                                Properties.Resources.Document
-                            );
-
-                            dataGridView1.Rows[rowIndex].Tag = supplierId;
+                            supplierCache.Add(new SupplierRecord
+                            {
+                                SupplierId = reader.GetInt32("supplier_id"),
+                                Name = reader["name"]?.ToString(),
+                                Address = reader["address"]?.ToString(),
+                                ContactPerson = reader["contact_person"]?.ToString(),
+                                ContactInfo = reader["contact_number"]?.ToString(),
+                                BankName = reader["bank_name"]?.ToString()
+                            });
                         }
                     }
                 }
+
+                ApplySupplierFilter(textBox1.Text);
             }
             catch (Exception ex)
             {
@@ -82,6 +93,40 @@ namespace WindowsFormsApp1
                     "Load Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+        }
+
+        private void ApplySupplierFilter(string filterTerm)
+        {
+            string term = (filterTerm ?? string.Empty).Trim();
+            dataGridView1.Rows.Clear();
+
+            IEnumerable<SupplierRecord> records = supplierCache;
+
+            if (!string.IsNullOrWhiteSpace(term))
+            {
+                term = term.ToLowerInvariant();
+                records = records.Where(r =>
+                    (r.Name ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                    (r.Address ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                    (r.ContactPerson ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                    (r.ContactInfo ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                    (r.BankName ?? string.Empty).ToLowerInvariant().Contains(term));
+            }
+
+            foreach (var record in records)
+            {
+                int rowIndex = dataGridView1.Rows.Add(
+                    record.Name,
+                    record.Address,
+                    record.ContactPerson,
+                    record.ContactInfo,
+                    record.BankName,
+                    Properties.Resources.Edit,
+                    Properties.Resources.Document
+                );
+
+                dataGridView1.Rows[rowIndex].Tag = record.SupplierId;
             }
         }
 

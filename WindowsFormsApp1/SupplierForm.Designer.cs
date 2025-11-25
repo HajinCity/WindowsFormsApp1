@@ -33,10 +33,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +40,12 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PrintData = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
@@ -111,53 +113,6 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Supplier List";
             // 
-            // addSupplierBtn
-            // 
-            this.addSupplierBtn.BackColor = System.Drawing.Color.Turquoise;
-            this.addSupplierBtn.BorderRadius = 10;
-            this.addSupplierBtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.addSupplierBtn.FlatAppearance.BorderSize = 0;
-            this.addSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
-            this.addSupplierBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addSupplierBtn.Location = new System.Drawing.Point(988, 31);
-            this.addSupplierBtn.Name = "addSupplierBtn";
-            this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
-            this.addSupplierBtn.TabIndex = 9;
-            this.addSupplierBtn.Text = "Add Supplier";
-            this.addSupplierBtn.UseVisualStyleBackColor = false;
-            // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.gradientPanel1.Controls.Add(this.pictureBox1);
-            this.gradientPanel1.Controls.Add(this.textBox1);
-            this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
-            this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
-            this.gradientPanel1.Location = new System.Drawing.Point(45, 123);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1139, 93);
-            this.gradientPanel1.TabIndex = 7;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
-            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(78, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1037, 26);
-            this.textBox1.TabIndex = 0;
-            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -210,12 +165,95 @@
             this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.BtnView.Width = 19;
             // 
+            // addSupplierBtn
+            // 
+            this.addSupplierBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.addSupplierBtn.BorderRadius = 10;
+            this.addSupplierBtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.addSupplierBtn.FlatAppearance.BorderSize = 0;
+            this.addSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
+            this.addSupplierBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.addSupplierBtn.Location = new System.Drawing.Point(988, 31);
+            this.addSupplierBtn.Name = "addSupplierBtn";
+            this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
+            this.addSupplierBtn.TabIndex = 9;
+            this.addSupplierBtn.Text = "Add Supplier";
+            this.addSupplierBtn.UseVisualStyleBackColor = false;
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel1.Controls.Add(this.pictureBox1);
+            this.gradientPanel1.Controls.Add(this.textBox1);
+            this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
+            this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
+            this.gradientPanel1.Location = new System.Drawing.Point(45, 123);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(1139, 93);
+            this.gradientPanel1.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
+            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(78, 32);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1037, 26);
+            this.textBox1.TabIndex = 0;
+            // 
+            // PrintData
+            // 
+            this.PrintData.BackColor = System.Drawing.Color.Turquoise;
+            this.PrintData.BorderRadius = 10;
+            this.PrintData.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.PrintData.FlatAppearance.BorderSize = 0;
+            this.PrintData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PrintData.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrintData.ForeColor = System.Drawing.Color.White;
+            this.PrintData.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.PrintData.Location = new System.Drawing.Point(769, 630);
+            this.PrintData.Name = "PrintData";
+            this.PrintData.Size = new System.Drawing.Size(204, 55);
+            this.PrintData.TabIndex = 11;
+            this.PrintData.Text = "Print Data";
+            this.PrintData.UseVisualStyleBackColor = false;
+            // 
+            // ExportToCSV
+            // 
+            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
+            this.ExportToCSV.BorderRadius = 10;
+            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportToCSV.FlatAppearance.BorderSize = 0;
+            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportToCSV.Location = new System.Drawing.Point(979, 630);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportToCSV.TabIndex = 12;
+            this.ExportToCSV.Text = "Export to Excel";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
+            // 
             // SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1226, 624);
+            this.ClientSize = new System.Drawing.Size(1226, 701);
+            this.Controls.Add(this.ExportToCSV);
+            this.Controls.Add(this.PrintData);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addSupplierBtn);
             this.Controls.Add(this.panel1);
@@ -254,5 +292,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewImageColumn BtnEdit;
         private System.Windows.Forms.DataGridViewImageColumn BtnView;
+        private Controls.CustomRoundedButton PrintData;
+        private Controls.CustomRoundedButton ExportToCSV;
     }
 }
