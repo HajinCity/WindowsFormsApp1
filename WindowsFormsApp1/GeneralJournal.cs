@@ -23,6 +23,8 @@ namespace WindowsFormsApp1
         }
 
         private readonly List<JournalEntryRecord> journalCache = new List<JournalEntryRecord>();
+        private bool suppressFilterEvents = false;
+        private bool hasInitializedDateRange = false;
 
         public GeneralJournal()
         {
@@ -32,6 +34,7 @@ namespace WindowsFormsApp1
             dateTimePicker1.ValueChanged += DateFilter_ValueChanged;
             dateTimePicker2.ValueChanged += DateFilter_ValueChanged;
             ExportToCSV.Click += ExportToCSV_Click;
+            dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             this.Load += GeneralJournal_Load;
         }
 
@@ -81,6 +84,12 @@ namespace WindowsFormsApp1
                     }
                 }
 
+                if (!hasInitializedDateRange)
+                {
+                    SetInitialDateRange();
+                    hasInitializedDateRange = true;
+                }
+
                 ApplyJournalFilter();
             }
             catch (Exception ex)
@@ -100,11 +109,41 @@ namespace WindowsFormsApp1
 
         private void DateFilter_ValueChanged(object sender, EventArgs e)
         {
+            if (suppressFilterEvents)
+            {
+                return;
+            }
+
             if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
             {
                 dateTimePicker2.Value = dateTimePicker1.Value.Date;
             }
             ApplyJournalFilter();
+        }
+
+        private void SetInitialDateRange()
+        {
+            suppressFilterEvents = true;
+            try
+            {
+                var datedEntries = journalCache.Where(entry => entry.Date != DateTime.MinValue).ToList();
+                DateTime today = DateTime.Today;
+
+                if (datedEntries.Count > 0)
+                {
+                    dateTimePicker1.Value = datedEntries.Min(entry => entry.Date).Date;
+                    dateTimePicker2.Value = datedEntries.Max(entry => entry.Date).Date;
+                }
+                else
+                {
+                    dateTimePicker1.Value = today.AddYears(-1);
+                    dateTimePicker2.Value = today;
+                }
+            }
+            finally
+            {
+                suppressFilterEvents = false;
+            }
         }
 
         private void ApplyJournalFilter()
@@ -114,8 +153,8 @@ namespace WindowsFormsApp1
             DateTime endDate = dateTimePicker2.Value.Date;
 
             var filtered = journalCache.Where(entry =>
-                entry.Date.Date >= startDate &&
-                entry.Date.Date <= endDate &&
+                ((entry.Date == DateTime.MinValue) ||
+                 (entry.Date.Date >= startDate && entry.Date.Date <= endDate)) &&
                 (string.IsNullOrEmpty(term) ||
                  (entry.GJNumber ?? string.Empty).ToLowerInvariant().Contains(term) ||
                  (entry.Particulars ?? string.Empty).ToLowerInvariant().Contains(term) ||
@@ -131,6 +170,39 @@ namespace WindowsFormsApp1
                     entry.UacsCode,
                     entry.Amount);
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
+            }
+        }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            var row = dataGridView1.Rows[e.RowIndex];
+            if (row?.Tag == null || !int.TryParse(row.Tag.ToString(), out int journalId))
+            {
+                return;
+            }
+
+            string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
+            if (columnName == "BtnEdit")
+            {
+                using (var updateForm = new UpdateGJ(journalId))
+                {
+                    if (updateForm.ShowDialog(this) == DialogResult.OK)
+                    {
+                        LoadJournalEntries();
+                    }
+                }
+            }
+            else if (columnName == "BtnView")
+            {
+                using (var viewForm = new ViewGJEntry(journalId))
+                {
+                    viewForm.ShowDialog(this);
+                }
             }
         }
 
