@@ -107,7 +107,6 @@
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(746, 41);
             this.customRoundedPanel1.TabIndex = 0;
-            this.customRoundedPanel1.TabStop = false;
             // 
             // supplierName
             // 
@@ -139,7 +138,6 @@
             this.customRoundedPanel2.Name = "customRoundedPanel2";
             this.customRoundedPanel2.Size = new System.Drawing.Size(746, 41);
             this.customRoundedPanel2.TabIndex = 1;
-            this.customRoundedPanel2.TabStop = false;
             // 
             // supplierAddress
             // 
@@ -171,7 +169,6 @@
             this.customRoundedPanel3.Name = "customRoundedPanel3";
             this.customRoundedPanel3.Size = new System.Drawing.Size(746, 41);
             this.customRoundedPanel3.TabIndex = 2;
-            this.customRoundedPanel3.TabStop = false;
             // 
             // contactPerson
             // 
@@ -192,7 +189,6 @@
             this.customRoundedPanel4.Name = "customRoundedPanel4";
             this.customRoundedPanel4.Size = new System.Drawing.Size(746, 41);
             this.customRoundedPanel4.TabIndex = 3;
-            this.customRoundedPanel4.TabStop = false;
             // 
             // contactInfo
             // 
@@ -224,7 +220,6 @@
             this.customRoundedPanel5.Name = "customRoundedPanel5";
             this.customRoundedPanel5.Size = new System.Drawing.Size(746, 41);
             this.customRoundedPanel5.TabIndex = 5;
-            this.customRoundedPanel5.TabStop = false;
             // 
             // tinNumber
             // 
@@ -256,7 +251,6 @@
             this.customRoundedPanel6.Name = "customRoundedPanel6";
             this.customRoundedPanel6.Size = new System.Drawing.Size(746, 41);
             this.customRoundedPanel6.TabIndex = 6;
-            this.customRoundedPanel6.TabStop = false;
             // 
             // bankName
             // 
@@ -362,7 +356,8 @@
             this.status.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.status.FormattingEnabled = true;
             this.status.Items.AddRange(new object[] {
-            "Active"});
+            "Active",
+            "Inactive"});
             this.status.Location = new System.Drawing.Point(23, 593);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(745, 25);
@@ -388,7 +383,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 119);
             this.panel1.TabIndex = 12;
-            this.panel1.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -410,7 +404,6 @@
             this.customRoundedPanel7.Name = "customRoundedPanel7";
             this.customRoundedPanel7.Size = new System.Drawing.Size(746, 41);
             this.customRoundedPanel7.TabIndex = 4;
-            this.customRoundedPanel7.TabStop = false;
             // 
             // emailAdd
             // 
@@ -442,7 +435,6 @@
             this.customRoundedPanel8.Name = "customRoundedPanel8";
             this.customRoundedPanel8.Size = new System.Drawing.Size(746, 41);
             this.customRoundedPanel8.TabIndex = 7;
-            this.customRoundedPanel8.TabStop = false;
             // 
             // accountNum
             // 

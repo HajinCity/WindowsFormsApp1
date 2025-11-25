@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using WindowsFormsApp1.BackendModel;
 
 namespace WindowsFormsApp1
 {
@@ -31,6 +33,17 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             InitializeFileUpload();
+            InitializeStatusDropdown();
+            createSupplierBtn.Click += CreateSupplierBtn_Click;
+        }
+
+        private void InitializeStatusDropdown()
+        {
+            status.Items.Clear();
+            status.Items.AddRange(new object[] { "Active", "Inactive" });
+            status.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            status.AutoCompleteSource = AutoCompleteSource.ListItems;
+            status.DropDownStyle = ComboBoxStyle.DropDown;
         }
 
         private void InitializeFileUpload()
@@ -318,6 +331,133 @@ namespace WindowsFormsApp1
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CreateSupplierBtn_Click(object sender, EventArgs e)
+        {
+            if (!AreRequiredFieldsFilled(out string validationMessage))
+            {
+                MessageBox.Show(validationMessage, "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirmResult = MessageBox.Show(
+                "Are you sure you want to create this supplier?",
+                "Confirm Supplier Creation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmResult != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                SaveSupplier();
+                MessageBox.Show(
+                    "Supplier has been successfully saved.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to save supplier: {ex.Message}",
+                    "Save Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private bool AreRequiredFieldsFilled(out string message)
+        {
+            var requiredFields = new List<(string Value, string Label)>
+            {
+                (supplierName.Text, "Supplier Name"),
+                (supplierAddress.Text, "Address"),
+                (contactPerson.Text, "Contact Person"),
+                (contactInfo.Text, "Contact Information"),
+                (emailAdd.Text, "Email"),
+                (tinNumber.Text, "TIN Number"),
+                (bankName.Text, "Bank Name"),
+                (accountNum.Text, "Account Number")
+            };
+
+            foreach (var field in requiredFields)
+            {
+                if (string.IsNullOrWhiteSpace(field.Value))
+                {
+                    message = $"{field.Label} is required.";
+                    return false;
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(status.Text))
+            {
+                message = "Status is required.";
+                return false;
+            }
+
+            message = string.Empty;
+            return true;
+        }
+
+        private void SaveSupplier()
+        {
+            byte[] documentBytes = GetDocumentBytes();
+
+            using (MySqlConnection connection = RDBSMConnection.GetConnection())
+            {
+                string query = @"INSERT INTO suppliers 
+                                (name, address, contact_person, contact_number, email, tin, bank_name, account_number, status, documents)
+                                VALUES 
+                                (@name, @address, @contactPerson, @contactNumber, @email, @tin, @bankName, @accountNumber, @status, @documents)";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@name", supplierName.Text.Trim());
+                    command.Parameters.AddWithValue("@address", supplierAddress.Text.Trim());
+                    command.Parameters.AddWithValue("@contactPerson", contactPerson.Text.Trim());
+                    command.Parameters.AddWithValue("@contactNumber", contactInfo.Text.Trim());
+                    command.Parameters.AddWithValue("@email", emailAdd.Text.Trim());
+                    command.Parameters.AddWithValue("@tin", tinNumber.Text.Trim());
+                    command.Parameters.AddWithValue("@bankName", bankName.Text.Trim());
+                    command.Parameters.AddWithValue("@accountNumber", accountNum.Text.Trim());
+                    command.Parameters.AddWithValue("@status", status.Text.Trim());
+
+                    if (documentBytes == null || documentBytes.Length == 0)
+                    {
+                        command.Parameters.Add("@documents", MySqlDbType.Blob).Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        command.Parameters.Add("@documents", MySqlDbType.Blob).Value = documentBytes;
+                    }
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private byte[] GetDocumentBytes()
+        {
+            if (uploadedFiles.Count == 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                return File.ReadAllBytes(uploadedFiles[0].FullName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Unable to read the uploaded document: {ex.Message}", ex);
+            }
         }
     }
 }
