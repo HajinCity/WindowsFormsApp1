@@ -32,7 +32,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,12 +39,13 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.PrintData = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.PrintData = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
@@ -80,7 +80,7 @@
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(52, 271);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1131, 333);
+            this.panel1.Size = new System.Drawing.Size(1131, 482);
             this.panel1.TabIndex = 8;
             // 
             // dataGridView1
@@ -99,19 +99,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(1131, 482);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(49, 235);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 18);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Supplier List";
             // 
             // Column1
             // 
@@ -165,6 +154,51 @@
             this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.BtnView.Width = 19;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(49, 235);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 18);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Supplier List";
+            // 
+            // ExportToCSV
+            // 
+            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
+            this.ExportToCSV.BorderRadius = 10;
+            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportToCSV.FlatAppearance.BorderSize = 0;
+            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportToCSV.Location = new System.Drawing.Point(979, 772);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportToCSV.TabIndex = 12;
+            this.ExportToCSV.Text = "Export to Excel";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
+            // 
+            // PrintData
+            // 
+            this.PrintData.BackColor = System.Drawing.Color.Turquoise;
+            this.PrintData.BorderRadius = 10;
+            this.PrintData.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.PrintData.FlatAppearance.BorderSize = 0;
+            this.PrintData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PrintData.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrintData.ForeColor = System.Drawing.Color.White;
+            this.PrintData.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.PrintData.Location = new System.Drawing.Point(769, 772);
+            this.PrintData.Name = "PrintData";
+            this.PrintData.Size = new System.Drawing.Size(204, 55);
+            this.PrintData.TabIndex = 11;
+            this.PrintData.Text = "Print Data";
+            this.PrintData.UseVisualStyleBackColor = false;
+            // 
             // addSupplierBtn
             // 
             this.addSupplierBtn.BackColor = System.Drawing.Color.Turquoise;
@@ -212,46 +246,12 @@
             this.textBox1.Size = new System.Drawing.Size(1037, 26);
             this.textBox1.TabIndex = 0;
             // 
-            // PrintData
-            // 
-            this.PrintData.BackColor = System.Drawing.Color.Turquoise;
-            this.PrintData.BorderRadius = 10;
-            this.PrintData.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.PrintData.FlatAppearance.BorderSize = 0;
-            this.PrintData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PrintData.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrintData.ForeColor = System.Drawing.Color.White;
-            this.PrintData.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.PrintData.Location = new System.Drawing.Point(769, 630);
-            this.PrintData.Name = "PrintData";
-            this.PrintData.Size = new System.Drawing.Size(204, 55);
-            this.PrintData.TabIndex = 11;
-            this.PrintData.Text = "Print Data";
-            this.PrintData.UseVisualStyleBackColor = false;
-            // 
-            // ExportToCSV
-            // 
-            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
-            this.ExportToCSV.BorderRadius = 10;
-            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.ExportToCSV.FlatAppearance.BorderSize = 0;
-            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
-            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.ExportToCSV.Location = new System.Drawing.Point(979, 630);
-            this.ExportToCSV.Name = "ExportToCSV";
-            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
-            this.ExportToCSV.TabIndex = 12;
-            this.ExportToCSV.Text = "Export to Excel";
-            this.ExportToCSV.UseVisualStyleBackColor = false;
-            // 
             // SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1226, 701);
+            this.ClientSize = new System.Drawing.Size(1226, 876);
             this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.PrintData);
             this.Controls.Add(this.label1);
