@@ -134,6 +134,13 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+            else if (columnName == "BtnView")
+            {
+                using (var viewForm = new ViewJEV(jevId))
+                {
+                    viewForm.ShowDialog(this);
+                }
+            }
         }
     }
 }
