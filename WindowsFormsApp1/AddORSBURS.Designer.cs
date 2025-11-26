@@ -76,6 +76,12 @@
             this.Payee = new System.Windows.Forms.TextBox();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.serialNo = new System.Windows.Forms.TextBox();
+            this.customRoundedPanel13 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.customRoundedPanel14 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -91,6 +97,8 @@
             this.customRoundedPanel5.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
+            this.customRoundedPanel13.SuspendLayout();
+            this.customRoundedPanel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -207,7 +215,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(50, 327);
+            this.label9.Location = new System.Drawing.Point(50, 408);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 17);
             this.label9.TabIndex = 109;
@@ -218,7 +226,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(50, 444);
+            this.label10.Location = new System.Drawing.Point(50, 525);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 17);
             this.label10.TabIndex = 97;
@@ -229,7 +237,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(632, 444);
+            this.label11.Location = new System.Drawing.Point(632, 525);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(134, 17);
             this.label11.TabIndex = 110;
@@ -240,7 +248,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(50, 520);
+            this.label12.Location = new System.Drawing.Point(50, 601);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(58, 17);
             this.label12.TabIndex = 112;
@@ -251,7 +259,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(632, 520);
+            this.label13.Location = new System.Drawing.Point(632, 601);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(120, 17);
             this.label13.TabIndex = 114;
@@ -262,7 +270,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(50, 594);
+            this.label14.Location = new System.Drawing.Point(50, 675);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(68, 17);
             this.label14.TabIndex = 111;
@@ -273,7 +281,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label19);
-            this.panel1.Location = new System.Drawing.Point(55, 739);
+            this.panel1.Location = new System.Drawing.Point(55, 820);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1073, 96);
             this.panel1.TabIndex = 116;
@@ -315,7 +323,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(37, 708);
+            this.label20.Location = new System.Drawing.Point(37, 789);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(207, 17);
             this.label20.TabIndex = 115;
@@ -366,7 +374,7 @@
             this.customRoundedPanel12.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel12.BorderRadius = 10;
             this.customRoundedPanel12.Controls.Add(this.remarks);
-            this.customRoundedPanel12.Location = new System.Drawing.Point(53, 614);
+            this.customRoundedPanel12.Location = new System.Drawing.Point(53, 695);
             this.customRoundedPanel12.Name = "customRoundedPanel12";
             this.customRoundedPanel12.Size = new System.Drawing.Size(1088, 83);
             this.customRoundedPanel12.TabIndex = 12;
@@ -387,7 +395,7 @@
             this.customRoundedPanel11.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel11.BorderRadius = 10;
             this.customRoundedPanel11.Controls.Add(this.approvingOfficer);
-            this.customRoundedPanel11.Location = new System.Drawing.Point(629, 540);
+            this.customRoundedPanel11.Location = new System.Drawing.Point(629, 621);
             this.customRoundedPanel11.Name = "customRoundedPanel11";
             this.customRoundedPanel11.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel11.TabIndex = 11;
@@ -407,7 +415,7 @@
             this.customRoundedPanel10.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel10.BorderRadius = 10;
             this.customRoundedPanel10.Controls.Add(this.amount);
-            this.customRoundedPanel10.Location = new System.Drawing.Point(53, 540);
+            this.customRoundedPanel10.Location = new System.Drawing.Point(53, 621);
             this.customRoundedPanel10.Name = "customRoundedPanel10";
             this.customRoundedPanel10.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel10.TabIndex = 10;
@@ -427,7 +435,7 @@
             this.customRoundedPanel9.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel9.BorderRadius = 10;
             this.customRoundedPanel9.Controls.Add(this.uacscode);
-            this.customRoundedPanel9.Location = new System.Drawing.Point(629, 464);
+            this.customRoundedPanel9.Location = new System.Drawing.Point(629, 545);
             this.customRoundedPanel9.Name = "customRoundedPanel9";
             this.customRoundedPanel9.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel9.TabIndex = 9;
@@ -447,7 +455,7 @@
             this.customRoundedPanel8.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel8.BorderRadius = 10;
             this.customRoundedPanel8.Controls.Add(this.MFOPAP);
-            this.customRoundedPanel8.Location = new System.Drawing.Point(53, 464);
+            this.customRoundedPanel8.Location = new System.Drawing.Point(53, 545);
             this.customRoundedPanel8.Name = "customRoundedPanel8";
             this.customRoundedPanel8.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel8.TabIndex = 8;
@@ -467,7 +475,7 @@
             this.customRoundedPanel7.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel7.BorderRadius = 10;
             this.customRoundedPanel7.Controls.Add(this.Particulars);
-            this.customRoundedPanel7.Location = new System.Drawing.Point(53, 347);
+            this.customRoundedPanel7.Location = new System.Drawing.Point(53, 428);
             this.customRoundedPanel7.Name = "customRoundedPanel7";
             this.customRoundedPanel7.Size = new System.Drawing.Size(1088, 83);
             this.customRoundedPanel7.TabIndex = 7;
@@ -603,6 +611,68 @@
             this.serialNo.Size = new System.Drawing.Size(307, 18);
             this.serialNo.TabIndex = 0;
             // 
+            // customRoundedPanel13
+            // 
+            this.customRoundedPanel13.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel13.BorderRadius = 10;
+            this.customRoundedPanel13.Controls.Add(this.textBox1);
+            this.customRoundedPanel13.Location = new System.Drawing.Point(55, 290);
+            this.customRoundedPanel13.Name = "customRoundedPanel13";
+            this.customRoundedPanel13.Size = new System.Drawing.Size(354, 41);
+            this.customRoundedPanel13.TabIndex = 96;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(26, 13);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(307, 18);
+            this.textBox1.TabIndex = 4;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(52, 270);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 17);
+            this.label15.TabIndex = 97;
+            this.label15.Text = "PO No.";
+            // 
+            // customRoundedPanel14
+            // 
+            this.customRoundedPanel14.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel14.BorderRadius = 10;
+            this.customRoundedPanel14.Controls.Add(this.textBox2);
+            this.customRoundedPanel14.Location = new System.Drawing.Point(55, 364);
+            this.customRoundedPanel14.Name = "customRoundedPanel14";
+            this.customRoundedPanel14.Size = new System.Drawing.Size(354, 41);
+            this.customRoundedPanel14.TabIndex = 98;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(26, 13);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(307, 18);
+            this.textBox2.TabIndex = 4;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(52, 344);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(83, 17);
+            this.label16.TabIndex = 99;
+            this.label16.Text = "PO Amount";
+            // 
             // AddORSBURS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -610,6 +680,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1202, 924);
+            this.Controls.Add(this.customRoundedPanel14);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.customRoundedPanel13);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.createORSBURSEntryBtn);
             this.Controls.Add(this.panel2);
@@ -675,6 +749,10 @@
             this.customRoundedPanel3.PerformLayout();
             this.customRoundedPanel1.ResumeLayout(false);
             this.customRoundedPanel1.PerformLayout();
+            this.customRoundedPanel13.ResumeLayout(false);
+            this.customRoundedPanel13.PerformLayout();
+            this.customRoundedPanel14.ResumeLayout(false);
+            this.customRoundedPanel14.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -730,5 +808,11 @@
         private System.Windows.Forms.Panel panel2;
         private Controls.CustomRoundedButton cancel;
         private Controls.CustomRoundedButton createORSBURSEntryBtn;
+        private Controls.CustomRoundedPanel customRoundedPanel13;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label15;
+        private Controls.CustomRoundedPanel customRoundedPanel14;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label16;
     }
 }
