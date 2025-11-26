@@ -124,7 +124,7 @@ namespace WindowsFormsApp1
             // Display all data from inspection_acceptance_report table without any filtering
             dataGridView1.Rows.Clear();
             foreach (var entry in iarCache)
-            {
+        {
                 int rowIndex = dataGridView1.Rows.Add(
                     entry.IarNo,
                     entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),

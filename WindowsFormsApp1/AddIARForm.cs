@@ -91,7 +91,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                Controls.Add(fileListPanel);
+            Controls.Add(fileListPanel);
             }
             fileListPanel.BringToFront();
         }
@@ -210,53 +210,53 @@ namespace WindowsFormsApp1
             SuspendLayout();
             
             try
+        {
+            Point scrollPosition = AutoScrollPosition;
+
+            fileListPanel.Controls.Clear();
+
+            if (uploadedFiles.Count == 0)
             {
-                Point scrollPosition = AutoScrollPosition;
-
-                fileListPanel.Controls.Clear();
-
-                if (uploadedFiles.Count == 0)
-                {
                     fileListPanel.Controls.Clear();
                     fileListPanel.Height = 0; // shrink
-                    fileListPanel.Visible = false;
-                    panel1.Visible = true;
-                    panel1.Location = originalPanel1Location;
-                    panel1.Size = originalPanel1Size;
-                    AutoScrollPosition = new Point(Math.Abs(scrollPosition.X), Math.Abs(scrollPosition.Y));
-                    return;
-                }
+                fileListPanel.Visible = false;
+                panel1.Visible = true;
+                panel1.Location = originalPanel1Location;
+                panel1.Size = originalPanel1Size;
+                AutoScrollPosition = new Point(Math.Abs(scrollPosition.X), Math.Abs(scrollPosition.Y));
+                return;
+            }
 
                 // Get current location and size of panel1 before hiding it (in case form was resized/scrolled)
                 Point currentPanelLocation = panel1.Location;
                 Size currentPanelSize = panel1.Size;
 
                 // Hide panel1 completely to remove the gap
-                panel1.Visible = false;
+            panel1.Visible = false;
 
                 // Position file list exactly where panel1 was - use absolute coordinates
                 fileListPanel.Location = currentPanelLocation;
                 fileListPanel.Size = new Size(currentPanelSize.Width, 0); // Start with 0 height
-                fileListPanel.Visible = true;
+            fileListPanel.Visible = true;
                 // Set anchor to prevent panel from moving (no bottom anchor)
                 fileListPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 
-                int yPosition = 0;
-                foreach (FileInfo file in uploadedFiles)
-                {
-                    Panel fileItemPanel = CreateFileItemPanel(file, yPosition);
-                    fileListPanel.Controls.Add(fileItemPanel);
+            int yPosition = 0;
+            foreach (FileInfo file in uploadedFiles)
+            {
+                Panel fileItemPanel = CreateFileItemPanel(file, yPosition);
+                fileListPanel.Controls.Add(fileItemPanel);
                     yPosition += fileItemPanel.Height + 5;
-                }
+            }
                 fileListPanel.Height = yPosition; // Auto resize panel to exact height
 
                 // Ensure buttons stay in their original positions
-                createIAREntryBtn.Top = originalCreateButtonTop;
-                cancel.Top = originalCancelButtonTop;
+            createIAREntryBtn.Top = originalCreateButtonTop;
+            cancel.Top = originalCancelButtonTop;
 
                 // Ensure it's in the correct Z-order and visible
                 fileListPanel.BringToFront();
-                AutoScrollPosition = new Point(Math.Abs(scrollPosition.X), Math.Abs(scrollPosition.Y));
+            AutoScrollPosition = new Point(Math.Abs(scrollPosition.X), Math.Abs(scrollPosition.Y));
             }
             finally
             {

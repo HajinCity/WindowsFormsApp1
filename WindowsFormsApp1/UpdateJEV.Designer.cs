@@ -155,12 +155,13 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Location = new System.Drawing.Point(42, 637);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1073, 96);
+            this.panel1.Size = new System.Drawing.Size(1073, 153);
             this.panel1.TabIndex = 134;
             // 
             // pictureBox1

@@ -480,48 +480,39 @@ namespace WindowsFormsApp1
 
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
-                try
+                string insertJev = @"INSERT INTO jev
+                    (jev_no, date, responsibility_center, uacs_code, account, particulars,
+                     gross_amount, deductions, tax_type, net_amount, status, approving_officer, documents)
+                    VALUES
+                    (@jev_no, @date, @responsibility_center, @uacs_code, @account, @particulars,
+                     @gross_amount, @deductions, @tax_type, @net_amount, @status, @approving_officer, @documents);";
+
+                using (MySqlCommand cmd = new MySqlCommand(insertJev, connection))
                 {
-                    connection.Open();
+                    cmd.Parameters.AddWithValue("@jev_no", jev_no.Text.Trim());
+                    cmd.Parameters.AddWithValue("@date", jevDate.Value.Date);
+                    cmd.Parameters.AddWithValue("@responsibility_center", rspCode.Text.Trim());
+                    cmd.Parameters.AddWithValue("@uacs_code", uacscode.Text.Trim());
+                    cmd.Parameters.AddWithValue("@account", account.Text.Trim());
+                    cmd.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
+                    cmd.Parameters.AddWithValue("@gross_amount", grossAmountValue);
+                    cmd.Parameters.AddWithValue("@deductions", deductionsValue);
+                    cmd.Parameters.AddWithValue("@tax_type", taxtype.Text.Trim());
+                    cmd.Parameters.AddWithValue("@net_amount", netAmountValue);
+                    cmd.Parameters.AddWithValue("@status", status.Text.Trim());
+                    cmd.Parameters.AddWithValue("@approving_officer", approvingOfficer.Text.Trim());
 
-                    string insertJev = @"INSERT INTO jev
-                        (jev_no, date, responsibility_center, uacs_code, account, particulars,
-                         gross_amount, deductions, tax_type, net_amount, status, approving_officer, documents)
-                        VALUES
-                        (@jev_no, @date, @responsibility_center, @uacs_code, @account, @particulars,
-                         @gross_amount, @deductions, @tax_type, @net_amount, @status, @approving_officer, @documents);";
-
-                    using (MySqlCommand cmd = new MySqlCommand(insertJev, connection))
+                    var documentParam = cmd.Parameters.Add("@documents", MySqlDbType.LongBlob);
+                    if (documentBytes == null || documentBytes.Length == 0)
                     {
-                        cmd.Parameters.AddWithValue("@jev_no", jev_no.Text.Trim());
-                        cmd.Parameters.AddWithValue("@date", jevDate.Value.Date);
-                        cmd.Parameters.AddWithValue("@responsibility_center", rspCode.Text.Trim());
-                        cmd.Parameters.AddWithValue("@uacs_code", uacscode.Text.Trim());
-                        cmd.Parameters.AddWithValue("@account", account.Text.Trim());
-                        cmd.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
-                        cmd.Parameters.AddWithValue("@gross_amount", grossAmountValue);
-                        cmd.Parameters.AddWithValue("@deductions", deductionsValue);
-                        cmd.Parameters.AddWithValue("@tax_type", taxtype.Text.Trim());
-                        cmd.Parameters.AddWithValue("@net_amount", netAmountValue);
-                        cmd.Parameters.AddWithValue("@status", status.Text.Trim());
-                        cmd.Parameters.AddWithValue("@approving_officer", approvingOfficer.Text.Trim());
-
-                        var documentParam = cmd.Parameters.Add("@documents", MySqlDbType.LongBlob);
-                        if (documentBytes == null || documentBytes.Length == 0)
-                        {
-                            documentParam.Value = DBNull.Value;
-                        }
-                        else
-                        {
-                            documentParam.Value = documentBytes;
-                        }
-
-                        cmd.ExecuteNonQuery();
+                        documentParam.Value = DBNull.Value;
                     }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Database error: {ex.Message}", ex);
+                    else
+                    {
+                        documentParam.Value = documentBytes;
+                    }
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
