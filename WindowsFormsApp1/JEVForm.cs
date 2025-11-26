@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
                 {
                     // Refresh data after new entry is added
                     LoadJEVData();
-                }
+            }
             }
         }
 
