@@ -30,8 +30,8 @@
         {
             this.label3 = new System.Windows.Forms.Label();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.jev_no = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.jevDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -108,7 +108,16 @@
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(367, 49);
             this.customRoundedPanel1.TabIndex = 0;
-            this.customRoundedPanel1.TabStop = false;
+            // 
+            // jev_no
+            // 
+            this.jev_no.BackColor = System.Drawing.Color.Gainsboro;
+            this.jev_no.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.jev_no.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jev_no.Location = new System.Drawing.Point(19, 15);
+            this.jev_no.Name = "jev_no";
+            this.jev_no.Size = new System.Drawing.Size(328, 18);
+            this.jev_no.TabIndex = 0;
             // 
             // label1
             // 
@@ -120,16 +129,6 @@
             this.label1.Size = new System.Drawing.Size(60, 17);
             this.label1.TabIndex = 80;
             this.label1.Text = "JEV No.";
-            // 
-            // jev_no
-            // 
-            this.jev_no.BackColor = System.Drawing.Color.Gainsboro;
-            this.jev_no.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.jev_no.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jev_no.Location = new System.Drawing.Point(19, 15);
-            this.jev_no.Name = "jev_no";
-            this.jev_no.Size = new System.Drawing.Size(328, 18);
-            this.jev_no.TabIndex = 0;
             // 
             // label2
             // 
@@ -170,7 +169,6 @@
             this.customRoundedPanel2.Name = "customRoundedPanel2";
             this.customRoundedPanel2.Size = new System.Drawing.Size(367, 49);
             this.customRoundedPanel2.TabIndex = 4;
-            this.customRoundedPanel2.TabStop = false;
             // 
             // uacscode
             // 
@@ -202,7 +200,6 @@
             this.customRoundedPanel3.Name = "customRoundedPanel3";
             this.customRoundedPanel3.Size = new System.Drawing.Size(699, 49);
             this.customRoundedPanel3.TabIndex = 1;
-            this.customRoundedPanel3.TabStop = false;
             // 
             // rspCode
             // 
@@ -234,7 +231,6 @@
             this.customRoundedPanel4.Name = "customRoundedPanel4";
             this.customRoundedPanel4.Size = new System.Drawing.Size(699, 49);
             this.customRoundedPanel4.TabIndex = 3;
-            this.customRoundedPanel4.TabStop = false;
             // 
             // account
             // 
@@ -277,7 +273,6 @@
             this.customRoundedPanel5.Name = "customRoundedPanel5";
             this.customRoundedPanel5.Size = new System.Drawing.Size(1102, 86);
             this.customRoundedPanel5.TabIndex = 5;
-            this.customRoundedPanel5.TabStop = false;
             // 
             // label8
             // 
@@ -299,7 +294,6 @@
             this.customRoundedPanel6.Name = "customRoundedPanel6";
             this.customRoundedPanel6.Size = new System.Drawing.Size(367, 49);
             this.customRoundedPanel6.TabIndex = 6;
-            this.customRoundedPanel6.TabStop = false;
             // 
             // taxtype
             // 
@@ -331,7 +325,6 @@
             this.customRoundedPanel7.Name = "customRoundedPanel7";
             this.customRoundedPanel7.Size = new System.Drawing.Size(338, 49);
             this.customRoundedPanel7.TabIndex = 7;
-            this.customRoundedPanel7.TabStop = false;
             // 
             // grossAmount
             // 
@@ -352,7 +345,6 @@
             this.customRoundedPanel8.Name = "customRoundedPanel8";
             this.customRoundedPanel8.Size = new System.Drawing.Size(338, 49);
             this.customRoundedPanel8.TabIndex = 8;
-            this.customRoundedPanel8.TabStop = false;
             // 
             // deductions
             // 
@@ -395,7 +387,6 @@
             this.customRoundedPanel9.Name = "customRoundedPanel9";
             this.customRoundedPanel9.Size = new System.Drawing.Size(338, 49);
             this.customRoundedPanel9.TabIndex = 9;
-            this.customRoundedPanel9.TabStop = false;
             // 
             // netAmount
             // 
@@ -427,7 +418,6 @@
             this.customRoundedPanel10.Name = "customRoundedPanel10";
             this.customRoundedPanel10.Size = new System.Drawing.Size(367, 49);
             this.customRoundedPanel10.TabIndex = 10;
-            this.customRoundedPanel10.TabStop = false;
             // 
             // status
             // 
@@ -448,7 +438,6 @@
             this.customRoundedPanel11.Name = "customRoundedPanel11";
             this.customRoundedPanel11.Size = new System.Drawing.Size(699, 49);
             this.customRoundedPanel11.TabIndex = 11;
-            this.customRoundedPanel11.TabStop = false;
             // 
             // approvingOfficer
             // 
@@ -497,6 +486,7 @@
             this.cancel.TabIndex = 13;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = false;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // CreateJournalEntryBtn
             // 
@@ -524,7 +514,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1073, 96);
             this.panel1.TabIndex = 14;
-            this.panel1.TabStop = false;
             // 
             // pictureBox1
             // 
