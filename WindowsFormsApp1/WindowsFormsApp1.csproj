@@ -338,6 +338,9 @@
     <EmbeddedResource Include="TransactionLedger.resx">
       <DependentUpon>TransactionLedger.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateDEV.resx">
+      <DependentUpon>UpdateDEV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateGJ.resx">
       <DependentUpon>UpdateGJ.cs</DependentUpon>
     </EmbeddedResource>
@@ -355,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserManagement.resx">
       <DependentUpon>UserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewDEV.resx">
+      <DependentUpon>ViewDEV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewGJEntry.resx">
       <DependentUpon>ViewGJEntry.cs</DependentUpon>
