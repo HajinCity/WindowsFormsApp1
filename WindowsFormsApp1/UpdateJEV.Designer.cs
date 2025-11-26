@@ -134,6 +134,7 @@
             this.cancel.TabIndex = 133;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = false;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // UpdateJournalEntryBtn
             // 
