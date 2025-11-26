@@ -30,13 +30,9 @@
         {
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.addJEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,10 +40,22 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
-            this.gradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.addJEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.gradientPanel2 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.gradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -72,42 +80,12 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Manage journal entry vouchers and accounting entries";
             // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.gradientPanel1.Controls.Add(this.pictureBox1);
-            this.gradientPanel1.Controls.Add(this.textBox1);
-            this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
-            this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
-            this.gradientPanel1.Location = new System.Drawing.Point(45, 123);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1139, 93);
-            this.gradientPanel1.TabIndex = 11;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
-            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(78, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1037, 26);
-            this.textBox1.TabIndex = 0;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(49, 235);
+            this.label4.Location = new System.Drawing.Point(9, 238);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 18);
             this.label4.TabIndex = 13;
@@ -117,9 +95,9 @@
             // 
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(52, 271);
+            this.panel1.Location = new System.Drawing.Point(12, 270);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1131, 333);
+            this.panel1.Size = new System.Drawing.Size(1351, 613);
             this.panel1.TabIndex = 14;
             // 
             // dataGridView1
@@ -137,25 +115,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(1351, 613);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // addJEVbtn
-            // 
-            this.addJEVbtn.BackColor = System.Drawing.Color.Turquoise;
-            this.addJEVbtn.BorderRadius = 10;
-            this.addJEVbtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.addJEVbtn.FlatAppearance.BorderSize = 0;
-            this.addJEVbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addJEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addJEVbtn.ForeColor = System.Drawing.Color.White;
-            this.addJEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addJEVbtn.Location = new System.Drawing.Point(988, 31);
-            this.addJEVbtn.Name = "addJEVbtn";
-            this.addJEVbtn.Size = new System.Drawing.Size(204, 55);
-            this.addJEVbtn.TabIndex = 15;
-            this.addJEVbtn.Text = "Add JEV";
-            this.addJEVbtn.UseVisualStyleBackColor = false;
             // 
             // Column1
             // 
@@ -203,27 +164,164 @@
             this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // addJEVbtn
+            // 
+            this.addJEVbtn.BackColor = System.Drawing.Color.Turquoise;
+            this.addJEVbtn.BorderRadius = 10;
+            this.addJEVbtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.addJEVbtn.FlatAppearance.BorderSize = 0;
+            this.addJEVbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addJEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addJEVbtn.ForeColor = System.Drawing.Color.White;
+            this.addJEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.addJEVbtn.Location = new System.Drawing.Point(1159, 39);
+            this.addJEVbtn.Name = "addJEVbtn";
+            this.addJEVbtn.Size = new System.Drawing.Size(204, 55);
+            this.addJEVbtn.TabIndex = 15;
+            this.addJEVbtn.Text = "Add JEV";
+            this.addJEVbtn.UseVisualStyleBackColor = false;
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel2.Controls.Add(this.pictureBox2);
+            this.gradientPanel2.Controls.Add(this.label1);
+            this.gradientPanel2.Controls.Add(this.ParseRangeBtn);
+            this.gradientPanel2.Controls.Add(this.label5);
+            this.gradientPanel2.Controls.Add(this.dateTimePicker2);
+            this.gradientPanel2.Controls.Add(this.dateTimePicker1);
+            this.gradientPanel2.Controls.Add(this.pictureBox3);
+            this.gradientPanel2.Controls.Add(this.textBox2);
+            this.gradientPanel2.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
+            this.gradientPanel2.GradientColor2 = System.Drawing.Color.Turquoise;
+            this.gradientPanel2.Location = new System.Drawing.Point(12, 122);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(1351, 93);
+            this.gradientPanel2.TabIndex = 20;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
+            this.pictureBox2.Location = new System.Drawing.Point(487, 19);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 27;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(919, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 18);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "End Date";
+            // 
+            // ParseRangeBtn
+            // 
+            this.ParseRangeBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.BorderRadius = 10;
+            this.ParseRangeBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.FlatAppearance.BorderSize = 0;
+            this.ParseRangeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
+            this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.ParseRangeBtn.Location = new System.Drawing.Point(1212, 21);
+            this.ParseRangeBtn.Name = "ParseRangeBtn";
+            this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
+            this.ParseRangeBtn.TabIndex = 26;
+            this.ParseRangeBtn.Text = "Enter";
+            this.ParseRangeBtn.UseVisualStyleBackColor = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(617, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 18);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Start Date";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(922, 31);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(262, 25);
+            this.dateTimePicker2.TabIndex = 3;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(620, 31);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(262, 25);
+            this.dateTimePicker1.TabIndex = 2;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
+            this.pictureBox3.Location = new System.Drawing.Point(30, 22);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(78, 32);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(347, 26);
+            this.textBox2.TabIndex = 0;
+            // 
+            // ExportToCSV
+            // 
+            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
+            this.ExportToCSV.BorderRadius = 10;
+            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportToCSV.FlatAppearance.BorderSize = 0;
+            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportToCSV.Location = new System.Drawing.Point(1159, 911);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportToCSV.TabIndex = 21;
+            this.ExportToCSV.Text = "Export to Excel";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
+            // 
             // JEVForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1226, 624);
+            this.ClientSize = new System.Drawing.Size(1381, 993);
+            this.Controls.Add(this.ExportToCSV);
+            this.Controls.Add(this.gradientPanel2);
             this.Controls.Add(this.addJEVbtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "JEVForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JEVForm";
-            this.gradientPanel1.ResumeLayout(false);
-            this.gradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.gradientPanel2.ResumeLayout(false);
+            this.gradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,9 +331,6 @@
 
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private Controls.GradientPanel gradientPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -247,5 +342,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewImageColumn BtnEdit;
         private System.Windows.Forms.DataGridViewImageColumn BtnView;
+        private Controls.GradientPanel gradientPanel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
+        private Controls.CustomRoundedButton ParseRangeBtn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private Controls.CustomRoundedButton ExportToCSV;
     }
 }
