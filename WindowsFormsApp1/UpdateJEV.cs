@@ -39,8 +39,94 @@ namespace WindowsFormsApp1
             InitializeComponent();
             InitializeFileUpload();
             InitializeDocumentControls();
+            InitializeCalculation();
             UpdateJournalEntryBtn.Click += UpdateJournalEntryBtn_Click;
             cancel.Click += cancel_Click;
+        }
+
+        private void InitializeCalculation()
+        {
+            // Make netAmount read-only
+            netAmount.ReadOnly = true;
+            netAmount.BackColor = Color.WhiteSmoke; // Visual indication that it's read-only
+
+            // Add numeric-only input handlers
+            grossAmount.KeyPress += NumericTextBox_KeyPress;
+            deductions.KeyPress += NumericTextBox_KeyPress;
+
+            // Add calculation handlers
+            grossAmount.TextChanged += CalculateNetAmount;
+            deductions.TextChanged += CalculateNetAmount;
+        }
+
+        private void NumericTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow digits, decimal point, and control characters (backspace, delete, etc.)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // Only allow one decimal point
+            TextBox textBox = sender as TextBox;
+            if (e.KeyChar == '.' && textBox != null && textBox.Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void CalculateNetAmount(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal gross = 0;
+                decimal deduct = 0;
+                bool canCalculate = true;
+
+                // Parse grossAmount
+                if (!string.IsNullOrWhiteSpace(grossAmount.Text))
+                {
+                    if (decimal.TryParse(grossAmount.Text, out decimal grossValue))
+                    {
+                        gross = grossValue;
+                    }
+                    else
+                    {
+                        canCalculate = false;
+                    }
+                }
+
+                // Parse deductions
+                if (!string.IsNullOrWhiteSpace(deductions.Text))
+                {
+                    if (decimal.TryParse(deductions.Text, out decimal deductValue))
+                    {
+                        deduct = deductValue;
+                    }
+                    else
+                    {
+                        canCalculate = false;
+                    }
+                }
+
+                // Calculate and display net amount if both fields are valid or empty
+                if (canCalculate)
+                {
+                    decimal net = gross - deduct;
+                    netAmount.Text = net.ToString("0.00");
+                }
+                else
+                {
+                    // Invalid input, clear net amount
+                    netAmount.Text = "";
+                }
+            }
+            catch
+            {
+                // If calculation fails, clear the net amount
+                netAmount.Text = "";
+            }
         }
 
         public UpdateJEV(int jevId) : this()
