@@ -64,14 +64,14 @@
             this.customRoundedPanel11 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.approvingOfficer = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cancel = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.CreateJournalEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.customRoundedPanel1.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
@@ -83,9 +83,9 @@
             this.customRoundedPanel9.SuspendLayout();
             this.customRoundedPanel10.SuspendLayout();
             this.customRoundedPanel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -460,17 +460,6 @@
             this.label13.TabIndex = 100;
             this.label13.Text = "Approving Officer";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
-            this.pictureBox2.Location = new System.Drawing.Point(1126, 6);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 108;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
             // cancel
             // 
             this.cancel.BackColor = System.Drawing.Color.Gainsboro;
@@ -507,23 +496,14 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Location = new System.Drawing.Point(42, 637);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1073, 96);
+            this.panel1.Size = new System.Drawing.Size(1073, 137);
             this.panel1.TabIndex = 14;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
-            this.pictureBox1.Location = new System.Drawing.Point(518, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(52, 47);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
             // 
             // label18
             // 
@@ -557,6 +537,27 @@
             this.label20.Size = new System.Drawing.Size(207, 17);
             this.label20.TabIndex = 119;
             this.label20.Text = "Upload Supporting Documents";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
+            this.pictureBox1.Location = new System.Drawing.Point(518, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(52, 47);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
+            this.pictureBox2.Location = new System.Drawing.Point(1126, 6);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 108;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // AddJEVEntry
             // 
@@ -620,10 +621,10 @@
             this.customRoundedPanel10.PerformLayout();
             this.customRoundedPanel11.ResumeLayout(false);
             this.customRoundedPanel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
