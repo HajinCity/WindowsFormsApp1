@@ -519,9 +519,9 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(12, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 24);
+            this.label3.Size = new System.Drawing.Size(221, 24);
             this.label3.TabIndex = 135;
-            this.label3.Text = "Add New JEV";
+            this.label3.Text = "View JEV Information";
             // 
             // ExportToCSV
             // 
