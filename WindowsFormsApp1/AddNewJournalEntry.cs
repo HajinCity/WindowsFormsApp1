@@ -39,6 +39,7 @@ namespace WindowsFormsApp1
             createEntryBtn.Click += CreateEntryBtn_Click;
             cancel.Click += (s, e) => this.Close();
             amount.TextChanged += Amount_TextChanged;
+            amount.KeyPress += Amount_KeyPress;
         }
 
         private void AddNewJournalEntry_Load(object sender, EventArgs e)
@@ -544,6 +545,30 @@ namespace WindowsFormsApp1
             amount.SelectionStart = Math.Min(newSelectionStart, amount.Text.Length);
             amount.SelectionLength = 0;
             isFormattingAmountText = false;
+        }
+
+        private void Amount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            if (char.IsDigit(e.KeyChar))
+            {
+                return;
+            }
+
+            if (e.KeyChar == '.')
+            {
+                TextBox textBox = sender as TextBox;
+                if (textBox != null && !textBox.Text.Contains("."))
+                {
+                    return;
+                }
+            }
+
+            e.Handled = true;
         }
     }
 }
