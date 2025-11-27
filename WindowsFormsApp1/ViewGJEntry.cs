@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -15,12 +16,14 @@ namespace WindowsFormsApp1
         private string storedDocumentExtension;
         private Button downloadDocumentButton;
         private Label documentStatusLabel;
+        private bool isFormattingAmountText;
 
         public ViewGJEntry()
         {
             InitializeComponent();
             PrepareReadOnlyState();
             InitializeDocumentControls();
+            amount.TextChanged += Amount_TextChanged;
         }
 
         public ViewGJEntry(int journalId) : this()
@@ -295,6 +298,41 @@ namespace WindowsFormsApp1
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Amount_TextChanged(object sender, EventArgs e)
+        {
+            if (isFormattingAmountText)
+            {
+                return;
+            }
+
+            string currentText = amount.Text;
+            if (string.IsNullOrWhiteSpace(currentText))
+            {
+                return;
+            }
+
+            string cleanText = currentText.Replace(",", "");
+            if (!decimal.TryParse(cleanText, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal parsedValue))
+            {
+                return;
+            }
+
+            string formattedInteger = string.Format(
+                CultureInfo.InvariantCulture,
+                "{0:N0}",
+                Math.Truncate(parsedValue));
+
+            int decimalIndex = cleanText.IndexOf('.');
+            string fractionalPart = decimalIndex >= 0 ? cleanText.Substring(decimalIndex) : string.Empty;
+            string formattedText = formattedInteger + fractionalPart;
+
+            isFormattingAmountText = true;
+            amount.Text = formattedText;
+            amount.SelectionStart = amount.Text.Length;
+            amount.SelectionLength = 0;
+            isFormattingAmountText = false;
         }
     }
 }

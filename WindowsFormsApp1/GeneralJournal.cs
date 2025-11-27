@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -170,7 +171,7 @@ namespace WindowsFormsApp1
                     entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
                     entry.Particulars,
                     entry.UacsCode,
-                    entry.Amount);
+                    FormatAmountDisplay(entry.Amount));
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -197,7 +198,7 @@ namespace WindowsFormsApp1
                     entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
                     entry.Particulars,
                     entry.UacsCode,
-                    entry.Amount);
+                    FormatAmountDisplay(entry.Amount));
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -320,6 +321,25 @@ namespace WindowsFormsApp1
             bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
             string escaped = value.Replace("\"", "\"\"");
             return mustQuote ? $"\"{escaped}\"" : escaped;
+        }
+
+        private string FormatAmountDisplay(string amountValue)
+        {
+            if (string.IsNullOrWhiteSpace(amountValue))
+            {
+                return amountValue ?? string.Empty;
+            }
+
+            string clean = amountValue.Replace(",", "").Trim();
+            if (decimal.TryParse(clean, NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out decimal numericValue))
+            {
+                string formattedInteger = string.Format(CultureInfo.InvariantCulture, "{0:N0}", Math.Truncate(numericValue));
+                int decimalIndex = clean.IndexOf('.');
+                string fractionalPart = decimalIndex >= 0 ? clean.Substring(decimalIndex) : string.Empty;
+                return formattedInteger + fractionalPart;
+            }
+
+            return amountValue;
         }
     }
 }
