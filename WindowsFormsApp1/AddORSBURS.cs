@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace WindowsFormsApp1
     public partial class AddORSBURS : Form
     {
         private readonly List<FileInfo> uploadedFiles = new List<FileInfo>();
+        private bool isFormattingAmountText;
         private Panel fileListPanel;
         private Color originalPanelColor;
         private Point originalPanelLocation;
@@ -32,6 +34,7 @@ namespace WindowsFormsApp1
             InitializeFileUpload();
             createORSBURSEntryBtn.Click += CreateORSBURSEntryBtn_Click;
             cancel.Click += (s, e) => this.Close();
+            amount.TextChanged += Amount_TextChanged;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -408,7 +411,7 @@ namespace WindowsFormsApp1
             }
 
             // Validate amount is a valid number
-            if (!decimal.TryParse(amount.Text, out _))
+            if (!TryGetAmountValue(out _))
             {
                 message = "Amount must be a valid number.";
                 return false;
@@ -435,19 +438,39 @@ namespace WindowsFormsApp1
             }
         }
 
+        private bool TryGetAmountValue(out decimal amountValue)
+        {
+            string numericText = amount.Text?.Replace(",", "").Trim();
+
+            if (string.IsNullOrWhiteSpace(numericText))
+            {
+                amountValue = 0;
+                return false;
+            }
+
+            return decimal.TryParse(
+                numericText,
+                NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture,
+                out amountValue);
+        }
+
         private void SaveORSBURSEntry()
         {
             byte[] documentBytes = GetDocumentBytes();
-            decimal amountValue = decimal.Parse(amount.Text);
+            if (!TryGetAmountValue(out decimal amountValue))
+            {
+                throw new InvalidOperationException("Unable to parse Amount field.");
+            }
 
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
                 string query = @"INSERT INTO ora_burono
-                                (serial_no, date, fund_cluster, payee, office, address,
+                                (serial_no, date, fund_cluster, po_no, payee, office, address,
                                  responsibility_center, particulars, mfo_pap, uacs_oc,
                                  amount, approving_officer, remarks, documents, status)
                                 VALUES
-                                (@serial_no, @date, @fund_cluster, @payee, @office, @address,
+                                (@serial_no, @date, @fund_cluster, @po_no, @payee, @office, @address,
                                  @responsibility_center, @particulars, @mfo_pap, @uacs_oc,
                                  @amount, @approving_officer, @remarks, @documents, @status)";
 
@@ -456,6 +479,7 @@ namespace WindowsFormsApp1
                     command.Parameters.AddWithValue("@serial_no", serialNo.Text.Trim());
                     command.Parameters.AddWithValue("@date", date.Value.Date);
                     command.Parameters.AddWithValue("@fund_cluster", FundCluster.Text.Trim());
+                    command.Parameters.AddWithValue("@po_no", textBox1.Text.Trim());
                     command.Parameters.AddWithValue("@payee", Payee.Text.Trim());
                     command.Parameters.AddWithValue("@office", Office.Text.Trim());
                     command.Parameters.AddWithValue("@address", Address.Text.Trim());
@@ -481,6 +505,51 @@ namespace WindowsFormsApp1
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        private void Amount_TextChanged(object sender, EventArgs e)
+        {
+            if (isFormattingAmountText)
+            {
+                return;
+            }
+
+            string currentText = amount.Text;
+            if (string.IsNullOrWhiteSpace(currentText))
+            {
+                return;
+            }
+
+            string cleanText = currentText.Replace(",", "");
+            if (!decimal.TryParse(cleanText, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal parsedValue))
+            {
+                return;
+            }
+
+            string formattedInteger = string.Format(
+                CultureInfo.InvariantCulture,
+                "{0:N0}",
+                Math.Truncate(parsedValue));
+
+            int decimalIndex = cleanText.IndexOf('.');
+            string formattedText = decimalIndex >= 0
+                ? $"{formattedInteger}.{cleanText.Substring(decimalIndex + 1)}"
+                : formattedInteger;
+
+            isFormattingAmountText = true;
+
+            int selectionFromEnd = currentText.Length - amount.SelectionStart;
+            amount.Text = formattedText;
+
+            int newSelectionStart = formattedText.Length - selectionFromEnd;
+            if (newSelectionStart < 0)
+            {
+                newSelectionStart = 0;
+            }
+            amount.SelectionStart = Math.Min(newSelectionStart, amount.Text.Length);
+            amount.SelectionLength = 0;
+
+            isFormattingAmountText = false;
         }
     }
 }
