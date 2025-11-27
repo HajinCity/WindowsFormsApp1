@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.dev_no = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.dev_date = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
@@ -92,8 +91,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.cancel = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.createDEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.customRoundedPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.customRoundedPanel2.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel4.SuspendLayout();
@@ -112,6 +111,7 @@
             this.customRoundedPanel17.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -154,17 +154,6 @@
             this.dev_no.Name = "dev_no";
             this.dev_no.Size = new System.Drawing.Size(322, 18);
             this.dev_no.TabIndex = 0;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
-            this.pictureBox2.Location = new System.Drawing.Point(1126, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 108;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // dev_date
             // 
@@ -240,9 +229,9 @@
             this.label5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(21, 125);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 17);
+            this.label5.Size = new System.Drawing.Size(154, 17);
             this.label5.TabIndex = 83;
-            this.label5.Text = "ORS-BURS No.";
+            this.label5.Text = "ORS-BURS Serial No.";
             // 
             // customRoundedPanel4
             // 
@@ -690,7 +679,7 @@
             this.panel1.Controls.Add(this.label22);
             this.panel1.Location = new System.Drawing.Point(39, 711);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1073, 96);
+            this.panel1.Size = new System.Drawing.Size(1073, 144);
             this.panel1.TabIndex = 115;
             // 
             // pictureBox1
@@ -751,6 +740,7 @@
             this.cancel.TabIndex = 117;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = false;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // createDEVbtn
             // 
@@ -766,8 +756,19 @@
             this.createDEVbtn.Name = "createDEVbtn";
             this.createDEVbtn.Size = new System.Drawing.Size(215, 51);
             this.createDEVbtn.TabIndex = 116;
-            this.createDEVbtn.Text = "Create IAR Entry";
+            this.createDEVbtn.Text = "Create DEV Entry";
             this.createDEVbtn.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
+            this.pictureBox2.Location = new System.Drawing.Point(1126, 9);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 108;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // AddDevEntry
             // 
@@ -825,7 +826,6 @@
             this.Text = "AddDevEntry";
             this.customRoundedPanel1.ResumeLayout(false);
             this.customRoundedPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.customRoundedPanel2.ResumeLayout(false);
             this.customRoundedPanel2.PerformLayout();
             this.customRoundedPanel3.ResumeLayout(false);
@@ -861,6 +861,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

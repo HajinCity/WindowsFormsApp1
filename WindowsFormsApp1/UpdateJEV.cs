@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,9 +10,9 @@ using WindowsFormsApp1.BackendModel;
 
 namespace WindowsFormsApp1
 {
-    public partial class UpdateIARForm : Form
+    public partial class UpdateJEV : Form
     {
-        private readonly int iarId;
+        private readonly int jevId;
         private readonly bool isEditMode;
         private byte[] documentBytes;
         private byte[] originalDocumentBytes;
@@ -34,30 +33,118 @@ namespace WindowsFormsApp1
 
         private const long MAX_FILE_SIZE = 20 * 1024 * 1024;
         private readonly string[] allowedExtensions = { ".pdf", ".png", ".jpg", ".jpeg", ".docx" };
-        private bool isFormattingTotalAmount;
 
-        public UpdateIARForm()
+        public UpdateJEV()
         {
             InitializeComponent();
             InitializeFileUpload();
             InitializeDocumentControls();
-            UpdateIARbtn.Click += UpdateIARbtn_Click;
-            cancel.Click += (s, e) => this.Close();
-            TotalAmount.TextChanged += TotalAmount_TextChanged;
-            TotalAmount.KeyPress += TotalAmount_KeyPress;
+            InitializeCalculation();
+            UpdateJournalEntryBtn.Click += UpdateJournalEntryBtn_Click;
+            cancel.Click += cancel_Click;
         }
 
-        public UpdateIARForm(int iarId) : this()
+        private void InitializeCalculation()
         {
-            this.iarId = iarId;
-            isEditMode = iarId > 0;
+            // Make netAmount read-only
+            netAmount.ReadOnly = true;
+            netAmount.BackColor = Color.WhiteSmoke; // Visual indication that it's read-only
+
+            // Add numeric-only input handlers
+            grossAmount.KeyPress += NumericTextBox_KeyPress;
+            deductions.KeyPress += NumericTextBox_KeyPress;
+
+            // Add calculation handlers
+            grossAmount.TextChanged += CalculateNetAmount;
+            deductions.TextChanged += CalculateNetAmount;
+        }
+
+        private void NumericTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow digits, decimal point, and control characters (backspace, delete, etc.)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // Only allow one decimal point
+            TextBox textBox = sender as TextBox;
+            if (e.KeyChar == '.' && textBox != null && textBox.Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void CalculateNetAmount(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal gross = 0;
+                decimal deduct = 0;
+                bool canCalculate = true;
+
+                // Parse grossAmount
+                if (!string.IsNullOrWhiteSpace(grossAmount.Text))
+                {
+                    if (decimal.TryParse(grossAmount.Text, out decimal grossValue))
+                    {
+                        gross = grossValue;
+                    }
+                    else
+                    {
+                        canCalculate = false;
+                    }
+                }
+
+                // Parse deductions
+                if (!string.IsNullOrWhiteSpace(deductions.Text))
+                {
+                    if (decimal.TryParse(deductions.Text, out decimal deductValue))
+                    {
+                        deduct = deductValue;
+                    }
+                    else
+                    {
+                        canCalculate = false;
+                    }
+                }
+
+                // Calculate and display net amount if both fields are valid or empty
+                if (canCalculate)
+                {
+                    decimal net = gross - deduct;
+                    netAmount.Text = net.ToString("0.00");
+                }
+                else
+                {
+                    // Invalid input, clear net amount
+                    netAmount.Text = "";
+                }
+            }
+            catch
+            {
+                // If calculation fails, clear the net amount
+                netAmount.Text = "";
+            }
+        }
+
+        public UpdateJEV(int jevId) : this()
+        {
+            this.jevId = jevId;
+            isEditMode = jevId > 0;
             if (isEditMode)
             {
-                LoadIarDetails();
+                LoadJEVDetails();
             }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -93,10 +180,9 @@ namespace WindowsFormsApp1
                 Size = originalPanel1Size,
                 AutoScroll = true,
                 Visible = false,
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right // No bottom anchor to prevent sticking to bottom
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
-            
-            // Insert at the same index as panel1 to ensure proper Z-order
+
             int panel1Index = Controls.IndexOf(panel1);
             if (panel1Index >= 0)
             {
@@ -293,8 +379,6 @@ namespace WindowsFormsApp1
             if (hasNewUpload)
             {
                 ShowFileList();
-                // Don't show buttons when showing file list - each file item has its own remove button
-                // The file list replaces panel1 completely to avoid gaps
                 downloadDocumentButton.Visible = false;
                 changeDocumentButton.Visible = false;
                 removeDocumentButton.Visible = false;
@@ -316,8 +400,6 @@ namespace WindowsFormsApp1
                 removeDocumentButton.Visible = true;
                 documentStatusLabel.Visible = true;
                 documentStatusLabel.Text = "Document available. Use the buttons below.";
-                downloadDocumentButton.Text = "Download / View Document";
-                changeDocumentButton.Text = "Replace Document";
             }
             else
             {
@@ -340,19 +422,15 @@ namespace WindowsFormsApp1
             
             try
             {
-                // Get current location and size of panel1 before hiding it (in case form was resized/scrolled)
                 Point currentPanelLocation = panel1.Location;
                 Size currentPanelSize = panel1.Size;
                 
-                // Hide panel1 completely to remove the gap
                 panel1.Visible = false;
                 
-                // Position file list exactly where panel1 was - use absolute coordinates
                 fileListPanel.Location = currentPanelLocation;
-                fileListPanel.Size = new Size(currentPanelSize.Width, 0); // Start with 0 height
+                fileListPanel.Size = new Size(currentPanelSize.Width, 0);
                 fileListPanel.Visible = true;
                 fileListPanel.Controls.Clear();
-                // Set anchor to prevent panel from moving (no bottom anchor)
                 fileListPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                 
                 int yPosition = 0;
@@ -362,15 +440,14 @@ namespace WindowsFormsApp1
                     fileListPanel.Controls.Add(fileItemPanel);
                     yPosition += fileItemPanel.Height + 5;
                 }
-                fileListPanel.Height = yPosition; // Auto resize panel to exact height
+                fileListPanel.Height = yPosition;
                 
-                // Ensure it's in the correct Z-order and visible
                 fileListPanel.BringToFront();
             }
             finally
             {
                 ResumeLayout(true);
-                fileListPanel.Refresh(); // Force a refresh to ensure it's displayed
+                fileListPanel.Refresh();
             }
         }
 
@@ -386,57 +463,53 @@ namespace WindowsFormsApp1
                 Size = new Size(panelWidth, panelHeight),
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right // Fill width
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
 
-            // File name label - left aligned
             Label fileNameLabel = new Label
             {
                 Text = file.Name,
-                Location = new Point(horizontalPadding, (panelHeight - 20) / 2), // Vertically centered
+                Location = new Point(horizontalPadding, (panelHeight - 20) / 2),
                 Size = new Size(400, 20),
                 Font = new Font("Arial", 10, FontStyle.Regular),
                 ForeColor = Color.Black,
-                AutoEllipsis = true // Truncate with ellipsis if too long
+                AutoEllipsis = true
             };
             itemPanel.Controls.Add(fileNameLabel);
 
-            // File type label - positioned after file name
-            Label fileType = new Label
+            Label fileTypeLabel = new Label
             {
                 Text = file.Extension.ToUpper().TrimStart('.'),
-                Location = new Point(420, (panelHeight - 20) / 2), // Vertically centered
+                Location = new Point(420, (panelHeight - 20) / 2),
                 Size = new Size(60, 20),
                 Font = new Font("Arial", 10, FontStyle.Regular),
-                ForeColor = Color.FromArgb(128, 128, 128), // Lighter gray
+                ForeColor = Color.FromArgb(128, 128, 128),
                 TextAlign = ContentAlignment.MiddleLeft
             };
-            itemPanel.Controls.Add(fileType);
+            itemPanel.Controls.Add(fileTypeLabel);
 
-            // File size label - positioned after file type
-            Label fileSize = new Label
+            Label fileSizeLabel = new Label
             {
                 Text = FormatFileSize(file.Length),
-                Location = new Point(490, (panelHeight - 20) / 2), // Vertically centered
+                Location = new Point(490, (panelHeight - 20) / 2),
                 Size = new Size(100, 20),
                 Font = new Font("Arial", 10, FontStyle.Regular),
-                ForeColor = Color.FromArgb(128, 128, 128), // Lighter gray
+                ForeColor = Color.FromArgb(128, 128, 128),
                 TextAlign = ContentAlignment.MiddleLeft
             };
-            itemPanel.Controls.Add(fileSize);
+            itemPanel.Controls.Add(fileSizeLabel);
 
-            // Remove button - right aligned
             Button removeButton = new Button
             {
                 Text = "Remove",
-                Location = new Point(panelWidth - 100 - horizontalPadding, (panelHeight - 30) / 2), // Vertically centered, right aligned
+                Location = new Point(panelWidth - 100 - horizontalPadding, (panelHeight - 30) / 2),
                 Size = new Size(90, 30),
                 BackColor = Color.FromArgb(220, 53, 69),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Cursor = Cursors.Hand,
                 Font = new Font("Arial", 9, FontStyle.Regular),
-                Anchor = AnchorStyles.Top | AnchorStyles.Right // Keep right aligned when panel resizes
+                Anchor = AnchorStyles.Top | AnchorStyles.Right
             };
             removeButton.FlatAppearance.BorderSize = 0;
             removeButton.Click += (s, e) => RemoveFile(file);
@@ -451,7 +524,7 @@ namespace WindowsFormsApp1
             if (uploadedFiles.Count == 0)
             {
                 fileListPanel.Controls.Clear();
-                fileListPanel.Height = 0; // shrink
+                fileListPanel.Height = 0;
                 fileListPanel.Visible = false;
                 uploadedDocumentName = null;
                 uploadedDocumentExtension = null;
@@ -572,344 +645,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void LoadIarDetails()
-        {
-            try
-            {
-                using (MySqlConnection connection = RDBSMConnection.GetConnection())
-                {
-                    string query = @"SELECT iar_no, date_iar, fund_cluster, supplier, po_no, po_date,
-                                            requisitioning_office, responsibility_centercode, `Invoice No` AS invoice_no,
-                                            date_inspected, inspector_offcer, date_received,
-                                            property_custodian_officer, record_status, total_amount,
-                                            remarks, documents
-                                     FROM inspection_acceptance_report
-                                     WHERE iar_id = @iarId
-                                     LIMIT 1";
-
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@iarId", iarId);
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (!reader.Read())
-                            {
-                                MessageBox.Show("IAR record could not be found.", "Not Found",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return;
-                            }
-
-                            iarNo.Text = reader["iar_no"]?.ToString();
-                            supplierName.Text = reader["supplier"]?.ToString();
-                            RequisitioningOffice.Text = reader["requisitioning_office"]?.ToString();
-                            FundCluster.Text = reader["fund_cluster"]?.ToString();
-                            RequistioningCnterCode.Text = reader["responsibility_centercode"]?.ToString();
-                            po_number.Text = reader["po_no"]?.ToString();
-                            InvoiceNumber.Text = reader["invoice_no"]?.ToString();
-                            InspectorOfficer.Text = reader["inspector_offcer"]?.ToString();
-                            PropertyCustodianOfficer.Text = reader["property_custodian_officer"]?.ToString();
-                            ReceivedStatus.Text = reader["record_status"]?.ToString();
-                            TotalAmount.Text = reader["total_amount"]?.ToString();
-                            textBox11.Text = reader["remarks"]?.ToString();
-
-                            if (reader["date_iar"] != DBNull.Value)
-                            {
-                                iar_date.Value = reader.GetDateTime("date_iar");
-                            }
-                            if (reader["po_date"] != DBNull.Value)
-                            {
-                                po_date.Value = reader.GetDateTime("po_date");
-                            }
-                            if (reader["date_inspected"] != DBNull.Value)
-                            {
-                                date_inspected.Value = reader.GetDateTime("date_inspected");
-                            }
-                            if (reader["date_received"] != DBNull.Value)
-                            {
-                                date_received.Value = reader.GetDateTime("date_received");
-                            }
-
-                            if (reader["documents"] != DBNull.Value)
-                            {
-                                documentBytes = (byte[])reader["documents"];
-                            }
-                            else
-                            {
-                                documentBytes = null;
-                            }
-                            originalDocumentBytes = documentBytes;
-                            storedDocumentExtension = GuessFileExtension(documentBytes);
-                        }
-                    }
-
-                    LoadStockItems(connection);
-                }
-
-                UpdateDocumentSection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    $"Unable to load IAR information: {ex.Message}",
-                    "Load Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
-
-        private void LoadStockItems(MySqlConnection connection)
-        {
-            dataGridView1.Rows.Clear();
-
-            string query = @"SELECT stck_no, description, unit, quantity
-                             FROM stock_property
-                             WHERE iar_id = @iarId
-                             ORDER BY stck_id";
-
-            using (MySqlCommand command = new MySqlCommand(query, connection))
-            {
-                command.Parameters.AddWithValue("@iarId", iarId);
-
-                using (MySqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        dataGridView1.Rows.Add(
-                            reader["stck_no"]?.ToString(),
-                            reader["description"]?.ToString(),
-                            reader["unit"]?.ToString(),
-                            reader["quantity"]?.ToString());
-                    }
-                }
-            }
-        }
-
-        private void UpdateIARbtn_Click(object sender, EventArgs e)
-        {
-            if (!AreMainFieldsValid(out string validationMessage))
-            {
-                MessageBox.Show(validationMessage, "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!AreStockRowsValid(out string stockMessage))
-            {
-                MessageBox.Show(stockMessage, "Invalid Stock Items", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            DialogResult confirm = MessageBox.Show(
-                "Are you sure you want to update this IAR entry?",
-                "Confirm Update",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirm != DialogResult.Yes)
-            {
-                return;
-            }
-
-            try
-            {
-                SaveUpdates();
-                MessageBox.Show("Inspection and Acceptance Report updated successfully.", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    $"Unable to update IAR entry: {ex.Message}",
-                    "Update Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
-
-        private bool AreMainFieldsValid(out string message)
-        {
-            var requiredFields = new List<(string Value, string Label)>
-            {
-                (iarNo.Text, "IAR Number"),
-                (supplierName.Text, "Supplier Name"),
-                (RequisitioningOffice.Text, "Requisitioning Office"),
-                (FundCluster.Text, "Fund Cluster"),
-                (RequistioningCnterCode.Text, "Requisitioning Center Code"),
-                (po_number.Text, "PO Number"),
-                (InvoiceNumber.Text, "Invoice Number"),
-                (InspectorOfficer.Text, "Inspector Officer"),
-                (PropertyCustodianOfficer.Text, "Property Custodian Officer"),
-                (ReceivedStatus.Text, "Received Status"),
-                (TotalAmount.Text, "Total Amount"),
-                (textBox11.Text, "Remarks")
-            };
-
-            foreach (var field in requiredFields)
-            {
-                if (string.IsNullOrWhiteSpace(field.Value))
-                {
-                    message = $"{field.Label} is required.";
-                    return false;
-                }
-            }
-
-            if (!TryGetTotalAmountValue(out _))
-            {
-                message = "Total Amount must be a valid number.";
-                return false;
-            }
-
-            message = string.Empty;
-            return true;
-        }
-
-        private bool AreStockRowsValid(out string message)
-        {
-            if (dataGridView1.Rows.Count == 0 ||
-                (dataGridView1.Rows.Count == 1 && dataGridView1.Rows[0].IsNewRow))
-            {
-                message = "Please add at least one stock item.";
-                return false;
-            }
-
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (row.IsNewRow)
-                {
-                    continue;
-                }
-
-                string stockNumber = row.Cells[0].Value?.ToString();
-                string description = row.Cells[1].Value?.ToString();
-                string unit = row.Cells[2].Value?.ToString();
-                string quantityValue = row.Cells[3].Value?.ToString();
-
-                if (string.IsNullOrWhiteSpace(stockNumber) ||
-                    string.IsNullOrWhiteSpace(description) ||
-                    string.IsNullOrWhiteSpace(unit) ||
-                    string.IsNullOrWhiteSpace(quantityValue))
-                {
-                    message = "All stock item columns must be filled.";
-                    return false;
-                }
-
-                if (!decimal.TryParse(quantityValue, out _))
-                {
-                    message = $"Quantity '{quantityValue}' must be a valid number.";
-                    return false;
-                }
-            }
-
-            message = string.Empty;
-            return true;
-        }
-
-        private void SaveUpdates()
-        {
-            if (!TryGetTotalAmountValue(out decimal totalAmountValue))
-            {
-                throw new InvalidOperationException("Unable to parse Total Amount field.");
-            }
-            byte[] attachment = documentBytes;
-
-            using (MySqlConnection connection = RDBSMConnection.GetConnection())
-            using (MySqlTransaction transaction = connection.BeginTransaction())
-            {
-                try
-                {
-                    string updateIar = @"UPDATE inspection_acceptance_report SET
-                                            iar_no = @iar_no,
-                                            date_iar = @date_iar,
-                                            fund_cluster = @fund_cluster,
-                                            supplier = @supplier,
-                                            po_no = @po_no,
-                                            po_date = @po_date,
-                                            requisitioning_office = @requisitioning_office,
-                                            responsibility_centercode = @responsibility_centercode,
-                                            `Invoice No` = @invoice_no,
-                                            date_inspected = @date_inspected,
-                                            inspector_offcer = @inspector_offcer,
-                                            date_received = @date_received,
-                                            property_custodian_officer = @property_custodian_officer,
-                                            record_status = @record_status,
-                                            total_amount = @total_amount,
-                                            remarks = @remarks,
-                                            documents = @documents
-                                         WHERE iar_id = @iar_id";
-
-                    using (MySqlCommand cmd = new MySqlCommand(updateIar, connection, transaction))
-                    {
-                        cmd.Parameters.AddWithValue("@iar_no", iarNo.Text.Trim());
-                        cmd.Parameters.AddWithValue("@date_iar", iar_date.Value.Date);
-                        cmd.Parameters.AddWithValue("@fund_cluster", FundCluster.Text.Trim());
-                        cmd.Parameters.AddWithValue("@supplier", supplierName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@po_no", po_number.Text.Trim());
-                        cmd.Parameters.AddWithValue("@po_date", po_date.Value.Date);
-                        cmd.Parameters.AddWithValue("@requisitioning_office", RequisitioningOffice.Text.Trim());
-                        cmd.Parameters.AddWithValue("@responsibility_centercode", RequistioningCnterCode.Text.Trim());
-                        cmd.Parameters.AddWithValue("@invoice_no", InvoiceNumber.Text.Trim());
-                        cmd.Parameters.AddWithValue("@date_inspected", date_inspected.Value.Date);
-                        cmd.Parameters.AddWithValue("@inspector_offcer", InspectorOfficer.Text.Trim());
-                        cmd.Parameters.AddWithValue("@date_received", date_received.Value.Date);
-                        cmd.Parameters.AddWithValue("@property_custodian_officer", PropertyCustodianOfficer.Text.Trim());
-                        cmd.Parameters.AddWithValue("@record_status", ReceivedStatus.Text.Trim());
-                        cmd.Parameters.AddWithValue("@total_amount", totalAmountValue);
-                        cmd.Parameters.AddWithValue("@remarks", textBox11.Text.Trim());
-                        cmd.Parameters.AddWithValue("@iar_id", iarId);
-
-                        var documentParam = cmd.Parameters.Add("@documents", MySqlDbType.LongBlob);
-                        documentParam.Value = (attachment == null || attachment.Length == 0) ? (object)DBNull.Value : attachment;
-
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    using (MySqlCommand deleteCmd = new MySqlCommand("DELETE FROM stock_property WHERE iar_id = @iar_id", connection, transaction))
-                    {
-                        deleteCmd.Parameters.AddWithValue("@iar_id", iarId);
-                        deleteCmd.ExecuteNonQuery();
-                    }
-
-                    string insertStock = @"INSERT INTO stock_property
-                        (iar_id, stck_no, description, unit, quantity)
-                        VALUES
-                        (@iar_id, @stck_no, @description, @unit, @quantity);";
-
-                    using (MySqlCommand stockCmd = new MySqlCommand(insertStock, connection, transaction))
-                    {
-                        stockCmd.Parameters.Add("@iar_id", MySqlDbType.Int32);
-                        stockCmd.Parameters.Add("@stck_no", MySqlDbType.VarChar);
-                        stockCmd.Parameters.Add("@description", MySqlDbType.VarChar);
-                        stockCmd.Parameters.Add("@unit", MySqlDbType.VarChar);
-                        stockCmd.Parameters.Add("@quantity", MySqlDbType.Decimal);
-
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
-                        {
-                            if (row.IsNewRow)
-                            {
-                                continue;
-                            }
-
-                            stockCmd.Parameters["@iar_id"].Value = iarId;
-                            stockCmd.Parameters["@stck_no"].Value = row.Cells[0].Value?.ToString().Trim();
-                            stockCmd.Parameters["@description"].Value = row.Cells[1].Value?.ToString().Trim();
-                            stockCmd.Parameters["@unit"].Value = row.Cells[2].Value?.ToString().Trim();
-                            stockCmd.Parameters["@quantity"].Value = decimal.Parse(row.Cells[3].Value.ToString());
-                            stockCmd.ExecuteNonQuery();
-                        }
-                    }
-
-                    transaction.Commit();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    throw;
-                }
-            }
-        }
-
         private string FormatFileSize(long bytes)
         {
             string[] sizes = { "B", "KB", "MB", "GB" };
@@ -925,126 +660,254 @@ namespace WindowsFormsApp1
             return $"{len:0.##} {sizes[order]}";
         }
 
-        private string GuessFileExtension(byte[] data)
+        private string GuessFileExtension(byte[] bytes)
         {
-            if (data == null || data.Length < 4)
+            if (bytes == null || bytes.Length < 4)
             {
                 return ".bin";
             }
 
-            if (data[0] == 0x25 && data[1] == 0x50 && data[2] == 0x44 && data[3] == 0x46)
+            // PDF
+            if (bytes[0] == 0x25 && bytes[1] == 0x50 && bytes[2] == 0x44 && bytes[3] == 0x46)
+            {
                 return ".pdf";
-            if (data[0] == 0x89 && data[1] == 0x50 && data[2] == 0x4E && data[3] == 0x47)
+            }
+
+            // PNG
+            if (bytes[0] == 0x89 && bytes[1] == 0x50 && bytes[2] == 0x4E && bytes[3] == 0x47)
+            {
                 return ".png";
-            if (data[0] == 0xFF && data[1] == 0xD8)
+            }
+
+            // JPEG
+            if (bytes[0] == 0xFF && bytes[1] == 0xD8 && bytes[2] == 0xFF)
+            {
                 return ".jpg";
-            if (data[0] == 0x50 && data[1] == 0x4B && data[2] == 0x03 && data[3] == 0x04)
+            }
+
+            // DOCX (ZIP-based)
+            if (bytes[0] == 0x50 && bytes[1] == 0x4B && bytes[2] == 0x03 && bytes[3] == 0x04)
+            {
                 return ".docx";
-            if (data[0] == 0xD0 && data[1] == 0xCF && data[2] == 0x11 && data[3] == 0xE0)
-                return ".doc";
+            }
 
             return ".bin";
         }
 
         private string GetSuggestedDocumentFileName()
         {
-            string extension = uploadedDocumentExtension;
-            if (string.IsNullOrEmpty(extension))
-            {
-                extension = storedDocumentExtension;
-            }
-            if (string.IsNullOrEmpty(extension))
-            {
-                extension = GuessFileExtension(documentBytes);
-            }
-            if (string.IsNullOrEmpty(extension))
-            {
-                extension = ".bin";
-            }
-            if (!extension.StartsWith("."))
-            {
-                extension = "." + extension;
-            }
-
-            string baseName = !string.IsNullOrWhiteSpace(uploadedDocumentName)
-                ? Path.GetFileNameWithoutExtension(uploadedDocumentName)
-                : (string.IsNullOrWhiteSpace(iarNo.Text)
-                    ? "iar_document"
-                    : iarNo.Text.Trim().Replace(" ", "_"));
-
+            string baseName = $"JEV_{jevId}";
+            string extension = storedDocumentExtension ?? ".bin";
             return $"{baseName}{extension}";
         }
 
-        private bool TryGetTotalAmountValue(out decimal amountValue)
+        private void LoadJEVDetails()
         {
-            string numericText = TotalAmount.Text?.Replace(",", "").Trim();
-            if (string.IsNullOrWhiteSpace(numericText))
+            try
             {
-                amountValue = 0m;
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT jev_no, date, responsibility_center, uacs_code, account, particulars,
+                                            gross_amount, deductions, tax_type, net_amount, status, approving_officer, documents
+                                     FROM jev
+                                     WHERE jev_id = @jevId
+                                     LIMIT 1";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@jevId", jevId);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (!reader.Read())
+                            {
+                                MessageBox.Show("JEV record could not be found.", "Not Found",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+
+                            jev_no.Text = reader["jev_no"]?.ToString();
+                            rspCode.Text = reader["responsibility_center"]?.ToString();
+                            uacscode.Text = reader["uacs_code"]?.ToString();
+                            account.Text = reader["account"]?.ToString();
+                            particulars.Text = reader["particulars"]?.ToString();
+                            taxtype.Text = reader["tax_type"]?.ToString();
+                            grossAmount.Text = reader["gross_amount"]?.ToString();
+                            deductions.Text = reader["deductions"]?.ToString();
+                            netAmount.Text = reader["net_amount"]?.ToString();
+                            status.Text = reader["status"]?.ToString();
+                            approvingOfficer.Text = reader["approving_officer"]?.ToString();
+
+                            if (reader["date"] != DBNull.Value)
+                            {
+                                jevDate.Value = reader.GetDateTime("date");
+                            }
+
+                            if (reader["documents"] != DBNull.Value)
+                            {
+                                documentBytes = (byte[])reader["documents"];
+                            }
+                            else
+                            {
+                                documentBytes = null;
+                            }
+                            originalDocumentBytes = documentBytes;
+                            storedDocumentExtension = GuessFileExtension(documentBytes);
+                        }
+                    }
+                }
+
+                UpdateDocumentSection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to load JEV information: {ex.Message}",
+                    "Load Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdateJournalEntryBtn_Click(object sender, EventArgs e)
+        {
+            if (!AreInputsValid(out string validationMessage))
+            {
+                MessageBox.Show(validationMessage, "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to update this JEV entry?",
+                "Confirm Update",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                SaveUpdates();
+                MessageBox.Show("JEV entry updated successfully.", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to update JEV entry: {ex.Message}",
+                    "Update Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private bool AreInputsValid(out string message)
+        {
+            var requiredFields = new List<(string Value, string Label)>
+            {
+                (jev_no.Text, "JEV No."),
+                (rspCode.Text, "Responsibility Center Code"),
+                (uacscode.Text, "UACS Code"),
+                (account.Text, "Account"),
+                (particulars.Text, "Particulars"),
+                (taxtype.Text, "Tax Type"),
+                (grossAmount.Text, "Gross Amount"),
+                (deductions.Text, "Deductions"),
+                (netAmount.Text, "Net Amount"),
+                (status.Text, "Status"),
+                (approvingOfficer.Text, "Approving Officer")
+            };
+
+            foreach (var field in requiredFields)
+            {
+                if (string.IsNullOrWhiteSpace(field.Value))
+                {
+                    message = $"{field.Label} is required and cannot be empty.";
+                    return false;
+                }
+            }
+
+            if (!decimal.TryParse(grossAmount.Text, out _))
+            {
+                message = "Gross Amount must be a valid number.";
                 return false;
             }
 
-            return decimal.TryParse(
-                numericText,
-                NumberStyles.AllowDecimalPoint,
-                CultureInfo.InvariantCulture,
-                out amountValue);
+            if (!decimal.TryParse(deductions.Text, out _))
+            {
+                message = "Deductions must be a valid number.";
+                return false;
+            }
+
+            if (!decimal.TryParse(netAmount.Text, out _))
+            {
+                message = "Net Amount must be a valid number.";
+                return false;
+            }
+
+            message = string.Empty;
+            return true;
         }
 
-        private void TotalAmount_TextChanged(object sender, EventArgs e)
+        private void SaveUpdates()
         {
-            if (isFormattingTotalAmount)
+            byte[] documentBytesToSave = documentBytes;
+            decimal grossAmountValue = decimal.Parse(grossAmount.Text);
+            decimal deductionsValue = decimal.Parse(deductions.Text);
+            decimal netAmountValue = decimal.Parse(netAmount.Text);
+
+            using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
-                return;
+                string query = @"UPDATE jev SET
+                                    jev_no = @jev_no,
+                                    date = @date,
+                                    responsibility_center = @responsibility_center,
+                                    uacs_code = @uacs_code,
+                                    account = @account,
+                                    particulars = @particulars,
+                                    gross_amount = @gross_amount,
+                                    deductions = @deductions,
+                                    tax_type = @tax_type,
+                                    net_amount = @net_amount,
+                                    status = @status,
+                                    approving_officer = @approving_officer,
+                                    documents = @documents
+                                 WHERE jev_id = @jev_id";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@jev_id", jevId);
+                    command.Parameters.AddWithValue("@jev_no", jev_no.Text.Trim());
+                    command.Parameters.AddWithValue("@date", jevDate.Value.Date);
+                    command.Parameters.AddWithValue("@responsibility_center", rspCode.Text.Trim());
+                    command.Parameters.AddWithValue("@uacs_code", uacscode.Text.Trim());
+                    command.Parameters.AddWithValue("@account", account.Text.Trim());
+                    command.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
+                    command.Parameters.AddWithValue("@gross_amount", grossAmountValue);
+                    command.Parameters.AddWithValue("@deductions", deductionsValue);
+                    command.Parameters.AddWithValue("@tax_type", taxtype.Text.Trim());
+                    command.Parameters.AddWithValue("@net_amount", netAmountValue);
+                    command.Parameters.AddWithValue("@status", status.Text.Trim());
+                    command.Parameters.AddWithValue("@approving_officer", approvingOfficer.Text.Trim());
+
+                    var documentParam = command.Parameters.Add("@documents", MySqlDbType.LongBlob);
+                    if (documentBytesToSave == null || documentBytesToSave.Length == 0)
+                    {
+                        documentParam.Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        documentParam.Value = documentBytesToSave;
+                    }
+
+                    command.ExecuteNonQuery();
+                }
             }
-
-            string currentText = TotalAmount.Text;
-            if (string.IsNullOrWhiteSpace(currentText))
-            {
-                return;
-            }
-
-            string cleanText = currentText.Replace(",", "");
-            if (!decimal.TryParse(cleanText, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal parsedValue))
-            {
-                return;
-            }
-
-            string formattedInteger = string.Format(
-                CultureInfo.InvariantCulture,
-                "{0:N0}",
-                Math.Truncate(parsedValue));
-
-            int decimalIndex = cleanText.IndexOf('.');
-            string fractionalPart = decimalIndex >= 0 ? cleanText.Substring(decimalIndex) : string.Empty;
-            string formattedText = formattedInteger + fractionalPart;
-
-            isFormattingTotalAmount = true;
-            int selectionFromEnd = currentText.Length - TotalAmount.SelectionStart;
-            TotalAmount.Text = formattedText;
-            int newSelectionStart = formattedText.Length - selectionFromEnd;
-            if (newSelectionStart < 0)
-            {
-                newSelectionStart = 0;
-            }
-            TotalAmount.SelectionStart = Math.Min(newSelectionStart, TotalAmount.Text.Length);
-            TotalAmount.SelectionLength = 0;
-            isFormattingTotalAmount = false;
-        }
-
-        private void TotalAmount_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar))
-            {
-                return;
-            }
-
-            if (e.KeyChar == '.' && sender is TextBox textBox && !textBox.Text.Contains("."))
-            {
-                return;
-            }
-
-            e.Handled = true;
         }
     }
 }

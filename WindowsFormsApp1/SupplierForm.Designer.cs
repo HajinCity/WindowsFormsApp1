@@ -1,4 +1,5 @@
-﻿namespace WindowsFormsApp1
+﻿
+namespace WindowsFormsApp1
 {
     partial class SupplierForm
     {
@@ -33,6 +34,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.addSupplierBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -78,7 +80,7 @@
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(52, 271);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1131, 333);
+            this.panel1.Size = new System.Drawing.Size(1131, 482);
             this.panel1.TabIndex = 8;
             // 
             // dataGridView1
@@ -97,7 +99,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(1131, 482);
             this.dataGridView1.TabIndex = 0;
             // 
             // label1
@@ -110,6 +112,23 @@
             this.label1.Size = new System.Drawing.Size(95, 18);
             this.label1.TabIndex = 10;
             this.label1.Text = "Supplier List";
+            // 
+            // ExportToCSV
+            // 
+            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
+            this.ExportToCSV.BorderRadius = 10;
+            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportToCSV.FlatAppearance.BorderSize = 0;
+            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportToCSV.Location = new System.Drawing.Point(979, 772);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportToCSV.TabIndex = 12;
+            this.ExportToCSV.Text = "Export to Excel";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
             // 
             // addSupplierBtn
             // 
@@ -196,6 +215,7 @@
             // 
             this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.BtnEdit.HeaderText = "";
+            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -205,6 +225,7 @@
             // 
             this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.BtnView.HeaderText = "";
+            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
             this.BtnView.Name = "BtnView";
             this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -215,7 +236,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1226, 624);
+            this.ClientSize = new System.Drawing.Size(1226, 876);
+            this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addSupplierBtn);
             this.Controls.Add(this.panel1);
@@ -247,6 +269,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private Controls.CustomRoundedButton ExportToCSV;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Globalization;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,52 +14,48 @@ using WindowsFormsApp1.BackendModel;
 
 namespace WindowsFormsApp1
 {
-    public partial class ViewORSBURS : Form
+    public partial class ViewJEV : Form
     {
-        private readonly int orsBursId;
+        private readonly int jevId;
         private byte[] documentBytes;
         private string storedDocumentExtension;
         private Button downloadDocumentButton;
         private Label documentStatusLabel;
-        private bool isFormattingAmountText;
 
-        public ViewORSBURS()
+        public ViewJEV()
         {
             InitializeComponent();
             MakeFieldsReadOnly();
             InitializeDocumentControls();
             ExportToCSV.Click += ExportToCSV_Click;
-            amount.TextChanged += Amount_TextChanged;
         }
 
-        public ViewORSBURS(int orsBursId) : this()
+        public ViewJEV(int jevId) : this()
         {
-            this.orsBursId = orsBursId;
-            if (orsBursId > 0)
+            this.jevId = jevId;
+            if (jevId > 0)
             {
-                LoadOrsBursDetails();
+                LoadJEVDetails();
             }
         }
 
         private void MakeFieldsReadOnly()
         {
             // Make all text fields read-only
-            serialNo.ReadOnly = true;
-            textBox1.ReadOnly = true;
-            Payee.ReadOnly = true;
-            Office.ReadOnly = true;
-            FundCluster.ReadOnly = true;
-            Address.ReadOnly = true;
-            ResponsibilityCenter.ReadOnly = true;
-            Particulars.ReadOnly = true;
-            MFOPAP.ReadOnly = true;
+            jev_no.ReadOnly = true;
+            rspCode.ReadOnly = true;
             uacscode.ReadOnly = true;
-            amount.ReadOnly = true;
+            account.ReadOnly = true;
+            particulars.ReadOnly = true;
+            taxtype.ReadOnly = true;
+            grossAmount.ReadOnly = true;
+            deductions.ReadOnly = true;
+            netAmount.ReadOnly = true;
+            status.ReadOnly = true;
             approvingOfficer.ReadOnly = true;
-            remarks.ReadOnly = true;
 
             // Make date picker read-only
-            date.Enabled = false;
+            jevDate.Enabled = false;
 
             // Hide upload UI elements (read-only view)
             pictureBox1.Visible = false;
@@ -170,49 +165,46 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void LoadOrsBursDetails()
+        private void LoadJEVDetails()
         {
             try
             {
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = @"SELECT serial_no, date, fund_cluster, po_no, payee, office, address,
-                                            responsibility_center, particulars, mfo_pap, uacs_oc,
-                                            amount, approving_officer, remarks, documents
-                                     FROM ora_burono
-                                     WHERE ora_burono = @orsBursId
+                    string query = @"SELECT jev_no, date, responsibility_center, uacs_code, account, particulars,
+                                            gross_amount, deductions, tax_type, net_amount, status, approving_officer, documents
+                                     FROM jev
+                                     WHERE jev_id = @jevId
                                      LIMIT 1";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@orsBursId", orsBursId);
+                        command.Parameters.AddWithValue("@jevId", jevId);
 
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
                             if (!reader.Read())
                             {
-                                MessageBox.Show("ORS-BURS record could not be found.", "Not Found",
+                                MessageBox.Show("JEV record could not be found.", "Not Found",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return;
                             }
 
-                            serialNo.Text = reader["serial_no"]?.ToString();
-                            textBox1.Text = reader["po_no"]?.ToString();
-                            Payee.Text = reader["payee"]?.ToString();
-                            Office.Text = reader["office"]?.ToString();
-                            FundCluster.Text = reader["fund_cluster"]?.ToString();
-                            Address.Text = reader["address"]?.ToString();
-                            ResponsibilityCenter.Text = reader["responsibility_center"]?.ToString();
-                            Particulars.Text = reader["particulars"]?.ToString();
-                            MFOPAP.Text = reader["mfo_pap"]?.ToString();
-                            uacscode.Text = reader["uacs_oc"]?.ToString();
-                            amount.Text = reader["amount"]?.ToString();
+                            jev_no.Text = reader["jev_no"]?.ToString();
+                            rspCode.Text = reader["responsibility_center"]?.ToString();
+                            uacscode.Text = reader["uacs_code"]?.ToString();
+                            account.Text = reader["account"]?.ToString();
+                            particulars.Text = reader["particulars"]?.ToString();
+                            taxtype.Text = reader["tax_type"]?.ToString();
+                            grossAmount.Text = reader["gross_amount"]?.ToString();
+                            deductions.Text = reader["deductions"]?.ToString();
+                            netAmount.Text = reader["net_amount"]?.ToString();
+                            status.Text = reader["status"]?.ToString();
                             approvingOfficer.Text = reader["approving_officer"]?.ToString();
-                            remarks.Text = reader["remarks"]?.ToString();
 
                             if (reader["date"] != DBNull.Value)
                             {
-                                date.Value = reader.GetDateTime("date");
+                                jevDate.Value = reader.GetDateTime("date");
                             }
 
                             if (reader["documents"] != DBNull.Value)
@@ -233,7 +225,7 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"Unable to load ORS-BURS information: {ex.Message}",
+                    $"Unable to load JEV information: {ex.Message}",
                     "Load Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -298,9 +290,9 @@ namespace WindowsFormsApp1
                 extension = "." + extension;
             }
 
-            string baseName = string.IsNullOrWhiteSpace(serialNo.Text)
-                ? "ors_burs_document"
-                : serialNo.Text.Trim().Replace(" ", "_");
+            string baseName = string.IsNullOrWhiteSpace(jev_no.Text)
+                ? "jev_document"
+                : jev_no.Text.Trim().Replace(" ", "_");
 
             return $"{baseName}{extension}";
         }
@@ -309,10 +301,10 @@ namespace WindowsFormsApp1
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.Title = "Export ORS-BURS Data to CSV";
+                saveFileDialog.Title = "Export JEV Data to CSV";
                 saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-                string serialNumber = string.IsNullOrWhiteSpace(serialNo.Text) ? "ORSBURS" : serialNo.Text.Trim().Replace(" ", "_");
-                saveFileDialog.FileName = $"ORSBURS_{serialNumber}_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+                string jevNumber = string.IsNullOrWhiteSpace(jev_no.Text) ? "JEV" : jev_no.Text.Trim().Replace(" ", "_");
+                saveFileDialog.FileName = $"JEV_{jevNumber}_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
 
                 if (saveFileDialog.ShowDialog() != DialogResult.OK)
                 {
@@ -323,31 +315,29 @@ namespace WindowsFormsApp1
                 {
                     using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
                     {
-                        // Write ORS-BURS Header Information Section
-                        writer.WriteLine("ORS-BURS INFORMATION");
-                        writer.WriteLine("=====================");
-                        writer.WriteLine($"Serial Number,{EscapeForCsv(serialNo.Text)}");
-                        writer.WriteLine($"Date,{EscapeForCsv(date.Value.ToShortDateString())}");
-                        writer.WriteLine($"Fund Cluster,{EscapeForCsv(FundCluster.Text)}");
-                        writer.WriteLine($"PO Number,{EscapeForCsv(textBox1.Text)}");
-                        writer.WriteLine($"Payee,{EscapeForCsv(Payee.Text)}");
-                        writer.WriteLine($"Office,{EscapeForCsv(Office.Text)}");
-                        writer.WriteLine($"Address,{EscapeForCsv(Address.Text)}");
-                        writer.WriteLine($"Responsibility Center,{EscapeForCsv(ResponsibilityCenter.Text)}");
-                        writer.WriteLine($"Particulars,{EscapeForCsv(Particulars.Text)}");
-                        writer.WriteLine($"MFO/PAP,{EscapeForCsv(MFOPAP.Text)}");
+                        // Write JEV Header Information Section
+                        writer.WriteLine("JEV INFORMATION");
+                        writer.WriteLine("===============");
+                        writer.WriteLine($"JEV No.,{EscapeForCsv(jev_no.Text)}");
+                        writer.WriteLine($"Date,{EscapeForCsv(jevDate.Value.ToShortDateString())}");
+                        writer.WriteLine($"Responsibility Center Code,{EscapeForCsv(rspCode.Text)}");
                         writer.WriteLine($"UACS Code,{EscapeForCsv(uacscode.Text)}");
-                        writer.WriteLine($"Amount,{EscapeForCsv(amount.Text)}");
+                        writer.WriteLine($"Account,{EscapeForCsv(account.Text)}");
+                        writer.WriteLine($"Particulars,{EscapeForCsv(particulars.Text)}");
+                        writer.WriteLine($"Tax Type,{EscapeForCsv(taxtype.Text)}");
+                        writer.WriteLine($"Gross Amount,{EscapeForCsv(grossAmount.Text)}");
+                        writer.WriteLine($"Deductions,{EscapeForCsv(deductions.Text)}");
+                        writer.WriteLine($"Net Amount,{EscapeForCsv(netAmount.Text)}");
+                        writer.WriteLine($"Status,{EscapeForCsv(status.Text)}");
                         writer.WriteLine($"Approving Officer,{EscapeForCsv(approvingOfficer.Text)}");
-                        writer.WriteLine($"Remarks,{EscapeForCsv(remarks.Text)}");
                     }
 
-                    MessageBox.Show("ORS-BURS data exported successfully.", "Export Complete",
+                    MessageBox.Show("JEV data exported successfully.", "Export Complete",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Unable to export ORS-BURS data: {ex.Message}", "Export Error",
+                    MessageBox.Show($"Unable to export JEV data: {ex.Message}", "Export Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -363,41 +353,6 @@ namespace WindowsFormsApp1
             bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
             string escaped = value.Replace("\"", "\"\"");
             return mustQuote ? $"\"{escaped}\"" : escaped;
-        }
-
-        private void Amount_TextChanged(object sender, EventArgs e)
-        {
-            if (isFormattingAmountText)
-            {
-                return;
-            }
-
-            string currentText = amount.Text;
-            if (string.IsNullOrWhiteSpace(currentText))
-            {
-                return;
-            }
-
-            string cleanText = currentText.Replace(",", "");
-            if (!decimal.TryParse(cleanText, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal parsedValue))
-            {
-                return;
-            }
-
-            string formattedInteger = string.Format(
-                CultureInfo.InvariantCulture,
-                "{0:N0}",
-                Math.Truncate(parsedValue));
-
-            int decimalIndex = cleanText.IndexOf('.');
-            string fractionalPart = decimalIndex >= 0 ? cleanText.Substring(decimalIndex) : string.Empty;
-            string formattedText = formattedInteger + fractionalPart;
-
-            isFormattingAmountText = true;
-            amount.Text = formattedText;
-            amount.SelectionStart = amount.Text.Length;
-            amount.SelectionLength = 0;
-            isFormattingAmountText = false;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

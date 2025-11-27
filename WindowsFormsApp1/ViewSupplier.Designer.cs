@@ -35,13 +35,12 @@
             this.contactInfo = new System.Windows.Forms.TextBox();
             this.tinNumber = new System.Windows.Forms.TextBox();
             this.bankName = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.customRoundedPanel8 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.accountNum = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.customRoundedPanel6 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
@@ -145,17 +144,6 @@
             this.bankName.Size = new System.Drawing.Size(689, 18);
             this.bankName.TabIndex = 6;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(252, 85);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(201, 17);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "PDF,JPG,PNG,DOCX (20MB)";
-            // 
             // customRoundedPanel8
             // 
             this.customRoundedPanel8.BackColor = System.Drawing.Color.Gainsboro;
@@ -188,7 +176,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Upload;
             this.pictureBox1.Location = new System.Drawing.Point(327, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(52, 47);
@@ -203,20 +190,20 @@
             this.label11.ForeColor = System.Drawing.Color.SeaGreen;
             this.label11.Location = new System.Drawing.Point(245, 53);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(214, 17);
+            this.label11.Size = new System.Drawing.Size(12, 17);
             this.label11.TabIndex = 25;
-            this.label11.Text = "Click to upload or drag and drop";
+            this.label11.Text = " ";
             // 
-            // label9
+            // label10
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(25, 662);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(324, 17);
-            this.label9.TabIndex = 71;
-            this.label9.Text = "Upload Documents (Contracts, Tax, Forms ,etc.)";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(252, 85);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(12, 17);
+            this.label10.TabIndex = 25;
+            this.label10.Text = " ";
             // 
             // status
             // 
@@ -430,7 +417,6 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.customRoundedPanel8);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.status);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.customRoundedPanel6);
@@ -487,13 +473,9 @@
         private System.Windows.Forms.TextBox contactInfo;
         private System.Windows.Forms.TextBox tinNumber;
         private System.Windows.Forms.TextBox bankName;
-        private System.Windows.Forms.Label label10;
         private Controls.CustomRoundedPanel customRoundedPanel8;
         private System.Windows.Forms.TextBox accountNum;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox status;
         private System.Windows.Forms.Label label8;
         private Controls.CustomRoundedPanel customRoundedPanel6;
@@ -513,5 +495,8 @@
         private Controls.CustomRoundedPanel customRoundedPanel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

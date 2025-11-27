@@ -220,6 +220,12 @@
     <Compile Include="UpdateIARForm.Designer.cs">
       <DependentUpon>UpdateIARForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateJEV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateJEV.Designer.cs">
+      <DependentUpon>UpdateJEV.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateORSBURSForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,12 @@
     </Compile>
     <Compile Include="ViewIAR.Designer.cs">
       <DependentUpon>ViewIAR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewJEV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewJEV.Designer.cs">
+      <DependentUpon>ViewJEV.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewORSBURS.cs">
       <SubType>Form</SubType>
@@ -326,11 +338,17 @@
     <EmbeddedResource Include="TransactionLedger.resx">
       <DependentUpon>TransactionLedger.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateDEV.resx">
+      <DependentUpon>UpdateDEV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateGJ.resx">
       <DependentUpon>UpdateGJ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateIARForm.resx">
       <DependentUpon>UpdateIARForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateJEV.resx">
+      <DependentUpon>UpdateJEV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateORSBURSForm.resx">
       <DependentUpon>UpdateORSBURSForm.cs</DependentUpon>
@@ -341,11 +359,17 @@
     <EmbeddedResource Include="UserManagement.resx">
       <DependentUpon>UserManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewDEV.resx">
+      <DependentUpon>ViewDEV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewGJEntry.resx">
       <DependentUpon>ViewGJEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewIAR.resx">
       <DependentUpon>ViewIAR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewJEV.resx">
+      <DependentUpon>ViewJEV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewORSBURS.resx">
       <DependentUpon>ViewORSBURS.cs</DependentUpon>
@@ -415,6 +439,11 @@
   <ItemGroup>
     <None Include="Resources\Edit.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Eye1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
