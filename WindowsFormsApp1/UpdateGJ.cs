@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace WindowsFormsApp1
         private Size originalPanel1Size;
         private const long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20 MB
         private readonly string[] allowedExtensions = { ".pdf", ".png", ".jpg", ".jpeg", ".docx" };
+        private bool isFormattingAmountText;
 
         public UpdateGJ()
         {
@@ -41,6 +43,7 @@ namespace WindowsFormsApp1
             InitializeFileUpload();
             createUpdateEntryBtn.Click += CreateUpdateEntryBtn_Click;
             cancel.Click += (s, e) => this.Close();
+            amount.TextChanged += Amount_TextChanged;
         }
 
         public UpdateGJ(int journalId) : this()
@@ -635,6 +638,12 @@ namespace WindowsFormsApp1
                 }
             }
 
+            if (!TryGetAmountValue(out _))
+            {
+                message = "Amount must be a valid number.";
+                return false;
+            }
+
             message = string.Empty;
             return true;
         }
@@ -664,6 +673,10 @@ namespace WindowsFormsApp1
             }
 
             byte[] attachment = GetDocumentBytes();
+            if (!TryGetAmountValue(out decimal amountValue))
+            {
+                throw new InvalidOperationException("Unable to parse the Amount field.");
+            }
 
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
@@ -681,7 +694,7 @@ namespace WindowsFormsApp1
                     command.Parameters.AddWithValue("@gj_no", gjno.Text.Trim());
                     command.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
                     command.Parameters.AddWithValue("@uacs_code", uacs_Code.Text.Trim());
-                    command.Parameters.AddWithValue("@amount", amount.Text.Trim());
+                    command.Parameters.AddWithValue("@amount", amountValue);
                     command.Parameters.AddWithValue("@date", date.Value.Date);
                     command.Parameters.AddWithValue("@gjId", journalId);
 
@@ -752,6 +765,63 @@ namespace WindowsFormsApp1
                     : gjno.Text.Trim().Replace(" ", "_"));
 
             return $"{baseName}{extension}";
+        }
+
+        private bool TryGetAmountValue(out decimal amountValue)
+        {
+            string numericText = amount.Text?.Replace(",", "").Trim();
+            if (string.IsNullOrWhiteSpace(numericText))
+            {
+                amountValue = 0m;
+                return false;
+            }
+
+            return decimal.TryParse(
+                numericText,
+                NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture,
+                out amountValue);
+        }
+
+        private void Amount_TextChanged(object sender, EventArgs e)
+        {
+            if (isFormattingAmountText)
+            {
+                return;
+            }
+
+            string currentText = amount.Text;
+            if (string.IsNullOrWhiteSpace(currentText))
+            {
+                return;
+            }
+
+            string cleanText = currentText.Replace(",", "");
+            if (!decimal.TryParse(cleanText, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal parsedValue))
+            {
+                return;
+            }
+
+            string formattedInteger = string.Format(
+                CultureInfo.InvariantCulture,
+                "{0:N0}",
+                Math.Truncate(parsedValue));
+
+            int decimalIndex = cleanText.IndexOf('.');
+            string fractionalPart = decimalIndex >= 0 ? cleanText.Substring(decimalIndex) : string.Empty;
+            string formattedText = formattedInteger + fractionalPart;
+
+            isFormattingAmountText = true;
+            int selectionFromEnd = currentText.Length - amount.SelectionStart;
+            amount.Text = formattedText;
+            int newSelectionStart = formattedText.Length - selectionFromEnd;
+            if (newSelectionStart < 0)
+            {
+                newSelectionStart = 0;
+            }
+            amount.SelectionStart = Math.Min(newSelectionStart, amount.Text.Length);
+            amount.SelectionLength = 0;
+            isFormattingAmountText = false;
         }
     }
 }
