@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace WindowsFormsApp1
         private string storedDocumentExtension;
         private Button downloadDocumentButton;
         private Label documentStatusLabel;
+        private bool isFormattingTotalAmount;
 
         public ViewIAR()
         {
@@ -28,6 +30,7 @@ namespace WindowsFormsApp1
             MakeFieldsReadOnly();
             InitializeDocumentControls();
             ExportToCSV.Click += ExportToCSV_Click;
+            TotalAmount.TextChanged += TotalAmount_TextChanged;
         }
 
         public ViewIAR(int iarId) : this()
@@ -436,6 +439,41 @@ namespace WindowsFormsApp1
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void TotalAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (isFormattingTotalAmount)
+            {
+                return;
+            }
+
+            string currentText = TotalAmount.Text;
+            if (string.IsNullOrWhiteSpace(currentText))
+            {
+                return;
+            }
+
+            string cleanText = currentText.Replace(",", "");
+            if (!decimal.TryParse(cleanText, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal parsedValue))
+            {
+                return;
+            }
+
+            string formattedInteger = string.Format(
+                CultureInfo.InvariantCulture,
+                "{0:N0}",
+                Math.Truncate(parsedValue));
+
+            int decimalIndex = cleanText.IndexOf('.');
+            string fractionalPart = decimalIndex >= 0 ? cleanText.Substring(decimalIndex) : string.Empty;
+            string formattedText = formattedInteger + fractionalPart;
+
+            isFormattingTotalAmount = true;
+            TotalAmount.Text = formattedText;
+            TotalAmount.SelectionStart = TotalAmount.Text.Length;
+            TotalAmount.SelectionLength = 0;
+            isFormattingTotalAmount = false;
         }
     }
 }

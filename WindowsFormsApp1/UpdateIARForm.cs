@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -33,6 +34,7 @@ namespace WindowsFormsApp1
 
         private const long MAX_FILE_SIZE = 20 * 1024 * 1024;
         private readonly string[] allowedExtensions = { ".pdf", ".png", ".jpg", ".jpeg", ".docx" };
+        private bool isFormattingTotalAmount;
 
         public UpdateIARForm()
         {
@@ -41,6 +43,8 @@ namespace WindowsFormsApp1
             InitializeDocumentControls();
             UpdateIARbtn.Click += UpdateIARbtn_Click;
             cancel.Click += (s, e) => this.Close();
+            TotalAmount.TextChanged += TotalAmount_TextChanged;
+            TotalAmount.KeyPress += TotalAmount_KeyPress;
         }
 
         public UpdateIARForm(int iarId) : this()
@@ -751,7 +755,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (!decimal.TryParse(TotalAmount.Text, out _))
+            if (!TryGetTotalAmountValue(out _))
             {
                 message = "Total Amount must be a valid number.";
                 return false;
@@ -804,7 +808,10 @@ namespace WindowsFormsApp1
 
         private void SaveUpdates()
         {
-            decimal totalAmountValue = decimal.Parse(TotalAmount.Text);
+            if (!TryGetTotalAmountValue(out decimal totalAmountValue))
+            {
+                throw new InvalidOperationException("Unable to parse Total Amount field.");
+            }
             byte[] attachment = documentBytes;
 
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
@@ -966,6 +973,78 @@ namespace WindowsFormsApp1
                     : iarNo.Text.Trim().Replace(" ", "_"));
 
             return $"{baseName}{extension}";
+        }
+
+        private bool TryGetTotalAmountValue(out decimal amountValue)
+        {
+            string numericText = TotalAmount.Text?.Replace(",", "").Trim();
+            if (string.IsNullOrWhiteSpace(numericText))
+            {
+                amountValue = 0m;
+                return false;
+            }
+
+            return decimal.TryParse(
+                numericText,
+                NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture,
+                out amountValue);
+        }
+
+        private void TotalAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (isFormattingTotalAmount)
+            {
+                return;
+            }
+
+            string currentText = TotalAmount.Text;
+            if (string.IsNullOrWhiteSpace(currentText))
+            {
+                return;
+            }
+
+            string cleanText = currentText.Replace(",", "");
+            if (!decimal.TryParse(cleanText, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal parsedValue))
+            {
+                return;
+            }
+
+            string formattedInteger = string.Format(
+                CultureInfo.InvariantCulture,
+                "{0:N0}",
+                Math.Truncate(parsedValue));
+
+            int decimalIndex = cleanText.IndexOf('.');
+            string fractionalPart = decimalIndex >= 0 ? cleanText.Substring(decimalIndex) : string.Empty;
+            string formattedText = formattedInteger + fractionalPart;
+
+            isFormattingTotalAmount = true;
+            int selectionFromEnd = currentText.Length - TotalAmount.SelectionStart;
+            TotalAmount.Text = formattedText;
+            int newSelectionStart = formattedText.Length - selectionFromEnd;
+            if (newSelectionStart < 0)
+            {
+                newSelectionStart = 0;
+            }
+            TotalAmount.SelectionStart = Math.Min(newSelectionStart, TotalAmount.Text.Length);
+            TotalAmount.SelectionLength = 0;
+            isFormattingTotalAmount = false;
+        }
+
+        private void TotalAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar))
+            {
+                return;
+            }
+
+            if (e.KeyChar == '.' && sender is TextBox textBox && !textBox.Text.Contains("."))
+            {
+                return;
+            }
+
+            e.Handled = true;
         }
     }
 }
