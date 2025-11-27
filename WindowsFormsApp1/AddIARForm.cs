@@ -594,7 +594,7 @@ namespace WindowsFormsApp1
                             stockCmd.Parameters["@stck_no"].Value = row.Cells[0].Value?.ToString().Trim();
                             stockCmd.Parameters["@description"].Value = row.Cells[1].Value?.ToString().Trim();
                             stockCmd.Parameters["@unit"].Value = row.Cells[2].Value?.ToString().Trim();
-                        stockCmd.Parameters["@quantity"].Value = decimal.Parse(row.Cells[3].Value.ToString());
+                            stockCmd.Parameters["@quantity"].Value = decimal.Parse(row.Cells[3].Value.ToString());
                             stockCmd.ExecuteNonQuery();
                         }
                     }
@@ -607,6 +607,7 @@ namespace WindowsFormsApp1
                     throw;
                 }
             }
+        }
 
         private bool TryGetTotalAmountValue(out decimal amountValue)
         {
@@ -678,7 +679,6 @@ namespace WindowsFormsApp1
             }
 
             e.Handled = true;
-        }
         }
     }
 }
