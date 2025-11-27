@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Globalization;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace WindowsFormsApp1
         private string storedDocumentExtension;
         private Button downloadDocumentButton;
         private Label documentStatusLabel;
+        private bool isFormattingAmountText;
 
         public ViewORSBURS()
         {
@@ -28,6 +30,7 @@ namespace WindowsFormsApp1
             MakeFieldsReadOnly();
             InitializeDocumentControls();
             ExportToCSV.Click += ExportToCSV_Click;
+            amount.TextChanged += Amount_TextChanged;
         }
 
         public ViewORSBURS(int orsBursId) : this()
@@ -43,6 +46,7 @@ namespace WindowsFormsApp1
         {
             // Make all text fields read-only
             serialNo.ReadOnly = true;
+            textBox1.ReadOnly = true;
             Payee.ReadOnly = true;
             Office.ReadOnly = true;
             FundCluster.ReadOnly = true;
@@ -172,7 +176,7 @@ namespace WindowsFormsApp1
             {
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = @"SELECT serial_no, date, fund_cluster, payee, office, address,
+                    string query = @"SELECT serial_no, date, fund_cluster, po_no, payee, office, address,
                                             responsibility_center, particulars, mfo_pap, uacs_oc,
                                             amount, approving_officer, remarks, documents
                                      FROM ora_burono
@@ -193,6 +197,7 @@ namespace WindowsFormsApp1
                             }
 
                             serialNo.Text = reader["serial_no"]?.ToString();
+                            textBox1.Text = reader["po_no"]?.ToString();
                             Payee.Text = reader["payee"]?.ToString();
                             Office.Text = reader["office"]?.ToString();
                             FundCluster.Text = reader["fund_cluster"]?.ToString();
@@ -324,6 +329,7 @@ namespace WindowsFormsApp1
                         writer.WriteLine($"Serial Number,{EscapeForCsv(serialNo.Text)}");
                         writer.WriteLine($"Date,{EscapeForCsv(date.Value.ToShortDateString())}");
                         writer.WriteLine($"Fund Cluster,{EscapeForCsv(FundCluster.Text)}");
+                        writer.WriteLine($"PO Number,{EscapeForCsv(textBox1.Text)}");
                         writer.WriteLine($"Payee,{EscapeForCsv(Payee.Text)}");
                         writer.WriteLine($"Office,{EscapeForCsv(Office.Text)}");
                         writer.WriteLine($"Address,{EscapeForCsv(Address.Text)}");
@@ -357,6 +363,41 @@ namespace WindowsFormsApp1
             bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
             string escaped = value.Replace("\"", "\"\"");
             return mustQuote ? $"\"{escaped}\"" : escaped;
+        }
+
+        private void Amount_TextChanged(object sender, EventArgs e)
+        {
+            if (isFormattingAmountText)
+            {
+                return;
+            }
+
+            string currentText = amount.Text;
+            if (string.IsNullOrWhiteSpace(currentText))
+            {
+                return;
+            }
+
+            string cleanText = currentText.Replace(",", "");
+            if (!decimal.TryParse(cleanText, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal parsedValue))
+            {
+                return;
+            }
+
+            string formattedInteger = string.Format(
+                CultureInfo.InvariantCulture,
+                "{0:N0}",
+                Math.Truncate(parsedValue));
+
+            int decimalIndex = cleanText.IndexOf('.');
+            string fractionalPart = decimalIndex >= 0 ? cleanText.Substring(decimalIndex) : string.Empty;
+            string formattedText = formattedInteger + fractionalPart;
+
+            isFormattingAmountText = true;
+            amount.Text = formattedText;
+            amount.SelectionStart = amount.Text.Length;
+            amount.SelectionLength = 0;
+            isFormattingAmountText = false;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

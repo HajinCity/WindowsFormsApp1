@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace WindowsFormsApp1
         private Color originalPanelColor;
         private Point originalPanel1Location;
         private Size originalPanel1Size;
+        private bool isFormattingAmountText;
 
         private Button downloadDocumentButton;
         private Button changeDocumentButton;
@@ -40,6 +42,7 @@ namespace WindowsFormsApp1
             InitializeFileUpload();
             InitializeDocumentControls();
             createORSBURSEntryBtn.Click += CreateORSBURSEntryBtn_Click;
+            amount.TextChanged += Amount_TextChanged;
         }
 
         public UpdateORSBURSForm(int orsBursId) : this()
@@ -566,7 +569,7 @@ namespace WindowsFormsApp1
             {
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = @"SELECT serial_no, date, fund_cluster, payee, office, address,
+                    string query = @"SELECT serial_no, date, fund_cluster, po_no, payee, office, address,
                                             responsibility_center, particulars, mfo_pap, uacs_oc,
                                             amount, approving_officer, remarks, documents
                                      FROM ora_burono
@@ -587,6 +590,7 @@ namespace WindowsFormsApp1
                             }
 
                             serialNo.Text = reader["serial_no"]?.ToString();
+                            textBox1.Text = reader["po_no"]?.ToString();
                             Payee.Text = reader["payee"]?.ToString();
                             Office.Text = reader["office"]?.ToString();
                             FundCluster.Text = reader["fund_cluster"]?.ToString();
@@ -694,7 +698,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (!decimal.TryParse(amount.Text, out _))
+            if (!TryGetAmountValue(out _))
             {
                 message = "Amount must be a valid number.";
                 return false;
@@ -707,7 +711,10 @@ namespace WindowsFormsApp1
         private void SaveUpdates()
         {
             byte[] attachment = documentBytes;
-            decimal amountValue = decimal.Parse(amount.Text);
+            if (!TryGetAmountValue(out decimal amountValue))
+            {
+                throw new InvalidOperationException("Unable to parse Amount field.");
+            }
 
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
@@ -715,6 +722,7 @@ namespace WindowsFormsApp1
                                     serial_no = @serial_no,
                                     date = @date,
                                     fund_cluster = @fund_cluster,
+                                    po_no = @po_no,
                                     payee = @payee,
                                     office = @office,
                                     address = @address,
@@ -733,6 +741,7 @@ namespace WindowsFormsApp1
                     command.Parameters.AddWithValue("@serial_no", serialNo.Text.Trim());
                     command.Parameters.AddWithValue("@date", date.Value.Date);
                     command.Parameters.AddWithValue("@fund_cluster", FundCluster.Text.Trim());
+                    command.Parameters.AddWithValue("@po_no", textBox1.Text.Trim());
                     command.Parameters.AddWithValue("@payee", Payee.Text.Trim());
                     command.Parameters.AddWithValue("@office", Office.Text.Trim());
                     command.Parameters.AddWithValue("@address", Address.Text.Trim());
@@ -816,6 +825,67 @@ namespace WindowsFormsApp1
                     : serialNo.Text.Trim().Replace(" ", "_"));
 
             return $"{baseName}{extension}";
+        }
+
+        private bool TryGetAmountValue(out decimal amountValue)
+        {
+            string numericText = amount.Text?.Replace(",", "").Trim();
+            if (string.IsNullOrWhiteSpace(numericText))
+            {
+                amountValue = 0m;
+                return false;
+            }
+
+            return decimal.TryParse(
+                numericText,
+                NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture,
+                out amountValue);
+        }
+
+        private void Amount_TextChanged(object sender, EventArgs e)
+        {
+            if (isFormattingAmountText)
+            {
+                return;
+            }
+
+            string currentText = amount.Text;
+            if (string.IsNullOrWhiteSpace(currentText))
+            {
+                return;
+            }
+
+            string cleanText = currentText.Replace(",", "");
+            if (!decimal.TryParse(cleanText, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal parsedValue))
+            {
+                return;
+            }
+
+            string formattedInteger = string.Format(
+                CultureInfo.InvariantCulture,
+                "{0:N0}",
+                Math.Truncate(parsedValue));
+
+            int decimalIndex = cleanText.IndexOf('.');
+            string fractionalPart = decimalIndex >= 0 ? cleanText.Substring(decimalIndex) : string.Empty;
+            string formattedText = formattedInteger + fractionalPart;
+
+            isFormattingAmountText = true;
+
+            int selectionFromEnd = currentText.Length - amount.SelectionStart;
+            amount.Text = formattedText;
+
+            int newSelectionStart = formattedText.Length - selectionFromEnd;
+            if (newSelectionStart < 0)
+            {
+                newSelectionStart = 0;
+            }
+
+            amount.SelectionStart = Math.Min(newSelectionStart, amount.Text.Length);
+            amount.SelectionLength = 0;
+
+            isFormattingAmountText = false;
         }
     }
 }
