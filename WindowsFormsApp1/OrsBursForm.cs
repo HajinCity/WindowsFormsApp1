@@ -70,10 +70,10 @@ namespace WindowsFormsApp1
 
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = @"SELECT ora_burono, serial_no, date, fund_cluster, payee, office, 
+                    string query = @"SELECT ora_burono, ora_serialno, date, fund_cluster, payee, office, 
                                      responsibility_center, approving_officer, amount, status
                                      FROM ora_burono
-                                     ORDER BY date DESC, serial_no";
+                                     ORDER BY date DESC, ora_burono DESC";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
                             orsBursCache.Add(new OrsBursRecord
                             {
                                 Id = reader.GetInt32("ora_burono"),
-                                SerialNo = reader["serial_no"]?.ToString(),
+                                SerialNo = reader["ora_serialno"]?.ToString(),
                                 Date = reader["date"] == DBNull.Value ? DateTime.MinValue : reader.GetDateTime("date"),
                                 FundCluster = reader["fund_cluster"]?.ToString(),
                                 Payee = reader["payee"]?.ToString(),

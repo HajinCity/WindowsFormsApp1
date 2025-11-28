@@ -569,7 +569,7 @@ namespace WindowsFormsApp1
             {
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = @"SELECT serial_no, date, fund_cluster, po_no, payee, office, address,
+                    string query = @"SELECT ora_serialno, date, fund_cluster, po_no, payee, office, address,
                                             responsibility_center, particulars, mfo_pap, uacs_oc,
                                             amount, approving_officer, remarks, documents
                                      FROM ora_burono
@@ -589,7 +589,7 @@ namespace WindowsFormsApp1
                                 return;
                             }
 
-                            serialNo.Text = reader["serial_no"]?.ToString();
+                            serialNo.Text = reader["ora_serialno"]?.ToString();
                             textBox1.Text = reader["po_no"]?.ToString();
                             Payee.Text = reader["payee"]?.ToString();
                             Office.Text = reader["office"]?.ToString();
