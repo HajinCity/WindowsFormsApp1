@@ -213,12 +213,12 @@ namespace WindowsFormsApp1
                 string insertDev = @"INSERT INTO dev
                     (dev_no, date, fund_cluster, ora_serialno, payee, jev_no,
                      address, dateof_jev, particulars, mode_of_payment, responsibility_center,
-                     tin_no, mfo_pap, tax_type, gross_amount, deductions,
+                     tin, mfo_pap, tax_type, gross_amount, deductions,
                      net_amount, status, approving_officer, documents)
                     VALUES
                     (@dev_no, @date, @fund_cluster, @ora_serialno, @payee, @jev_no,
                      @address, @dateof_jev, @particulars, @mode_of_payment, @responsibility_center,
-                     @tin_no, @mfo_pap, @tax_type, @gross_amount, @deductions,
+                     @tin, @mfo_pap, @tax_type, @gross_amount, @deductions,
                      @net_amount, @status, @approving_officer, @documents);";
 
                 using (MySqlCommand cmd = new MySqlCommand(insertDev, connection))
@@ -234,7 +234,7 @@ namespace WindowsFormsApp1
                     cmd.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
                     cmd.Parameters.AddWithValue("@mode_of_payment", mop.Text.Trim());
                     cmd.Parameters.AddWithValue("@responsibility_center", respcenter.Text.Trim());
-                    cmd.Parameters.AddWithValue("@tin_no", tinNo.Text.Trim());
+                    cmd.Parameters.AddWithValue("@tin", tinNo.Text.Trim());
                     cmd.Parameters.AddWithValue("@mfo_pap", mfopap.Text.Trim());
                     cmd.Parameters.AddWithValue("@tax_type", taxType.Text.Trim());
                     cmd.Parameters.AddWithValue("@gross_amount", grossAmountValue);
