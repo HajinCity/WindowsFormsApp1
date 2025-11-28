@@ -143,6 +143,13 @@ namespace WindowsFormsApp1
             this.Hide();
         }
 
+        public void ResetLoginFields()
+        {
+            textBox1.Text = string.Empty;
+            textBox2.Text = string.Empty;
+            textBox1.Focus();
+        }
+
         // Close icon (pictureBox)
         private void pictureBox1_Click(object sender, EventArgs e)
         {

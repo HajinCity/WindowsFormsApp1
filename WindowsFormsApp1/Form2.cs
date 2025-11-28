@@ -518,6 +518,17 @@ namespace WindowsFormsApp1
         {
             try
             {
+                var confirm = MessageBox.Show(
+                    "Are you sure you want to sign out?",
+                    "Confirm Sign Out",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirm != DialogResult.Yes)
+                {
+                    return;
+                }
+
                 // Ensure panel is cleaned up to prevent lingering controls
                 panel3.Controls.Clear();
 
@@ -551,6 +562,8 @@ namespace WindowsFormsApp1
                 {
                     loginForm = new Form1();
                 }
+
+                loginForm.ResetLoginFields();
 
                 loginForm.Show();
                 loginForm.WindowState = FormWindowState.Normal;

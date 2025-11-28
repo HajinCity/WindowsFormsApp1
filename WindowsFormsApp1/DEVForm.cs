@@ -15,6 +15,15 @@ namespace WindowsFormsApp1
         public DEVForm()
         {
             InitializeComponent();
+            addDEVbtn.Click += addDEVbtn_Click;
+        }
+
+        private void addDEVbtn_Click(object sender, EventArgs e)
+        {
+            using (var addForm = new AddDevEntry())
+            {
+                addForm.ShowDialog(this);
+            }
         }
     }
 }
