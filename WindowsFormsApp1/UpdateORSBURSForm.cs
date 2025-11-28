@@ -719,7 +719,7 @@ namespace WindowsFormsApp1
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
                 string query = @"UPDATE ora_burono SET
-                                    serial_no = @serial_no,
+                                    ora_serialno = @serial_no,
                                     date = @date,
                                     fund_cluster = @fund_cluster,
                                     po_no = @po_no,

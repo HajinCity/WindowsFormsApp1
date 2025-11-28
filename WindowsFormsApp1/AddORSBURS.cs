@@ -466,17 +466,17 @@ namespace WindowsFormsApp1
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
                 string query = @"INSERT INTO ora_burono
-                                (serial_no, date, fund_cluster, po_no, payee, office, address,
+                                (ora_serialno, date, fund_cluster, po_no, payee, office, address,
                                  responsibility_center, particulars, mfo_pap, uacs_oc,
                                  amount, approving_officer, remarks, documents, status)
                                 VALUES
-                                (@serial_no, @date, @fund_cluster, @po_no, @payee, @office, @address,
+                                (@ora_serialno, @date, @fund_cluster, @po_no, @payee, @office, @address,
                                  @responsibility_center, @particulars, @mfo_pap, @uacs_oc,
                                  @amount, @approving_officer, @remarks, @documents, @status)";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@serial_no", serialNo.Text.Trim());
+                    command.Parameters.AddWithValue("@ora_serialno", serialNo.Text.Trim());
                     command.Parameters.AddWithValue("@date", date.Value.Date);
                     command.Parameters.AddWithValue("@fund_cluster", FundCluster.Text.Trim());
                     command.Parameters.AddWithValue("@po_no", textBox1.Text.Trim());
