@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -202,6 +203,10 @@ namespace WindowsFormsApp1
                             status.Text = reader["status"]?.ToString();
                             approvingOfficer.Text = reader["approving_officer"]?.ToString();
 
+                            FormatCurrencyDisplay(grossAmount);
+                            FormatCurrencyDisplay(deductions);
+                            FormatCurrencyDisplay(netAmount);
+
                             if (reader["date"] != DBNull.Value)
                             {
                                 jevDate.Value = reader.GetDateTime("date");
@@ -358,6 +363,63 @@ namespace WindowsFormsApp1
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FormatCurrencyDisplay(TextBox textBox)
+        {
+            if (textBox == null)
+            {
+                return;
+            }
+
+            string formatted = FormatNumberWithFraction(textBox.Text);
+            textBox.Text = formatted;
+        }
+
+        private string FormatNumberWithFraction(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return string.Empty;
+            }
+
+            string numericText = input.Replace(",", "").Trim();
+            if (numericText.Length == 0)
+            {
+                return string.Empty;
+            }
+
+            bool isNegative = numericText.StartsWith("-");
+            if (isNegative)
+            {
+                numericText = numericText.Substring(1);
+            }
+
+            int decimalIndex = numericText.IndexOf('.');
+            string integerPart = decimalIndex >= 0 ? numericText.Substring(0, decimalIndex) : numericText;
+            string fractionalPart = decimalIndex >= 0 ? numericText.Substring(decimalIndex) : string.Empty;
+
+            if (integerPart.Length == 0)
+            {
+                integerPart = "0";
+            }
+
+            if (!decimal.TryParse(
+                integerPart,
+                NumberStyles.AllowLeadingSign,
+                CultureInfo.InvariantCulture,
+                out decimal integerValue))
+            {
+                return input;
+            }
+
+            string formattedInteger = string.Format(CultureInfo.InvariantCulture, "{0:N0}", integerValue);
+            if (isNegative && !formattedInteger.StartsWith("-", StringComparison.Ordinal))
+            {
+                formattedInteger = "-" + formattedInteger;
+            }
+
+            return formattedInteger + fractionalPart;
         }
     }
 }

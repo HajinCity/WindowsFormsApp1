@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,8 @@ namespace WindowsFormsApp1
 
         private const long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20 MB
         private readonly string[] allowedExtensions = { ".pdf", ".png", ".jpg", ".jpeg", ".docx" };
+        private bool isFormattingGrossAmount;
+        private bool isFormattingDeductions;
 
         public AddJEVEntry()
         {
@@ -38,86 +41,67 @@ namespace WindowsFormsApp1
 
         private void InitializeCalculation()
         {
-            // Make netAmount read-only
             netAmount.ReadOnly = true;
-            netAmount.BackColor = Color.WhiteSmoke; // Visual indication that it's read-only
+            netAmount.BackColor = Color.WhiteSmoke;
 
-            // Add numeric-only input handlers
             grossAmount.KeyPress += NumericTextBox_KeyPress;
             deductions.KeyPress += NumericTextBox_KeyPress;
 
-            // Add calculation handlers
-            grossAmount.TextChanged += CalculateNetAmount;
-            deductions.TextChanged += CalculateNetAmount;
+            grossAmount.TextChanged += GrossAmount_TextChanged;
+            deductions.TextChanged += Deductions_TextChanged;
         }
 
         private void NumericTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Allow digits, decimal point, and control characters (backspace, delete, etc.)
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
                 return;
             }
 
-            // Only allow one decimal point
-            TextBox textBox = sender as TextBox;
-            if (e.KeyChar == '.' && textBox != null && textBox.Text.Contains("."))
+            if (e.KeyChar == '.' && sender is TextBox textBox)
             {
-                e.Handled = true;
+                string selectedText = textBox.SelectedText ?? string.Empty;
+                if (!textBox.Text.Contains(".") || selectedText.Contains("."))
+                {
+                    return;
+                }
             }
+
+            e.Handled = true;
         }
 
-        private void CalculateNetAmount(object sender, EventArgs e)
+        private void GrossAmount_TextChanged(object sender, EventArgs e)
         {
-            try
+            FormatCurrencyTextBox(grossAmount, ref isFormattingGrossAmount);
+            UpdateNetAmount();
+        }
+
+        private void Deductions_TextChanged(object sender, EventArgs e)
+        {
+            FormatCurrencyTextBox(deductions, ref isFormattingDeductions);
+            UpdateNetAmount();
+        }
+
+        private void UpdateNetAmount()
+        {
+            decimal gross = GetCurrencyValueOrZero(grossAmount, out bool grossValid);
+            decimal deduct = GetCurrencyValueOrZero(deductions, out bool deductValid);
+
+            if (grossValid && deductValid)
             {
-                decimal gross = 0;
-                decimal deduct = 0;
-                bool canCalculate = true;
-
-                // Parse grossAmount
-                if (!string.IsNullOrWhiteSpace(grossAmount.Text))
+                if (string.IsNullOrWhiteSpace(grossAmount.Text) && string.IsNullOrWhiteSpace(deductions.Text))
                 {
-                    if (decimal.TryParse(grossAmount.Text, out decimal grossValue))
-                    {
-                        gross = grossValue;
-                    }
-                    else
-                    {
-                        canCalculate = false;
-                    }
-                }
-
-                // Parse deductions
-                if (!string.IsNullOrWhiteSpace(deductions.Text))
-                {
-                    if (decimal.TryParse(deductions.Text, out decimal deductValue))
-                    {
-                        deduct = deductValue;
-                    }
-                    else
-                    {
-                        canCalculate = false;
-                    }
-                }
-
-                // Calculate and display net amount if both fields are valid or empty
-                if (canCalculate)
-                {
-                    decimal net = gross - deduct;
-                    netAmount.Text = net.ToString("0.00");
+                    netAmount.Text = string.Empty;
                 }
                 else
                 {
-                    // Invalid input, clear net amount
-                    netAmount.Text = "";
+                    decimal net = gross - deduct;
+                    netAmount.Text = FormatNumberWithFraction(net.ToString("0.##", CultureInfo.InvariantCulture));
                 }
             }
-            catch
+            else
             {
-                // If calculation fails, clear the net amount
-                netAmount.Text = "";
+                netAmount.Text = string.Empty;
             }
         }
 
@@ -518,19 +502,19 @@ namespace WindowsFormsApp1
             }
 
             // Validate decimal fields
-            if (!decimal.TryParse(grossAmount.Text, out _))
+            if (!TryParseCurrencyValue(grossAmount.Text, out _))
             {
                 message = "Gross Amount must be a valid number.";
                 return false;
             }
 
-            if (!decimal.TryParse(deductions.Text, out _))
+            if (!TryParseCurrencyValue(deductions.Text, out _))
             {
                 message = "Deductions must be a valid number.";
                 return false;
             }
 
-            if (!decimal.TryParse(netAmount.Text, out _))
+            if (!TryParseCurrencyValue(netAmount.Text, out _))
             {
                 message = "Net Amount must be a valid number.";
                 return false;
@@ -560,9 +544,9 @@ namespace WindowsFormsApp1
         private void SaveJEVEntry()
         {
             byte[] documentBytes = GetDocumentBytes();
-            decimal grossAmountValue = decimal.Parse(grossAmount.Text);
-            decimal deductionsValue = decimal.Parse(deductions.Text);
-            decimal netAmountValue = decimal.Parse(netAmount.Text);
+            decimal grossAmountValue = ParseCurrencyValue(grossAmount.Text);
+            decimal deductionsValue = ParseCurrencyValue(deductions.Text);
+            decimal netAmountValue = ParseCurrencyValue(netAmount.Text);
 
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
@@ -601,6 +585,132 @@ namespace WindowsFormsApp1
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        private void FormatCurrencyTextBox(TextBox textBox, ref bool isFormattingFlag)
+        {
+            if (isFormattingFlag)
+            {
+                return;
+            }
+
+            string currentText = textBox.Text;
+            if (string.IsNullOrWhiteSpace(currentText))
+            {
+                return;
+            }
+
+            string formattedText = FormatNumberWithFraction(currentText);
+            if (formattedText == currentText)
+            {
+                return;
+            }
+
+            isFormattingFlag = true;
+            int selectionFromEnd = currentText.Length - textBox.SelectionStart;
+            textBox.Text = formattedText;
+            int newSelectionStart = formattedText.Length - selectionFromEnd;
+            if (newSelectionStart < 0)
+            {
+                newSelectionStart = 0;
+            }
+            textBox.SelectionStart = Math.Min(newSelectionStart, textBox.Text.Length);
+            textBox.SelectionLength = 0;
+            isFormattingFlag = false;
+        }
+
+        private decimal GetCurrencyValueOrZero(TextBox textBox, out bool isValid)
+        {
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                isValid = true;
+                return 0m;
+            }
+
+            if (decimal.TryParse(
+                textBox.Text.Replace(",", ""),
+                NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign,
+                CultureInfo.InvariantCulture,
+                out decimal value))
+            {
+                isValid = true;
+                return value;
+            }
+
+            isValid = false;
+            return 0m;
+        }
+
+        private bool TryParseCurrencyValue(string text, out decimal value)
+        {
+            string numericText = text?.Replace(",", "").Trim();
+            if (string.IsNullOrWhiteSpace(numericText))
+            {
+                value = 0m;
+                return false;
+            }
+
+            return decimal.TryParse(
+                numericText,
+                NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign,
+                CultureInfo.InvariantCulture,
+                out value);
+        }
+
+        private decimal ParseCurrencyValue(string text)
+        {
+            if (TryParseCurrencyValue(text, out decimal value))
+            {
+                return value;
+            }
+
+            throw new InvalidOperationException("Invalid numeric value.");
+        }
+
+        private string FormatNumberWithFraction(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return string.Empty;
+            }
+
+            string numericText = input.Replace(",", "").Trim();
+            if (numericText.Length == 0)
+            {
+                return string.Empty;
+            }
+
+            bool isNegative = numericText.StartsWith("-");
+            if (isNegative)
+            {
+                numericText = numericText.Substring(1);
+            }
+
+            int decimalIndex = numericText.IndexOf('.');
+            string integerPart = decimalIndex >= 0 ? numericText.Substring(0, decimalIndex) : numericText;
+            string fractionalPart = decimalIndex >= 0 ? numericText.Substring(decimalIndex) : string.Empty;
+
+            if (integerPart.Length == 0)
+            {
+                integerPart = "0";
+            }
+
+            if (!decimal.TryParse(
+                integerPart,
+                NumberStyles.AllowLeadingSign,
+                CultureInfo.InvariantCulture,
+                out decimal integerValue))
+            {
+                return input;
+            }
+
+            string formattedInteger = string.Format(CultureInfo.InvariantCulture, "{0:N0}", integerValue);
+            if (isNegative && !formattedInteger.StartsWith("-", StringComparison.Ordinal))
+            {
+                formattedInteger = "-" + formattedInteger;
+            }
+
+            return formattedInteger + fractionalPart;
         }
     }
 }
