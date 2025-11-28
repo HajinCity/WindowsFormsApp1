@@ -36,6 +36,7 @@ namespace WindowsFormsApp1
             DVBtn.Click += DVBtn_Click;
             TransactionLedger.Click += TransactionLedgerBtn_Click;
             UserManagementBtn.Click += UserManagementBtn_Click;
+            SignOutBtn.Click += SignOutBtn_Click;
             this.Shown += Form2_Shown;
         }
 
@@ -510,6 +511,56 @@ namespace WindowsFormsApp1
             {
                 form.Hide();
                 form.Dispose();
+            }
+        }
+
+        private void SignOutBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ensure panel is cleaned up to prevent lingering controls
+                panel3.Controls.Clear();
+
+                // Dispose any embedded forms
+                DisposeForm(dashboardForm);
+                DisposeForm(supplierForm);
+                DisposeForm(generalJournalForm);
+                DisposeForm(iarForm);
+                DisposeForm(orsBursForm);
+                DisposeForm(jevForm);
+                DisposeForm(devForm);
+                DisposeForm(transactionLedgerForm);
+                DisposeForm(userManagementForm);
+
+                dashboardForm = null;
+                supplierForm = null;
+                generalJournalForm = null;
+                iarForm = null;
+                orsBursForm = null;
+                jevForm = null;
+                devForm = null;
+                transactionLedgerForm = null;
+                userManagementForm = null;
+
+                // Restore the original login form if it is still running
+                Form1 loginForm = Application.OpenForms
+                    .OfType<Form1>()
+                    .FirstOrDefault();
+
+                if (loginForm == null || loginForm.IsDisposed)
+                {
+                    loginForm = new Form1();
+                }
+
+                loginForm.Show();
+                loginForm.WindowState = FormWindowState.Normal;
+                loginForm.BringToFront();
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unable to sign out: {ex.Message}", "Sign Out Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
