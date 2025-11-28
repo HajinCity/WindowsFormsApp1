@@ -211,28 +211,28 @@ namespace WindowsFormsApp1
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
                 string insertDev = @"INSERT INTO dev
-                    (dev_no, dev_date, fund_cluster, orsburs_no, payee, jev_no,
-                     address, jev_date, particulars, mop, responsibility_center,
+                    (dev_no, date, fund_cluster, ora_serialno, payee, jev_no,
+                     address, dateof_jev, particulars, mode_of_payment, responsibility_center,
                      tin_no, mfo_pap, tax_type, gross_amount, deductions,
                      net_amount, status, approving_officer, documents)
                     VALUES
-                    (@dev_no, @dev_date, @fund_cluster, @orsburs_no, @payee, @jev_no,
-                     @address, @jev_date, @particulars, @mop, @responsibility_center,
+                    (@dev_no, @date, @fund_cluster, @ora_serialno, @payee, @jev_no,
+                     @address, @dateof_jev, @particulars, @mode_of_payment, @responsibility_center,
                      @tin_no, @mfo_pap, @tax_type, @gross_amount, @deductions,
                      @net_amount, @status, @approving_officer, @documents);";
 
                 using (MySqlCommand cmd = new MySqlCommand(insertDev, connection))
                 {
                     cmd.Parameters.AddWithValue("@dev_no", dev_no.Text.Trim());
-                    cmd.Parameters.AddWithValue("@dev_date", dev_date.Value.Date);
+                    cmd.Parameters.AddWithValue("@date", dev_date.Value.Date);
                     cmd.Parameters.AddWithValue("@fund_cluster", fundcluster.Text.Trim());
-                    cmd.Parameters.AddWithValue("@orsburs_no", orsbursNo.Text.Trim());
+                    cmd.Parameters.AddWithValue("@ora_serialno", orsbursNo.Text.Trim());
                     cmd.Parameters.AddWithValue("@payee", payee.Text.Trim());
                     cmd.Parameters.AddWithValue("@jev_no", jev_no.Text.Trim());
                     cmd.Parameters.AddWithValue("@address", address.Text.Trim());
-                    cmd.Parameters.AddWithValue("@jev_date", dateofJEV.Value.Date);
+                    cmd.Parameters.AddWithValue("@dateof_jev", dateofJEV.Value.Date);
                     cmd.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
-                    cmd.Parameters.AddWithValue("@mop", mop.Text.Trim());
+                    cmd.Parameters.AddWithValue("@mode_of_payment", mop.Text.Trim());
                     cmd.Parameters.AddWithValue("@responsibility_center", respcenter.Text.Trim());
                     cmd.Parameters.AddWithValue("@tin_no", tinNo.Text.Trim());
                     cmd.Parameters.AddWithValue("@mfo_pap", mfopap.Text.Trim());

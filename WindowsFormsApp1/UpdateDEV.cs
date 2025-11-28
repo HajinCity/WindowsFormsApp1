@@ -12,9 +12,20 @@ namespace WindowsFormsApp1
 {
     public partial class UpdateDEV : Form
     {
+        private readonly int devId;
+
         public UpdateDEV()
         {
             InitializeComponent();
+        }
+
+        public UpdateDEV(int devId) : this()
+        {
+            this.devId = devId;
+            if (devId > 0)
+            {
+                // TODO: Load DEV details
+            }
         }
 
         private void cancel_Click(object sender, EventArgs e)
