@@ -679,7 +679,7 @@
             this.panel1.Controls.Add(this.label22);
             this.panel1.Location = new System.Drawing.Point(39, 711);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1073, 144);
+            this.panel1.Size = new System.Drawing.Size(1047, 144);
             this.panel1.TabIndex = 115;
             // 
             // pictureBox1
@@ -734,7 +734,7 @@
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.HoverColor = System.Drawing.Color.LightGray;
-            this.cancel.Location = new System.Drawing.Point(733, 861);
+            this.cancel.Location = new System.Drawing.Point(680, 861);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(158, 51);
             this.cancel.TabIndex = 117;
@@ -752,7 +752,7 @@
             this.createDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createDEVbtn.ForeColor = System.Drawing.Color.White;
             this.createDEVbtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.createDEVbtn.Location = new System.Drawing.Point(897, 861);
+            this.createDEVbtn.Location = new System.Drawing.Point(873, 861);
             this.createDEVbtn.Name = "createDEVbtn";
             this.createDEVbtn.Size = new System.Drawing.Size(215, 51);
             this.createDEVbtn.TabIndex = 116;
@@ -762,7 +762,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
-            this.pictureBox2.Location = new System.Drawing.Point(1126, 9);
+            this.pictureBox2.Location = new System.Drawing.Point(1082, 9);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -776,7 +776,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1168, 924);
+            this.ClientSize = new System.Drawing.Size(1130, 924);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.createDEVbtn);
             this.Controls.Add(this.panel1);
