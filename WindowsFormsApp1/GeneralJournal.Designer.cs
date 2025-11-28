@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.addEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
@@ -204,6 +204,23 @@
             this.gradientPanel1.Size = new System.Drawing.Size(1295, 93);
             this.gradientPanel1.TabIndex = 19;
             // 
+            // ParseRangeBtn
+            // 
+            this.ParseRangeBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.BorderRadius = 10;
+            this.ParseRangeBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.FlatAppearance.BorderSize = 0;
+            this.ParseRangeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
+            this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.ParseRangeBtn.Location = new System.Drawing.Point(1148, 21);
+            this.ParseRangeBtn.Name = "ParseRangeBtn";
+            this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
+            this.ParseRangeBtn.TabIndex = 23;
+            this.ParseRangeBtn.Text = "Enter";
+            this.ParseRangeBtn.UseVisualStyleBackColor = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
@@ -303,27 +320,11 @@
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             // 
-            // ParseRangeBtn
-            // 
-            this.ParseRangeBtn.BackColor = System.Drawing.Color.SeaGreen;
-            this.ParseRangeBtn.BorderRadius = 10;
-            this.ParseRangeBtn.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.ParseRangeBtn.FlatAppearance.BorderSize = 0;
-            this.ParseRangeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
-            this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.ParseRangeBtn.Location = new System.Drawing.Point(1148, 21);
-            this.ParseRangeBtn.Name = "ParseRangeBtn";
-            this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
-            this.ParseRangeBtn.TabIndex = 23;
-            this.ParseRangeBtn.Text = "Enter";
-            this.ParseRangeBtn.UseVisualStyleBackColor = false;
-            // 
             // GeneralJournal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1351, 864);
             this.Controls.Add(this.ExportToCSV);
