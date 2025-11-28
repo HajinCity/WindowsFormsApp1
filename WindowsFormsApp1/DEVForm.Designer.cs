@@ -312,7 +312,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1351, 864);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

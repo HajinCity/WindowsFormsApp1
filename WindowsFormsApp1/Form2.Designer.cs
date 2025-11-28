@@ -31,6 +31,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.UserManagementBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label1 = new System.Windows.Forms.Label();
             this.SignOutBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
@@ -42,8 +44,6 @@
             this.DVBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.GJBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.JEVBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -89,6 +89,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(298, 778);
             this.panel1.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(45, 103);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(179, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Accounts Payable System";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(44, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 22);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Welcome";
             // 
             // UserManagementBtn
             // 
@@ -290,28 +312,6 @@
             this.JEVBtn.TabIndex = 6;
             this.JEVBtn.Text = "JEV";
             this.JEVBtn.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(44, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 22);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Welcome";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(45, 103);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 17);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Accounts Payable System";
             // 
             // Form2
             // 
