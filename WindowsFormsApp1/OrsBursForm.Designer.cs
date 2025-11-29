@@ -56,7 +56,7 @@
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.botedit = new System.Windows.Forms.DataGridViewImageColumn();
             this.botview = new System.Windows.Forms.DataGridViewImageColumn();
@@ -113,7 +113,7 @@
             this.Column17,
             this.Column18,
             this.Column19,
-            this.Column1,
+            this.Column21,
             this.Column20,
             this.botedit,
             this.botview});
@@ -358,10 +358,10 @@
             this.Column19.HeaderText = "Payable Amount";
             this.Column19.Name = "Column19";
             // 
-            // Column1
+            // Column21
             // 
-            this.Column1.HeaderText = "Balance";
-            this.Column1.Name = "Column1";
+            this.Column21.HeaderText = "Balance";
+            this.Column21.Name = "Column21";
             // 
             // Column20
             // 
@@ -444,7 +444,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private System.Windows.Forms.DataGridViewImageColumn botedit;
         private System.Windows.Forms.DataGridViewImageColumn botview;
