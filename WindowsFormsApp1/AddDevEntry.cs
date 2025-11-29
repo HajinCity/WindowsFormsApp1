@@ -266,7 +266,7 @@ namespace WindowsFormsApp1
 
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
-                connection.Open();
+                // Connection is already open from GetConnection()
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
                     try
@@ -331,8 +331,8 @@ namespace WindowsFormsApp1
                             cmd.ExecuteNonQuery();
                         }
 
-                        // Step 6: Update ora_burono status
-                        UpdateORAStatus(connection, transaction, oraSerialNo, paymentStatus);
+                        // Step 6: Update ora_burono status and amount (if there's a balance)
+                        UpdateORAStatusAndAmount(connection, transaction, oraSerialNo, paymentStatus, remainingBalance);
 
                         // Step 7: Record payment in sbl_po table
                         InsertPaymentRecord(connection, transaction, oraInfo, jevNo, dev_no.Text.Trim(), 
@@ -665,15 +665,33 @@ namespace WindowsFormsApp1
             throw new InvalidOperationException("ORA Serial Number not found in ora_burono table.");
         }
 
-        private void UpdateORAStatus(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo, string status)
+        private void UpdateORAStatusAndAmount(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo, string status, decimal balance)
         {
-            string query = @"UPDATE ora_burono SET status = @status WHERE ora_serialno = @ora_serialno";
-
-            using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
+            // If there's a balance, update both status and amount
+            // If fully paid (balance = 0), only update status
+            if (balance > 0)
             {
-                command.Parameters.AddWithValue("@status", status);
-                command.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
-                command.ExecuteNonQuery();
+                string query = @"UPDATE ora_burono SET status = @status, amount = @amount WHERE ora_serialno = @ora_serialno";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
+                {
+                    command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@amount", balance);
+                    command.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
+                    command.ExecuteNonQuery();
+                }
+            }
+            else
+            {
+                // Fully paid - only update status
+                string query = @"UPDATE ora_burono SET status = @status WHERE ora_serialno = @ora_serialno";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
+                {
+                    command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
