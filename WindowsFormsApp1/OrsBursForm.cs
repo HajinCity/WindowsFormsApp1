@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
                     string query = @"SELECT ora_burono, ora_serialno, date, fund_cluster, po_no, payee, office, 
-                                     responsibility_center, approving_officer, amount, status
+                                     responsibility_center, approving_officer, payable_amount, status
                                      FROM ora_burono
                                      ORDER BY date DESC, ora_burono DESC";
 
@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
                                 Office = reader["office"]?.ToString(),
                                 ResponsibilityCenter = reader["responsibility_center"]?.ToString(),
                                 ApprovingOfficer = reader["approving_officer"]?.ToString(),
-                                Amount = reader["amount"]?.ToString(),
+                                Amount = reader["payable_amount"]?.ToString(),
                                 Status = reader["status"]?.ToString() ?? ""
                             });
                         }

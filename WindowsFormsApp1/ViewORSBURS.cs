@@ -178,7 +178,7 @@ namespace WindowsFormsApp1
                 {
                     string query = @"SELECT ora_serialno, date, fund_cluster, po_no, payee, office, address,
                                             responsibility_center, particulars, mfo_pap, uacs_oc,
-                                            amount, approving_officer, remarks, documents
+                                            payable_amount, approving_officer, remarks, documents
                                      FROM ora_burono
                                      WHERE ora_burono = @orsBursId
                                      LIMIT 1";
@@ -206,7 +206,7 @@ namespace WindowsFormsApp1
                             Particulars.Text = reader["particulars"]?.ToString();
                             MFOPAP.Text = reader["mfo_pap"]?.ToString();
                             uacscode.Text = reader["uacs_oc"]?.ToString();
-                            amount.Text = reader["amount"]?.ToString();
+                            amount.Text = reader["payable_amount"]?.ToString();
                             approvingOfficer.Text = reader["approving_officer"]?.ToString();
                             remarks.Text = reader["remarks"]?.ToString();
 
