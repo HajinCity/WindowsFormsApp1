@@ -114,14 +114,14 @@ namespace WindowsFormsApp1
                     MessageBoxIcon.Error);
             }
         }
-
+        
         private void DisplayAllData()
         {
             dataGridView2.Rows.Clear();
             foreach (var entry in orsBursCache)
             {
                 int rowIndex = dataGridView2.Rows.Add();
-                dataGridView2.Rows[rowIndex].Cells["Column1"].Value = FormatAmountDisplay(entry.Balance); // Balance
+              
                 dataGridView2.Rows[rowIndex].Cells["Column11"].Value = entry.SerialNo; // Serial No.
                 dataGridView2.Rows[rowIndex].Cells["Column12"].Value = entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(); // Date
                 dataGridView2.Rows[rowIndex].Cells["Column13"].Value = entry.FundCluster; // Fund Cluster
@@ -131,6 +131,7 @@ namespace WindowsFormsApp1
                 dataGridView2.Rows[rowIndex].Cells["Column17"].Value = entry.ResponsibilityCenter; // Responsibility Center
                 dataGridView2.Rows[rowIndex].Cells["Column19"].Value = entry.ApprovingOfficer; // Approving Officer
                 dataGridView2.Rows[rowIndex].Cells["Column20"].Value = FormatAmountDisplay(entry.Amount); // Payable Amount
+                dataGridView2.Rows[rowIndex].Cells["Column21"].Value = FormatAmountDisplay(entry.Balance); // Balance
                 // Status - try Column18 or Column21
                 if (dataGridView2.Columns.Contains("Column18"))
                 {
