@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(37, 27);
+            this.label3.Location = new System.Drawing.Point(35, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(350, 37);
             this.label3.TabIndex = 6;
@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(44, 76);
+            this.label2.Location = new System.Drawing.Point(42, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(341, 18);
             this.label2.TabIndex = 5;
@@ -78,9 +78,9 @@ namespace WindowsFormsApp1
             // 
             this.panel1.Controls.Add(this.dataGridView2);
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(52, 271);
+            this.panel1.Location = new System.Drawing.Point(19, 252);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1531, 482);
+            this.panel1.Size = new System.Drawing.Size(1579, 613);
             this.panel1.TabIndex = 8;
             // 
             // dataGridView2
@@ -99,7 +99,7 @@ namespace WindowsFormsApp1
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(1531, 482);
+            this.dataGridView2.Size = new System.Drawing.Size(1579, 613);
             this.dataGridView2.TabIndex = 13;
             // 
             // Column6
@@ -155,7 +155,7 @@ namespace WindowsFormsApp1
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(49, 235);
+            this.label1.Location = new System.Drawing.Point(16, 216);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 18);
             this.label1.TabIndex = 10;
@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
             this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExportToCSV.ForeColor = System.Drawing.Color.White;
             this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.ExportToCSV.Location = new System.Drawing.Point(1380, 775);
+            this.ExportToCSV.Location = new System.Drawing.Point(1394, 871);
             this.ExportToCSV.Name = "ExportToCSV";
             this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
             this.ExportToCSV.TabIndex = 12;
@@ -188,7 +188,7 @@ namespace WindowsFormsApp1
             this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
             this.addSupplierBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addSupplierBtn.Location = new System.Drawing.Point(1379, 39);
+            this.addSupplierBtn.Location = new System.Drawing.Point(1394, 20);
             this.addSupplierBtn.Name = "addSupplierBtn";
             this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
             this.addSupplierBtn.TabIndex = 9;
@@ -202,9 +202,9 @@ namespace WindowsFormsApp1
             this.gradientPanel1.Controls.Add(this.textBox1);
             this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
-            this.gradientPanel1.Location = new System.Drawing.Point(45, 123);
+            this.gradientPanel1.Location = new System.Drawing.Point(12, 104);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1539, 93);
+            this.gradientPanel1.Size = new System.Drawing.Size(1586, 93);
             this.gradientPanel1.TabIndex = 7;
             // 
             // pictureBox1
@@ -231,7 +231,7 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1622, 876);
+            this.ClientSize = new System.Drawing.Size(1622, 993);
             this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addSupplierBtn);
