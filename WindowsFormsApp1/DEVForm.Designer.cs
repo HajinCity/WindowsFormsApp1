@@ -274,6 +274,7 @@
             // 
             // Column6
             // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column6.HeaderText = "Office";
             this.Column6.Name = "Column6";
             // 
@@ -284,7 +285,8 @@
             // 
             // Column8
             // 
-            this.Column8.HeaderText = "Amount";
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column8.HeaderText = "Gross Amount";
             this.Column8.Name = "Column8";
             // 
             // BtnEdit
