@@ -227,9 +227,9 @@
             this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.Location = new System.Drawing.Point(44, 525);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 17);
+            this.label12.Size = new System.Drawing.Size(113, 17);
             this.label12.TabIndex = 179;
-            this.label12.Text = "Amount";
+            this.label12.Text = "Payable Amount";
             // 
             // customRoundedPanel10
             // 
