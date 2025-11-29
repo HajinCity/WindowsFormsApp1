@@ -166,7 +166,7 @@
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BtnEdit.Width = 21;
+            this.BtnEdit.Width = 19;
             // 
             // BtnView
             // 
@@ -176,7 +176,7 @@
             this.BtnView.Name = "BtnView";
             this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BtnView.Width = 21;
+            this.BtnView.Width = 19;
             // 
             // label4
             // 
@@ -313,7 +313,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1622, 1080);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
