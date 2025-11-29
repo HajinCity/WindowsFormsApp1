@@ -28,7 +28,6 @@ namespace WindowsFormsApp1
             public string ApprovingOfficer { get; set; }
             public string Amount { get; set; }
             public string Status { get; set; }
-            public string PoNo { get; set; }
         }
 
         private readonly List<OrsBursRecord> orsBursCache = new List<OrsBursRecord>();
@@ -71,7 +70,7 @@ namespace WindowsFormsApp1
 
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = @"SELECT ora_burono, ora_serialno, date, fund_cluster, po_no, payee, office, 
+                    string query = @"SELECT ora_burono, ora_serialno, date, fund_cluster, payee, office, 
                                      responsibility_center, approving_officer, amount, status
                                      FROM ora_burono
                                      ORDER BY date DESC, ora_burono DESC";
@@ -87,7 +86,6 @@ namespace WindowsFormsApp1
                                 SerialNo = reader["ora_serialno"]?.ToString(),
                                 Date = reader["date"] == DBNull.Value ? DateTime.MinValue : reader.GetDateTime("date"),
                                 FundCluster = reader["fund_cluster"]?.ToString(),
-                                PoNo = reader["po_no"]?.ToString(),
                                 Payee = reader["payee"]?.ToString(),
                                 Office = reader["office"]?.ToString(),
                                 ResponsibilityCenter = reader["responsibility_center"]?.ToString(),
@@ -126,8 +124,7 @@ namespace WindowsFormsApp1
                     entry.ResponsibilityCenter,
                     entry.ApprovingOfficer,
                     FormatAmountDisplay(entry.Amount),
-                    entry.Status,
-                    entry.PoNo);
+                    entry.Status);
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -211,8 +208,7 @@ namespace WindowsFormsApp1
                     entry.ResponsibilityCenter,
                     entry.ApprovingOfficer,
                     FormatAmountDisplay(entry.Amount),
-                    entry.Status,
-                    entry.PoNo);
+                    entry.Status);
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -268,7 +264,7 @@ namespace WindowsFormsApp1
                     using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
                     {
                         // Write header row
-                        writer.WriteLine("Serial No.,Date,Fund Cluster,Payee,Office,Responsibility Center,Approving Officer,Total Amount,Status,PO No.");
+                        writer.WriteLine("Serial No.,Date,Fund Cluster,Payee,Office,Responsibility Center,Approving Officer,Total Amount,Status");
 
                         // Write data rows
                         foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -287,9 +283,8 @@ namespace WindowsFormsApp1
                             string approvingOfficer = EscapeForCsv(row.Cells[6].Value?.ToString());
                             string amount = EscapeForCsv(row.Cells[7].Value?.ToString());
                             string status = EscapeForCsv(row.Cells[8].Value?.ToString());
-                            string poNo = EscapeForCsv(row.Cells[9].Value?.ToString());
 
-                            writer.WriteLine($"{serialNo},{date},{fundCluster},{payee},{office},{responsibilityCenter},{approvingOfficer},{amount},{status},{poNo}");
+                            writer.WriteLine($"{serialNo},{date},{fundCluster},{payee},{office},{responsibilityCenter},{approvingOfficer},{amount},{status}");
                         }
                     }
 
