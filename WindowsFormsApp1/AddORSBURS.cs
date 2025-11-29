@@ -365,6 +365,21 @@ namespace WindowsFormsApp1
                 return;
             }
 
+            // Validate payable_amount matches total_amount from inspection_acceptance_report
+            if (!TryGetAmountValue(out decimal payableAmountValue))
+            {
+                MessageBox.Show("Amount must be a valid number.", "Invalid Amount",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!ValidatePayableAmountMatchesIARTotal(textBox1.Text.Trim(), payableAmountValue, out string amountValidationMessage))
+            {
+                MessageBox.Show(amountValidationMessage, "Amount Mismatch",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult confirm = MessageBox.Show(
                 "Are you sure you want to create this ORS/BURS entry?",
                 "Confirm Create",
@@ -514,6 +529,54 @@ namespace WindowsFormsApp1
             catch (Exception)
             {
                 // If validation query fails, return false to be safe
+                return false;
+            }
+        }
+
+        private bool ValidatePayableAmountMatchesIARTotal(string poNumber, decimal payableAmount, out string message)
+        {
+            message = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(poNumber))
+            {
+                message = "PO Number is required.";
+                return false;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT total_amount FROM inspection_acceptance_report 
+                                    WHERE po_no = @po_no 
+                                    LIMIT 1";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@po_no", poNumber.Trim());
+                        object result = command.ExecuteScalar();
+
+                        if (result == null || result == DBNull.Value)
+                        {
+                            message = "PO Number not found in IAR Form.";
+                            return false;
+                        }
+
+                        decimal iarTotalAmount = Convert.ToDecimal(result);
+
+                        if (payableAmount != iarTotalAmount)
+                        {
+                            message = $"The payable amount ({payableAmount:N2}) must be equal to the total amount ({iarTotalAmount:N2}) of the selected PO No.";
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                message = $"Error validating amount: {ex.Message}";
                 return false;
             }
         }
