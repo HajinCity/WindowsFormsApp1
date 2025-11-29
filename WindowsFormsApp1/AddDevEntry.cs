@@ -286,7 +286,8 @@ namespace WindowsFormsApp1
                         // Step 3: Determine status
                         string paymentStatus = remainingBalance == 0 ? "Fully Paid" : "Partially Paid";
                         
-                        // Step 4: Get ORA/PO information for sbl_po table
+                        // Step 4: Get ORA/PO information for sbl_po table (before payment)
+                        // This retrieves the current balance which will be used as po_amount in sbl_po
                         var oraInfo = GetORAInfo(connection, transaction, oraSerialNo);
                         
                         // Step 5: Insert DEV entry
@@ -335,6 +336,8 @@ namespace WindowsFormsApp1
                         UpdateORAStatusAndAmount(connection, transaction, oraSerialNo, paymentStatus, remainingBalance);
 
                         // Step 7: Record payment in sbl_po table
+                        // po_amount should be the balance before payment (outstandingAmount)
+                        // balance should be the remaining balance after payment
                         InsertPaymentRecord(connection, transaction, oraInfo, jevNo, dev_no.Text.Trim(), 
                             grossAmountValue, outstandingAmount, remainingBalance, paymentStatus);
 
@@ -626,7 +629,8 @@ namespace WindowsFormsApp1
 
         private decimal GetOutstandingAmount(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo)
         {
-            string query = @"SELECT amount FROM ora_burono WHERE ora_serialno = @ora_serialno LIMIT 1";
+            // Retrieve the current balance (outstanding payable) from ora_burono
+            string query = @"SELECT balance FROM ora_burono WHERE ora_serialno = @ora_serialno LIMIT 1";
 
             using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
             {
@@ -638,13 +642,23 @@ namespace WindowsFormsApp1
                     throw new InvalidOperationException("ORA Serial Number not found in ora_burono table.");
                 }
 
-                return Convert.ToDecimal(result);
+                decimal balance = Convert.ToDecimal(result);
+                
+                // Ensure balance is not negative
+                if (balance < 0)
+                {
+                    throw new InvalidOperationException("Invalid outstanding balance. Negative values are not allowed.");
+                }
+
+                return balance;
             }
         }
 
-        private (string poNo, string payee, decimal amount) GetORAInfo(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo)
+        private (string poNo, string payee, decimal balance) GetORAInfo(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo)
         {
-            string query = @"SELECT po_no, payee, amount FROM ora_burono WHERE ora_serialno = @ora_serialno LIMIT 1";
+            // Retrieve PO number, payee (supplier), and current balance for sbl_po table
+            // po_amount in sbl_po should be the balance before payment (current balance)
+            string query = @"SELECT po_no, payee, balance FROM ora_burono WHERE ora_serialno = @ora_serialno LIMIT 1";
 
             using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
             {
@@ -656,8 +670,15 @@ namespace WindowsFormsApp1
                     {
                         string poNo = reader["po_no"]?.ToString() ?? "";
                         string payee = reader["payee"]?.ToString() ?? "";
-                        decimal amount = reader["amount"] == DBNull.Value ? 0m : reader.GetDecimal("amount");
-                        return (poNo, payee, amount);
+                        decimal balance = reader["balance"] == DBNull.Value ? 0m : reader.GetDecimal("balance");
+                        
+                        // Ensure balance is not negative
+                        if (balance < 0)
+                        {
+                            throw new InvalidOperationException("Invalid balance in ora_burono. Negative values are not allowed.");
+                        }
+                        
+                        return (poNo, payee, balance);
                     }
                 }
             }
@@ -665,40 +686,45 @@ namespace WindowsFormsApp1
             throw new InvalidOperationException("ORA Serial Number not found in ora_burono table.");
         }
 
-        private void UpdateORAStatusAndAmount(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo, string status, decimal balance)
+        private void UpdateORAStatusAndAmount(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo, string status, decimal remainingBalance)
         {
-            // If there's a balance, update both status and amount
-            // If fully paid (balance = 0), only update status
-            if (balance > 0)
+            // Update ora_burono status and balance based on payment
+            // If fully paid (remainingBalance = 0), update status and set balance to 0
+            // If partially paid (remainingBalance > 0), update both status and balance
+            
+            // Ensure remaining balance is not negative
+            if (remainingBalance < 0)
             {
-                string query = @"UPDATE ora_burono SET status = @status, amount = @amount WHERE ora_serialno = @ora_serialno";
-
-                using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
-                {
-                    command.Parameters.AddWithValue("@status", status);
-                    command.Parameters.AddWithValue("@amount", balance);
-                    command.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
-                    command.ExecuteNonQuery();
-                }
+                throw new InvalidOperationException("Invalid remaining balance. Negative values are not allowed.");
             }
-            else
-            {
-                // Fully paid - only update status
-                string query = @"UPDATE ora_burono SET status = @status WHERE ora_serialno = @ora_serialno";
 
-                using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
-                {
-                    command.Parameters.AddWithValue("@status", status);
-                    command.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
-                    command.ExecuteNonQuery();
-                }
+            string query = @"UPDATE ora_burono SET status = @status, balance = @balance WHERE ora_serialno = @ora_serialno";
+
+            using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
+            {
+                command.Parameters.AddWithValue("@status", status);
+                command.Parameters.AddWithValue("@balance", remainingBalance);
+                command.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
+                command.ExecuteNonQuery();
             }
         }
 
         private void InsertPaymentRecord(MySqlConnection connection, MySqlTransaction transaction, 
-            (string poNo, string payee, decimal amount) oraInfo, string jevNo, string devNo, 
-            decimal amountPaid, decimal poAmount, decimal balance, string status)
+            (string poNo, string payee, decimal balance) oraInfo, string jevNo, string devNo, 
+            decimal amountPaid, decimal poAmount, decimal remainingBalance, string status)
         {
+            // Insert payment history record into sbl_po table
+            // po_amount: balance before payment (outstandingAmount)
+            // amount_paid: gross amount from DEV entry (payment amount)
+            // balance: remaining balance after payment
+            // status: "Fully Paid" or "Partially Paid"
+            
+            // Ensure no negative values
+            if (poAmount < 0 || amountPaid < 0 || remainingBalance < 0)
+            {
+                throw new InvalidOperationException("Invalid payment amount. Negative values are not allowed.");
+            }
+
             string query = @"INSERT INTO sbl_po
                 (po_no, supplier, ora_serialno, po_amount, responsibility_code, dev_no, jev_no,
                  checkNo, date_paid, amount_paid, balance, status)
@@ -711,14 +737,17 @@ namespace WindowsFormsApp1
                 command.Parameters.AddWithValue("@po_no", oraInfo.poNo);
                 command.Parameters.AddWithValue("@supplier", oraInfo.payee);
                 command.Parameters.AddWithValue("@ora_serialno", orsbursNo.Text.Trim());
-                command.Parameters.AddWithValue("@po_amount", poAmount);
+                command.Parameters.AddWithValue("@po_amount", poAmount); // Balance before payment
                 command.Parameters.AddWithValue("@responsibility_code", respcenter.Text.Trim());
                 command.Parameters.AddWithValue("@dev_no", devNo);
                 command.Parameters.AddWithValue("@jev_no", jevNo);
+                // Note: checkNo field - using mfopap as placeholder, but should be from a dedicated checkNo field if available
+                // Note: checkNo is currently using mfopap field as per requirements
+                // If a dedicated checkNo field exists in the form, it should be used instead
                 command.Parameters.AddWithValue("@checkNo", mfopap.Text.Trim());
                 command.Parameters.AddWithValue("@date_paid", dev_date.Value.Date);
-                command.Parameters.AddWithValue("@amount_paid", amountPaid);
-                command.Parameters.AddWithValue("@balance", balance.ToString("F2", CultureInfo.InvariantCulture));
+                command.Parameters.AddWithValue("@amount_paid", amountPaid); // Gross amount from DEV (payment amount)
+                command.Parameters.AddWithValue("@balance", remainingBalance); // Remaining balance after payment
                 command.Parameters.AddWithValue("@status", status);
                 command.ExecuteNonQuery();
             }
