@@ -21,7 +21,10 @@ namespace WindowsFormsApp1
             public string Payee { get; set; }
             public string Office { get; set; }
             public string MOP { get; set; }
+            public string GrossAmount { get; set; }
+            public string Deductions { get; set; }
             public string NetAmount { get; set; }
+            public string TaxType { get; set; }
         }
 
         private readonly List<DEVRecord> devCache = new List<DEVRecord>();
@@ -79,7 +82,8 @@ namespace WindowsFormsApp1
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
                     string query = @"SELECT dev_id, dev_no, date, ora_serialno, jev_no, payee, 
-                                            responsibility_center, mode_of_payment, net_amount
+                                            responsibility_center, mode_of_payment, gross_amount, 
+                                            deductions, net_amount, tax_type
                                      FROM dev
                                      ORDER BY date DESC, dev_id DESC";
 
@@ -98,7 +102,10 @@ namespace WindowsFormsApp1
                                 Payee = reader["payee"]?.ToString() ?? "",
                                 Office = reader["responsibility_center"]?.ToString() ?? "",
                                 MOP = reader["mode_of_payment"]?.ToString() ?? "",
-                                NetAmount = reader["net_amount"]?.ToString() ?? ""
+                                GrossAmount = reader["gross_amount"]?.ToString() ?? "",
+                                Deductions = reader["deductions"]?.ToString() ?? "",
+                                NetAmount = reader["net_amount"]?.ToString() ?? "",
+                                TaxType = reader["tax_type"]?.ToString() ?? ""
                             });
                         }
                     }
@@ -130,7 +137,10 @@ namespace WindowsFormsApp1
                     entry.Payee,
                     entry.Office,
                     entry.MOP,
-                    FormatAmountDisplay(entry.NetAmount));
+                    FormatAmountDisplay(entry.GrossAmount),
+                    FormatAmountDisplay(entry.Deductions),
+                    FormatAmountDisplay(entry.NetAmount),
+                    entry.TaxType);
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -166,7 +176,10 @@ namespace WindowsFormsApp1
                     entry.Payee,
                     entry.Office,
                     entry.MOP,
-                    FormatAmountDisplay(entry.NetAmount));
+                    FormatAmountDisplay(entry.GrossAmount),
+                    FormatAmountDisplay(entry.Deductions),
+                    FormatAmountDisplay(entry.NetAmount),
+                    entry.TaxType);
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
