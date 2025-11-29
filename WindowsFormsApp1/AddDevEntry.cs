@@ -118,6 +118,39 @@ namespace WindowsFormsApp1
                 return;
             }
 
+            // Validate negative values
+            if (!ValidateNoNegativeValues(out string negativeValueMessage))
+            {
+                MessageBox.Show(negativeValueMessage, "Invalid Amount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validate JEV exists
+            if (!ValidateJEVExists(jev_no.Text.Trim(), out string jevErrorMessage))
+            {
+                MessageBox.Show(jevErrorMessage, "Invalid JEV", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validate JEV gross amount matches
+            decimal grossAmountValue = ParseCurrencyValue(grossAmount.Text);
+            if (!ValidateJEVGrossAmount(jev_no.Text.Trim(), grossAmountValue, out string grossAmountErrorMessage))
+            {
+                MessageBox.Show(grossAmountErrorMessage, "Invalid Gross Amount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validate ORA Serial No exists
+            if (!ValidateORASerialNoExists(orsbursNo.Text.Trim(), out string oraErrorMessage))
+            {
+                MessageBox.Show(
+                    "PO number does not match or PO number does not exist in the IAR Form.",
+                    "Invalid PO Number",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult confirm = MessageBox.Show(
                 "Are you sure you want to save this DEV entry?",
                 "Confirm Save",
@@ -136,6 +169,27 @@ namespace WindowsFormsApp1
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
+            catch (MySqlException mysqlEx)
+            {
+                // Check for foreign key constraint violation
+                if (mysqlEx.Number == 1452 || mysqlEx.Message.Contains("foreign key constraint") || 
+                    mysqlEx.Message.Contains("Cannot add or update a child row"))
+                {
+                    MessageBox.Show(
+                        "PO number does not match or PO number does not exist in the IAR Form.",
+                        "Invalid PO Number",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show(
+                        $"Unable to save DEV entry: {mysqlEx.Message}",
+                        "Save Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -203,52 +257,94 @@ namespace WindowsFormsApp1
 
         private void SaveDevEntry()
         {
-            byte[] documentBytes = GetDocumentBytes(); // currently returns null (no upload implemented)
+            byte[] documentBytes = GetDocumentBytes();
             decimal grossAmountValue = ParseCurrencyValue(grossAmount.Text);
             decimal deductionsValue = ParseCurrencyValue(deductions.Text);
             decimal netAmountValue = ParseCurrencyValue(netAmount.Text);
+            string oraSerialNo = orsbursNo.Text.Trim();
+            string jevNo = jev_no.Text.Trim();
 
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
-                string insertDev = @"INSERT INTO dev
-                    (dev_no, date, fund_cluster, ora_serialno, payee, jev_no,
-                     address, dateof_jev, particulars, mode_of_payment, responsibility_center,
-                     tin, mfo_pap, tax_type, gross_amount, deductions,
-                     net_amount, status, approving_officer, documents)
-                    VALUES
-                    (@dev_no, @date, @fund_cluster, @ora_serialno, @payee, @jev_no,
-                     @address, @dateof_jev, @particulars, @mode_of_payment, @responsibility_center,
-                     @tin, @mfo_pap, @tax_type, @gross_amount, @deductions,
-                     @net_amount, @status, @approving_officer, @documents);";
-
-                using (MySqlCommand cmd = new MySqlCommand(insertDev, connection))
+                connection.Open();
+                using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
-                    cmd.Parameters.AddWithValue("@dev_no", dev_no.Text.Trim());
-                    cmd.Parameters.AddWithValue("@date", dev_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@fund_cluster", fundcluster.Text.Trim());
-                    cmd.Parameters.AddWithValue("@ora_serialno", orsbursNo.Text.Trim());
-                    cmd.Parameters.AddWithValue("@payee", payee.Text.Trim());
-                    cmd.Parameters.AddWithValue("@jev_no", jev_no.Text.Trim());
-                    cmd.Parameters.AddWithValue("@address", address.Text.Trim());
-                    cmd.Parameters.AddWithValue("@dateof_jev", dateofJEV.Value.Date);
-                    cmd.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
-                    cmd.Parameters.AddWithValue("@mode_of_payment", mop.Text.Trim());
-                    cmd.Parameters.AddWithValue("@responsibility_center", respcenter.Text.Trim());
-                    cmd.Parameters.AddWithValue("@tin", tinNo.Text.Trim());
-                    cmd.Parameters.AddWithValue("@mfo_pap", mfopap.Text.Trim());
-                    cmd.Parameters.AddWithValue("@tax_type", taxType.Text.Trim());
-                    cmd.Parameters.AddWithValue("@gross_amount", grossAmountValue);
-                    cmd.Parameters.AddWithValue("@deductions", deductionsValue);
-                    cmd.Parameters.AddWithValue("@net_amount", netAmountValue);
-                    cmd.Parameters.AddWithValue("@status", Status.Text.Trim());
-                    cmd.Parameters.AddWithValue("@approving_officer", ApOfficer.Text.Trim());
+                    try
+                    {
+                        // Step 1: Retrieve outstanding payable from ora_burono
+                        decimal outstandingAmount = GetOutstandingAmount(connection, transaction, oraSerialNo);
+                        
+                        // Step 2: Calculate remaining balance
+                        decimal remainingBalance = outstandingAmount - grossAmountValue;
+                        
+                        // Validate no negative balance
+                        if (remainingBalance < 0)
+                        {
+                            throw new InvalidOperationException("Payment amount exceeds outstanding balance. Negative values are not allowed.");
+                        }
+                        
+                        // Step 3: Determine status
+                        string paymentStatus = remainingBalance == 0 ? "Fully Paid" : "Partially Paid";
+                        
+                        // Step 4: Get ORA/PO information for sbl_po table
+                        var oraInfo = GetORAInfo(connection, transaction, oraSerialNo);
+                        
+                        // Step 5: Insert DEV entry
+                        string insertDev = @"INSERT INTO dev
+                            (dev_no, date, fund_cluster, ora_serialno, payee, jev_no,
+                             address, dateof_jev, particulars, mode_of_payment, responsibility_center,
+                             tin, mfo_pap, tax_type, gross_amount, deductions,
+                             net_amount, status, approving_officer, documents)
+                            VALUES
+                            (@dev_no, @date, @fund_cluster, @ora_serialno, @payee, @jev_no,
+                             @address, @dateof_jev, @particulars, @mode_of_payment, @responsibility_center,
+                             @tin, @mfo_pap, @tax_type, @gross_amount, @deductions,
+                             @net_amount, @status, @approving_officer, @documents);";
 
-                    var documentParam = cmd.Parameters.Add("@documents", MySqlDbType.LongBlob);
-                    documentParam.Value = (documentBytes == null || documentBytes.Length == 0)
-                        ? (object)DBNull.Value
-                        : documentBytes;
+                        using (MySqlCommand cmd = new MySqlCommand(insertDev, connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@dev_no", dev_no.Text.Trim());
+                            cmd.Parameters.AddWithValue("@date", dev_date.Value.Date);
+                            cmd.Parameters.AddWithValue("@fund_cluster", fundcluster.Text.Trim());
+                            cmd.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
+                            cmd.Parameters.AddWithValue("@payee", payee.Text.Trim());
+                            cmd.Parameters.AddWithValue("@jev_no", jevNo);
+                            cmd.Parameters.AddWithValue("@address", address.Text.Trim());
+                            cmd.Parameters.AddWithValue("@dateof_jev", dateofJEV.Value.Date);
+                            cmd.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
+                            cmd.Parameters.AddWithValue("@mode_of_payment", mop.Text.Trim());
+                            cmd.Parameters.AddWithValue("@responsibility_center", respcenter.Text.Trim());
+                            cmd.Parameters.AddWithValue("@tin", tinNo.Text.Trim());
+                            cmd.Parameters.AddWithValue("@mfo_pap", mfopap.Text.Trim());
+                            cmd.Parameters.AddWithValue("@tax_type", taxType.Text.Trim());
+                            cmd.Parameters.AddWithValue("@gross_amount", grossAmountValue);
+                            cmd.Parameters.AddWithValue("@deductions", deductionsValue);
+                            cmd.Parameters.AddWithValue("@net_amount", netAmountValue);
+                            cmd.Parameters.AddWithValue("@status", Status.Text.Trim());
+                            cmd.Parameters.AddWithValue("@approving_officer", ApOfficer.Text.Trim());
 
-                    cmd.ExecuteNonQuery();
+                            var documentParam = cmd.Parameters.Add("@documents", MySqlDbType.LongBlob);
+                            documentParam.Value = (documentBytes == null || documentBytes.Length == 0)
+                                ? (object)DBNull.Value
+                                : documentBytes;
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Step 6: Update ora_burono status
+                        UpdateORAStatus(connection, transaction, oraSerialNo, paymentStatus);
+
+                        // Step 7: Record payment in sbl_po table
+                        InsertPaymentRecord(connection, transaction, oraInfo, jevNo, dev_no.Text.Trim(), 
+                            grossAmountValue, outstandingAmount, remainingBalance, paymentStatus);
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
             }
         }
@@ -383,6 +479,231 @@ namespace WindowsFormsApp1
             }
 
             return formattedInteger + fractionalPart;
+        }
+
+        private bool ValidateNoNegativeValues(out string message)
+        {
+            decimal grossAmountValue = ParseCurrencyValue(grossAmount.Text);
+            decimal deductionsValue = ParseCurrencyValue(deductions.Text);
+            decimal netAmountValue = ParseCurrencyValue(netAmount.Text);
+
+            if (grossAmountValue < 0)
+            {
+                message = "Invalid payment amount. Negative values are not allowed.";
+                return false;
+            }
+
+            if (deductionsValue < 0)
+            {
+                message = "Invalid deductions amount. Negative values are not allowed.";
+                return false;
+            }
+
+            if (netAmountValue < 0)
+            {
+                message = "Invalid net amount. Negative values are not allowed.";
+                return false;
+            }
+
+            message = string.Empty;
+            return true;
+        }
+
+        private bool ValidateJEVExists(string jevNo, out string message)
+        {
+            if (string.IsNullOrWhiteSpace(jevNo))
+            {
+                message = "JEV Number is required.";
+                return false;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT COUNT(*) FROM jev WHERE jev_no = @jev_no";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@jev_no", jevNo.Trim());
+                        object result = command.ExecuteScalar();
+                        int count = Convert.ToInt32(result);
+                        
+                        if (count == 0)
+                        {
+                            message = "JEV number does not exist. Please enter a valid JEV number.";
+                            return false;
+                        }
+                    }
+                }
+
+                message = string.Empty;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                message = $"Error validating JEV: {ex.Message}";
+                return false;
+            }
+        }
+
+        private bool ValidateJEVGrossAmount(string jevNo, decimal grossAmount, out string message)
+        {
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT gross_amount FROM jev WHERE jev_no = @jev_no LIMIT 1";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@jev_no", jevNo.Trim());
+                        object result = command.ExecuteScalar();
+                        
+                        if (result == null || result == DBNull.Value)
+                        {
+                            message = "JEV record not found.";
+                            return false;
+                        }
+
+                        decimal jevGrossAmount = Convert.ToDecimal(result);
+                        
+                        if (jevGrossAmount != grossAmount)
+                        {
+                            message = $"Gross amount ({grossAmount:N2}) does not match the JEV gross amount ({jevGrossAmount:N2}).";
+                            return false;
+                        }
+                    }
+                }
+
+                message = string.Empty;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                message = $"Error validating JEV gross amount: {ex.Message}";
+                return false;
+            }
+        }
+
+        private bool ValidateORASerialNoExists(string oraSerialNo, out string message)
+        {
+            if (string.IsNullOrWhiteSpace(oraSerialNo))
+            {
+                message = "ORA Serial Number is required.";
+                return false;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT COUNT(*) FROM ora_burono WHERE ora_serialno = @ora_serialno";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ora_serialno", oraSerialNo.Trim());
+                        object result = command.ExecuteScalar();
+                        int count = Convert.ToInt32(result);
+                        
+                        if (count == 0)
+                        {
+                            message = "ORA Serial Number does not exist.";
+                            return false;
+                        }
+                    }
+                }
+
+                message = string.Empty;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                message = $"Error validating ORA Serial Number: {ex.Message}";
+                return false;
+            }
+        }
+
+        private decimal GetOutstandingAmount(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo)
+        {
+            string query = @"SELECT amount FROM ora_burono WHERE ora_serialno = @ora_serialno LIMIT 1";
+
+            using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
+            {
+                command.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
+                object result = command.ExecuteScalar();
+                
+                if (result == null || result == DBNull.Value)
+                {
+                    throw new InvalidOperationException("ORA Serial Number not found in ora_burono table.");
+                }
+
+                return Convert.ToDecimal(result);
+            }
+        }
+
+        private (string poNo, string payee, decimal amount) GetORAInfo(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo)
+        {
+            string query = @"SELECT po_no, payee, amount FROM ora_burono WHERE ora_serialno = @ora_serialno LIMIT 1";
+
+            using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
+            {
+                command.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
+                
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string poNo = reader["po_no"]?.ToString() ?? "";
+                        string payee = reader["payee"]?.ToString() ?? "";
+                        decimal amount = reader["amount"] == DBNull.Value ? 0m : reader.GetDecimal("amount");
+                        return (poNo, payee, amount);
+                    }
+                }
+            }
+
+            throw new InvalidOperationException("ORA Serial Number not found in ora_burono table.");
+        }
+
+        private void UpdateORAStatus(MySqlConnection connection, MySqlTransaction transaction, string oraSerialNo, string status)
+        {
+            string query = @"UPDATE ora_burono SET status = @status WHERE ora_serialno = @ora_serialno";
+
+            using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
+            {
+                command.Parameters.AddWithValue("@status", status);
+                command.Parameters.AddWithValue("@ora_serialno", oraSerialNo);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void InsertPaymentRecord(MySqlConnection connection, MySqlTransaction transaction, 
+            (string poNo, string payee, decimal amount) oraInfo, string jevNo, string devNo, 
+            decimal amountPaid, decimal poAmount, decimal balance, string status)
+        {
+            string query = @"INSERT INTO sbl_po
+                (po_no, supplier, ora_serialno, po_amount, responsibility_code, dev_no, jev_no,
+                 checkNo, date_paid, amount_paid, balance, status)
+                VALUES
+                (@po_no, @supplier, @ora_serialno, @po_amount, @responsibility_code, @dev_no, @jev_no,
+                 @checkNo, @date_paid, @amount_paid, @balance, @status)";
+
+            using (MySqlCommand command = new MySqlCommand(query, connection, transaction))
+            {
+                command.Parameters.AddWithValue("@po_no", oraInfo.poNo);
+                command.Parameters.AddWithValue("@supplier", oraInfo.payee);
+                command.Parameters.AddWithValue("@ora_serialno", orsbursNo.Text.Trim());
+                command.Parameters.AddWithValue("@po_amount", poAmount);
+                command.Parameters.AddWithValue("@responsibility_code", respcenter.Text.Trim());
+                command.Parameters.AddWithValue("@dev_no", devNo);
+                command.Parameters.AddWithValue("@jev_no", jevNo);
+                command.Parameters.AddWithValue("@checkNo", mfopap.Text.Trim());
+                command.Parameters.AddWithValue("@date_paid", dev_date.Value.Date);
+                command.Parameters.AddWithValue("@amount_paid", amountPaid);
+                command.Parameters.AddWithValue("@balance", balance.ToString("F2", CultureInfo.InvariantCulture));
+                command.Parameters.AddWithValue("@status", status);
+                command.ExecuteNonQuery();
+            }
         }
     }
 }
