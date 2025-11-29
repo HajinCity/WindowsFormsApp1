@@ -88,7 +88,7 @@
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(51, 268);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1287, 482);
+            this.panel1.Size = new System.Drawing.Size(1537, 482);
             this.panel1.TabIndex = 20;
             // 
             // dataGridView1
@@ -110,7 +110,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1287, 482);
+            this.dataGridView1.Size = new System.Drawing.Size(1537, 482);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -199,7 +199,7 @@
             this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDEVbtn.ForeColor = System.Drawing.Color.White;
             this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(1137, 45);
+            this.addDEVbtn.Location = new System.Drawing.Point(1384, 56);
             this.addDEVbtn.Name = "addDEVbtn";
             this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
             this.addDEVbtn.TabIndex = 21;
@@ -221,13 +221,13 @@
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
             this.gradientPanel1.Location = new System.Drawing.Point(46, 136);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1295, 93);
+            this.gradientPanel1.Size = new System.Drawing.Size(1545, 93);
             this.gradientPanel1.TabIndex = 22;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
-            this.pictureBox2.Location = new System.Drawing.Point(447, 22);
+            this.pictureBox2.Location = new System.Drawing.Point(546, 24);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(43, 42);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -244,7 +244,7 @@
             this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
             this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.ParseRangeBtn.Location = new System.Drawing.Point(1150, 24);
+            this.ParseRangeBtn.Location = new System.Drawing.Point(1385, 24);
             this.ParseRangeBtn.Name = "ParseRangeBtn";
             this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
             this.ParseRangeBtn.TabIndex = 24;
@@ -256,7 +256,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(850, 12);
+            this.label1.Location = new System.Drawing.Point(1085, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 21;
@@ -267,7 +267,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(548, 12);
+            this.label5.Location = new System.Drawing.Point(783, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 18);
             this.label5.TabIndex = 20;
@@ -276,7 +276,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(853, 33);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1088, 33);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(262, 25);
             this.dateTimePicker2.TabIndex = 3;
@@ -284,7 +284,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(551, 33);
+            this.dateTimePicker1.Location = new System.Drawing.Point(786, 33);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(262, 25);
             this.dateTimePicker1.TabIndex = 2;

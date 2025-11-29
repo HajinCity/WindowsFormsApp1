@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(52, 271);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1131, 482);
+            this.panel1.Size = new System.Drawing.Size(1531, 482);
             this.panel1.TabIndex = 8;
             // 
             // dataGridView1
@@ -99,7 +99,7 @@ namespace WindowsFormsApp1
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 482);
+            this.dataGridView1.Size = new System.Drawing.Size(1531, 482);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -194,7 +194,7 @@ namespace WindowsFormsApp1
             this.addSupplierBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addSupplierBtn.ForeColor = System.Drawing.Color.White;
             this.addSupplierBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addSupplierBtn.Location = new System.Drawing.Point(988, 31);
+            this.addSupplierBtn.Location = new System.Drawing.Point(1379, 39);
             this.addSupplierBtn.Name = "addSupplierBtn";
             this.addSupplierBtn.Size = new System.Drawing.Size(204, 55);
             this.addSupplierBtn.TabIndex = 9;
@@ -210,7 +210,7 @@ namespace WindowsFormsApp1
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
             this.gradientPanel1.Location = new System.Drawing.Point(45, 123);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1139, 93);
+            this.gradientPanel1.Size = new System.Drawing.Size(1539, 93);
             this.gradientPanel1.TabIndex = 7;
             // 
             // pictureBox1
