@@ -43,6 +43,23 @@ namespace WindowsFormsApp1
             InitializeDocumentControls();
             createORSBURSEntryBtn.Click += CreateORSBURSEntryBtn_Click;
             payable_amount.TextChanged += Amount_TextChanged;
+            DisableNonEditableFields();
+        }
+
+        private void DisableNonEditableFields()
+        {
+            // Disable serialNo and payable_amount fields - they should not be updated
+            if (serialNo != null)
+            {
+                serialNo.ReadOnly = true;
+                serialNo.BackColor = Color.WhiteSmoke;
+            }
+
+            if (payable_amount != null)
+            {
+                payable_amount.ReadOnly = true;
+                payable_amount.BackColor = Color.WhiteSmoke;
+            }
         }
 
         public UpdateORSBURSForm(int orsBursId) : this()
