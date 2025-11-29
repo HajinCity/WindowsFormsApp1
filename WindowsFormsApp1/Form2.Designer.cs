@@ -63,9 +63,9 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(298, 0);
+            this.panel3.Location = new System.Drawing.Point(276, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(571, 778);
+            this.panel3.Size = new System.Drawing.Size(593, 778);
             this.panel3.TabIndex = 10;
             // 
             // panel1
@@ -87,7 +87,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(298, 778);
+            this.panel1.Size = new System.Drawing.Size(276, 778);
             this.panel1.TabIndex = 9;
             // 
             // label3
@@ -126,7 +126,7 @@
             this.UserManagementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.UserManagementBtn.Location = new System.Drawing.Point(22, 615);
             this.UserManagementBtn.Name = "UserManagementBtn";
-            this.UserManagementBtn.Size = new System.Drawing.Size(253, 50);
+            this.UserManagementBtn.Size = new System.Drawing.Size(236, 50);
             this.UserManagementBtn.TabIndex = 10;
             this.UserManagementBtn.Text = "System Management";
             this.UserManagementBtn.UseVisualStyleBackColor = false;
@@ -156,7 +156,7 @@
             this.SignOutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SignOutBtn.Location = new System.Drawing.Point(22, 707);
             this.SignOutBtn.Name = "SignOutBtn";
-            this.SignOutBtn.Size = new System.Drawing.Size(253, 50);
+            this.SignOutBtn.Size = new System.Drawing.Size(236, 50);
             this.SignOutBtn.TabIndex = 9;
             this.SignOutBtn.Text = "Sign Out";
             this.SignOutBtn.UseVisualStyleBackColor = false;
@@ -175,7 +175,7 @@
             this.SupplierBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SupplierBtn.Location = new System.Drawing.Point(22, 223);
             this.SupplierBtn.Name = "SupplierBtn";
-            this.SupplierBtn.Size = new System.Drawing.Size(253, 50);
+            this.SupplierBtn.Size = new System.Drawing.Size(236, 50);
             this.SupplierBtn.TabIndex = 2;
             this.SupplierBtn.Text = "Supplier";
             this.SupplierBtn.UseVisualStyleBackColor = false;
@@ -194,7 +194,7 @@
             this.TransactionLedger.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TransactionLedger.Location = new System.Drawing.Point(22, 559);
             this.TransactionLedger.Name = "TransactionLedger";
-            this.TransactionLedger.Size = new System.Drawing.Size(253, 50);
+            this.TransactionLedger.Size = new System.Drawing.Size(236, 50);
             this.TransactionLedger.TabIndex = 8;
             this.TransactionLedger.Text = "Transaction Ledger";
             this.TransactionLedger.UseVisualStyleBackColor = false;
@@ -213,7 +213,7 @@
             this.IARBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.IARBtn.Location = new System.Drawing.Point(22, 335);
             this.IARBtn.Name = "IARBtn";
-            this.IARBtn.Size = new System.Drawing.Size(253, 50);
+            this.IARBtn.Size = new System.Drawing.Size(236, 50);
             this.IARBtn.TabIndex = 4;
             this.IARBtn.Text = "IAR";
             this.IARBtn.UseVisualStyleBackColor = false;
@@ -232,7 +232,7 @@
             this.DashboardBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.DashboardBtn.Location = new System.Drawing.Point(22, 167);
             this.DashboardBtn.Name = "DashboardBtn";
-            this.DashboardBtn.Size = new System.Drawing.Size(253, 50);
+            this.DashboardBtn.Size = new System.Drawing.Size(236, 50);
             this.DashboardBtn.TabIndex = 1;
             this.DashboardBtn.Text = "Dashboard";
             this.DashboardBtn.UseVisualStyleBackColor = false;
@@ -251,7 +251,7 @@
             this.ORSBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ORSBtn.Location = new System.Drawing.Point(22, 391);
             this.ORSBtn.Name = "ORSBtn";
-            this.ORSBtn.Size = new System.Drawing.Size(253, 50);
+            this.ORSBtn.Size = new System.Drawing.Size(236, 50);
             this.ORSBtn.TabIndex = 5;
             this.ORSBtn.Text = "ORS-BURS";
             this.ORSBtn.UseVisualStyleBackColor = false;
@@ -270,7 +270,7 @@
             this.DVBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.DVBtn.Location = new System.Drawing.Point(22, 503);
             this.DVBtn.Name = "DVBtn";
-            this.DVBtn.Size = new System.Drawing.Size(253, 50);
+            this.DVBtn.Size = new System.Drawing.Size(236, 50);
             this.DVBtn.TabIndex = 7;
             this.DVBtn.Text = "Disbursement Voucher";
             this.DVBtn.UseVisualStyleBackColor = false;
@@ -289,7 +289,7 @@
             this.GJBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.GJBtn.Location = new System.Drawing.Point(22, 279);
             this.GJBtn.Name = "GJBtn";
-            this.GJBtn.Size = new System.Drawing.Size(253, 50);
+            this.GJBtn.Size = new System.Drawing.Size(236, 50);
             this.GJBtn.TabIndex = 3;
             this.GJBtn.Text = "General Journal";
             this.GJBtn.UseVisualStyleBackColor = false;
@@ -308,7 +308,7 @@
             this.JEVBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.JEVBtn.Location = new System.Drawing.Point(22, 447);
             this.JEVBtn.Name = "JEVBtn";
-            this.JEVBtn.Size = new System.Drawing.Size(253, 50);
+            this.JEVBtn.Size = new System.Drawing.Size(236, 50);
             this.JEVBtn.TabIndex = 6;
             this.JEVBtn.Text = "JEV";
             this.JEVBtn.UseVisualStyleBackColor = false;
