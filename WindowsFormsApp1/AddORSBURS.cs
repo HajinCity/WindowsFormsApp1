@@ -354,6 +354,17 @@ namespace WindowsFormsApp1
                 return;
             }
 
+            // Validate PO No exists in IAR table
+            if (!ValidatePONumberExists(textBox1.Text.Trim()))
+            {
+                MessageBox.Show(
+                    "PO number does not match or PO number does not exist in the IAR Form.",
+                    "Invalid PO Number",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult confirm = MessageBox.Show(
                 "Are you sure you want to create this ORS/BURS entry?",
                 "Confirm Create",
@@ -372,6 +383,27 @@ namespace WindowsFormsApp1
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
+            catch (MySqlException mysqlEx)
+            {
+                // Check for foreign key constraint violation
+                if (mysqlEx.Number == 1452 || mysqlEx.Message.Contains("foreign key constraint") || 
+                    mysqlEx.Message.Contains("Cannot add or update a child row"))
+                {
+                    MessageBox.Show(
+                        "PO number does not match or PO number does not exist in the IAR Form.",
+                        "Invalid PO Number",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show(
+                        $"Unable to create ORS/BURS entry: {mysqlEx.Message}",
+                        "Create Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -454,6 +486,36 @@ namespace WindowsFormsApp1
                 NumberStyles.AllowDecimalPoint,
                 CultureInfo.InvariantCulture,
                 out amountValue);
+        }
+
+        private bool ValidatePONumberExists(string poNumber)
+        {
+            if (string.IsNullOrWhiteSpace(poNumber))
+            {
+                return false;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT COUNT(*) FROM inspection_acceptance_report 
+                                    WHERE po_no = @po_no";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@po_no", poNumber.Trim());
+                        object result = command.ExecuteScalar();
+                        int count = Convert.ToInt32(result);
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // If validation query fails, return false to be safe
+                return false;
+            }
         }
 
         private void SaveORSBURSEntry()

@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
             public string SerialNo { get; set; }
             public DateTime Date { get; set; }
             public string FundCluster { get; set; }
+            public string PoNo { get; set; }
             public string Payee { get; set; }
             public string Office { get; set; }
             public string ResponsibilityCenter { get; set; }
@@ -37,7 +38,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             addEntryBtn.Click += AddEntryBtn_Click;
             this.Load += OrsBursForm_Load;
-            dataGridView1.CellContentClick += DataGridView1_CellContentClick;
+            dataGridView2.CellContentClick += DataGridView2_CellContentClick;
             pictureBox2.Click += PictureBox2_Click;
             textBox1.TextChanged += TextBox1_TextChanged;
             ParseRangeBtn.Click += ParseRangeBtn_Click;
@@ -70,7 +71,7 @@ namespace WindowsFormsApp1
 
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = @"SELECT ora_burono, ora_serialno, date, fund_cluster, payee, office, 
+                    string query = @"SELECT ora_burono, ora_serialno, date, fund_cluster, po_no, payee, office, 
                                      responsibility_center, approving_officer, amount, status
                                      FROM ora_burono
                                      ORDER BY date DESC, ora_burono DESC";
@@ -86,6 +87,7 @@ namespace WindowsFormsApp1
                                 SerialNo = reader["ora_serialno"]?.ToString(),
                                 Date = reader["date"] == DBNull.Value ? DateTime.MinValue : reader.GetDateTime("date"),
                                 FundCluster = reader["fund_cluster"]?.ToString(),
+                                PoNo = reader["po_no"]?.ToString(),
                                 Payee = reader["payee"]?.ToString(),
                                 Office = reader["office"]?.ToString(),
                                 ResponsibilityCenter = reader["responsibility_center"]?.ToString(),
@@ -112,38 +114,39 @@ namespace WindowsFormsApp1
 
         private void DisplayAllData()
         {
-            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
             foreach (var entry in orsBursCache)
             {
-                int rowIndex = dataGridView1.Rows.Add(
+                int rowIndex = dataGridView2.Rows.Add(
                     entry.SerialNo,
                     entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
                     entry.FundCluster,
+                    entry.PoNo,
                     entry.Payee,
                     entry.Office,
                     entry.ResponsibilityCenter,
                     entry.ApprovingOfficer,
                     FormatAmountDisplay(entry.Amount),
                     entry.Status);
-                dataGridView1.Rows[rowIndex].Tag = entry.Id;
+                dataGridView2.Rows[rowIndex].Tag = entry.Id;
             }
         }
 
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
             {
                 return;
             }
 
-            var row = dataGridView1.Rows[e.RowIndex];
+            var row = dataGridView2.Rows[e.RowIndex];
             if (row?.Tag == null || !int.TryParse(row.Tag.ToString(), out int orsBursId))
             {
                 return;
             }
 
-            string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
-            if (columnName == "BtnEdit")
+            string columnName = dataGridView2.Columns[e.ColumnIndex].Name;
+            if (columnName == "botedit")
             {
                 using (var updateForm = new UpdateORSBURSForm(orsBursId))
                 {
@@ -153,7 +156,7 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            else if (columnName == "BtnView")
+            else if (columnName == "botview")
             {
                 using (var viewForm = new ViewORSBURS(orsBursId))
                 {
@@ -188,6 +191,7 @@ namespace WindowsFormsApp1
                 bool searchMatch = string.IsNullOrEmpty(term) ||
                                    (entry.SerialNo ?? string.Empty).ToLowerInvariant().Contains(term) ||
                                    (entry.FundCluster ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.PoNo ?? string.Empty).ToLowerInvariant().Contains(term) ||
                                    (entry.Payee ?? string.Empty).ToLowerInvariant().Contains(term) ||
                                    (entry.Office ?? string.Empty).ToLowerInvariant().Contains(term) ||
                                    (entry.ResponsibilityCenter ?? string.Empty).ToLowerInvariant().Contains(term) ||
@@ -196,20 +200,21 @@ namespace WindowsFormsApp1
                 return dateMatch && statusMatch && searchMatch;
             });
 
-            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
             foreach (var entry in filtered)
             {
-                int rowIndex = dataGridView1.Rows.Add(
+                int rowIndex = dataGridView2.Rows.Add(
                     entry.SerialNo,
                     entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
                     entry.FundCluster,
+                    entry.PoNo,
                     entry.Payee,
                     entry.Office,
                     entry.ResponsibilityCenter,
                     entry.ApprovingOfficer,
                     FormatAmountDisplay(entry.Amount),
                     entry.Status);
-                dataGridView1.Rows[rowIndex].Tag = entry.Id;
+                dataGridView2.Rows[rowIndex].Tag = entry.Id;
             }
         }
 
@@ -242,7 +247,7 @@ namespace WindowsFormsApp1
 
         private void ExportToCSV_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0)
+            if (dataGridView2.Rows.Count == 0)
             {
                 MessageBox.Show("There is no data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -264,27 +269,28 @@ namespace WindowsFormsApp1
                     using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
                     {
                         // Write header row
-                        writer.WriteLine("Serial No.,Date,Fund Cluster,Payee,Office,Responsibility Center,Approving Officer,Total Amount,Status");
+                        writer.WriteLine("Serial No.,Date,Fund Cluster,PO No.,Payee,Office,Responsibility Center,Approving Officer,Total Amount,Status");
 
                         // Write data rows
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        foreach (DataGridViewRow row in dataGridView2.Rows)
                         {
                             if (row.IsNewRow)
                             {
                                 continue;
                             }
 
-                            string serialNo = EscapeForCsv(row.Cells[0].Value?.ToString());
-                            string date = EscapeForCsv(row.Cells[1].Value?.ToString());
-                            string fundCluster = EscapeForCsv(row.Cells[2].Value?.ToString());
-                            string payee = EscapeForCsv(row.Cells[3].Value?.ToString());
-                            string office = EscapeForCsv(row.Cells[4].Value?.ToString());
-                            string responsibilityCenter = EscapeForCsv(row.Cells[5].Value?.ToString());
-                            string approvingOfficer = EscapeForCsv(row.Cells[6].Value?.ToString());
-                            string amount = EscapeForCsv(row.Cells[7].Value?.ToString());
-                            string status = EscapeForCsv(row.Cells[8].Value?.ToString());
+                            string serialNo = EscapeForCsv(row.Cells["Column11"].Value?.ToString());
+                            string date = EscapeForCsv(row.Cells["Column12"].Value?.ToString());
+                            string fundCluster = EscapeForCsv(row.Cells["Column13"].Value?.ToString());
+                            string poNo = EscapeForCsv(row.Cells["Column14"].Value?.ToString());
+                            string payee = EscapeForCsv(row.Cells["Column15"].Value?.ToString());
+                            string office = EscapeForCsv(row.Cells["Column16"].Value?.ToString());
+                            string responsibilityCenter = EscapeForCsv(row.Cells["Column17"].Value?.ToString());
+                            string approvingOfficer = EscapeForCsv(row.Cells["Column18"].Value?.ToString());
+                            string amount = EscapeForCsv(row.Cells["Column19"].Value?.ToString());
+                            string status = EscapeForCsv(row.Cells["Column20"].Value?.ToString());
 
-                            writer.WriteLine($"{serialNo},{date},{fundCluster},{payee},{office},{responsibilityCenter},{approvingOfficer},{amount},{status}");
+                            writer.WriteLine($"{serialNo},{date},{fundCluster},{poNo},{payee},{office},{responsibilityCenter},{approvingOfficer},{amount},{status}");
                         }
                     }
 
