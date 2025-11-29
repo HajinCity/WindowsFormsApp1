@@ -30,21 +30,10 @@
         {
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.addEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ExportCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
             this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -57,7 +46,19 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.ExportCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.addEntryBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
@@ -87,23 +88,6 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Obligation Request Status and Budget Utilization";
             // 
-            // addEntryBtn
-            // 
-            this.addEntryBtn.BackColor = System.Drawing.Color.Turquoise;
-            this.addEntryBtn.BorderRadius = 10;
-            this.addEntryBtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.addEntryBtn.FlatAppearance.BorderSize = 0;
-            this.addEntryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addEntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addEntryBtn.ForeColor = System.Drawing.Color.White;
-            this.addEntryBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addEntryBtn.Location = new System.Drawing.Point(1386, 42);
-            this.addEntryBtn.Name = "addEntryBtn";
-            this.addEntryBtn.Size = new System.Drawing.Size(205, 55);
-            this.addEntryBtn.TabIndex = 18;
-            this.addEntryBtn.Text = "Add ORS-BURS";
-            this.addEntryBtn.UseVisualStyleBackColor = false;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
@@ -122,6 +106,7 @@
             this.Column1,
             this.Column2,
             this.Column3,
+            this.Column10,
             this.Column4,
             this.Column5,
             this.Column6,
@@ -137,83 +122,29 @@
             this.dataGridView1.Size = new System.Drawing.Size(1579, 613);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "Serial No.";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Date";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Fund Cluster";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "Payee";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.HeaderText = "Office";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "Responsibility Center";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column7.HeaderText = "Approving Officer";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column8.HeaderText = "Total Amount";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Status";
-            this.Column9.Name = "Column9";
-            // 
-            // BtnEdit
-            // 
-            this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BtnEdit.HeaderText = "";
-            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
-            this.BtnEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Width = 5;
-            // 
-            // BtnView
-            // 
-            this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BtnView.HeaderText = "";
-            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
-            this.BtnView.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.BtnView.Name = "BtnView";
-            this.BtnView.Width = 5;
-            // 
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(195, 608);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 88);
             this.panel2.TabIndex = 50;
+            // 
+            // ExportCSV
+            // 
+            this.ExportCSV.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ExportCSV.BorderRadius = 10;
+            this.ExportCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportCSV.FlatAppearance.BorderSize = 0;
+            this.ExportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportCSV.Location = new System.Drawing.Point(1407, 900);
+            this.ExportCSV.Name = "ExportCSV";
+            this.ExportCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportCSV.TabIndex = 51;
+            this.ExportCSV.Text = "Export Excel";
+            this.ExportCSV.UseVisualStyleBackColor = false;
             // 
             // gradientPanel1
             // 
@@ -354,22 +285,99 @@
             this.textBox1.Size = new System.Drawing.Size(296, 26);
             this.textBox1.TabIndex = 0;
             // 
-            // ExportCSV
+            // addEntryBtn
             // 
-            this.ExportCSV.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ExportCSV.BorderRadius = 10;
-            this.ExportCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.ExportCSV.FlatAppearance.BorderSize = 0;
-            this.ExportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExportCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExportCSV.ForeColor = System.Drawing.Color.White;
-            this.ExportCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.ExportCSV.Location = new System.Drawing.Point(1407, 900);
-            this.ExportCSV.Name = "ExportCSV";
-            this.ExportCSV.Size = new System.Drawing.Size(204, 55);
-            this.ExportCSV.TabIndex = 51;
-            this.ExportCSV.Text = "Export Excel";
-            this.ExportCSV.UseVisualStyleBackColor = false;
+            this.addEntryBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.addEntryBtn.BorderRadius = 10;
+            this.addEntryBtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.addEntryBtn.FlatAppearance.BorderSize = 0;
+            this.addEntryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addEntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addEntryBtn.ForeColor = System.Drawing.Color.White;
+            this.addEntryBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.addEntryBtn.Location = new System.Drawing.Point(1386, 42);
+            this.addEntryBtn.Name = "addEntryBtn";
+            this.addEntryBtn.Size = new System.Drawing.Size(205, 55);
+            this.addEntryBtn.TabIndex = 18;
+            this.addEntryBtn.Text = "Add ORS-BURS";
+            this.addEntryBtn.UseVisualStyleBackColor = false;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "Serial No.";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Date";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Fund Cluster";
+            this.Column3.Name = "Column3";
+            // 
+            // Column10
+            // 
+            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column10.HeaderText = "PO No.";
+            this.Column10.Name = "Column10";
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.HeaderText = "Payee";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.HeaderText = "Office";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.HeaderText = "Responsibility Center";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column7.HeaderText = "Approving Officer";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column8.HeaderText = "Total Amount";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Status";
+            this.Column9.Name = "Column9";
+            // 
+            // BtnEdit
+            // 
+            this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BtnEdit.HeaderText = "";
+            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
+            this.BtnEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Width = 5;
+            // 
+            // BtnView
+            // 
+            this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BtnView.HeaderText = "";
+            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
+            this.BtnView.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.BtnView.Name = "BtnView";
+            this.BtnView.Width = 5;
             // 
             // OrsBursForm
             // 
@@ -422,6 +430,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
