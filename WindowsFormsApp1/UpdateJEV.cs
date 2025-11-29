@@ -716,9 +716,25 @@ namespace WindowsFormsApp1
                             account.Text = reader["account"]?.ToString();
                             particulars.Text = reader["particulars"]?.ToString();
                             taxtype.Text = reader["tax_type"]?.ToString();
-                            grossAmount.Text = reader["gross_amount"]?.ToString();
-                            deductions.Text = reader["deductions"]?.ToString();
-                            netAmount.Text = reader["net_amount"]?.ToString();
+                            
+                            // Format gross amount with commas
+                            string grossAmountStr = reader["gross_amount"]?.ToString();
+                            grossAmount.Text = !string.IsNullOrWhiteSpace(grossAmountStr) 
+                                ? FormatNumberWithFraction(grossAmountStr) 
+                                : string.Empty;
+                            
+                            // Format deductions with commas
+                            string deductionsStr = reader["deductions"]?.ToString();
+                            deductions.Text = !string.IsNullOrWhiteSpace(deductionsStr) 
+                                ? FormatNumberWithFraction(deductionsStr) 
+                                : string.Empty;
+                            
+                            // Format net amount with commas
+                            string netAmountStr = reader["net_amount"]?.ToString();
+                            netAmount.Text = !string.IsNullOrWhiteSpace(netAmountStr) 
+                                ? FormatNumberWithFraction(netAmountStr) 
+                                : string.Empty;
+                            
                             status.Text = reader["status"]?.ToString();
                             approvingOfficer.Text = reader["approving_officer"]?.ToString();
 
