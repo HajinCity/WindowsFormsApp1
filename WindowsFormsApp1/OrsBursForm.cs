@@ -85,7 +85,7 @@ namespace WindowsFormsApp1
                             orsBursCache.Add(new OrsBursRecord
                             {
                                 Id = reader.GetInt32("ora_burono"),
-                                Balance = reader["balance"]?.ToString(),
+                               
                                 SerialNo = reader["ora_serialno"]?.ToString(),
                                 Date = reader["date"] == DBNull.Value ? DateTime.MinValue : reader.GetDateTime("date"),
                                 FundCluster = reader["fund_cluster"]?.ToString(),
@@ -95,6 +95,7 @@ namespace WindowsFormsApp1
                                 ResponsibilityCenter = reader["responsibility_center"]?.ToString(),
                                 ApprovingOfficer = reader["approving_officer"]?.ToString(),
                                 Amount = reader["payable_amount"]?.ToString(),
+                                Balance = reader["balance"]?.ToString(),
                                 Status = reader["status"]?.ToString() ?? ""
                             });
                         }
