@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using WindowsFormsApp1.BackendModel;
@@ -40,6 +42,12 @@ namespace WindowsFormsApp1
             pictureBox2.Click += PictureBox2_Click;
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             this.Load += DEVForm_Load;
+            
+            // Wire up CSV export button if it exists
+            if (ExportToCSV != null)
+            {
+                ExportToCSV.Click += ExportToCSV_Click;
+            }
         }
 
         private void DEVForm_Load(object sender, EventArgs e)
@@ -273,6 +281,79 @@ namespace WindowsFormsApp1
                     viewForm.ShowDialog(this);
                 }
             }
+        }
+
+        private void ExportToCSV_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("There is no data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Export DEV Data";
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                saveFileDialog.FileName = $"dev_data_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                try
+                {
+                    using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                    {
+                        // Write header row
+                        writer.WriteLine("DEV No.,Date,ORS BURS,JEV No,Payee,Office,MOP,Tax Type,Gross Amount,Deductions,Net Amount");
+
+                        // Write data rows
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.IsNewRow)
+                            {
+                                continue;
+                            }
+
+                            string devNo = EscapeForCsv(row.Cells["Column1"].Value?.ToString());
+                            string date = EscapeForCsv(row.Cells["Column2"].Value?.ToString());
+                            string orsBurs = EscapeForCsv(row.Cells["Column3"].Value?.ToString());
+                            string jevNo = EscapeForCsv(row.Cells["Column4"].Value?.ToString());
+                            string payee = EscapeForCsv(row.Cells["Column5"].Value?.ToString());
+                            string office = EscapeForCsv(row.Cells["Column6"].Value?.ToString());
+                            string mop = EscapeForCsv(row.Cells["Column7"].Value?.ToString());
+                            string taxType = EscapeForCsv(row.Cells["Column8"].Value?.ToString());
+                            string grossAmount = EscapeForCsv(row.Cells["Column9"].Value?.ToString());
+                            string deductions = EscapeForCsv(row.Cells["Column10"].Value?.ToString());
+                            string netAmount = EscapeForCsv(row.Cells["Column11"].Value?.ToString());
+
+                            writer.WriteLine($"{devNo},{date},{orsBurs},{jevNo},{payee},{office},{mop},{taxType},{grossAmount},{deductions},{netAmount}");
+                        }
+                    }
+
+                    MessageBox.Show("DEV data exported successfully.", "Export Complete",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Unable to export DEV data: {ex.Message}", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private string EscapeForCsv(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+
+            bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
+            string escaped = value.Replace("\"", "\"\"");
+            return mustQuote ? $"\"{escaped}\"" : escaped;
         }
     }
 }
