@@ -56,8 +56,8 @@
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.botedit = new System.Windows.Forms.DataGridViewImageColumn();
             this.botview = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -113,8 +113,8 @@
             this.Column17,
             this.Column18,
             this.Column19,
-            this.Column21,
             this.Column20,
+            this.Column21,
             this.botedit,
             this.botview});
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -358,16 +358,16 @@
             this.Column19.HeaderText = "Payable Amount";
             this.Column19.Name = "Column19";
             // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "Balance";
-            this.Column21.Name = "Column21";
-            // 
             // Column20
             // 
-            this.Column20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column20.HeaderText = "Status";
+            this.Column20.HeaderText = "Balance";
             this.Column20.Name = "Column20";
+            // 
+            // Column21
+            // 
+            this.Column21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column21.HeaderText = "Status";
+            this.Column21.Name = "Column21";
             // 
             // botedit
             // 
@@ -444,8 +444,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewImageColumn botedit;
         private System.Windows.Forms.DataGridViewImageColumn botview;
     }
