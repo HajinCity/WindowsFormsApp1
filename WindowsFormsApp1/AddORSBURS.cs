@@ -531,11 +531,11 @@ namespace WindowsFormsApp1
                 string query = @"INSERT INTO ora_burono
                                 (ora_serialno, date, fund_cluster, po_no, payee, office, address,
                                  responsibility_center, particulars, mfo_pap, uacs_oc,
-                                 amount, approving_officer, remarks, documents, status)
+                                 payable_amount, balance, approving_officer, remarks, documents, status)
                                 VALUES
                                 (@ora_serialno, @date, @fund_cluster, @po_no, @payee, @office, @address,
                                  @responsibility_center, @particulars, @mfo_pap, @uacs_oc,
-                                 @amount, @approving_officer, @remarks, @documents, @status)";
+                                 @payable_amount, @balance, @approving_officer, @remarks, @documents, @status)";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
@@ -550,7 +550,8 @@ namespace WindowsFormsApp1
                     command.Parameters.AddWithValue("@particulars", Particulars.Text.Trim());
                     command.Parameters.AddWithValue("@mfo_pap", MFOPAP.Text.Trim());
                     command.Parameters.AddWithValue("@uacs_oc", uacscode.Text.Trim());
-                    command.Parameters.AddWithValue("@amount", amountValue);
+                    command.Parameters.AddWithValue("@payable_amount", amountValue);
+                    command.Parameters.AddWithValue("@balance", amountValue); // Set balance to same value as payable_amount
                     command.Parameters.AddWithValue("@approving_officer", approvingOfficer.Text.Trim());
                     command.Parameters.AddWithValue("@remarks", remarks.Text.Trim());
                     command.Parameters.AddWithValue("@status", "Pending");
