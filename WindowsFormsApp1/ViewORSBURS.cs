@@ -178,7 +178,7 @@ namespace WindowsFormsApp1
                 {
                     string query = @"SELECT ora_serialno, date, fund_cluster, po_no, payee, office, address,
                                             responsibility_center, particulars, mfo_pap, uacs_oc,
-                                            payable_amount, approving_officer, remarks, documents
+                                            payable_amount, balance, approving_officer, status, remarks, documents
                                      FROM ora_burono
                                      WHERE ora_burono = @orsBursId
                                      LIMIT 1";
@@ -321,25 +321,48 @@ namespace WindowsFormsApp1
 
                 try
                 {
+                    // Fetch balance and status from database for export
+                    string balanceValue = "";
+                    string statusValue = "";
+                    using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                    {
+                        string query = @"SELECT balance, status FROM ora_burono WHERE ora_burono = @orsBursId LIMIT 1";
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@orsBursId", orsBursId);
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    balanceValue = reader["balance"] == DBNull.Value ? "" : reader["balance"].ToString();
+                                    statusValue = reader["status"] == DBNull.Value ? "" : reader["status"].ToString();
+                                }
+                            }
+                        }
+                    }
+
                     using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
                     {
-                        // Write ORS-BURS Header Information Section
-                        writer.WriteLine("ORS-BURS INFORMATION");
-                        writer.WriteLine("=====================");
-                        writer.WriteLine($"Serial Number,{EscapeForCsv(serialNo.Text)}");
-                        writer.WriteLine($"Date,{EscapeForCsv(date.Value.ToShortDateString())}");
-                        writer.WriteLine($"Fund Cluster,{EscapeForCsv(FundCluster.Text)}");
-                        writer.WriteLine($"PO Number,{EscapeForCsv(textBox1.Text)}");
-                        writer.WriteLine($"Payee,{EscapeForCsv(Payee.Text)}");
-                        writer.WriteLine($"Office,{EscapeForCsv(Office.Text)}");
-                        writer.WriteLine($"Address,{EscapeForCsv(Address.Text)}");
-                        writer.WriteLine($"Responsibility Center,{EscapeForCsv(ResponsibilityCenter.Text)}");
-                        writer.WriteLine($"Particulars,{EscapeForCsv(Particulars.Text)}");
-                        writer.WriteLine($"MFO/PAP,{EscapeForCsv(MFOPAP.Text)}");
-                        writer.WriteLine($"UACS Code,{EscapeForCsv(uacscode.Text)}");
-                        writer.WriteLine($"Amount,{EscapeForCsv(amount.Text)}");
-                        writer.WriteLine($"Approving Officer,{EscapeForCsv(approvingOfficer.Text)}");
-                        writer.WriteLine($"Remarks,{EscapeForCsv(remarks.Text)}");
+                        // Write header row with all fields from ora_serialno to remarks
+                        writer.WriteLine("Serial No.,Date,Fund Cluster,PO No.,Payee,Office,Address,Responsibility Center,Particulars,MFO/PAP,UACS Code,Payable Amount,Balance,Approving Officer,Status,Remarks");
+
+                        // Write data row
+                        writer.WriteLine($"{EscapeForCsv(serialNo.Text)}," +
+                                       $"{EscapeForCsv(date.Value.ToShortDateString())}," +
+                                       $"{EscapeForCsv(FundCluster.Text)}," +
+                                       $"{EscapeForCsv(textBox1.Text)}," +
+                                       $"{EscapeForCsv(Payee.Text)}," +
+                                       $"{EscapeForCsv(Office.Text)}," +
+                                       $"{EscapeForCsv(Address.Text)}," +
+                                       $"{EscapeForCsv(ResponsibilityCenter.Text)}," +
+                                       $"{EscapeForCsv(Particulars.Text)}," +
+                                       $"{EscapeForCsv(MFOPAP.Text)}," +
+                                       $"{EscapeForCsv(uacscode.Text)}," +
+                                       $"{EscapeForCsv(amount.Text)}," +
+                                       $"{EscapeForCsv(FormatAmountForExport(balanceValue))}," +
+                                       $"{EscapeForCsv(approvingOfficer.Text)}," +
+                                       $"{EscapeForCsv(statusValue)}," +
+                                       $"{EscapeForCsv(remarks.Text)}");
                     }
 
                     MessageBox.Show("ORS-BURS data exported successfully.", "Export Complete",
@@ -351,6 +374,25 @@ namespace WindowsFormsApp1
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private string FormatAmountForExport(string amountValue)
+        {
+            if (string.IsNullOrWhiteSpace(amountValue))
+            {
+                return amountValue ?? string.Empty;
+            }
+
+            string clean = amountValue.Replace(",", "").Trim();
+            if (decimal.TryParse(clean, NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out decimal numericValue))
+            {
+                string formattedInteger = string.Format(CultureInfo.InvariantCulture, "{0:N0}", Math.Truncate(numericValue));
+                int decimalIndex = clean.IndexOf('.');
+                string fractionalPart = decimalIndex >= 0 ? clean.Substring(decimalIndex) : string.Empty;
+                return formattedInteger + fractionalPart;
+            }
+
+            return amountValue;
         }
 
         private string EscapeForCsv(string value)
