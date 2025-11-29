@@ -676,6 +676,7 @@ namespace WindowsFormsApp1
             var requiredFields = new List<(string Value, string Label)>
             {
                 (serialNo.Text, "Serial Number"),
+                (textBox1.Text, "PO No."),
                 (Payee.Text, "Payee"),
                 (Office.Text, "Office"),
                 (FundCluster.Text, "Fund Cluster"),
