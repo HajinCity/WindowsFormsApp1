@@ -179,7 +179,7 @@
             this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExportToCSV.ForeColor = System.Drawing.Color.White;
             this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.ExportToCSV.Location = new System.Drawing.Point(1135, 772);
+            this.ExportToCSV.Location = new System.Drawing.Point(1385, 774);
             this.ExportToCSV.Name = "ExportToCSV";
             this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
             this.ExportToCSV.TabIndex = 13;
