@@ -155,7 +155,7 @@ namespace WindowsFormsApp1
             this.textBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(78, 32);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1037, 26);
+            this.textBox1.Size = new System.Drawing.Size(697, 26);
             this.textBox1.TabIndex = 0;
             // 
             // dataGridView2
