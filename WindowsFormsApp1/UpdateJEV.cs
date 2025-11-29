@@ -49,14 +49,39 @@ namespace WindowsFormsApp1
 
         private void InitializeCalculation()
         {
-            netAmount.ReadOnly = true;
-            netAmount.BackColor = Color.WhiteSmoke;
+            // Disable non-editable fields
+            DisableNonEditableFields();
 
-            grossAmount.KeyPress += NumericTextBox_KeyPress;
-            deductions.KeyPress += NumericTextBox_KeyPress;
+            // Note: grossAmount and deductions are now read-only, so we don't need event handlers
+            // netAmount is already read-only and calculated
+        }
 
-            grossAmount.TextChanged += GrossAmount_TextChanged;
-            deductions.TextChanged += Deductions_TextChanged;
+        private void DisableNonEditableFields()
+        {
+            // Disable jev_no, grossAmount, deductions, and netAmount - they should not be updated
+            if (jev_no != null)
+            {
+                jev_no.ReadOnly = true;
+                jev_no.BackColor = Color.WhiteSmoke;
+            }
+
+            if (grossAmount != null)
+            {
+                grossAmount.ReadOnly = true;
+                grossAmount.BackColor = Color.WhiteSmoke;
+            }
+
+            if (deductions != null)
+            {
+                deductions.ReadOnly = true;
+                deductions.BackColor = Color.WhiteSmoke;
+            }
+
+            if (netAmount != null)
+            {
+                netAmount.ReadOnly = true;
+                netAmount.BackColor = Color.WhiteSmoke;
+            }
         }
 
         private void NumericTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -808,17 +833,14 @@ namespace WindowsFormsApp1
 
         private bool AreInputsValid(out string message)
         {
+            // Note: jev_no, grossAmount, deductions, and netAmount are read-only and not validated here
             var requiredFields = new List<(string Value, string Label)>
             {
-                (jev_no.Text, "JEV No."),
                 (rspCode.Text, "Responsibility Center Code"),
                 (uacscode.Text, "UACS Code"),
                 (account.Text, "Account"),
                 (particulars.Text, "Particulars"),
                 (taxtype.Text, "Tax Type"),
-                (grossAmount.Text, "Gross Amount"),
-                (deductions.Text, "Deductions"),
-                (netAmount.Text, "Net Amount"),
                 (status.Text, "Status"),
                 (approvingOfficer.Text, "Approving Officer")
             };
@@ -832,23 +854,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if (!TryParseCurrencyValue(grossAmount.Text, out _))
-            {
-                message = "Gross Amount must be a valid number.";
-                return false;
-            }
-
-            if (!TryParseCurrencyValue(deductions.Text, out _))
-            {
-                message = "Deductions must be a valid number.";
-                return false;
-            }
-
-            if (!TryParseCurrencyValue(netAmount.Text, out _))
-            {
-                message = "Net Amount must be a valid number.";
-                return false;
-            }
+            // Note: grossAmount, deductions, and netAmount are read-only, so validation is not needed
 
             message = string.Empty;
             return true;
@@ -857,23 +863,17 @@ namespace WindowsFormsApp1
         private void SaveUpdates()
         {
             byte[] documentBytesToSave = documentBytes;
-            decimal grossAmountValue = ParseCurrencyValue(grossAmount.Text);
-            decimal deductionsValue = ParseCurrencyValue(deductions.Text);
-            decimal netAmountValue = ParseCurrencyValue(netAmount.Text);
+            // Note: grossAmount, deductions, and netAmount are read-only and not updated
 
             using (MySqlConnection connection = RDBSMConnection.GetConnection())
             {
                 string query = @"UPDATE jev SET
-                                    jev_no = @jev_no,
                                     date = @date,
                                     responsibility_center = @responsibility_center,
                                     uacs_code = @uacs_code,
                                     account = @account,
                                     particulars = @particulars,
-                                    gross_amount = @gross_amount,
-                                    deductions = @deductions,
                                     tax_type = @tax_type,
-                                    net_amount = @net_amount,
                                     status = @status,
                                     approving_officer = @approving_officer,
                                     documents = @documents
@@ -882,16 +882,13 @@ namespace WindowsFormsApp1
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@jev_id", jevId);
-                    command.Parameters.AddWithValue("@jev_no", jev_no.Text.Trim());
+                    // Note: jev_no, gross_amount, deductions, and net_amount are not updated as they are disabled fields
                     command.Parameters.AddWithValue("@date", jevDate.Value.Date);
                     command.Parameters.AddWithValue("@responsibility_center", rspCode.Text.Trim());
                     command.Parameters.AddWithValue("@uacs_code", uacscode.Text.Trim());
                     command.Parameters.AddWithValue("@account", account.Text.Trim());
                     command.Parameters.AddWithValue("@particulars", particulars.Text.Trim());
-                    command.Parameters.AddWithValue("@gross_amount", grossAmountValue);
-                    command.Parameters.AddWithValue("@deductions", deductionsValue);
                     command.Parameters.AddWithValue("@tax_type", taxtype.Text.Trim());
-                    command.Parameters.AddWithValue("@net_amount", netAmountValue);
                     command.Parameters.AddWithValue("@status", status.Text.Trim());
                     command.Parameters.AddWithValue("@approving_officer", approvingOfficer.Text.Trim());
 
