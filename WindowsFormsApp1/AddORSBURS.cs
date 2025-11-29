@@ -617,7 +617,7 @@ namespace WindowsFormsApp1
                     command.Parameters.AddWithValue("@balance", amountValue); // Set balance to same value as payable_amount
                     command.Parameters.AddWithValue("@approving_officer", approvingOfficer.Text.Trim());
                     command.Parameters.AddWithValue("@remarks", remarks.Text.Trim());
-                    command.Parameters.AddWithValue("@status", "Pending");
+                    command.Parameters.AddWithValue("@status", "Pending for Payment");
 
                     var documentParam = command.Parameters.Add("@documents", MySqlDbType.LongBlob);
                     if (documentBytes == null || documentBytes.Length == 0)
