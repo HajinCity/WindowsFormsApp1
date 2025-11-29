@@ -571,7 +571,7 @@ namespace WindowsFormsApp1
                 {
                     string query = @"SELECT ora_serialno, date, fund_cluster, po_no, payee, office, address,
                                             responsibility_center, particulars, mfo_pap, uacs_oc,
-                                            amount, approving_officer, remarks, documents
+                                            payable_amount, balance, approving_officer, remarks, documents
                                      FROM ora_burono
                                      WHERE ora_burono = @orsBursId
                                      LIMIT 1";
@@ -599,7 +599,7 @@ namespace WindowsFormsApp1
                             Particulars.Text = reader["particulars"]?.ToString();
                             MFOPAP.Text = reader["mfo_pap"]?.ToString();
                             uacscode.Text = reader["uacs_oc"]?.ToString();
-                            payable_amount.Text = reader["amount"]?.ToString();
+                            payable_amount.Text = reader["payable_amount"]?.ToString();
                             approvingOfficer.Text = reader["approving_officer"]?.ToString();
                             remarks.Text = reader["remarks"]?.ToString();
 
@@ -650,6 +650,21 @@ namespace WindowsFormsApp1
                     "Invalid PO Number",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validate payable_amount matches total_amount from inspection_acceptance_report
+            if (!TryGetAmountValue(out decimal payableAmountValue))
+            {
+                MessageBox.Show("Amount must be a valid number.", "Invalid Amount",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!ValidatePayableAmountMatchesIARTotal(textBox1.Text.Trim(), payableAmountValue, out string amountValidationMessage))
+            {
+                MessageBox.Show(amountValidationMessage, "Amount Mismatch",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -763,7 +778,8 @@ namespace WindowsFormsApp1
                                     particulars = @particulars,
                                     mfo_pap = @mfo_pap,
                                     uacs_oc = @uacs_oc,
-                                    amount = @amount,
+                                    payable_amount = @payable_amount,
+                                    balance = @balance,
                                     approving_officer = @approving_officer,
                                     remarks = @remarks,
                                     documents = @documents
@@ -782,7 +798,8 @@ namespace WindowsFormsApp1
                     command.Parameters.AddWithValue("@particulars", Particulars.Text.Trim());
                     command.Parameters.AddWithValue("@mfo_pap", MFOPAP.Text.Trim());
                     command.Parameters.AddWithValue("@uacs_oc", uacscode.Text.Trim());
-                    command.Parameters.AddWithValue("@amount", amountValue);
+                    command.Parameters.AddWithValue("@payable_amount", amountValue);
+                    command.Parameters.AddWithValue("@balance", amountValue); // Set balance to same value as payable_amount when updating
                     command.Parameters.AddWithValue("@approving_officer", approvingOfficer.Text.Trim());
                     command.Parameters.AddWithValue("@remarks", remarks.Text.Trim());
                     command.Parameters.AddWithValue("@ora_burono", orsBursId);
@@ -902,6 +919,54 @@ namespace WindowsFormsApp1
             catch (Exception)
             {
                 // If validation query fails, return false to be safe
+                return false;
+            }
+        }
+
+        private bool ValidatePayableAmountMatchesIARTotal(string poNumber, decimal payableAmount, out string message)
+        {
+            message = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(poNumber))
+            {
+                message = "PO Number is required.";
+                return false;
+            }
+
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT total_amount FROM inspection_acceptance_report 
+                                    WHERE po_no = @po_no 
+                                    LIMIT 1";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@po_no", poNumber.Trim());
+                        object result = command.ExecuteScalar();
+
+                        if (result == null || result == DBNull.Value)
+                        {
+                            message = "PO Number not found in IAR Form.";
+                            return false;
+                        }
+
+                        decimal iarTotalAmount = Convert.ToDecimal(result);
+
+                        if (payableAmount != iarTotalAmount)
+                        {
+                            message = $"The payable amount ({payableAmount:N2}) must be equal to the total amount ({iarTotalAmount:N2}) of the selected PO No.";
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                message = $"Error validating amount: {ex.Message}";
                 return false;
             }
         }
