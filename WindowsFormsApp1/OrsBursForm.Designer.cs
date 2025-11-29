@@ -97,7 +97,7 @@
             this.addEntryBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addEntryBtn.ForeColor = System.Drawing.Color.White;
             this.addEntryBtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addEntryBtn.Location = new System.Drawing.Point(1219, 28);
+            this.addEntryBtn.Location = new System.Drawing.Point(1386, 42);
             this.addEntryBtn.Name = "addEntryBtn";
             this.addEntryBtn.Size = new System.Drawing.Size(205, 55);
             this.addEntryBtn.TabIndex = 18;
@@ -111,7 +111,7 @@
             this.panel1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(32, 271);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1392, 508);
+            this.panel1.Size = new System.Drawing.Size(1559, 508);
             this.panel1.TabIndex = 19;
             // 
             // dataGridView1
@@ -134,7 +134,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1392, 508);
+            this.dataGridView1.Size = new System.Drawing.Size(1559, 508);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -231,7 +231,7 @@
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
             this.gradientPanel1.Location = new System.Drawing.Point(32, 135);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1392, 93);
+            this.gradientPanel1.Size = new System.Drawing.Size(1559, 93);
             this.gradientPanel1.TabIndex = 48;
             // 
             // ParseRangeBtn
@@ -244,7 +244,7 @@
             this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
             this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.ParseRangeBtn.Location = new System.Drawing.Point(1248, 24);
+            this.ParseRangeBtn.Location = new System.Drawing.Point(1404, 24);
             this.ParseRangeBtn.Name = "ParseRangeBtn";
             this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
             this.ParseRangeBtn.TabIndex = 29;
@@ -301,7 +301,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(977, 12);
+            this.label1.Location = new System.Drawing.Point(1133, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 21;
@@ -312,7 +312,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(710, 12);
+            this.label4.Location = new System.Drawing.Point(866, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 18);
             this.label4.TabIndex = 20;
@@ -321,7 +321,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(980, 33);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1136, 33);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(262, 25);
             this.dateTimePicker2.TabIndex = 3;
@@ -329,7 +329,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(712, 33);
+            this.dateTimePicker1.Location = new System.Drawing.Point(868, 33);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(262, 25);
             this.dateTimePicker1.TabIndex = 2;
@@ -362,7 +362,7 @@
             this.ExportCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExportCSV.ForeColor = System.Drawing.Color.White;
             this.ExportCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.ExportCSV.Location = new System.Drawing.Point(1220, 795);
+            this.ExportCSV.Location = new System.Drawing.Point(1386, 795);
             this.ExportCSV.Name = "ExportCSV";
             this.ExportCSV.Size = new System.Drawing.Size(204, 55);
             this.ExportCSV.TabIndex = 51;
