@@ -59,7 +59,7 @@
             this.customRoundedPanel11 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.approvingOfficer = new System.Windows.Forms.TextBox();
             this.customRoundedPanel10 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.amount = new System.Windows.Forms.TextBox();
+            this.payable_amount = new System.Windows.Forms.TextBox();
             this.customRoundedPanel9 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.uacscode = new System.Windows.Forms.TextBox();
             this.customRoundedPanel8 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
@@ -433,21 +433,21 @@
             // 
             this.customRoundedPanel10.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel10.BorderRadius = 10;
-            this.customRoundedPanel10.Controls.Add(this.amount);
+            this.customRoundedPanel10.Controls.Add(this.payable_amount);
             this.customRoundedPanel10.Location = new System.Drawing.Point(55, 533);
             this.customRoundedPanel10.Name = "customRoundedPanel10";
             this.customRoundedPanel10.Size = new System.Drawing.Size(512, 41);
             this.customRoundedPanel10.TabIndex = 10;
             // 
-            // amount
+            // payable_amount
             // 
-            this.amount.BackColor = System.Drawing.Color.Gainsboro;
-            this.amount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.amount.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amount.Location = new System.Drawing.Point(26, 12);
-            this.amount.Name = "amount";
-            this.amount.Size = new System.Drawing.Size(465, 18);
-            this.amount.TabIndex = 10;
+            this.payable_amount.BackColor = System.Drawing.Color.Gainsboro;
+            this.payable_amount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.payable_amount.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payable_amount.Location = new System.Drawing.Point(26, 12);
+            this.payable_amount.Name = "payable_amount";
+            this.payable_amount.Size = new System.Drawing.Size(465, 18);
+            this.payable_amount.TabIndex = 10;
             // 
             // customRoundedPanel9
             // 
@@ -745,7 +745,7 @@
         private System.Windows.Forms.TextBox uacscode;
         private System.Windows.Forms.Label label12;
         private Controls.CustomRoundedPanel customRoundedPanel10;
-        private System.Windows.Forms.TextBox amount;
+        private System.Windows.Forms.TextBox payable_amount;
         private System.Windows.Forms.Label label13;
         private Controls.CustomRoundedPanel customRoundedPanel11;
         private System.Windows.Forms.TextBox approvingOfficer;

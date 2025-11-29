@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             InitializeFileUpload();
             createORSBURSEntryBtn.Click += CreateORSBURSEntryBtn_Click;
             cancel.Click += (s, e) => this.Close();
-            amount.TextChanged += Amount_TextChanged;
+            payable_amount.TextChanged += Amount_TextChanged;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -429,7 +429,7 @@ namespace WindowsFormsApp1
                 (Particulars.Text, "Particulars"),
                 (MFOPAP.Text, "MFO/PAP"),
                 (uacscode.Text, "UACS Code"),
-                (amount.Text, "Amount"),
+                (payable_amount.Text, "Amount"),
                 (approvingOfficer.Text, "Approving Officer"),
                 (remarks.Text, "Remarks")
             };
@@ -473,7 +473,7 @@ namespace WindowsFormsApp1
 
         private bool TryGetAmountValue(out decimal amountValue)
         {
-            string numericText = amount.Text?.Replace(",", "").Trim();
+            string numericText = payable_amount.Text?.Replace(",", "").Trim();
 
             if (string.IsNullOrWhiteSpace(numericText))
             {
@@ -577,7 +577,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            string currentText = amount.Text;
+            string currentText = payable_amount.Text;
             if (string.IsNullOrWhiteSpace(currentText))
             {
                 return;
@@ -601,16 +601,16 @@ namespace WindowsFormsApp1
 
             isFormattingAmountText = true;
 
-            int selectionFromEnd = currentText.Length - amount.SelectionStart;
-            amount.Text = formattedText;
+            int selectionFromEnd = currentText.Length - payable_amount.SelectionStart;
+            payable_amount.Text = formattedText;
 
             int newSelectionStart = formattedText.Length - selectionFromEnd;
             if (newSelectionStart < 0)
             {
                 newSelectionStart = 0;
             }
-            amount.SelectionStart = Math.Min(newSelectionStart, amount.Text.Length);
-            amount.SelectionLength = 0;
+            payable_amount.SelectionStart = Math.Min(newSelectionStart, payable_amount.Text.Length);
+            payable_amount.SelectionLength = 0;
 
             isFormattingAmountText = false;
         }
