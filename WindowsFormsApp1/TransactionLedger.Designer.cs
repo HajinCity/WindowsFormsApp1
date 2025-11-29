@@ -38,7 +38,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.EnterBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -178,7 +178,7 @@
             // 
             this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.gradientPanel1.Controls.Add(this.pictureBox2);
-            this.gradientPanel1.Controls.Add(this.ParseRangeBtn);
+            this.gradientPanel1.Controls.Add(this.EnterBtn);
             this.gradientPanel1.Controls.Add(this.label16);
             this.gradientPanel1.Controls.Add(this.label15);
             this.gradientPanel1.Controls.Add(this.comboBox1);
@@ -205,22 +205,22 @@
             this.pictureBox2.TabIndex = 28;
             this.pictureBox2.TabStop = false;
             // 
-            // ParseRangeBtn
+            // EnterBtn
             // 
-            this.ParseRangeBtn.BackColor = System.Drawing.Color.SeaGreen;
-            this.ParseRangeBtn.BorderRadius = 10;
-            this.ParseRangeBtn.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.ParseRangeBtn.FlatAppearance.BorderSize = 0;
-            this.ParseRangeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
-            this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.ParseRangeBtn.Location = new System.Drawing.Point(1396, 24);
-            this.ParseRangeBtn.Name = "ParseRangeBtn";
-            this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
-            this.ParseRangeBtn.TabIndex = 27;
-            this.ParseRangeBtn.Text = "Enter";
-            this.ParseRangeBtn.UseVisualStyleBackColor = false;
+            this.EnterBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.EnterBtn.BorderRadius = 10;
+            this.EnterBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.EnterBtn.FlatAppearance.BorderSize = 0;
+            this.EnterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnterBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnterBtn.ForeColor = System.Drawing.Color.White;
+            this.EnterBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.EnterBtn.Location = new System.Drawing.Point(1396, 24);
+            this.EnterBtn.Name = "EnterBtn";
+            this.EnterBtn.Size = new System.Drawing.Size(132, 43);
+            this.EnterBtn.TabIndex = 27;
+            this.EnterBtn.Text = "Enter";
+            this.EnterBtn.UseVisualStyleBackColor = false;
             // 
             // label16
             // 
@@ -640,7 +640,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.Panel panel1;
-        private Controls.CustomRoundedButton ParseRangeBtn;
+        private Controls.CustomRoundedButton EnterBtn;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
