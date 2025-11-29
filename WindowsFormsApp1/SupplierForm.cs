@@ -28,8 +28,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             addSupplierBtn.Click += AddSupplierBtn_Click;
             this.Load += SupplierForm_Load;
-            dataGridView1.CellContentClick += DataGridView1_CellContentClick;
-            ConfigureActionColumns();
+            dataGridView2.CellContentClick += DataGridView1_CellContentClick;
             textBox1.TextChanged += TextBox1_TextChanged;
             ExportToCSV.Click += ExportToCSV_Click;
         }
@@ -41,7 +40,7 @@ namespace WindowsFormsApp1
 
         private void ExportToCSV_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0)
+            if (dataGridView2.Rows.Count == 0)
             {
                 MessageBox.Show("There is no data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -64,18 +63,18 @@ namespace WindowsFormsApp1
                     {
                         writer.WriteLine("Supplier Name,Address,Contact Person,Contact Info,Bank Name");
 
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        foreach (DataGridViewRow row in dataGridView2.Rows)
                         {
                             if (row.IsNewRow)
                             {
                                 continue;
                             }
 
-                            string name = EscapeForCsv(row.Cells["Column1"].Value?.ToString());
-                            string address = EscapeForCsv(row.Cells["Column2"].Value?.ToString());
-                            string contactPerson = EscapeForCsv(row.Cells["Column3"].Value?.ToString());
-                            string contactInfo = EscapeForCsv(row.Cells["Column4"].Value?.ToString());
-                            string bankName = EscapeForCsv(row.Cells["Column5"].Value?.ToString());
+                            string name = EscapeForCsv(row.Cells["Column6"].Value?.ToString());
+                            string address = EscapeForCsv(row.Cells["Column7"].Value?.ToString());
+                            string contactPerson = EscapeForCsv(row.Cells["Column8"].Value?.ToString());
+                            string contactInfo = EscapeForCsv(row.Cells["Column9"].Value?.ToString());
+                            string bankName = EscapeForCsv(row.Cells["Column10"].Value?.ToString());
 
                             writer.WriteLine($"{name},{address},{contactPerson},{contactInfo},{bankName}");
                         }
@@ -102,21 +101,6 @@ namespace WindowsFormsApp1
             bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
             string escaped = value.Replace("\"", "\"\"");
             return mustQuote ? $"\"{escaped}\"" : escaped;
-        }
-
-        private void ConfigureActionColumns()
-        {
-            if (BtnEdit != null)
-            {
-                BtnEdit.Image = Properties.Resources.Edit;
-                BtnEdit.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            }
-
-            if (BtnView != null)
-            {
-                BtnView.Image = Properties.Resources.Document;
-                BtnView.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            }
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
@@ -169,7 +153,7 @@ namespace WindowsFormsApp1
         private void ApplySupplierFilter(string filterTerm)
         {
             string term = (filterTerm ?? string.Empty).Trim();
-            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
 
             IEnumerable<SupplierRecord> records = supplierCache;
 
@@ -186,17 +170,15 @@ namespace WindowsFormsApp1
 
             foreach (var record in records)
             {
-                int rowIndex = dataGridView1.Rows.Add(
+                int rowIndex = dataGridView2.Rows.Add(
                     record.Name,
                     record.Address,
                     record.ContactPerson,
                     record.ContactInfo,
-                    record.BankName,
-                    Properties.Resources.Edit,
-                    Properties.Resources.Document
+                    record.BankName
                 );
 
-                dataGridView1.Rows[rowIndex].Tag = record.SupplierId;
+                dataGridView2.Rows[rowIndex].Tag = record.SupplierId;
             }
         }
 
@@ -205,12 +187,12 @@ namespace WindowsFormsApp1
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
 
-            var row = dataGridView1.Rows[e.RowIndex];
+            var row = dataGridView2.Rows[e.RowIndex];
             if (row?.Tag == null || !int.TryParse(row.Tag.ToString(), out int supplierId))
                 return;
 
-            var columnName = dataGridView1.Columns[e.ColumnIndex].Name;
-            if (columnName == nameof(BtnEdit))
+            var columnName = dataGridView2.Columns[e.ColumnIndex].Name;
+            if (columnName == "botedit")
             {
                 using (var updateForm = new UpdateSupplierInfo(supplierId))
                 {
@@ -220,7 +202,7 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            else if (columnName == nameof(BtnView))
+            else if (columnName == "botview")
             {
                 using (var viewForm = new ViewSupplier(supplierId))
                 {
