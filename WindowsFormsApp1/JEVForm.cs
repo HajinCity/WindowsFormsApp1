@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,10 @@ namespace WindowsFormsApp1
             public string UacsCode { get; set; }
             public string Account { get; set; }
             public string Particulars { get; set; }
+            public string TaxType { get; set; }
+            public string GrossAmount { get; set; }
+            public string Deductions { get; set; }
+            public string NetAmount { get; set; }
         }
 
         private readonly List<JEVRecord> jevCache = new List<JEVRecord>();
@@ -67,7 +72,8 @@ namespace WindowsFormsApp1
 
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = @"SELECT jev_id, jev_no, date, uacs_code, account, particulars
+                    string query = @"SELECT jev_id, jev_no, date, uacs_code, account, particulars,
+                                            tax_type, gross_amount, deductions, net_amount
                                      FROM jev
                                      ORDER BY date DESC, jev_id DESC";
 
@@ -83,7 +89,11 @@ namespace WindowsFormsApp1
                                 Date = reader["date"] == DBNull.Value ? DateTime.MinValue : reader.GetDateTime("date"),
                                 UacsCode = reader["uacs_code"]?.ToString() ?? "",
                                 Account = reader["account"]?.ToString() ?? "",
-                                Particulars = reader["particulars"]?.ToString() ?? ""
+                                Particulars = reader["particulars"]?.ToString() ?? "",
+                                TaxType = reader["tax_type"]?.ToString() ?? "",
+                                GrossAmount = reader["gross_amount"]?.ToString() ?? "",
+                                Deductions = reader["deductions"]?.ToString() ?? "",
+                                NetAmount = reader["net_amount"]?.ToString() ?? ""
                             });
                         }
                     }
@@ -107,12 +117,16 @@ namespace WindowsFormsApp1
             dataGridView1.Rows.Clear();
             foreach (var entry in jevCache)
             {
-                int rowIndex = dataGridView1.Rows.Add(
-                    entry.JevNo,
-                    entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
-                    entry.UacsCode,
-                    entry.Account,
-                    entry.Particulars);
+                int rowIndex = dataGridView1.Rows.Add();
+                dataGridView1.Rows[rowIndex].Cells["Column1"].Value = entry.JevNo; // JEV No.
+                dataGridView1.Rows[rowIndex].Cells["Column2"].Value = entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(); // Date
+                dataGridView1.Rows[rowIndex].Cells["Column3"].Value = entry.UacsCode; // UACS
+                dataGridView1.Rows[rowIndex].Cells["Column4"].Value = entry.Account; // Account
+                dataGridView1.Rows[rowIndex].Cells["Column5"].Value = entry.Particulars; // Particulars
+                dataGridView1.Rows[rowIndex].Cells["Column6"].Value = entry.TaxType; // Tax Type
+                dataGridView1.Rows[rowIndex].Cells["Column7"].Value = FormatAmountDisplay(entry.GrossAmount); // Gross Amount
+                dataGridView1.Rows[rowIndex].Cells["Column8"].Value = FormatAmountDisplay(entry.Deductions); // Deductions
+                dataGridView1.Rows[rowIndex].Cells["Column9"].Value = FormatAmountDisplay(entry.NetAmount); // Net Amount
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -134,11 +148,16 @@ namespace WindowsFormsApp1
                 bool dateMatch = (entry.Date == DateTime.MinValue) ||
                                  (entry.Date.Date >= startDate && entry.Date.Date <= endDate);
 
-                // Search term filter (JEV No., UACS, Account)
+                // Search term filter (JEV No., UACS, Account, Particulars, Tax Type)
                 bool searchMatch = string.IsNullOrEmpty(term) ||
                                    (entry.JevNo ?? string.Empty).ToLowerInvariant().Contains(term) ||
                                    (entry.UacsCode ?? string.Empty).ToLowerInvariant().Contains(term) ||
-                                   (entry.Account ?? string.Empty).ToLowerInvariant().Contains(term);
+                                   (entry.Account ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.Particulars ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.TaxType ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.GrossAmount ?? string.Empty).Replace(",", "").ToLowerInvariant().Contains(term) ||
+                                   (entry.Deductions ?? string.Empty).Replace(",", "").ToLowerInvariant().Contains(term) ||
+                                   (entry.NetAmount ?? string.Empty).Replace(",", "").ToLowerInvariant().Contains(term);
 
                 return dateMatch && searchMatch;
             });
@@ -146,12 +165,16 @@ namespace WindowsFormsApp1
             dataGridView1.Rows.Clear();
             foreach (var entry in filtered)
             {
-                int rowIndex = dataGridView1.Rows.Add(
-                    entry.JevNo,
-                    entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
-                    entry.UacsCode,
-                    entry.Account,
-                    entry.Particulars);
+                int rowIndex = dataGridView1.Rows.Add();
+                dataGridView1.Rows[rowIndex].Cells["Column1"].Value = entry.JevNo; // JEV No.
+                dataGridView1.Rows[rowIndex].Cells["Column2"].Value = entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(); // Date
+                dataGridView1.Rows[rowIndex].Cells["Column3"].Value = entry.UacsCode; // UACS
+                dataGridView1.Rows[rowIndex].Cells["Column4"].Value = entry.Account; // Account
+                dataGridView1.Rows[rowIndex].Cells["Column5"].Value = entry.Particulars; // Particulars
+                dataGridView1.Rows[rowIndex].Cells["Column6"].Value = entry.TaxType; // Tax Type
+                dataGridView1.Rows[rowIndex].Cells["Column7"].Value = FormatAmountDisplay(entry.GrossAmount); // Gross Amount
+                dataGridView1.Rows[rowIndex].Cells["Column8"].Value = FormatAmountDisplay(entry.Deductions); // Deductions
+                dataGridView1.Rows[rowIndex].Cells["Column9"].Value = FormatAmountDisplay(entry.NetAmount); // Net Amount
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -244,7 +267,7 @@ namespace WindowsFormsApp1
                     using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
                     {
                         // Write header row
-                        writer.WriteLine("JEV No.,Date,UACS,Account,Particulars");
+                        writer.WriteLine("JEV No.,Date,UACS,Account,Particulars,Tax Type,Gross Amount,Deductions,Net Amount");
 
                         // Write data rows
                         foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -254,13 +277,17 @@ namespace WindowsFormsApp1
                                 continue;
                             }
 
-                            string jevNo = EscapeForCsv(row.Cells[0].Value?.ToString());
-                            string date = EscapeForCsv(row.Cells[1].Value?.ToString());
-                            string uacs = EscapeForCsv(row.Cells[2].Value?.ToString());
-                            string account = EscapeForCsv(row.Cells[3].Value?.ToString());
-                            string particulars = EscapeForCsv(row.Cells[4].Value?.ToString());
+                            string jevNo = EscapeForCsv(row.Cells["Column1"].Value?.ToString());
+                            string date = EscapeForCsv(row.Cells["Column2"].Value?.ToString());
+                            string uacs = EscapeForCsv(row.Cells["Column3"].Value?.ToString());
+                            string account = EscapeForCsv(row.Cells["Column4"].Value?.ToString());
+                            string particulars = EscapeForCsv(row.Cells["Column5"].Value?.ToString());
+                            string taxType = EscapeForCsv(row.Cells["Column6"].Value?.ToString());
+                            string grossAmount = EscapeForCsv(row.Cells["Column7"].Value?.ToString());
+                            string deductions = EscapeForCsv(row.Cells["Column8"].Value?.ToString());
+                            string netAmount = EscapeForCsv(row.Cells["Column9"].Value?.ToString());
 
-                            writer.WriteLine($"{jevNo},{date},{uacs},{account},{particulars}");
+                            writer.WriteLine($"{jevNo},{date},{uacs},{account},{particulars},{taxType},{grossAmount},{deductions},{netAmount}");
                         }
                     }
 
@@ -285,6 +312,25 @@ namespace WindowsFormsApp1
             bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
             string escaped = value.Replace("\"", "\"\"");
             return mustQuote ? $"\"{escaped}\"" : escaped;
+        }
+
+        private string FormatAmountDisplay(string amountValue)
+        {
+            if (string.IsNullOrWhiteSpace(amountValue))
+            {
+                return amountValue ?? string.Empty;
+            }
+
+            string clean = amountValue.Replace(",", "").Trim();
+            if (decimal.TryParse(clean, NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out decimal numericValue))
+            {
+                string formattedInteger = string.Format(CultureInfo.InvariantCulture, "{0:N0}", Math.Truncate(numericValue));
+                int decimalIndex = clean.IndexOf('.');
+                string fractionalPart = decimalIndex >= 0 ? clean.Substring(decimalIndex) : string.Empty;
+                return formattedInteger + fractionalPart;
+            }
+
+            return amountValue;
         }
     }
 }
