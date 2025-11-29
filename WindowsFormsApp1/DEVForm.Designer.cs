@@ -50,10 +50,10 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -106,10 +106,10 @@
             this.Column5,
             this.Column6,
             this.Column7,
-            this.Column11,
             this.Column8,
             this.Column9,
             this.Column10,
+            this.Column11,
             this.BtnEdit,
             this.BtnView});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -289,29 +289,29 @@
             this.Column7.HeaderText = "MOP";
             this.Column7.Name = "Column7";
             // 
-            // Column11
-            // 
-            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column11.HeaderText = "Tax Type";
-            this.Column11.Name = "Column11";
-            // 
             // Column8
             // 
             this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column8.HeaderText = "Gross Amount";
+            this.Column8.HeaderText = "Tax Type";
             this.Column8.Name = "Column8";
             // 
             // Column9
             // 
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column9.HeaderText = "Deductions";
+            this.Column9.HeaderText = "Gross Amount";
             this.Column9.Name = "Column9";
             // 
             // Column10
             // 
             this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column10.HeaderText = "Net Amount";
+            this.Column10.HeaderText = "Deductions";
             this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column11.HeaderText = "Net Amount";
+            this.Column11.Name = "Column11";
             // 
             // BtnEdit
             // 
@@ -386,10 +386,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewImageColumn BtnEdit;
         private System.Windows.Forms.DataGridViewImageColumn BtnView;
     }
