@@ -129,18 +129,18 @@ namespace WindowsFormsApp1
             dataGridView1.Rows.Clear();
             foreach (var entry in devCache)
             {
-                int rowIndex = dataGridView1.Rows.Add(
-                    entry.DevNo,
-                    entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
-                    entry.OrsBursNo,
-                    entry.JevNo,
-                    entry.Payee,
-                    entry.Office,
-                    entry.MOP,
-                    FormatAmountDisplay(entry.GrossAmount),
-                    FormatAmountDisplay(entry.Deductions),
-                    FormatAmountDisplay(entry.NetAmount),
-                    entry.TaxType);
+                int rowIndex = dataGridView1.Rows.Add();
+                dataGridView1.Rows[rowIndex].Cells["Column1"].Value = entry.DevNo; // DEV No.
+                dataGridView1.Rows[rowIndex].Cells["Column2"].Value = entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(); // Date
+                dataGridView1.Rows[rowIndex].Cells["Column3"].Value = entry.OrsBursNo; // ORS BURS
+                dataGridView1.Rows[rowIndex].Cells["Column4"].Value = entry.JevNo; // JEV No
+                dataGridView1.Rows[rowIndex].Cells["Column5"].Value = entry.Payee; // Payee
+                dataGridView1.Rows[rowIndex].Cells["Column6"].Value = entry.Office; // Office
+                dataGridView1.Rows[rowIndex].Cells["Column7"].Value = entry.MOP; // MOP
+                dataGridView1.Rows[rowIndex].Cells["Column8"].Value = entry.TaxType; // Tax Type
+                dataGridView1.Rows[rowIndex].Cells["Column9"].Value = FormatAmountDisplay(entry.GrossAmount); // Gross Amount
+                dataGridView1.Rows[rowIndex].Cells["Column10"].Value = FormatAmountDisplay(entry.Deductions); // Deductions
+                dataGridView1.Rows[rowIndex].Cells["Column11"].Value = FormatAmountDisplay(entry.NetAmount); // Net Amount
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -168,18 +168,18 @@ namespace WindowsFormsApp1
             dataGridView1.Rows.Clear();
             foreach (var entry in filtered)
             {
-                int rowIndex = dataGridView1.Rows.Add(
-                    entry.DevNo,
-                    entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
-                    entry.OrsBursNo,
-                    entry.JevNo,
-                    entry.Payee,
-                    entry.Office,
-                    entry.MOP,
-                    FormatAmountDisplay(entry.GrossAmount),
-                    FormatAmountDisplay(entry.Deductions),
-                    FormatAmountDisplay(entry.NetAmount),
-                    entry.TaxType);
+                int rowIndex = dataGridView1.Rows.Add();
+                dataGridView1.Rows[rowIndex].Cells["Column1"].Value = entry.DevNo; // DEV No.
+                dataGridView1.Rows[rowIndex].Cells["Column2"].Value = entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(); // Date
+                dataGridView1.Rows[rowIndex].Cells["Column3"].Value = entry.OrsBursNo; // ORS BURS
+                dataGridView1.Rows[rowIndex].Cells["Column4"].Value = entry.JevNo; // JEV No
+                dataGridView1.Rows[rowIndex].Cells["Column5"].Value = entry.Payee; // Payee
+                dataGridView1.Rows[rowIndex].Cells["Column6"].Value = entry.Office; // Office
+                dataGridView1.Rows[rowIndex].Cells["Column7"].Value = entry.MOP; // MOP
+                dataGridView1.Rows[rowIndex].Cells["Column8"].Value = entry.TaxType; // Tax Type
+                dataGridView1.Rows[rowIndex].Cells["Column9"].Value = FormatAmountDisplay(entry.GrossAmount); // Gross Amount
+                dataGridView1.Rows[rowIndex].Cells["Column10"].Value = FormatAmountDisplay(entry.Deductions); // Deductions
+                dataGridView1.Rows[rowIndex].Cells["Column11"].Value = FormatAmountDisplay(entry.NetAmount); // Net Amount
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }

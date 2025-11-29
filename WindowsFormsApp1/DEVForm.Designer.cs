@@ -33,16 +33,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
-            this.addDEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +46,17 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.BtnView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.addDEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
@@ -130,22 +131,92 @@
             this.label4.TabIndex = 19;
             this.label4.Text = "Disbursement Vouchers";
             // 
-            // addDEVbtn
+            // Column1
             // 
-            this.addDEVbtn.BackColor = System.Drawing.Color.Turquoise;
-            this.addDEVbtn.BorderRadius = 10;
-            this.addDEVbtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.addDEVbtn.FlatAppearance.BorderSize = 0;
-            this.addDEVbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addDEVbtn.ForeColor = System.Drawing.Color.White;
-            this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(1407, 51);
-            this.addDEVbtn.Name = "addDEVbtn";
-            this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
-            this.addDEVbtn.TabIndex = 21;
-            this.addDEVbtn.Text = "Add DEV";
-            this.addDEVbtn.UseVisualStyleBackColor = false;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "DEV No.";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Date";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "ORS BURS";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.HeaderText = "JEV No";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.HeaderText = "Payee";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.HeaderText = "Office";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "MOP";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column8.HeaderText = "Tax Type";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column9.HeaderText = "Gross Amount";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column10.HeaderText = "Deductions";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column11.HeaderText = "Net Amount";
+            this.Column11.Name = "Column11";
+            // 
+            // BtnEdit
+            // 
+            this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BtnEdit.HeaderText = "";
+            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
+            this.BtnEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BtnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.BtnEdit.Width = 19;
+            // 
+            // BtnView
+            // 
+            this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BtnView.HeaderText = "";
+            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
+            this.BtnView.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.BtnView.Name = "BtnView";
+            this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.BtnView.Width = 19;
             // 
             // gradientPanel1
             // 
@@ -248,92 +319,39 @@
             this.textBox1.Size = new System.Drawing.Size(309, 26);
             this.textBox1.TabIndex = 0;
             // 
-            // Column1
+            // addDEVbtn
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "DEV No.";
-            this.Column1.Name = "Column1";
+            this.addDEVbtn.BackColor = System.Drawing.Color.Turquoise;
+            this.addDEVbtn.BorderRadius = 10;
+            this.addDEVbtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.addDEVbtn.FlatAppearance.BorderSize = 0;
+            this.addDEVbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addDEVbtn.ForeColor = System.Drawing.Color.White;
+            this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.addDEVbtn.Location = new System.Drawing.Point(1407, 51);
+            this.addDEVbtn.Name = "addDEVbtn";
+            this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
+            this.addDEVbtn.TabIndex = 21;
+            this.addDEVbtn.Text = "Add DEV";
+            this.addDEVbtn.UseVisualStyleBackColor = false;
             // 
-            // Column2
+            // ExportToCSV
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Date";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "ORS BURS";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "JEV No";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.HeaderText = "Payee";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "Office";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "MOP";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column8.HeaderText = "Tax Type";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column9.HeaderText = "Gross Amount";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column10.HeaderText = "Deductions";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column11.HeaderText = "Net Amount";
-            this.Column11.Name = "Column11";
-            // 
-            // BtnEdit
-            // 
-            this.BtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BtnEdit.HeaderText = "";
-            this.BtnEdit.Image = global::WindowsFormsApp1.Properties.Resources.Edit;
-            this.BtnEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BtnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BtnEdit.Width = 19;
-            // 
-            // BtnView
-            // 
-            this.BtnView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BtnView.HeaderText = "";
-            this.BtnView.Image = global::WindowsFormsApp1.Properties.Resources.Eye;
-            this.BtnView.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.BtnView.Name = "BtnView";
-            this.BtnView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BtnView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BtnView.Width = 19;
+            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
+            this.ExportToCSV.BorderRadius = 10;
+            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportToCSV.FlatAppearance.BorderSize = 0;
+            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportToCSV.Location = new System.Drawing.Point(1402, 909);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportToCSV.TabIndex = 23;
+            this.ExportToCSV.Text = "Export to Excel";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
             // 
             // DEVForm
             // 
@@ -342,6 +360,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1622, 1080);
+            this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -392,5 +411,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewImageColumn BtnEdit;
         private System.Windows.Forms.DataGridViewImageColumn BtnView;
+        private Controls.CustomRoundedButton ExportToCSV;
     }
 }
