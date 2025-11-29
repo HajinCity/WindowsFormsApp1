@@ -327,7 +327,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1381, 993);
+            this.ClientSize = new System.Drawing.Size(1622, 993);
             this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.gradientPanel2);
             this.Controls.Add(this.addJEVbtn);
