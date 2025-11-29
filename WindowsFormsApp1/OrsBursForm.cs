@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
         private class OrsBursRecord
         {
             public int Id { get; set; }
+            public string Balance { get; set; }
             public string SerialNo { get; set; }
             public DateTime Date { get; set; }
             public string FundCluster { get; set; }
@@ -72,7 +73,7 @@ namespace WindowsFormsApp1
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
                     string query = @"SELECT ora_burono, ora_serialno, date, fund_cluster, po_no, payee, office, 
-                                     responsibility_center, approving_officer, payable_amount, status
+                                     responsibility_center, approving_officer, payable_amount, balance, status
                                      FROM ora_burono
                                      ORDER BY date DESC, ora_burono DESC";
 
@@ -84,6 +85,7 @@ namespace WindowsFormsApp1
                             orsBursCache.Add(new OrsBursRecord
                             {
                                 Id = reader.GetInt32("ora_burono"),
+                                Balance = reader["balance"]?.ToString(),
                                 SerialNo = reader["ora_serialno"]?.ToString(),
                                 Date = reader["date"] == DBNull.Value ? DateTime.MinValue : reader.GetDateTime("date"),
                                 FundCluster = reader["fund_cluster"]?.ToString(),
@@ -118,6 +120,7 @@ namespace WindowsFormsApp1
             foreach (var entry in orsBursCache)
             {
                 int rowIndex = dataGridView2.Rows.Add(
+                    FormatAmountDisplay(entry.Balance), // Column1 - Balance
                     entry.SerialNo,
                     entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
                     entry.FundCluster,
@@ -195,7 +198,8 @@ namespace WindowsFormsApp1
                                    (entry.Payee ?? string.Empty).ToLowerInvariant().Contains(term) ||
                                    (entry.Office ?? string.Empty).ToLowerInvariant().Contains(term) ||
                                    (entry.ResponsibilityCenter ?? string.Empty).ToLowerInvariant().Contains(term) ||
-                                   (entry.ApprovingOfficer ?? string.Empty).ToLowerInvariant().Contains(term);
+                                   (entry.ApprovingOfficer ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                                   (entry.Balance ?? string.Empty).Replace(",", "").ToLowerInvariant().Contains(term);
 
                 return dateMatch && statusMatch && searchMatch;
             });
@@ -204,6 +208,7 @@ namespace WindowsFormsApp1
             foreach (var entry in filtered)
             {
                 int rowIndex = dataGridView2.Rows.Add(
+                    FormatAmountDisplay(entry.Balance), // Column1 - Balance
                     entry.SerialNo,
                     entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(),
                     entry.FundCluster,
@@ -269,7 +274,7 @@ namespace WindowsFormsApp1
                     using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
                     {
                         // Write header row
-                        writer.WriteLine("Serial No.,Date,Fund Cluster,PO No.,Payee,Office,Responsibility Center,Approving Officer,Total Amount,Status");
+                        writer.WriteLine("Balance,Serial No.,Date,Fund Cluster,PO No.,Payee,Office,Responsibility Center,Approving Officer,Total Amount,Status");
 
                         // Write data rows
                         foreach (DataGridViewRow row in dataGridView2.Rows)
@@ -279,6 +284,7 @@ namespace WindowsFormsApp1
                                 continue;
                             }
 
+                            string balance = EscapeForCsv(row.Cells["Column1"].Value?.ToString());
                             string serialNo = EscapeForCsv(row.Cells["Column11"].Value?.ToString());
                             string date = EscapeForCsv(row.Cells["Column12"].Value?.ToString());
                             string fundCluster = EscapeForCsv(row.Cells["Column13"].Value?.ToString());
@@ -290,7 +296,7 @@ namespace WindowsFormsApp1
                             string amount = EscapeForCsv(row.Cells["Column19"].Value?.ToString());
                             string status = EscapeForCsv(row.Cells["Column20"].Value?.ToString());
 
-                            writer.WriteLine($"{serialNo},{date},{fundCluster},{poNo},{payee},{office},{responsibilityCenter},{approvingOfficer},{amount},{status}");
+                            writer.WriteLine($"{balance},{serialNo},{date},{fundCluster},{poNo},{payee},{office},{responsibilityCenter},{approvingOfficer},{amount},{status}");
                         }
                     }
 
