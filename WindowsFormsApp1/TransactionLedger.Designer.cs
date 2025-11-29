@@ -72,6 +72,8 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.customRoundedPanel2.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -80,6 +82,7 @@
             this.customRoundedPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label18
@@ -133,9 +136,9 @@
             this.customRoundedPanel2.Controls.Add(this.label6);
             this.customRoundedPanel2.Controls.Add(this.label7);
             this.customRoundedPanel2.Controls.Add(this.label8);
-            this.customRoundedPanel2.Location = new System.Drawing.Point(364, 129);
+            this.customRoundedPanel2.Location = new System.Drawing.Point(443, 129);
             this.customRoundedPanel2.Name = "customRoundedPanel2";
-            this.customRoundedPanel2.Size = new System.Drawing.Size(284, 135);
+            this.customRoundedPanel2.Size = new System.Drawing.Size(323, 135);
             this.customRoundedPanel2.TabIndex = 44;
             // 
             // label6
@@ -174,6 +177,8 @@
             // gradientPanel1
             // 
             this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel1.Controls.Add(this.pictureBox2);
+            this.gradientPanel1.Controls.Add(this.ParseRangeBtn);
             this.gradientPanel1.Controls.Add(this.label16);
             this.gradientPanel1.Controls.Add(this.label15);
             this.gradientPanel1.Controls.Add(this.comboBox1);
@@ -185,9 +190,9 @@
             this.gradientPanel1.Controls.Add(this.textBox1);
             this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
-            this.gradientPanel1.Location = new System.Drawing.Point(39, 298);
+            this.gradientPanel1.Location = new System.Drawing.Point(27, 288);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(1263, 93);
+            this.gradientPanel1.Size = new System.Drawing.Size(1544, 93);
             this.gradientPanel1.TabIndex = 47;
             // 
             // label16
@@ -230,7 +235,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(964, 12);
+            this.label1.Location = new System.Drawing.Point(1105, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 21;
@@ -241,7 +246,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(697, 12);
+            this.label4.Location = new System.Drawing.Point(838, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 18);
             this.label4.TabIndex = 20;
@@ -250,7 +255,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(967, 33);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1108, 33);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(262, 25);
             this.dateTimePicker2.TabIndex = 3;
@@ -258,7 +263,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(699, 33);
+            this.dateTimePicker1.Location = new System.Drawing.Point(840, 33);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(262, 25);
             this.dateTimePicker1.TabIndex = 2;
@@ -288,9 +293,9 @@
             this.customRoundedPanel1.Controls.Add(this.label5);
             this.customRoundedPanel1.Controls.Add(this.label17);
             this.customRoundedPanel1.Controls.Add(this.label18);
-            this.customRoundedPanel1.Location = new System.Drawing.Point(39, 129);
+            this.customRoundedPanel1.Location = new System.Drawing.Point(27, 129);
             this.customRoundedPanel1.Name = "customRoundedPanel1";
-            this.customRoundedPanel1.Size = new System.Drawing.Size(284, 135);
+            this.customRoundedPanel1.Size = new System.Drawing.Size(323, 135);
             this.customRoundedPanel1.TabIndex = 43;
             // 
             // label5
@@ -325,7 +330,7 @@
             this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDEVbtn.ForeColor = System.Drawing.Color.White;
             this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(1098, 975);
+            this.addDEVbtn.Location = new System.Drawing.Point(1367, 983);
             this.addDEVbtn.Name = "addDEVbtn";
             this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
             this.addDEVbtn.TabIndex = 49;
@@ -339,9 +344,9 @@
             this.customRoundedPanel3.Controls.Add(this.label9);
             this.customRoundedPanel3.Controls.Add(this.label10);
             this.customRoundedPanel3.Controls.Add(this.label11);
-            this.customRoundedPanel3.Location = new System.Drawing.Point(691, 129);
+            this.customRoundedPanel3.Location = new System.Drawing.Point(850, 129);
             this.customRoundedPanel3.Name = "customRoundedPanel3";
-            this.customRoundedPanel3.Size = new System.Drawing.Size(284, 135);
+            this.customRoundedPanel3.Size = new System.Drawing.Size(323, 135);
             this.customRoundedPanel3.TabIndex = 45;
             // 
             // label12
@@ -432,9 +437,9 @@
             this.customRoundedPanel4.Controls.Add(this.label12);
             this.customRoundedPanel4.Controls.Add(this.label13);
             this.customRoundedPanel4.Controls.Add(this.label14);
-            this.customRoundedPanel4.Location = new System.Drawing.Point(1018, 129);
+            this.customRoundedPanel4.Location = new System.Drawing.Point(1248, 129);
             this.customRoundedPanel4.Name = "customRoundedPanel4";
-            this.customRoundedPanel4.Size = new System.Drawing.Size(284, 135);
+            this.customRoundedPanel4.Size = new System.Drawing.Size(323, 135);
             this.customRoundedPanel4.TabIndex = 46;
             // 
             // label13
@@ -497,7 +502,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1258, 536);
+            this.dataGridView1.Size = new System.Drawing.Size(1539, 536);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column3
@@ -516,10 +521,37 @@
             // 
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(44, 431);
+            this.panel1.Location = new System.Drawing.Point(32, 421);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1258, 536);
+            this.panel1.Size = new System.Drawing.Size(1539, 536);
             this.panel1.TabIndex = 48;
+            // 
+            // ParseRangeBtn
+            // 
+            this.ParseRangeBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.BorderRadius = 10;
+            this.ParseRangeBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.FlatAppearance.BorderSize = 0;
+            this.ParseRangeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
+            this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.ParseRangeBtn.Location = new System.Drawing.Point(1396, 24);
+            this.ParseRangeBtn.Name = "ParseRangeBtn";
+            this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
+            this.ParseRangeBtn.TabIndex = 27;
+            this.ParseRangeBtn.Text = "Enter";
+            this.ParseRangeBtn.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
+            this.pictureBox2.Location = new System.Drawing.Point(747, 18);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 28;
+            this.pictureBox2.TabStop = false;
             // 
             // TransactionLedger
             // 
@@ -555,6 +587,7 @@
             this.customRoundedPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -606,5 +639,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.Panel panel1;
+        private Controls.CustomRoundedButton ParseRangeBtn;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
