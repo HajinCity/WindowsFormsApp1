@@ -37,6 +37,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -72,17 +74,15 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.customRoundedPanel2.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.customRoundedPanel1.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label18
@@ -194,6 +194,33 @@
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Size = new System.Drawing.Size(1544, 93);
             this.gradientPanel1.TabIndex = 47;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
+            this.pictureBox2.Location = new System.Drawing.Point(747, 18);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 28;
+            this.pictureBox2.TabStop = false;
+            // 
+            // ParseRangeBtn
+            // 
+            this.ParseRangeBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.BorderRadius = 10;
+            this.ParseRangeBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.ParseRangeBtn.FlatAppearance.BorderSize = 0;
+            this.ParseRangeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
+            this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.ParseRangeBtn.Location = new System.Drawing.Point(1396, 24);
+            this.ParseRangeBtn.Name = "ParseRangeBtn";
+            this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
+            this.ParseRangeBtn.TabIndex = 27;
+            this.ParseRangeBtn.Text = "Enter";
+            this.ParseRangeBtn.UseVisualStyleBackColor = false;
             // 
             // label16
             // 
@@ -330,7 +357,7 @@
             this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDEVbtn.ForeColor = System.Drawing.Color.White;
             this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(1367, 983);
+            this.addDEVbtn.Location = new System.Drawing.Point(1384, 1044);
             this.addDEVbtn.Name = "addDEVbtn";
             this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
             this.addDEVbtn.TabIndex = 49;
@@ -502,7 +529,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1539, 536);
+            this.dataGridView1.Size = new System.Drawing.Size(1579, 613);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column3
@@ -521,37 +548,10 @@
             // 
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(32, 421);
+            this.panel1.Location = new System.Drawing.Point(12, 425);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1539, 536);
+            this.panel1.Size = new System.Drawing.Size(1579, 613);
             this.panel1.TabIndex = 48;
-            // 
-            // ParseRangeBtn
-            // 
-            this.ParseRangeBtn.BackColor = System.Drawing.Color.SeaGreen;
-            this.ParseRangeBtn.BorderRadius = 10;
-            this.ParseRangeBtn.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.ParseRangeBtn.FlatAppearance.BorderSize = 0;
-            this.ParseRangeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ParseRangeBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ParseRangeBtn.ForeColor = System.Drawing.Color.White;
-            this.ParseRangeBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.ParseRangeBtn.Location = new System.Drawing.Point(1396, 24);
-            this.ParseRangeBtn.Name = "ParseRangeBtn";
-            this.ParseRangeBtn.Size = new System.Drawing.Size(132, 43);
-            this.ParseRangeBtn.TabIndex = 27;
-            this.ParseRangeBtn.Text = "Enter";
-            this.ParseRangeBtn.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
-            this.pictureBox2.Location = new System.Drawing.Point(747, 18);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 28;
-            this.pictureBox2.TabStop = false;
             // 
             // TransactionLedger
             // 
@@ -578,6 +578,7 @@
             this.customRoundedPanel2.PerformLayout();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.customRoundedPanel1.ResumeLayout(false);
             this.customRoundedPanel1.PerformLayout();
@@ -587,7 +588,6 @@
             this.customRoundedPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
