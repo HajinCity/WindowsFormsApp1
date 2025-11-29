@@ -48,9 +48,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
-            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -251,23 +251,6 @@
             this.gradientPanel1.Size = new System.Drawing.Size(1351, 93);
             this.gradientPanel1.TabIndex = 18;
             // 
-            // ExportToCSV
-            // 
-            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
-            this.ExportToCSV.BorderRadius = 10;
-            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.ExportToCSV.FlatAppearance.BorderSize = 0;
-            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
-            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.ExportToCSV.Location = new System.Drawing.Point(1159, 890);
-            this.ExportToCSV.Name = "ExportToCSV";
-            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
-            this.ExportToCSV.TabIndex = 19;
-            this.ExportToCSV.Text = "Export to Excel";
-            this.ExportToCSV.UseVisualStyleBackColor = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
@@ -295,13 +278,30 @@
             this.ParseRangeBtn.Text = "Enter";
             this.ParseRangeBtn.UseVisualStyleBackColor = false;
             // 
+            // ExportToCSV
+            // 
+            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
+            this.ExportToCSV.BorderRadius = 10;
+            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportToCSV.FlatAppearance.BorderSize = 0;
+            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportToCSV.Location = new System.Drawing.Point(1159, 890);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportToCSV.TabIndex = 19;
+            this.ExportToCSV.Text = "Export to Excel";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
+            // 
             // IARForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1381, 993);
+            this.ClientSize = new System.Drawing.Size(1622, 993);
             this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.panel1);
