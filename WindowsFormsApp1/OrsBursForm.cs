@@ -121,7 +121,6 @@ namespace WindowsFormsApp1
             foreach (var entry in orsBursCache)
             {
                 int rowIndex = dataGridView2.Rows.Add();
-              
                 dataGridView2.Rows[rowIndex].Cells["Column11"].Value = entry.SerialNo; // Serial No.
                 dataGridView2.Rows[rowIndex].Cells["Column12"].Value = entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(); // Date
                 dataGridView2.Rows[rowIndex].Cells["Column13"].Value = entry.FundCluster; // Fund Cluster
@@ -129,18 +128,10 @@ namespace WindowsFormsApp1
                 dataGridView2.Rows[rowIndex].Cells["Column15"].Value = entry.Payee; // Payee
                 dataGridView2.Rows[rowIndex].Cells["Column16"].Value = entry.Office; // Office
                 dataGridView2.Rows[rowIndex].Cells["Column17"].Value = entry.ResponsibilityCenter; // Responsibility Center
-                dataGridView2.Rows[rowIndex].Cells["Column19"].Value = entry.ApprovingOfficer; // Approving Officer
-                dataGridView2.Rows[rowIndex].Cells["Column20"].Value = FormatAmountDisplay(entry.Amount); // Payable Amount
-                dataGridView2.Rows[rowIndex].Cells["Column21"].Value = FormatAmountDisplay(entry.Balance); // Balance
-                // Status - try Column18 or Column21
-                if (dataGridView2.Columns.Contains("Column18"))
-                {
-                    dataGridView2.Rows[rowIndex].Cells["Column18"].Value = entry.Status;
-                }
-                else if (dataGridView2.Columns.Contains("Column21"))
-                {
-                    dataGridView2.Rows[rowIndex].Cells["Column21"].Value = entry.Status;
-                }
+                dataGridView2.Rows[rowIndex].Cells["Column18"].Value = entry.ApprovingOfficer; // Approving Officer
+                dataGridView2.Rows[rowIndex].Cells["Column19"].Value = FormatAmountDisplay(entry.Amount); // Payable Amount
+                dataGridView2.Rows[rowIndex].Cells["Column20"].Value = FormatAmountDisplay(entry.Balance); // Balance
+                dataGridView2.Rows[rowIndex].Cells["Column21"].Value = entry.Status; // Status
                 dataGridView2.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -218,7 +209,6 @@ namespace WindowsFormsApp1
             foreach (var entry in filtered)
             {
                 int rowIndex = dataGridView2.Rows.Add();
-                dataGridView2.Rows[rowIndex].Cells["Column1"].Value = FormatAmountDisplay(entry.Balance); // Balance
                 dataGridView2.Rows[rowIndex].Cells["Column11"].Value = entry.SerialNo; // Serial No.
                 dataGridView2.Rows[rowIndex].Cells["Column12"].Value = entry.Date == DateTime.MinValue ? "" : entry.Date.ToShortDateString(); // Date
                 dataGridView2.Rows[rowIndex].Cells["Column13"].Value = entry.FundCluster; // Fund Cluster
@@ -226,17 +216,10 @@ namespace WindowsFormsApp1
                 dataGridView2.Rows[rowIndex].Cells["Column15"].Value = entry.Payee; // Payee
                 dataGridView2.Rows[rowIndex].Cells["Column16"].Value = entry.Office; // Office
                 dataGridView2.Rows[rowIndex].Cells["Column17"].Value = entry.ResponsibilityCenter; // Responsibility Center
-                dataGridView2.Rows[rowIndex].Cells["Column19"].Value = entry.ApprovingOfficer; // Approving Officer
-                dataGridView2.Rows[rowIndex].Cells["Column20"].Value = FormatAmountDisplay(entry.Amount); // Payable Amount
-                // Status - try Column18 or Column21
-                if (dataGridView2.Columns.Contains("Column18"))
-                {
-                    dataGridView2.Rows[rowIndex].Cells["Column18"].Value = entry.Status;
-                }
-                else if (dataGridView2.Columns.Contains("Column21"))
-                {
-                    dataGridView2.Rows[rowIndex].Cells["Column21"].Value = entry.Status;
-                }
+                dataGridView2.Rows[rowIndex].Cells["Column18"].Value = entry.ApprovingOfficer; // Approving Officer
+                dataGridView2.Rows[rowIndex].Cells["Column19"].Value = FormatAmountDisplay(entry.Amount); // Payable Amount
+                dataGridView2.Rows[rowIndex].Cells["Column20"].Value = FormatAmountDisplay(entry.Balance); // Balance
+                dataGridView2.Rows[rowIndex].Cells["Column21"].Value = entry.Status; // Status
                 dataGridView2.Rows[rowIndex].Tag = entry.Id;
             }
         }
@@ -292,7 +275,7 @@ namespace WindowsFormsApp1
                     using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
                     {
                         // Write header row
-                        writer.WriteLine("Balance,Serial No.,Date,Fund Cluster,PO No.,Payee,Office,Responsibility Center,Approving Officer,Total Amount,Status");
+                        writer.WriteLine("Serial No.,Date,Fund Cluster,PO No.,Payee,Office,Responsibility Center,Approving Officer,Payable Amount,Balance,Status");
 
                         // Write data rows
                         foreach (DataGridViewRow row in dataGridView2.Rows)
@@ -302,7 +285,6 @@ namespace WindowsFormsApp1
                                 continue;
                             }
 
-                            string balance = EscapeForCsv(row.Cells["Column1"].Value?.ToString());
                             string serialNo = EscapeForCsv(row.Cells["Column11"].Value?.ToString());
                             string date = EscapeForCsv(row.Cells["Column12"].Value?.ToString());
                             string fundCluster = EscapeForCsv(row.Cells["Column13"].Value?.ToString());
@@ -310,25 +292,12 @@ namespace WindowsFormsApp1
                             string payee = EscapeForCsv(row.Cells["Column15"].Value?.ToString());
                             string office = EscapeForCsv(row.Cells["Column16"].Value?.ToString());
                             string responsibilityCenter = EscapeForCsv(row.Cells["Column17"].Value?.ToString());
-                            string approvingOfficer = EscapeForCsv(row.Cells["Column19"].Value?.ToString()); // Column19 is Approving Officer
-                            string amount = EscapeForCsv(row.Cells["Column20"].Value?.ToString()); // Column20 is Payable Amount
-                            // Try to find Status column
-                            string status = "";
-                            if (dataGridView2.Columns.Contains("Column18") && row.Cells["Column18"].Value != null)
-                            {
-                                status = EscapeForCsv(row.Cells["Column18"].Value?.ToString());
-                            }
-                            else if (dataGridView2.Columns.Contains("Column21") && row.Cells["Column21"].Value != null)
-                            {
-                                status = EscapeForCsv(row.Cells["Column21"].Value?.ToString());
-                            }
-                            else
-                            {
-                                // Try to get from the last column or a status column
-                                status = EscapeForCsv(row.Cells[row.Cells.Count - 1].Value?.ToString());
-                            }
+                            string approvingOfficer = EscapeForCsv(row.Cells["Column18"].Value?.ToString()); // Column18 is Approving Officer
+                            string amount = EscapeForCsv(row.Cells["Column19"].Value?.ToString()); // Column19 is Payable Amount
+                            string balance = EscapeForCsv(row.Cells["Column20"].Value?.ToString()); // Column20 is Balance
+                            string status = EscapeForCsv(row.Cells["Column21"].Value?.ToString()); // Column21 is Status
 
-                            writer.WriteLine($"{balance},{serialNo},{date},{fundCluster},{poNo},{payee},{office},{responsibilityCenter},{approvingOfficer},{amount},{status}");
+                            writer.WriteLine($"{serialNo},{date},{fundCluster},{poNo},{payee},{office},{responsibilityCenter},{approvingOfficer},{amount},{balance},{status}");
                         }
                     }
 
