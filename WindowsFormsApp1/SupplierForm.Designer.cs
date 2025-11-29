@@ -237,7 +237,7 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1226, 876);
+            this.ClientSize = new System.Drawing.Size(1622, 876);
             this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addSupplierBtn);
