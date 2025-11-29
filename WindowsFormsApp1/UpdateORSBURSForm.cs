@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
             InitializeFileUpload();
             InitializeDocumentControls();
             createORSBURSEntryBtn.Click += CreateORSBURSEntryBtn_Click;
-            amount.TextChanged += Amount_TextChanged;
+            payable_amount.TextChanged += Amount_TextChanged;
         }
 
         public UpdateORSBURSForm(int orsBursId) : this()
@@ -599,7 +599,7 @@ namespace WindowsFormsApp1
                             Particulars.Text = reader["particulars"]?.ToString();
                             MFOPAP.Text = reader["mfo_pap"]?.ToString();
                             uacscode.Text = reader["uacs_oc"]?.ToString();
-                            amount.Text = reader["amount"]?.ToString();
+                            payable_amount.Text = reader["amount"]?.ToString();
                             approvingOfficer.Text = reader["approving_officer"]?.ToString();
                             remarks.Text = reader["remarks"]?.ToString();
 
@@ -717,7 +717,7 @@ namespace WindowsFormsApp1
                 (Particulars.Text, "Particulars"),
                 (MFOPAP.Text, "MFO/PAP"),
                 (uacscode.Text, "UACS Code"),
-                (amount.Text, "Amount"),
+                (payable_amount.Text, "Amount"),
                 (approvingOfficer.Text, "Approving Officer"),
                 (remarks.Text, "Remarks")
             };
@@ -862,7 +862,7 @@ namespace WindowsFormsApp1
 
         private bool TryGetAmountValue(out decimal amountValue)
         {
-            string numericText = amount.Text?.Replace(",", "").Trim();
+            string numericText = payable_amount.Text?.Replace(",", "").Trim();
             if (string.IsNullOrWhiteSpace(numericText))
             {
                 amountValue = 0m;
@@ -913,7 +913,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            string currentText = amount.Text;
+            string currentText = payable_amount.Text;
             if (string.IsNullOrWhiteSpace(currentText))
             {
                 return;
@@ -936,8 +936,8 @@ namespace WindowsFormsApp1
 
             isFormattingAmountText = true;
 
-            int selectionFromEnd = currentText.Length - amount.SelectionStart;
-            amount.Text = formattedText;
+            int selectionFromEnd = currentText.Length - payable_amount.SelectionStart;
+            payable_amount.Text = formattedText;
 
             int newSelectionStart = formattedText.Length - selectionFromEnd;
             if (newSelectionStart < 0)
@@ -945,8 +945,8 @@ namespace WindowsFormsApp1
                 newSelectionStart = 0;
             }
 
-            amount.SelectionStart = Math.Min(newSelectionStart, amount.Text.Length);
-            amount.SelectionLength = 0;
+            payable_amount.SelectionStart = Math.Min(newSelectionStart, payable_amount.Text.Length);
+            payable_amount.SelectionLength = 0;
 
             isFormattingAmountText = false;
         }
