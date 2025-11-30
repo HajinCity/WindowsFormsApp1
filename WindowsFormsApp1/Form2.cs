@@ -40,6 +40,14 @@ namespace WindowsFormsApp1
             this.Shown += Form2_Shown;
         }
 
+        public void SetLoggedInUserFullName(string fullName)
+        {
+            if (label3 != null)
+            {
+                label3.Text = !string.IsNullOrWhiteSpace(fullName) ? fullName : "Accounts Payable System";
+            }
+        }
+
         private void Form2_Shown(object sender, EventArgs e)
         {
             if (shouldLoadDashboardOnShow)

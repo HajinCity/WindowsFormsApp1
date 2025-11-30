@@ -76,13 +76,15 @@ namespace WindowsFormsApp1
             }
         }
 
+        private string loggedInUserFullName = string.Empty;
+
         private bool ValidateCredentials(string username, string password)
         {
             try
             {
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = "SELECT password_hash, status FROM users WHERE username = @username";
+                    string query = "SELECT password_hash, status, full_name FROM users WHERE username = @username";
                     
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -103,6 +105,9 @@ namespace WindowsFormsApp1
                                 string storedPassword = reader["password_hash"]?.ToString() ?? "";
                                 if (password.Equals(storedPassword))
                                 {
+                                    // Retrieve full_name for the logged-in user
+                                    loggedInUserFullName = reader["full_name"]?.ToString() ?? "";
+                                    
                                     MessageBox.Show(
                                         "Welcome user!",
                                         "Login Successful",
@@ -136,6 +141,7 @@ namespace WindowsFormsApp1
         private void OpenDashboard()
         {
             Form2 dashboard = new Form2();
+            dashboard.SetLoggedInUserFullName(loggedInUserFullName);
             dashboard.WindowState = FormWindowState.Maximized;
             dashboard.SetAutoLoadDashboard(true);
             dashboard.Show();
