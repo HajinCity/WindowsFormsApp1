@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,12 @@ namespace WindowsFormsApp1
             InitializeComponent();
             InitializeFilterControls();
             this.Load += TransactionLedger_Load;
+            
+            // Wire up ExportToCSV button click event
+            if (ExportToCSV != null)
+            {
+                ExportToCSV.Click += ExportToCSV_Click;
+            }
         }
 
         private void InitializeFilterControls()
@@ -283,7 +290,92 @@ namespace WindowsFormsApp1
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                // Refresh the data by reloading from database
+                LoadSBLPOData();
+                
+                // Reapply current filters after refresh
+                ApplyFilter();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error refreshing data: {ex.Message}",
+                    "Refresh Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExportToCSV_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.FileName = $"TransactionLedger_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+                saveFileDialog.Title = "Export Transaction Ledger Data to CSV";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                try
+                {
+                    using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                    {
+                        // Write header row
+                        writer.WriteLine("PO No.,Supplier,PO Amount,ORS-BURS No.,Responsibility Center Code,DV No.,JEV No.,Check No./ADA No.,Date Paid,Amount Paid,Balance,Status");
+
+                        // Write data rows
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.IsNewRow)
+                            {
+                                continue;
+                            }
+
+                            string poNo = EscapeForCsv(row.Cells["Column1"].Value?.ToString());
+                            string supplier = EscapeForCsv(row.Cells["Column2"].Value?.ToString());
+                            string poAmount = EscapeForCsv(row.Cells["Column3"].Value?.ToString());
+                            string orsBursNo = EscapeForCsv(row.Cells["Column4"].Value?.ToString());
+                            string responsibilityCode = EscapeForCsv(row.Cells["Column5"].Value?.ToString());
+                            string devNo = EscapeForCsv(row.Cells["Column6"].Value?.ToString());
+                            string jevNo = EscapeForCsv(row.Cells["Column7"].Value?.ToString());
+                            string checkNo = EscapeForCsv(row.Cells["Column8"].Value?.ToString());
+                            string datePaid = EscapeForCsv(row.Cells["Column9"].Value?.ToString());
+                            string amountPaid = EscapeForCsv(row.Cells["Column10"].Value?.ToString());
+                            string balance = EscapeForCsv(row.Cells["Column11"].Value?.ToString());
+                            string status = EscapeForCsv(row.Cells["Column12"].Value?.ToString());
+
+                            writer.WriteLine($"{poNo},{supplier},{poAmount},{orsBursNo},{responsibilityCode},{devNo},{jevNo},{checkNo},{datePaid},{amountPaid},{balance},{status}");
+                        }
+                    }
+
+                    MessageBox.Show("Transaction Ledger data exported successfully.", "Export Complete",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Unable to export Transaction Ledger data: {ex.Message}", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private string EscapeForCsv(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+
+            bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
+            string escaped = value.Replace("\"", "\"\"");
+            return mustQuote ? $"\"{escaped}\"" : escaped;
         }
     }
 }
