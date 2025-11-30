@@ -72,6 +72,7 @@
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.customRoundedButton4 = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -195,6 +196,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.customRoundedButton4);
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.gradientPanel2);
@@ -538,6 +540,23 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "Date";
             // 
+            // customRoundedButton4
+            // 
+            this.customRoundedButton4.BackColor = System.Drawing.Color.SeaGreen;
+            this.customRoundedButton4.BorderRadius = 10;
+            this.customRoundedButton4.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.customRoundedButton4.FlatAppearance.BorderSize = 0;
+            this.customRoundedButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customRoundedButton4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customRoundedButton4.ForeColor = System.Drawing.Color.White;
+            this.customRoundedButton4.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.customRoundedButton4.Location = new System.Drawing.Point(1372, 28);
+            this.customRoundedButton4.Name = "customRoundedButton4";
+            this.customRoundedButton4.Size = new System.Drawing.Size(184, 43);
+            this.customRoundedButton4.TabIndex = 36;
+            this.customRoundedButton4.Text = "Export Logs";
+            this.customRoundedButton4.UseVisualStyleBackColor = false;
+            // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -620,5 +639,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private Controls.CustomRoundedButton customRoundedButton4;
     }
 }
