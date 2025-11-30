@@ -280,5 +280,10 @@ namespace WindowsFormsApp1
                 dataGridView1.Rows[rowIndex].Tag = entry.Id;
             }
         }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

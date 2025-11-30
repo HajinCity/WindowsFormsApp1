@@ -197,6 +197,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
             this.pictureBox2.Location = new System.Drawing.Point(747, 18);
             this.pictureBox2.Name = "pictureBox2";
@@ -204,6 +205,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 28;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
             // 
             // EnterBtn
             // 
