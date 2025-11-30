@@ -51,7 +51,7 @@
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.addDEVbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -348,22 +348,22 @@
             this.label17.TabIndex = 19;
             this.label17.Text = "₱";
             // 
-            // addDEVbtn
+            // ExportToCSV
             // 
-            this.addDEVbtn.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.addDEVbtn.BorderRadius = 10;
-            this.addDEVbtn.ClickedColor = System.Drawing.Color.DarkTurquoise;
-            this.addDEVbtn.FlatAppearance.BorderSize = 0;
-            this.addDEVbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addDEVbtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addDEVbtn.ForeColor = System.Drawing.Color.White;
-            this.addDEVbtn.HoverColor = System.Drawing.Color.MediumTurquoise;
-            this.addDEVbtn.Location = new System.Drawing.Point(1384, 1044);
-            this.addDEVbtn.Name = "addDEVbtn";
-            this.addDEVbtn.Size = new System.Drawing.Size(204, 55);
-            this.addDEVbtn.TabIndex = 49;
-            this.addDEVbtn.Text = "Export Excel";
-            this.addDEVbtn.UseVisualStyleBackColor = false;
+            this.ExportToCSV.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ExportToCSV.BorderRadius = 10;
+            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportToCSV.FlatAppearance.BorderSize = 0;
+            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportToCSV.Location = new System.Drawing.Point(1384, 1044);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportToCSV.TabIndex = 49;
+            this.ExportToCSV.Text = "Export Excel";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
             // 
             // customRoundedPanel3
             // 
@@ -565,7 +565,7 @@
             this.Controls.Add(this.customRoundedPanel2);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.customRoundedPanel1);
-            this.Controls.Add(this.addDEVbtn);
+            this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.customRoundedPanel3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -618,7 +618,7 @@
         private Controls.CustomRoundedPanel customRoundedPanel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label17;
-        private Controls.CustomRoundedButton addDEVbtn;
+        private Controls.CustomRoundedButton ExportToCSV;
         private Controls.CustomRoundedPanel customRoundedPanel3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label3;
