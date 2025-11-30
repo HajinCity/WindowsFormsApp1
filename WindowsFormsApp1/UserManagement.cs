@@ -7,14 +7,118 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using WindowsFormsApp1.BackendModel;
 
 namespace WindowsFormsApp1
 {
     public partial class UserManagement : Form
     {
+        private class UserRecord
+        {
+            public int UserId { get; set; }
+            public string FullName { get; set; }
+            public string EmployeeNo { get; set; }
+            public string Position { get; set; }
+            public string Role { get; set; }
+            public string Status { get; set; }
+        }
+
+        private List<UserRecord> userCache = new List<UserRecord>();
+
         public UserManagement()
         {
             InitializeComponent();
+            LoadUsers();
+            textBox2.TextChanged += TextBox2_TextChanged;
+        }
+
+        private void LoadUsers()
+        {
+            try
+            {
+                userCache.Clear();
+
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT user_id, full_name, employee_no, position, role, status
+                                     FROM users
+                                     ORDER BY full_name";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            userCache.Add(new UserRecord
+                            {
+                                UserId = reader.GetInt32("user_id"),
+                                FullName = reader["full_name"]?.ToString() ?? "",
+                                EmployeeNo = reader["employee_no"]?.ToString() ?? "",
+                                Position = reader["position"]?.ToString() ?? "",
+                                Role = reader["role"]?.ToString() ?? "",
+                                Status = reader["status"]?.ToString() ?? ""
+                            });
+                        }
+                    }
+                }
+
+                // Display all data initially
+                DisplayAllData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to load users: {ex.Message}",
+                    "Load Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void DisplayAllData()
+        {
+            dataGridView1.Rows.Clear();
+            foreach (var user in userCache)
+            {
+                int rowIndex = dataGridView1.Rows.Add();
+                dataGridView1.Rows[rowIndex].Cells["Column1"].Value = user.FullName;
+                dataGridView1.Rows[rowIndex].Cells["Column2"].Value = user.EmployeeNo;
+                dataGridView1.Rows[rowIndex].Cells["Column3"].Value = user.Position;
+                dataGridView1.Rows[rowIndex].Cells["Column4"].Value = user.Role;
+                dataGridView1.Rows[rowIndex].Cells["Column5"].Value = user.Status;
+                dataGridView1.Rows[rowIndex].Tag = user.UserId;
+            }
+        }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            ApplyUserFilter();
+        }
+
+        private void ApplyUserFilter()
+        {
+            string term = (textBox2.Text ?? string.Empty).Trim().ToLowerInvariant();
+
+            var filtered = userCache.Where(user =>
+                string.IsNullOrEmpty(term) ||
+                (user.FullName ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                (user.EmployeeNo ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                (user.Position ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                (user.Role ?? string.Empty).ToLowerInvariant().Contains(term) ||
+                (user.Status ?? string.Empty).ToLowerInvariant().Contains(term));
+
+            dataGridView1.Rows.Clear();
+            foreach (var user in filtered)
+            {
+                int rowIndex = dataGridView1.Rows.Add();
+                dataGridView1.Rows[rowIndex].Cells["Column1"].Value = user.FullName;
+                dataGridView1.Rows[rowIndex].Cells["Column2"].Value = user.EmployeeNo;
+                dataGridView1.Rows[rowIndex].Cells["Column3"].Value = user.Position;
+                dataGridView1.Rows[rowIndex].Cells["Column4"].Value = user.Role;
+                dataGridView1.Rows[rowIndex].Cells["Column5"].Value = user.Status;
+                dataGridView1.Rows[rowIndex].Tag = user.UserId;
+            }
         }
     }
 }
