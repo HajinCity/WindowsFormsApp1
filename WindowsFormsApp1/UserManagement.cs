@@ -25,6 +25,7 @@ namespace WindowsFormsApp1
         }
 
         private List<UserRecord> userCache = new List<UserRecord>();
+        private DataTable userLogsTable = new DataTable();
 
         public UserManagement()
         {
@@ -32,6 +33,8 @@ namespace WindowsFormsApp1
             LoadUsers();
             LoadUserLogs();
             textBox2.TextChanged += TextBox2_TextChanged;
+            textBox3.TextChanged += TextBox3_TextChanged;
+            EnterBtn.Click += EnterBtn_Click;
         }
 
         private void LoadUsers()
@@ -146,8 +149,8 @@ namespace WindowsFormsApp1
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        DataTable table = new DataTable();
-                        adapter.Fill(table);
+                        userLogsTable = new DataTable();
+                        adapter.Fill(userLogsTable);
 
                         // We are using designer-created columns, so don't auto-generate.
                         dataGridView2.AutoGenerateColumns = false;
@@ -160,7 +163,7 @@ namespace WindowsFormsApp1
                         dataGridViewTextBoxColumn4.DataPropertyName = "module";          // Module
                         dataGridViewTextBoxColumn5.DataPropertyName = "details";         // Details
 
-                        dataGridView2.DataSource = table;
+                        dataGridView2.DataSource = userLogsTable;
                     }
                 }
             }
@@ -172,6 +175,87 @@ namespace WindowsFormsApp1
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        // ============================================================
+        //  USER LOGS FILTERING (dataGridView2)
+        // ============================================================
+
+        // 1) Keyword-only filter (TextChanged on textBox3)
+        private void TextBox3_TextChanged(object sender, EventArgs e)
+        {
+            ApplyUserLogsFilter(
+                keyword: textBox3.Text,
+                actionFilter: null,
+                dateFilter: null);
+        }
+
+        // 2 & 3) Keyword + Action (+ optional Date) filter (EnterBtn)
+        private void EnterBtn_Click(object sender, EventArgs e)
+        {
+            string keyword = textBox3.Text;
+            string selectedAction = comboBox1.SelectedItem as string;
+
+            // Treat "All Actions" and empty selection as no action filter
+            if (string.IsNullOrWhiteSpace(selectedAction) ||
+                selectedAction.Equals("All Actions", StringComparison.OrdinalIgnoreCase))
+            {
+                selectedAction = null;
+            }
+
+            // Always use the date value when EnterBtn is clicked and the control is enabled.
+            // If you only want the date when a checkbox is checked, you can adjust this.
+            DateTime? dateFilter = dateTimePicker3.Enabled
+                ? dateTimePicker3.Value.Date
+                : (DateTime?)null;
+
+            ApplyUserLogsFilter(
+                keyword: keyword,
+                actionFilter: selectedAction,
+                dateFilter: dateFilter);
+        }
+
+        private void ApplyUserLogsFilter(string keyword, string actionFilter, DateTime? dateFilter)
+        {
+            if (userLogsTable == null)
+            {
+                return;
+            }
+
+            var filters = new List<string>();
+
+            // Keyword filter across user_fullname, user_action, module, details
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                string escaped = keyword.Replace("'", "''");
+                filters.Add(
+                    $"(user_fullname LIKE '%{escaped}%' " +
+                    $"OR user_action LIKE '%{escaped}%' " +
+                    $"OR module LIKE '%{escaped}%' " +
+                    $"OR details LIKE '%{escaped}%')");
+            }
+
+            // Action filter (from comboBox1)
+            if (!string.IsNullOrWhiteSpace(actionFilter))
+            {
+                string escapedAction = actionFilter.Replace("'", "''");
+                filters.Add($"user_action = '{escapedAction}'");
+            }
+
+            // Date filter (from dateTimePicker3) – compare only by date
+            if (dateFilter.HasValue)
+            {
+                DateTime start = dateFilter.Value.Date;
+                DateTime end = start.AddDays(1);
+                filters.Add(
+                    $"log_timestamp >= #{start:yyyy-MM-dd}# AND log_timestamp < #{end:yyyy-MM-dd}#");
+            }
+
+            string combinedFilter = string.Join(" AND ", filters);
+
+            DataView view = userLogsTable.DefaultView;
+            view.RowFilter = combinedFilter;
+            dataGridView2.DataSource = view;
         }
     }
 }

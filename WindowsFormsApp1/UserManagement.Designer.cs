@@ -74,6 +74,7 @@
             this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.EnterBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
@@ -87,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -354,6 +356,7 @@
             // gradientPanel2
             // 
             this.gradientPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel2.Controls.Add(this.pictureBox5);
             this.gradientPanel2.Controls.Add(this.EnterBtn);
             this.gradientPanel2.Controls.Add(this.label10);
             this.gradientPanel2.Controls.Add(this.label9);
@@ -373,7 +376,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(967, 11);
+            this.label10.Location = new System.Drawing.Point(1020, 12);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 18);
             this.label10.TabIndex = 22;
@@ -392,7 +395,7 @@
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(970, 32);
+            this.dateTimePicker3.Location = new System.Drawing.Point(1023, 33);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(356, 26);
             this.dateTimePicker3.TabIndex = 3;
@@ -584,6 +587,16 @@
             this.EnterBtn.Text = "Enter";
             this.EnterBtn.UseVisualStyleBackColor = false;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
+            this.pictureBox5.Location = new System.Drawing.Point(945, 22);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 37;
+            this.pictureBox5.TabStop = false;
+            // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -615,6 +628,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -668,5 +682,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private Controls.CustomRoundedButton customRoundedButton4;
         private Controls.CustomRoundedButton EnterBtn;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }
