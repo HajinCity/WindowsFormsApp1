@@ -175,7 +175,8 @@ namespace WindowsFormsApp1
                             u.full_name           AS user_fullname,
                             ul.action             AS user_action,
                             ul.module             AS module,
-                            ul.details            AS details
+                            ul.details            AS details,
+                            ul.ip_address         AS ip_address
                         FROM userlogs ul
                         INNER JOIN users u ON ul.user_id = u.user_id
                         ORDER BY ul.action_timestamp DESC";
@@ -196,6 +197,7 @@ namespace WindowsFormsApp1
                         dataGridViewTextBoxColumn3.DataPropertyName = "user_action";     // Action
                         dataGridViewTextBoxColumn4.DataPropertyName = "module";          // Module
                         dataGridViewTextBoxColumn5.DataPropertyName = "details";         // Details
+                        dataGridViewTextBoxColumn6.DataPropertyName = "ip_address";      // IP Address
 
                         dataGridView2.DataSource = userLogsTable;
                     }
