@@ -161,6 +161,11 @@
             this.UpRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpRole.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpRole.FormattingEnabled = true;
+            this.UpRole.Items.AddRange(new object[] {
+            "Admin",
+            "Accountant",
+            "Budget Officer",
+            "Disbursing Officer"});
             this.UpRole.Location = new System.Drawing.Point(14, 7);
             this.UpRole.Name = "UpRole";
             this.UpRole.Size = new System.Drawing.Size(400, 22);
