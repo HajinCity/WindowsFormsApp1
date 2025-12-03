@@ -331,7 +331,17 @@ namespace WindowsFormsApp1
         {
             try
             {
-                ChangePassword changePasswordForm = new ChangePassword();
+                if (loggedInUserId == 0)
+                {
+                    MessageBox.Show(
+                        "Unable to determine current user. Please log in again.",
+                        "Authentication Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                ChangePassword changePasswordForm = new ChangePassword(loggedInUserId);
                 changePasswordForm.ShowDialog();
             }
             catch (Exception ex)
