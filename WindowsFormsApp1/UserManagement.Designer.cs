@@ -48,7 +48,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.customRoundedButton4 = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.exportBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.gradientPanel2 = new WindowsFormsApp1.Controls.GradientPanel();
@@ -302,7 +302,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.customRoundedButton4);
+            this.tabPage3.Controls.Add(this.exportBtn);
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.gradientPanel2);
@@ -315,22 +315,22 @@
             this.tabPage3.Text = "User Logs";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // customRoundedButton4
+            // exportBtn
             // 
-            this.customRoundedButton4.BackColor = System.Drawing.Color.SeaGreen;
-            this.customRoundedButton4.BorderRadius = 10;
-            this.customRoundedButton4.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.customRoundedButton4.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton4.ForeColor = System.Drawing.Color.White;
-            this.customRoundedButton4.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.customRoundedButton4.Location = new System.Drawing.Point(1372, 28);
-            this.customRoundedButton4.Name = "customRoundedButton4";
-            this.customRoundedButton4.Size = new System.Drawing.Size(184, 43);
-            this.customRoundedButton4.TabIndex = 36;
-            this.customRoundedButton4.Text = "Export Logs";
-            this.customRoundedButton4.UseVisualStyleBackColor = false;
+            this.exportBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.exportBtn.BorderRadius = 10;
+            this.exportBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.exportBtn.FlatAppearance.BorderSize = 0;
+            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exportBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exportBtn.ForeColor = System.Drawing.Color.White;
+            this.exportBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.exportBtn.Location = new System.Drawing.Point(1372, 28);
+            this.exportBtn.Name = "exportBtn";
+            this.exportBtn.Size = new System.Drawing.Size(184, 43);
+            this.exportBtn.TabIndex = 36;
+            this.exportBtn.Text = "Export Logs";
+            this.exportBtn.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -683,7 +683,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.ComboBox comboBox1;
-        private Controls.CustomRoundedButton customRoundedButton4;
+        private Controls.CustomRoundedButton exportBtn;
         private Controls.CustomRoundedButton EnterBtn;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
