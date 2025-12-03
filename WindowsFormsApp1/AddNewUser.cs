@@ -25,6 +25,14 @@ namespace WindowsFormsApp1
             loggedInUserId = adminUserId;
             InitializeComboBoxes();
             CreateBtn.Click += CreateBtn_Click;
+            
+            // Wire up password visibility toggle events
+            pictureBox1.Click += PictureBox1_Click;
+            pictureBox3.Click += PictureBox3_Click;
+            
+            // Initialize pictureBox images and SizeMode
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void InitializeComboBoxes()
@@ -322,6 +330,48 @@ namespace WindowsFormsApp1
             Password.Text = string.Empty;
             confirmPassword.Text = string.Empty;
             empNo.Focus();
+        }
+
+        // ============================================================
+        //  PASSWORD VISIBILITY TOGGLE
+        // ============================================================
+
+        /// <summary>
+        /// Toggles password visibility for the Password field (pictureBox1)
+        /// </summary>
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            if (Password.UseSystemPasswordChar)
+            {
+                // Password is currently hidden - show it
+                Password.UseSystemPasswordChar = false;
+                pictureBox1.Image = Properties.Resources.BigEye;
+            }
+            else
+            {
+                // Password is currently visible - hide it
+                Password.UseSystemPasswordChar = true;
+                pictureBox1.Image = Properties.Resources.Closed_Eye;
+            }
+        }
+
+        /// <summary>
+        /// Toggles password visibility for the Confirm Password field (pictureBox3)
+        /// </summary>
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+            if (confirmPassword.UseSystemPasswordChar)
+            {
+                // Confirm Password is currently hidden - show it
+                confirmPassword.UseSystemPasswordChar = false;
+                pictureBox3.Image = Properties.Resources.BigEye;
+            }
+            else
+            {
+                // Confirm Password is currently visible - hide it
+                confirmPassword.UseSystemPasswordChar = true;
+                pictureBox3.Image = Properties.Resources.Closed_Eye;
+            }
         }
     }
 }
