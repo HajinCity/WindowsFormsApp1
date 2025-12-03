@@ -35,6 +35,7 @@ namespace WindowsFormsApp1
             textBox2.TextChanged += TextBox2_TextChanged;
             textBox3.TextChanged += TextBox3_TextChanged;
             EnterBtn.Click += EnterBtn_Click;
+            pictureBox5.Click += PictureBox5_Click;
         }
 
         private void LoadUsers()
@@ -77,6 +78,30 @@ namespace WindowsFormsApp1
                     "Load Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+        }
+
+        // Refresh logs and clear filters when pictureBox5 is clicked
+        private void PictureBox5_Click(object sender, EventArgs e)
+        {
+            // Reload from database
+            LoadUserLogs();
+
+            // Clear filter controls
+            textBox3.Text = string.Empty;
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = 0; // typically "All Actions"
+            }
+
+            // Reset date filter to today but don't force-enable it
+            dateTimePicker3.Value = DateTime.Today;
+
+            // Ensure grid shows all rows from the refreshed table
+            if (userLogsTable != null)
+            {
+                userLogsTable.DefaultView.RowFilter = string.Empty;
+                dataGridView2.DataSource = userLogsTable;
             }
         }
 
