@@ -34,11 +34,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.CreateBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.CancelBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.customRoundedPanel8 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.confirmPassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.customRoundedPanel7 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Password = new System.Windows.Forms.TextBox();
             this.customRoundedPanel6 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.username = new System.Windows.Forms.TextBox();
@@ -59,22 +62,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.empNo = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gradientPanel1.SuspendLayout();
             this.customRoundedPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.customRoundedPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.customRoundedPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.customRoundedPanel6.SuspendLayout();
             this.customRoundedPanel5.SuspendLayout();
             this.customRoundedPanel4.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel1
@@ -124,14 +124,14 @@
             // 
             this.Status.BackColor = System.Drawing.Color.Gainsboro;
             this.Status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Status.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Status.FormattingEnabled = true;
             this.Status.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.Status.Location = new System.Drawing.Point(14, 7);
+            this.Status.Location = new System.Drawing.Point(14, 5);
             this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(400, 22);
+            this.Status.Size = new System.Drawing.Size(400, 25);
             this.Status.TabIndex = 0;
             // 
             // label10
@@ -180,6 +180,17 @@
             this.CancelBtn.UseVisualStyleBackColor = false;
             this.CancelBtn.Click += new System.EventHandler(this.ParseRangeBtn_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
+            this.pictureBox2.Location = new System.Drawing.Point(504, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 149;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -201,6 +212,16 @@
             this.customRoundedPanel8.Name = "customRoundedPanel8";
             this.customRoundedPanel8.Size = new System.Drawing.Size(426, 36);
             this.customRoundedPanel8.TabIndex = 28;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Closed_Eye;
+            this.pictureBox3.Location = new System.Drawing.Point(389, 5);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 28);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
             // 
             // confirmPassword
             // 
@@ -234,6 +255,16 @@
             this.customRoundedPanel7.Name = "customRoundedPanel7";
             this.customRoundedPanel7.Size = new System.Drawing.Size(426, 36);
             this.customRoundedPanel7.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Closed_Eye;
+            this.pictureBox1.Location = new System.Drawing.Point(389, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // Password
             // 
@@ -280,16 +311,16 @@
             // 
             this.Role.BackColor = System.Drawing.Color.Gainsboro;
             this.Role.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Role.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Role.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Role.FormattingEnabled = true;
             this.Role.Items.AddRange(new object[] {
             "Admin",
             "Accountant",
             "Budget Officer",
             "Disbursing Officer"});
-            this.Role.Location = new System.Drawing.Point(14, 7);
+            this.Role.Location = new System.Drawing.Point(14, 5);
             this.Role.Name = "Role";
-            this.Role.Size = new System.Drawing.Size(400, 22);
+            this.Role.Size = new System.Drawing.Size(400, 25);
             this.Role.TabIndex = 0;
             // 
             // customRoundedPanel4
@@ -449,37 +480,6 @@
             this.empNo.Size = new System.Drawing.Size(400, 18);
             this.empNo.TabIndex = 0;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
-            this.pictureBox2.Location = new System.Drawing.Point(504, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 149;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Closed_Eye;
-            this.pictureBox3.Location = new System.Drawing.Point(389, 5);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 28);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Closed_Eye;
-            this.pictureBox1.Location = new System.Drawing.Point(389, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 28);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // AddNewUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,10 +494,13 @@
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
             this.customRoundedPanel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.customRoundedPanel8.ResumeLayout(false);
             this.customRoundedPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.customRoundedPanel7.ResumeLayout(false);
             this.customRoundedPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.customRoundedPanel6.ResumeLayout(false);
             this.customRoundedPanel6.PerformLayout();
             this.customRoundedPanel5.ResumeLayout(false);
@@ -509,9 +512,6 @@
             this.customRoundedPanel1.PerformLayout();
             this.customRoundedPanel2.ResumeLayout(false);
             this.customRoundedPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

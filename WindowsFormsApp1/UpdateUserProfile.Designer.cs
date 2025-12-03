@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.customRoundedPanel6 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.UpdatePrfBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.CancelBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -48,17 +51,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.empNo = new System.Windows.Forms.TextBox();
-            this.customRoundedPanel6 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.gradientPanel1.SuspendLayout();
+            this.customRoundedPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.customRoundedPanel5.SuspendLayout();
             this.customRoundedPanel4.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
-            this.customRoundedPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // gradientPanel1
@@ -87,6 +87,41 @@
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Size = new System.Drawing.Size(539, 510);
             this.gradientPanel1.TabIndex = 1;
+            // 
+            // customRoundedPanel6
+            // 
+            this.customRoundedPanel6.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel6.BorderRadius = 10;
+            this.customRoundedPanel6.Controls.Add(this.comboBox1);
+            this.customRoundedPanel6.Location = new System.Drawing.Point(55, 374);
+            this.customRoundedPanel6.Name = "customRoundedPanel6";
+            this.customRoundedPanel6.Size = new System.Drawing.Size(426, 36);
+            this.customRoundedPanel6.TabIndex = 152;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.Gainsboro;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.comboBox1.Location = new System.Drawing.Point(14, 5);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(400, 25);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(50, 353);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 18);
+            this.label6.TabIndex = 153;
+            this.label6.Text = "Status";
             // 
             // UpdatePrfBtn
             // 
@@ -159,16 +194,16 @@
             // 
             this.UpRole.BackColor = System.Drawing.Color.Gainsboro;
             this.UpRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpRole.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpRole.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpRole.FormattingEnabled = true;
             this.UpRole.Items.AddRange(new object[] {
             "Admin",
             "Accountant",
             "Budget Officer",
             "Disbursing Officer"});
-            this.UpRole.Location = new System.Drawing.Point(14, 7);
+            this.UpRole.Location = new System.Drawing.Point(14, 5);
             this.UpRole.Name = "UpRole";
-            this.UpRole.Size = new System.Drawing.Size(400, 22);
+            this.UpRole.Size = new System.Drawing.Size(400, 25);
             this.UpRole.TabIndex = 0;
             // 
             // customRoundedPanel4
@@ -306,41 +341,6 @@
             this.empNo.Size = new System.Drawing.Size(400, 18);
             this.empNo.TabIndex = 0;
             // 
-            // customRoundedPanel6
-            // 
-            this.customRoundedPanel6.BackColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedPanel6.BorderRadius = 10;
-            this.customRoundedPanel6.Controls.Add(this.comboBox1);
-            this.customRoundedPanel6.Location = new System.Drawing.Point(55, 374);
-            this.customRoundedPanel6.Name = "customRoundedPanel6";
-            this.customRoundedPanel6.Size = new System.Drawing.Size(426, 36);
-            this.customRoundedPanel6.TabIndex = 152;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Active",
-            "Inactive"});
-            this.comboBox1.Location = new System.Drawing.Point(14, 7);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(400, 22);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(50, 353);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 18);
-            this.label6.TabIndex = 153;
-            this.label6.Text = "Status";
-            // 
             // UpdateUserProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,6 +353,7 @@
             this.Text = "UpdateUserProfile";
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
+            this.customRoundedPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.customRoundedPanel5.ResumeLayout(false);
             this.customRoundedPanel4.ResumeLayout(false);
@@ -363,7 +364,6 @@
             this.customRoundedPanel1.PerformLayout();
             this.customRoundedPanel2.ResumeLayout(false);
             this.customRoundedPanel2.PerformLayout();
-            this.customRoundedPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
