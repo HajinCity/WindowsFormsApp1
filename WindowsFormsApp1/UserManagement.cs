@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using WindowsFormsApp1.BackendModel;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -40,6 +41,7 @@ namespace WindowsFormsApp1
             AddUserBtn.Click += AddUserBtn_Click;
             ChangepassBtn.Click += ChangepassBtn_Click;
             EditProfileBtn.Click += EditProfileBtn_Click;
+            exportBtn.Click += ExportBtn_Click;
         }
 
         public void SetLoggedInUserId(int userId)
@@ -197,7 +199,7 @@ namespace WindowsFormsApp1
                         dataGridViewTextBoxColumn3.DataPropertyName = "user_action";     // Action
                         dataGridViewTextBoxColumn4.DataPropertyName = "module";          // Module
                         dataGridViewTextBoxColumn5.DataPropertyName = "details";         // Details
-                        dataGridViewTextBoxColumn6.DataPropertyName = "ip_address";      // IP Address
+                        Column6.DataPropertyName = "ip_address";      // IP Address
 
                         dataGridView2.DataSource = userLogsTable;
                     }
@@ -409,6 +411,86 @@ namespace WindowsFormsApp1
             {
                 System.Diagnostics.Debug.WriteLine($"Failed to refresh Form2 user full name: {ex.Message}");
             }
+        }
+
+        // ============================================================
+        //  CSV EXPORT FUNCTIONALITY
+        // ============================================================
+
+        private void ExportBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.Rows.Count == 0)
+            {
+                MessageBox.Show("There is no data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Export User Logs";
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                saveFileDialog.FileName = $"user_logs_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                try
+                {
+                    using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                    {
+                        // Write header row
+                        writer.WriteLine("Timestamp,User,Action,Module,Details,IP Address");
+
+                        // Write data rows - access via column index for reliability
+                        foreach (DataGridViewRow row in dataGridView2.Rows)
+                        {
+                            if (row.IsNewRow)
+                            {
+                                continue;
+                            }
+
+                            // Access cells by column index (0-based)
+                            string timestamp = EscapeForCsv(row.Cells[0].Value?.ToString());
+                            string user = EscapeForCsv(row.Cells[1].Value?.ToString());
+                            string action = EscapeForCsv(row.Cells[2].Value?.ToString());
+                            string module = EscapeForCsv(row.Cells[3].Value?.ToString());
+                            string details = EscapeForCsv(row.Cells[4].Value?.ToString());
+                            string ipAddress = EscapeForCsv(row.Cells[5].Value?.ToString());
+
+                            writer.WriteLine($"{timestamp},{user},{action},{module},{details},{ipAddress}");
+                        }
+                    }
+
+                    MessageBox.Show("User logs exported successfully.", "Export Complete",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error exporting data: {ex.Message}", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Escapes a string for CSV format by handling commas, quotes, and newlines
+        /// </summary>
+        private string EscapeForCsv(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+
+            // If the value contains comma, quote, or newline, wrap it in quotes and escape internal quotes
+            if (value.Contains(",") || value.Contains("\"") || value.Contains("\n") || value.Contains("\r"))
+            {
+                return "\"" + value.Replace("\"", "\"\"") + "\"";
+            }
+
+            return value;
         }
     }
 }
