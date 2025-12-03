@@ -29,6 +29,16 @@ namespace WindowsFormsApp1
             CurrentPassword.UseSystemPasswordChar = true;
             NewPassword.UseSystemPasswordChar = true;
             ConfirmNewPassword.UseSystemPasswordChar = true;
+            
+            // Wire up password visibility toggle events
+            pictureBox1.Click += PictureBox1_Click;
+            pictureBox3.Click += PictureBox3_Click;
+            pictureBox4.Click += PictureBox4_Click;
+            
+            // Initialize pictureBox images and SizeMode (already set in designer, but ensure consistency)
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void Changebtn_Click(object sender, EventArgs e)
@@ -296,6 +306,67 @@ namespace WindowsFormsApp1
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // ============================================================
+        //  PASSWORD VISIBILITY TOGGLE
+        // ============================================================
+
+        /// <summary>
+        /// Toggles password visibility for the Current Password field (pictureBox1)
+        /// </summary>
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            if (CurrentPassword.UseSystemPasswordChar)
+            {
+                // Password is currently hidden - show it
+                CurrentPassword.UseSystemPasswordChar = false;
+                pictureBox1.Image = Properties.Resources.BigEye;
+            }
+            else
+            {
+                // Password is currently visible - hide it
+                CurrentPassword.UseSystemPasswordChar = true;
+                pictureBox1.Image = Properties.Resources.Closed_Eye;
+            }
+        }
+
+        /// <summary>
+        /// Toggles password visibility for the New Password field (pictureBox3)
+        /// </summary>
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+            if (NewPassword.UseSystemPasswordChar)
+            {
+                // Password is currently hidden - show it
+                NewPassword.UseSystemPasswordChar = false;
+                pictureBox3.Image = Properties.Resources.BigEye;
+            }
+            else
+            {
+                // Password is currently visible - hide it
+                NewPassword.UseSystemPasswordChar = true;
+                pictureBox3.Image = Properties.Resources.Closed_Eye;
+            }
+        }
+
+        /// <summary>
+        /// Toggles password visibility for the Confirm New Password field (pictureBox4)
+        /// </summary>
+        private void PictureBox4_Click(object sender, EventArgs e)
+        {
+            if (ConfirmNewPassword.UseSystemPasswordChar)
+            {
+                // Password is currently hidden - show it
+                ConfirmNewPassword.UseSystemPasswordChar = false;
+                pictureBox4.Image = Properties.Resources.BigEye;
+            }
+            else
+            {
+                // Password is currently visible - hide it
+                ConfirmNewPassword.UseSystemPasswordChar = true;
+                pictureBox4.Image = Properties.Resources.Closed_Eye;
+            }
         }
     }
 }
