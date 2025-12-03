@@ -28,34 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
             this.UpdatePrfBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.UpRole = new System.Windows.Forms.ComboBox();
-            this.customRoundedPanel5 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.UpOffice = new System.Windows.Forms.TextBox();
             this.CancelBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.customRoundedPanel5 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.UpRole = new System.Windows.Forms.ComboBox();
             this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.UpOffice = new System.Windows.Forms.TextBox();
             this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.UpPosition = new System.Windows.Forms.TextBox();
-            this.UpfullName = new System.Windows.Forms.TextBox();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.UpfullName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.empNo = new System.Windows.Forms.TextBox();
             this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.empNo = new System.Windows.Forms.TextBox();
+            this.customRoundedPanel6 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.gradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.customRoundedPanel5.SuspendLayout();
             this.customRoundedPanel4.SuspendLayout();
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
-            this.gradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.customRoundedPanel6.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel1.Controls.Add(this.customRoundedPanel6);
+            this.gradientPanel1.Controls.Add(this.label6);
+            this.gradientPanel1.Controls.Add(this.UpdatePrfBtn);
+            this.gradientPanel1.Controls.Add(this.CancelBtn);
+            this.gradientPanel1.Controls.Add(this.pictureBox2);
+            this.gradientPanel1.Controls.Add(this.label9);
+            this.gradientPanel1.Controls.Add(this.customRoundedPanel5);
+            this.gradientPanel1.Controls.Add(this.customRoundedPanel4);
+            this.gradientPanel1.Controls.Add(this.customRoundedPanel3);
+            this.gradientPanel1.Controls.Add(this.customRoundedPanel1);
+            this.gradientPanel1.Controls.Add(this.label5);
+            this.gradientPanel1.Controls.Add(this.label4);
+            this.gradientPanel1.Controls.Add(this.label3);
+            this.gradientPanel1.Controls.Add(this.label1);
+            this.gradientPanel1.Controls.Add(this.label2);
+            this.gradientPanel1.Controls.Add(this.customRoundedPanel2);
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
+            this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(539, 510);
+            this.gradientPanel1.TabIndex = 1;
             // 
             // UpdatePrfBtn
             // 
@@ -67,12 +98,41 @@
             this.UpdatePrfBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdatePrfBtn.ForeColor = System.Drawing.Color.White;
             this.UpdatePrfBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdatePrfBtn.Location = new System.Drawing.Point(250, 398);
+            this.UpdatePrfBtn.Location = new System.Drawing.Point(250, 442);
             this.UpdatePrfBtn.Name = "UpdatePrfBtn";
             this.UpdatePrfBtn.Size = new System.Drawing.Size(190, 43);
             this.UpdatePrfBtn.TabIndex = 151;
             this.UpdatePrfBtn.Text = "Update Profile";
             this.UpdatePrfBtn.UseVisualStyleBackColor = false;
+            // 
+            // CancelBtn
+            // 
+            this.CancelBtn.BackColor = System.Drawing.Color.Maroon;
+            this.CancelBtn.BorderRadius = 10;
+            this.CancelBtn.ClickedColor = System.Drawing.Color.Red;
+            this.CancelBtn.FlatAppearance.BorderSize = 0;
+            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelBtn.ForeColor = System.Drawing.Color.White;
+            this.CancelBtn.HoverColor = System.Drawing.Color.DarkRed;
+            this.CancelBtn.Location = new System.Drawing.Point(101, 442);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(132, 43);
+            this.CancelBtn.TabIndex = 150;
+            this.CancelBtn.Text = "Cancel";
+            this.CancelBtn.UseVisualStyleBackColor = false;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
+            this.pictureBox2.Location = new System.Drawing.Point(504, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 149;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label9
             // 
@@ -85,6 +145,16 @@
             this.label9.TabIndex = 30;
             this.label9.Text = "Edit Your Profile";
             // 
+            // customRoundedPanel5
+            // 
+            this.customRoundedPanel5.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel5.BorderRadius = 10;
+            this.customRoundedPanel5.Controls.Add(this.UpRole);
+            this.customRoundedPanel5.Location = new System.Drawing.Point(55, 313);
+            this.customRoundedPanel5.Name = "customRoundedPanel5";
+            this.customRoundedPanel5.Size = new System.Drawing.Size(426, 36);
+            this.customRoundedPanel5.TabIndex = 8;
+            // 
             // UpRole
             // 
             this.UpRole.BackColor = System.Drawing.Color.Gainsboro;
@@ -96,15 +166,15 @@
             this.UpRole.Size = new System.Drawing.Size(400, 22);
             this.UpRole.TabIndex = 0;
             // 
-            // customRoundedPanel5
+            // customRoundedPanel4
             // 
-            this.customRoundedPanel5.BackColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedPanel5.BorderRadius = 10;
-            this.customRoundedPanel5.Controls.Add(this.UpRole);
-            this.customRoundedPanel5.Location = new System.Drawing.Point(55, 313);
-            this.customRoundedPanel5.Name = "customRoundedPanel5";
-            this.customRoundedPanel5.Size = new System.Drawing.Size(426, 36);
-            this.customRoundedPanel5.TabIndex = 8;
+            this.customRoundedPanel4.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel4.BorderRadius = 10;
+            this.customRoundedPanel4.Controls.Add(this.UpOffice);
+            this.customRoundedPanel4.Location = new System.Drawing.Point(55, 253);
+            this.customRoundedPanel4.Name = "customRoundedPanel4";
+            this.customRoundedPanel4.Size = new System.Drawing.Size(426, 36);
+            this.customRoundedPanel4.TabIndex = 7;
             // 
             // UpOffice
             // 
@@ -115,34 +185,6 @@
             this.UpOffice.Name = "UpOffice";
             this.UpOffice.Size = new System.Drawing.Size(400, 18);
             this.UpOffice.TabIndex = 0;
-            // 
-            // CancelBtn
-            // 
-            this.CancelBtn.BackColor = System.Drawing.Color.Maroon;
-            this.CancelBtn.BorderRadius = 10;
-            this.CancelBtn.ClickedColor = System.Drawing.Color.Red;
-            this.CancelBtn.FlatAppearance.BorderSize = 0;
-            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancelBtn.ForeColor = System.Drawing.Color.White;
-            this.CancelBtn.HoverColor = System.Drawing.Color.DarkRed;
-            this.CancelBtn.Location = new System.Drawing.Point(101, 398);
-            this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(132, 43);
-            this.CancelBtn.TabIndex = 150;
-            this.CancelBtn.Text = "Cancel";
-            this.CancelBtn.UseVisualStyleBackColor = false;
-            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
-            // 
-            // customRoundedPanel4
-            // 
-            this.customRoundedPanel4.BackColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedPanel4.BorderRadius = 10;
-            this.customRoundedPanel4.Controls.Add(this.UpOffice);
-            this.customRoundedPanel4.Location = new System.Drawing.Point(55, 253);
-            this.customRoundedPanel4.Name = "customRoundedPanel4";
-            this.customRoundedPanel4.Size = new System.Drawing.Size(426, 36);
-            this.customRoundedPanel4.TabIndex = 7;
             // 
             // customRoundedPanel3
             // 
@@ -164,16 +206,6 @@
             this.UpPosition.Size = new System.Drawing.Size(400, 18);
             this.UpPosition.TabIndex = 0;
             // 
-            // UpfullName
-            // 
-            this.UpfullName.BackColor = System.Drawing.Color.Gainsboro;
-            this.UpfullName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UpfullName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpfullName.Location = new System.Drawing.Point(14, 10);
-            this.UpfullName.Name = "UpfullName";
-            this.UpfullName.Size = new System.Drawing.Size(400, 18);
-            this.UpfullName.TabIndex = 0;
-            // 
             // customRoundedPanel1
             // 
             this.customRoundedPanel1.BackColor = System.Drawing.Color.Gainsboro;
@@ -183,6 +215,16 @@
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(426, 36);
             this.customRoundedPanel1.TabIndex = 5;
+            // 
+            // UpfullName
+            // 
+            this.UpfullName.BackColor = System.Drawing.Color.Gainsboro;
+            this.UpfullName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpfullName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpfullName.Location = new System.Drawing.Point(14, 10);
+            this.UpfullName.Name = "UpfullName";
+            this.UpfullName.Size = new System.Drawing.Size(400, 18);
+            this.UpfullName.TabIndex = 0;
             // 
             // label5
             // 
@@ -239,16 +281,6 @@
             this.label2.TabIndex = 17;
             this.label2.Text = "Employee No.";
             // 
-            // empNo
-            // 
-            this.empNo.BackColor = System.Drawing.Color.Gainsboro;
-            this.empNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.empNo.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empNo.Location = new System.Drawing.Point(14, 10);
-            this.empNo.Name = "empNo";
-            this.empNo.Size = new System.Drawing.Size(400, 18);
-            this.empNo.TabIndex = 0;
-            // 
             // customRoundedPanel2
             // 
             this.customRoundedPanel2.BackColor = System.Drawing.Color.Gainsboro;
@@ -259,52 +291,64 @@
             this.customRoundedPanel2.Size = new System.Drawing.Size(426, 36);
             this.customRoundedPanel2.TabIndex = 4;
             // 
-            // gradientPanel1
+            // empNo
             // 
-            this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.gradientPanel1.Controls.Add(this.UpdatePrfBtn);
-            this.gradientPanel1.Controls.Add(this.CancelBtn);
-            this.gradientPanel1.Controls.Add(this.pictureBox2);
-            this.gradientPanel1.Controls.Add(this.label9);
-            this.gradientPanel1.Controls.Add(this.customRoundedPanel5);
-            this.gradientPanel1.Controls.Add(this.customRoundedPanel4);
-            this.gradientPanel1.Controls.Add(this.customRoundedPanel3);
-            this.gradientPanel1.Controls.Add(this.customRoundedPanel1);
-            this.gradientPanel1.Controls.Add(this.label5);
-            this.gradientPanel1.Controls.Add(this.label4);
-            this.gradientPanel1.Controls.Add(this.label3);
-            this.gradientPanel1.Controls.Add(this.label1);
-            this.gradientPanel1.Controls.Add(this.label2);
-            this.gradientPanel1.Controls.Add(this.customRoundedPanel2);
-            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
-            this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
-            this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(539, 469);
-            this.gradientPanel1.TabIndex = 1;
+            this.empNo.BackColor = System.Drawing.Color.Gainsboro;
+            this.empNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.empNo.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empNo.Location = new System.Drawing.Point(14, 10);
+            this.empNo.Name = "empNo";
+            this.empNo.Size = new System.Drawing.Size(400, 18);
+            this.empNo.TabIndex = 0;
             // 
-            // pictureBox2
+            // customRoundedPanel6
             // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
-            this.pictureBox2.Location = new System.Drawing.Point(504, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 149;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.customRoundedPanel6.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel6.BorderRadius = 10;
+            this.customRoundedPanel6.Controls.Add(this.comboBox1);
+            this.customRoundedPanel6.Location = new System.Drawing.Point(55, 374);
+            this.customRoundedPanel6.Name = "customRoundedPanel6";
+            this.customRoundedPanel6.Size = new System.Drawing.Size(426, 36);
+            this.customRoundedPanel6.TabIndex = 152;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.Gainsboro;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.comboBox1.Location = new System.Drawing.Point(14, 7);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(400, 22);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(50, 353);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 18);
+            this.label6.TabIndex = 153;
+            this.label6.Text = "Status";
             // 
             // UpdateUserProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 469);
+            this.ClientSize = new System.Drawing.Size(539, 510);
             this.Controls.Add(this.gradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UpdateUserProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateUserProfile";
+            this.gradientPanel1.ResumeLayout(false);
+            this.gradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.customRoundedPanel5.ResumeLayout(false);
             this.customRoundedPanel4.ResumeLayout(false);
             this.customRoundedPanel4.PerformLayout();
@@ -314,9 +358,7 @@
             this.customRoundedPanel1.PerformLayout();
             this.customRoundedPanel2.ResumeLayout(false);
             this.customRoundedPanel2.PerformLayout();
-            this.gradientPanel1.ResumeLayout(false);
-            this.gradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.customRoundedPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -343,5 +385,8 @@
         private System.Windows.Forms.TextBox empNo;
         private Controls.CustomRoundedPanel customRoundedPanel2;
         private Controls.GradientPanel gradientPanel1;
+        private Controls.CustomRoundedPanel customRoundedPanel6;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
     }
 }
