@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using WindowsFormsApp1.BackendModel;
 
 namespace WindowsFormsApp1
 {
@@ -52,6 +54,40 @@ namespace WindowsFormsApp1
         public void SetLoggedInUserId(int userId)
         {
             loggedInUserId = userId;
+        }
+
+        /// <summary>
+        /// Refreshes the logged-in user's full name from the database and updates label3
+        /// </summary>
+        public void RefreshLoggedInUserFullName()
+        {
+            if (loggedInUserId == 0)
+            {
+                return;
+            }
+
+            try
+            {
+                using (MySql.Data.MySqlClient.MySqlConnection connection = WindowsFormsApp1.BackendModel.RDBSMConnection.GetConnection())
+                {
+                    string query = "SELECT full_name FROM users WHERE user_id = @user_id";
+                    using (MySql.Data.MySqlClient.MySqlCommand command = new MySql.Data.MySqlClient.MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@user_id", loggedInUserId);
+                        object result = command.ExecuteScalar();
+                        
+                        if (result != null)
+                        {
+                            string fullName = result.ToString();
+                            SetLoggedInUserFullName(fullName);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to refresh user full name: {ex.Message}");
+            }
         }
 
         private void Form2_Shown(object sender, EventArgs e)

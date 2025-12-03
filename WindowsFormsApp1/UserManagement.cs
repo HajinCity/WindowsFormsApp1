@@ -348,11 +348,25 @@ namespace WindowsFormsApp1
         {
             try
             {
-                UpdateUserProfile updateProfileForm = new UpdateUserProfile();
+                if (loggedInUserId == 0)
+                {
+                    MessageBox.Show(
+                        "Unable to determine current user. Please log in again.",
+                        "Authentication Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                UpdateUserProfile updateProfileForm = new UpdateUserProfile(loggedInUserId);
                 updateProfileForm.ShowDialog();
                 
                 // Refresh user list after updating profile
                 LoadUsers();
+                LoadUserLogs(); // Also refresh logs
+
+                // Refresh the logged-in user's full name in Form2 (parent form)
+                RefreshForm2UserFullName();
             }
             catch (Exception ex)
             {
@@ -361,6 +375,27 @@ namespace WindowsFormsApp1
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Refreshes the logged-in user's full name in Form2 (parent form)
+        /// </summary>
+        private void RefreshForm2UserFullName()
+        {
+            try
+            {
+                // Find Form2 in the application's open forms
+                Form2 parentForm = Application.OpenForms.OfType<Form2>().FirstOrDefault();
+                
+                if (parentForm != null)
+                {
+                    parentForm.RefreshLoggedInUserFullName();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to refresh Form2 user full name: {ex.Message}");
             }
         }
     }
