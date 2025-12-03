@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             loggedInUserId = adminUserId;
             InitializeComboBoxes();
+            CreateBtn.Click += CreateBtn_Click;
         }
 
         private void InitializeComboBoxes()
@@ -31,14 +32,12 @@ namespace WindowsFormsApp1
             // Initialize Role ComboBox with common roles
             if (Role != null)
             {
-
                 Role.DropDownStyle = ComboBoxStyle.DropDown; // Allow typing
             }
 
             // Initialize Status ComboBox
             if (Status != null)
             {
-
                 Status.DropDownStyle = ComboBoxStyle.DropDown; // Allow typing
             }
         }
@@ -151,14 +150,14 @@ namespace WindowsFormsApp1
         {
             try
             {
-                string empNo = empNo.Text.Trim();
-                string fullName = fullName.Text.Trim();
-                string position = textBox3.Text.Trim();
-                string office = textBox4.Text.Trim();
-                string role = comboBox1.Text.Trim();
-                string status = comboBox2.Text.Trim();
-                string username = textBox5.Text.Trim();
-                string password = textBox6.Text;
+                string empNoValue = empNo.Text.Trim();
+                string fullNameValue = fullName.Text.Trim();
+                string position = Position.Text.Trim();
+                string office = Office.Text.Trim();
+                string role = Role.Text.Trim();
+                string status = Status.Text.Trim();
+                string usernameValue = username.Text.Trim();
+                string password = Password.Text;
 
                 // Hash password using SHA-256
                 string passwordHash = HashPassword(password);
@@ -169,7 +168,7 @@ namespace WindowsFormsApp1
                     string checkQuery = "SELECT COUNT(*) FROM users WHERE username = @username";
                     using (MySqlCommand checkCommand = new MySqlCommand(checkQuery, connection))
                     {
-                        checkCommand.Parameters.AddWithValue("@username", username);
+                        checkCommand.Parameters.AddWithValue("@username", usernameValue);
                         int count = Convert.ToInt32(checkCommand.ExecuteScalar());
                         
                         if (count > 0)
@@ -179,8 +178,8 @@ namespace WindowsFormsApp1
                                 "Duplicate Username",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
-                            textBox5.Focus();
-                            textBox5.SelectAll();
+                            username.Focus();
+                            username.SelectAll();
                             return;
                         }
                     }
@@ -194,11 +193,11 @@ namespace WindowsFormsApp1
 
                     using (MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection))
                     {
-                        insertCommand.Parameters.AddWithValue("@employee_no", empNo);
-                        insertCommand.Parameters.AddWithValue("@full_name", fullName);
+                        insertCommand.Parameters.AddWithValue("@employee_no", empNoValue);
+                        insertCommand.Parameters.AddWithValue("@full_name", fullNameValue);
                         insertCommand.Parameters.AddWithValue("@position", position);
                         insertCommand.Parameters.AddWithValue("@office", office);
-                        insertCommand.Parameters.AddWithValue("@username", username);
+                        insertCommand.Parameters.AddWithValue("@username", usernameValue);
                         insertCommand.Parameters.AddWithValue("@password_hash", passwordHash);
                         insertCommand.Parameters.AddWithValue("@role", role);
                         insertCommand.Parameters.AddWithValue("@status", status);
@@ -211,10 +210,10 @@ namespace WindowsFormsApp1
                         loggedInUserId,
                         "Created",
                         "User Management",
-                        $"Created new user account for {fullName}");
+                        $"Created new user account for {fullNameValue}");
 
                     MessageBox.Show(
-                        $"User account for {fullName} has been created successfully!",
+                        $"User account for {fullNameValue} has been created successfully!",
                         "Success",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -313,16 +312,16 @@ namespace WindowsFormsApp1
 
         private void ClearForm()
         {
-            textBox1.Text = string.Empty;
-            textBox2.Text = string.Empty;
-            textBox3.Text = string.Empty;
-            textBox4.Text = string.Empty;
-            comboBox1.Text = string.Empty;
-            comboBox2.Text = string.Empty;
-            textBox5.Text = string.Empty;
-            textBox6.Text = string.Empty;
-            textBox7.Text = string.Empty;
-            textBox1.Focus();
+            empNo.Text = string.Empty;
+            fullName.Text = string.Empty;
+            Position.Text = string.Empty;
+            Office.Text = string.Empty;
+            Role.Text = string.Empty;
+            Status.Text = string.Empty;
+            username.Text = string.Empty;
+            Password.Text = string.Empty;
+            confirmPassword.Text = string.Empty;
+            empNo.Focus();
         }
     }
 }
