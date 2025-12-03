@@ -29,17 +29,17 @@ namespace WindowsFormsApp1
         private void InitializeComboBoxes()
         {
             // Initialize Role ComboBox with common roles
-            if (comboBox1 != null)
+            if (Role != null)
             {
-                comboBox1.Items.AddRange(new string[] { "Admin", "User", "Manager", "Viewer" });
-                comboBox1.DropDownStyle = ComboBoxStyle.DropDown; // Allow typing
+
+                Role.DropDownStyle = ComboBoxStyle.DropDown; // Allow typing
             }
 
             // Initialize Status ComboBox
-            if (comboBox2 != null)
+            if (Status != null)
             {
-                comboBox2.Items.AddRange(new string[] { "Active", "Inactive", "Suspended" });
-                comboBox2.DropDownStyle = ComboBoxStyle.DropDown; // Allow typing
+
+                Status.DropDownStyle = ComboBoxStyle.DropDown; // Allow typing
             }
         }
 
@@ -64,83 +64,83 @@ namespace WindowsFormsApp1
         private bool ValidateInputs()
         {
             // Check if all required fields are filled
-            if (string.IsNullOrWhiteSpace(textBox1?.Text)) // empNo
+            if (string.IsNullOrWhiteSpace(empNo?.Text)) // empNo
             {
                 MessageBox.Show("Please enter Employee Number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox1?.Focus();
+                empNo?.Focus();
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox2?.Text)) // fullName
+            if (string.IsNullOrWhiteSpace(fullName?.Text)) // fullName
             {
                 MessageBox.Show("Please enter Full Name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox2?.Focus();
+                fullName?.Focus();
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox3?.Text)) // Position
+            if (string.IsNullOrWhiteSpace(Position?.Text)) // Position
             {
                 MessageBox.Show("Please enter Position.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox3?.Focus();
+                Position?.Focus();
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox4?.Text)) // Office
+            if (string.IsNullOrWhiteSpace(Office?.Text)) // Office
             {
                 MessageBox.Show("Please enter Office.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox4?.Focus();
+                Office?.Focus();
                 return false;
             }
 
-            if (comboBox1 == null || string.IsNullOrWhiteSpace(comboBox1.Text))
+            if (Role == null || string.IsNullOrWhiteSpace(Role.Text))
             {
                 MessageBox.Show("Please select or enter a Role.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                comboBox1?.Focus();
+                Role?.Focus();
                 return false;
             }
 
-            if (comboBox2 == null || string.IsNullOrWhiteSpace(comboBox2.Text))
+            if (Status == null || string.IsNullOrWhiteSpace(Status.Text))
             {
                 MessageBox.Show("Please select or enter a Status.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                comboBox2?.Focus();
+                Status?.Focus();
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox5?.Text)) // username
+            if (string.IsNullOrWhiteSpace(username?.Text)) // username
             {
                 MessageBox.Show("Please enter Username.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox5?.Focus();
+                username?.Focus();
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox6?.Text)) // password
+            if (string.IsNullOrWhiteSpace(Password?.Text)) // password
             {
                 MessageBox.Show("Please enter Password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox6?.Focus();
+                Password?.Focus();
                 return false;
             }
 
             // Validate password length (minimum 8 characters)
-            if (textBox6.Text.Length < 8)
+            if (Password.Text.Length < 8)
             {
                 MessageBox.Show("Password must be at least 8 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox6?.Focus();
+                Password?.Focus();
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox7?.Text)) // confirmPassword
+            if (string.IsNullOrWhiteSpace(confirmPassword?.Text)) // confirmPassword
             {
                 MessageBox.Show("Please confirm Password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox7?.Focus();
+                confirmPassword?.Focus();
                 return false;
             }
 
             // Validate password match
-            if (textBox6.Text != textBox7.Text)
+            if (Password.Text != confirmPassword.Text)
             {
                 MessageBox.Show("Password and Confirm Password do not match. Please try again.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox6?.Focus();
-                textBox6.SelectAll();
+                Password?.Focus();
+                Password.SelectAll();
                 return false;
             }
 
@@ -151,8 +151,8 @@ namespace WindowsFormsApp1
         {
             try
             {
-                string empNo = textBox1.Text.Trim();
-                string fullName = textBox2.Text.Trim();
+                string empNo = empNo.Text.Trim();
+                string fullName = fullName.Text.Trim();
                 string position = textBox3.Text.Trim();
                 string office = textBox4.Text.Trim();
                 string role = comboBox1.Text.Trim();
