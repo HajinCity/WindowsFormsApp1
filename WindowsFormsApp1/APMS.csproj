@@ -135,6 +135,12 @@
     <Compile Include="AddNewJournalEntry.Designer.cs">
       <DependentUpon>AddNewJournalEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewUser.Designer.cs">
+      <DependentUpon>AddNewUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddORSBURS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddNewJournalEntry.resx">
       <DependentUpon>AddNewJournalEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewUser.resx">
+      <DependentUpon>AddNewUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddORSBURS.resx">
       <DependentUpon>AddORSBURS.cs</DependentUpon>
