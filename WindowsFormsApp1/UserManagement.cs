@@ -26,6 +26,7 @@ namespace WindowsFormsApp1
 
         private List<UserRecord> userCache = new List<UserRecord>();
         private DataTable userLogsTable = new DataTable();
+        private int loggedInUserId = 0;
 
         public UserManagement()
         {
@@ -39,6 +40,11 @@ namespace WindowsFormsApp1
             AddUserBtn.Click += AddUserBtn_Click;
             ChangepassBtn.Click += ChangepassBtn_Click;
             EditProfileBtn.Click += EditProfileBtn_Click;
+        }
+
+        public void SetLoggedInUserId(int userId)
+        {
+            loggedInUserId = userId;
         }
 
         private void LoadUsers()
@@ -294,11 +300,22 @@ namespace WindowsFormsApp1
         {
             try
             {
-                AddNewUser addUserForm = new AddNewUser();
+                if (loggedInUserId == 0)
+                {
+                    MessageBox.Show(
+                        "Unable to determine current user. Please log in again.",
+                        "Authentication Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                AddNewUser addUserForm = new AddNewUser(loggedInUserId);
                 addUserForm.ShowDialog();
                 
                 // Refresh user list after adding a new user
                 LoadUsers();
+                LoadUserLogs(); // Also refresh logs
             }
             catch (Exception ex)
             {

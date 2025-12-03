@@ -503,6 +503,7 @@ namespace WindowsFormsApp1
                 userManagementForm = null;
 
                 userManagementForm = new UserManagement();
+                userManagementForm.SetLoggedInUserId(loggedInUserId);
                 userManagementForm.TopLevel = false;
                 userManagementForm.FormBorderStyle = FormBorderStyle.None;
                 userManagementForm.Dock = DockStyle.Fill;

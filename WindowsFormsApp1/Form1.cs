@@ -4,6 +4,8 @@ using MySql.Data.MySqlClient;
 using WindowsFormsApp1.BackendModel;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WindowsFormsApp1
 {
@@ -111,9 +113,31 @@ namespace WindowsFormsApp1
                                     return false;
                                 }
 
-                                // Since password_hash is not hashed yet, compare directly
-                                string storedPassword = reader["password_hash"]?.ToString() ?? "";
-                                if (password.Equals(storedPassword))
+                                // Get stored password hash from database
+                                string storedPasswordHash = reader["password_hash"]?.ToString() ?? "";
+                                
+                                // Hash the entered password using SHA-256
+                                string enteredPasswordHash = HashPassword(password);
+                                
+                                // Compare hashed passwords (case-sensitive comparison)
+                                if (enteredPasswordHash.Equals(storedPasswordHash, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    // Retrieve user_id and full_name for the logged-in user
+                                    loggedInUserId = reader.GetInt32(reader.GetOrdinal("user_id"));
+                                    loggedInUserFullName = reader["full_name"]?.ToString() ?? "";
+                                    
+                                    MessageBox.Show(
+                                        "Welcome user!",
+                                        "Login Successful",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information
+                                    );
+                                    return true;
+                                }
+                                
+                                // Backward compatibility: Check plain text password for old accounts
+                                // (This allows existing accounts with plain text passwords to still work)
+                                if (password.Equals(storedPasswordHash))
                                 {
                                     // Retrieve user_id and full_name for the logged-in user
                                     loggedInUserId = reader.GetInt32(reader.GetOrdinal("user_id"));
@@ -236,6 +260,28 @@ namespace WindowsFormsApp1
             catch
             {
                 return "Unknown";
+            }
+        }
+
+        /// <summary>
+        /// Hashes a password using SHA-256 algorithm
+        /// </summary>
+        /// <param name="password">The password to hash</param>
+        /// <returns>The SHA-256 hash as a hexadecimal string</returns>
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Compute hash from the password
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                // Convert byte array to a hex string
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
     }
