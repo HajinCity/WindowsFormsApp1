@@ -30,14 +30,14 @@
         {
             this.UpdatePrfBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label9 = new System.Windows.Forms.Label();
-            this.Role = new System.Windows.Forms.ComboBox();
+            this.UpRole = new System.Windows.Forms.ComboBox();
             this.customRoundedPanel5 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.Office = new System.Windows.Forms.TextBox();
+            this.UpOffice = new System.Windows.Forms.TextBox();
             this.CancelBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.Position = new System.Windows.Forms.TextBox();
-            this.fullName = new System.Windows.Forms.TextBox();
+            this.UpPosition = new System.Windows.Forms.TextBox();
+            this.UpfullName = new System.Windows.Forms.TextBox();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -85,36 +85,36 @@
             this.label9.TabIndex = 30;
             this.label9.Text = "Edit Your Profile";
             // 
-            // Role
+            // UpRole
             // 
-            this.Role.BackColor = System.Drawing.Color.Gainsboro;
-            this.Role.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Role.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Role.FormattingEnabled = true;
-            this.Role.Location = new System.Drawing.Point(14, 7);
-            this.Role.Name = "Role";
-            this.Role.Size = new System.Drawing.Size(400, 22);
-            this.Role.TabIndex = 0;
+            this.UpRole.BackColor = System.Drawing.Color.Gainsboro;
+            this.UpRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpRole.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpRole.FormattingEnabled = true;
+            this.UpRole.Location = new System.Drawing.Point(14, 7);
+            this.UpRole.Name = "UpRole";
+            this.UpRole.Size = new System.Drawing.Size(400, 22);
+            this.UpRole.TabIndex = 0;
             // 
             // customRoundedPanel5
             // 
             this.customRoundedPanel5.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel5.BorderRadius = 10;
-            this.customRoundedPanel5.Controls.Add(this.Role);
+            this.customRoundedPanel5.Controls.Add(this.UpRole);
             this.customRoundedPanel5.Location = new System.Drawing.Point(55, 313);
             this.customRoundedPanel5.Name = "customRoundedPanel5";
             this.customRoundedPanel5.Size = new System.Drawing.Size(426, 36);
             this.customRoundedPanel5.TabIndex = 8;
             // 
-            // Office
+            // UpOffice
             // 
-            this.Office.BackColor = System.Drawing.Color.Gainsboro;
-            this.Office.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Office.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Office.Location = new System.Drawing.Point(14, 10);
-            this.Office.Name = "Office";
-            this.Office.Size = new System.Drawing.Size(400, 18);
-            this.Office.TabIndex = 0;
+            this.UpOffice.BackColor = System.Drawing.Color.Gainsboro;
+            this.UpOffice.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpOffice.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpOffice.Location = new System.Drawing.Point(14, 10);
+            this.UpOffice.Name = "UpOffice";
+            this.UpOffice.Size = new System.Drawing.Size(400, 18);
+            this.UpOffice.TabIndex = 0;
             // 
             // CancelBtn
             // 
@@ -138,7 +138,7 @@
             // 
             this.customRoundedPanel4.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel4.BorderRadius = 10;
-            this.customRoundedPanel4.Controls.Add(this.Office);
+            this.customRoundedPanel4.Controls.Add(this.UpOffice);
             this.customRoundedPanel4.Location = new System.Drawing.Point(55, 253);
             this.customRoundedPanel4.Name = "customRoundedPanel4";
             this.customRoundedPanel4.Size = new System.Drawing.Size(426, 36);
@@ -148,37 +148,37 @@
             // 
             this.customRoundedPanel3.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel3.BorderRadius = 10;
-            this.customRoundedPanel3.Controls.Add(this.Position);
+            this.customRoundedPanel3.Controls.Add(this.UpPosition);
             this.customRoundedPanel3.Location = new System.Drawing.Point(55, 192);
             this.customRoundedPanel3.Name = "customRoundedPanel3";
             this.customRoundedPanel3.Size = new System.Drawing.Size(426, 36);
             this.customRoundedPanel3.TabIndex = 6;
             // 
-            // Position
+            // UpPosition
             // 
-            this.Position.BackColor = System.Drawing.Color.Gainsboro;
-            this.Position.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Position.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Position.Location = new System.Drawing.Point(14, 10);
-            this.Position.Name = "Position";
-            this.Position.Size = new System.Drawing.Size(400, 18);
-            this.Position.TabIndex = 0;
+            this.UpPosition.BackColor = System.Drawing.Color.Gainsboro;
+            this.UpPosition.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpPosition.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpPosition.Location = new System.Drawing.Point(14, 10);
+            this.UpPosition.Name = "UpPosition";
+            this.UpPosition.Size = new System.Drawing.Size(400, 18);
+            this.UpPosition.TabIndex = 0;
             // 
-            // fullName
+            // UpfullName
             // 
-            this.fullName.BackColor = System.Drawing.Color.Gainsboro;
-            this.fullName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.fullName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullName.Location = new System.Drawing.Point(14, 10);
-            this.fullName.Name = "fullName";
-            this.fullName.Size = new System.Drawing.Size(400, 18);
-            this.fullName.TabIndex = 0;
+            this.UpfullName.BackColor = System.Drawing.Color.Gainsboro;
+            this.UpfullName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpfullName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpfullName.Location = new System.Drawing.Point(14, 10);
+            this.UpfullName.Name = "UpfullName";
+            this.UpfullName.Size = new System.Drawing.Size(400, 18);
+            this.UpfullName.TabIndex = 0;
             // 
             // customRoundedPanel1
             // 
             this.customRoundedPanel1.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel1.BorderRadius = 10;
-            this.customRoundedPanel1.Controls.Add(this.fullName);
+            this.customRoundedPanel1.Controls.Add(this.UpfullName);
             this.customRoundedPanel1.Location = new System.Drawing.Point(55, 132);
             this.customRoundedPanel1.Name = "customRoundedPanel1";
             this.customRoundedPanel1.Size = new System.Drawing.Size(426, 36);
@@ -326,14 +326,14 @@
         private Controls.CustomRoundedButton UpdatePrfBtn;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox Role;
+        private System.Windows.Forms.ComboBox UpRole;
         private Controls.CustomRoundedPanel customRoundedPanel5;
-        private System.Windows.Forms.TextBox Office;
+        private System.Windows.Forms.TextBox UpOffice;
         private Controls.CustomRoundedButton CancelBtn;
         private Controls.CustomRoundedPanel customRoundedPanel4;
         private Controls.CustomRoundedPanel customRoundedPanel3;
-        private System.Windows.Forms.TextBox Position;
-        private System.Windows.Forms.TextBox fullName;
+        private System.Windows.Forms.TextBox UpPosition;
+        private System.Windows.Forms.TextBox UpfullName;
         private Controls.CustomRoundedPanel customRoundedPanel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
