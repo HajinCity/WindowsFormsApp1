@@ -36,6 +36,9 @@ namespace WindowsFormsApp1
             textBox3.TextChanged += TextBox3_TextChanged;
             EnterBtn.Click += EnterBtn_Click;
             pictureBox5.Click += PictureBox5_Click;
+            AddUserBtn.Click += AddUserBtn_Click;
+            ChangepassBtn.Click += ChangepassBtn_Click;
+            EditProfileBtn.Click += EditProfileBtn_Click;
         }
 
         private void LoadUsers()
@@ -281,6 +284,67 @@ namespace WindowsFormsApp1
             DataView view = userLogsTable.DefaultView;
             view.RowFilter = combinedFilter;
             dataGridView2.DataSource = view;
+        }
+
+        // ============================================================
+        //  BUTTON CLICK HANDLERS
+        // ============================================================
+
+        private void AddUserBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AddNewUser addUserForm = new AddNewUser();
+                addUserForm.ShowDialog();
+                
+                // Refresh user list after adding a new user
+                LoadUsers();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error opening Add New User form: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void ChangepassBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ChangePassword changePasswordForm = new ChangePassword();
+                changePasswordForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error opening Change Password form: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void EditProfileBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateUserProfile updateProfileForm = new UpdateUserProfile();
+                updateProfileForm.ShowDialog();
+                
+                // Refresh user list after updating profile
+                LoadUsers();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error opening Update User Profile form: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
