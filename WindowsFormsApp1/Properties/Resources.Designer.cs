@@ -73,6 +73,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Closed_Eye {
+            get {
+                object obj = ResourceManager.GetObject("Closed Eye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Credit_Card {
             get {
                 object obj = ResourceManager.GetObject("Credit Card", resourceCulture);

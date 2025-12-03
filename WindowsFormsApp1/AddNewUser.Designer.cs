@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.customRoundedPanel9 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.Status = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.CreateBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.CancelBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.customRoundedPanel8 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.confirmPassword = new System.Windows.Forms.TextBox();
@@ -57,11 +59,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.empNo = new System.Windows.Forms.TextBox();
-            this.customRoundedPanel9 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.Status = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.gradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.customRoundedPanel9.SuspendLayout();
             this.customRoundedPanel8.SuspendLayout();
             this.customRoundedPanel7.SuspendLayout();
             this.customRoundedPanel6.SuspendLayout();
@@ -70,7 +72,9 @@
             this.customRoundedPanel3.SuspendLayout();
             this.customRoundedPanel1.SuspendLayout();
             this.customRoundedPanel2.SuspendLayout();
-            this.customRoundedPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // gradientPanel1
@@ -105,6 +109,41 @@
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Size = new System.Drawing.Size(539, 698);
             this.gradientPanel1.TabIndex = 0;
+            // 
+            // customRoundedPanel9
+            // 
+            this.customRoundedPanel9.BackColor = System.Drawing.Color.Gainsboro;
+            this.customRoundedPanel9.BorderRadius = 10;
+            this.customRoundedPanel9.Controls.Add(this.Status);
+            this.customRoundedPanel9.Location = new System.Drawing.Point(55, 374);
+            this.customRoundedPanel9.Name = "customRoundedPanel9";
+            this.customRoundedPanel9.Size = new System.Drawing.Size(426, 36);
+            this.customRoundedPanel9.TabIndex = 24;
+            // 
+            // Status
+            // 
+            this.Status.BackColor = System.Drawing.Color.Gainsboro;
+            this.Status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Status.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status.FormattingEnabled = true;
+            this.Status.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.Status.Location = new System.Drawing.Point(14, 7);
+            this.Status.Name = "Status";
+            this.Status.Size = new System.Drawing.Size(400, 22);
+            this.Status.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(50, 353);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 18);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Status";
             // 
             // CreateBtn
             // 
@@ -141,17 +180,6 @@
             this.CancelBtn.UseVisualStyleBackColor = false;
             this.CancelBtn.Click += new System.EventHandler(this.ParseRangeBtn_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
-            this.pictureBox2.Location = new System.Drawing.Point(504, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 149;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -167,6 +195,7 @@
             // 
             this.customRoundedPanel8.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel8.BorderRadius = 10;
+            this.customRoundedPanel8.Controls.Add(this.pictureBox3);
             this.customRoundedPanel8.Controls.Add(this.confirmPassword);
             this.customRoundedPanel8.Location = new System.Drawing.Point(53, 570);
             this.customRoundedPanel8.Name = "customRoundedPanel8";
@@ -180,8 +209,9 @@
             this.confirmPassword.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmPassword.Location = new System.Drawing.Point(14, 10);
             this.confirmPassword.Name = "confirmPassword";
-            this.confirmPassword.Size = new System.Drawing.Size(400, 18);
+            this.confirmPassword.Size = new System.Drawing.Size(369, 18);
             this.confirmPassword.TabIndex = 0;
+            this.confirmPassword.UseSystemPasswordChar = true;
             // 
             // label8
             // 
@@ -198,6 +228,7 @@
             // 
             this.customRoundedPanel7.BackColor = System.Drawing.Color.Gainsboro;
             this.customRoundedPanel7.BorderRadius = 10;
+            this.customRoundedPanel7.Controls.Add(this.pictureBox1);
             this.customRoundedPanel7.Controls.Add(this.Password);
             this.customRoundedPanel7.Location = new System.Drawing.Point(53, 510);
             this.customRoundedPanel7.Name = "customRoundedPanel7";
@@ -211,8 +242,9 @@
             this.Password.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password.Location = new System.Drawing.Point(14, 10);
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(400, 18);
+            this.Password.Size = new System.Drawing.Size(369, 18);
             this.Password.TabIndex = 0;
+            this.Password.UseSystemPasswordChar = true;
             // 
             // customRoundedPanel6
             // 
@@ -417,40 +449,36 @@
             this.empNo.Size = new System.Drawing.Size(400, 18);
             this.empNo.TabIndex = 0;
             // 
-            // customRoundedPanel9
+            // pictureBox2
             // 
-            this.customRoundedPanel9.BackColor = System.Drawing.Color.Gainsboro;
-            this.customRoundedPanel9.BorderRadius = 10;
-            this.customRoundedPanel9.Controls.Add(this.Status);
-            this.customRoundedPanel9.Location = new System.Drawing.Point(55, 374);
-            this.customRoundedPanel9.Name = "customRoundedPanel9";
-            this.customRoundedPanel9.Size = new System.Drawing.Size(426, 36);
-            this.customRoundedPanel9.TabIndex = 24;
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Close;
+            this.pictureBox2.Location = new System.Drawing.Point(504, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 149;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // Status
+            // pictureBox1
             // 
-            this.Status.BackColor = System.Drawing.Color.Gainsboro;
-            this.Status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Status.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Status.FormattingEnabled = true;
-            this.Status.Items.AddRange(new object[] {
-            "Active",
-            "Inactive"});
-            this.Status.Location = new System.Drawing.Point(14, 7);
-            this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(400, 22);
-            this.Status.TabIndex = 0;
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Closed_Eye;
+            this.pictureBox1.Location = new System.Drawing.Point(389, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
-            // label10
+            // pictureBox3
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(50, 353);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 18);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Status";
+            this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Closed_Eye;
+            this.pictureBox3.Location = new System.Drawing.Point(389, 5);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 28);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
             // 
             // AddNewUser
             // 
@@ -465,7 +493,7 @@
             this.Text = "AddNewUser";
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.customRoundedPanel9.ResumeLayout(false);
             this.customRoundedPanel8.ResumeLayout(false);
             this.customRoundedPanel8.PerformLayout();
             this.customRoundedPanel7.ResumeLayout(false);
@@ -481,7 +509,9 @@
             this.customRoundedPanel1.PerformLayout();
             this.customRoundedPanel2.ResumeLayout(false);
             this.customRoundedPanel2.PerformLayout();
-            this.customRoundedPanel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -520,5 +550,7 @@
         private Controls.CustomRoundedPanel customRoundedPanel9;
         private System.Windows.Forms.ComboBox Status;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
