@@ -35,11 +35,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.customRoundedButton1 = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.customRoundedButton3 = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.customRoundedButton2 = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.AddUserBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.EditProfileBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.ChangepassBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +55,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -66,29 +64,31 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.EnterBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.gradientPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -165,25 +165,15 @@
             this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.gradientPanel1.Controls.Add(this.pictureBox4);
             this.gradientPanel1.Controls.Add(this.textBox2);
-            this.gradientPanel1.Controls.Add(this.customRoundedButton1);
-            this.gradientPanel1.Controls.Add(this.customRoundedButton3);
-            this.gradientPanel1.Controls.Add(this.customRoundedButton2);
+            this.gradientPanel1.Controls.Add(this.AddUserBtn);
+            this.gradientPanel1.Controls.Add(this.EditProfileBtn);
+            this.gradientPanel1.Controls.Add(this.ChangepassBtn);
             this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
             this.gradientPanel1.Location = new System.Drawing.Point(15, 100);
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Size = new System.Drawing.Size(1540, 85);
             this.gradientPanel1.TabIndex = 30;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
-            this.pictureBox4.Location = new System.Drawing.Point(30, 22);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 1;
-            this.pictureBox4.TabStop = false;
             // 
             // textBox2
             // 
@@ -193,56 +183,56 @@
             this.textBox2.Size = new System.Drawing.Size(802, 26);
             this.textBox2.TabIndex = 0;
             // 
-            // customRoundedButton1
+            // AddUserBtn
             // 
-            this.customRoundedButton1.BackColor = System.Drawing.Color.SeaGreen;
-            this.customRoundedButton1.BorderRadius = 10;
-            this.customRoundedButton1.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.customRoundedButton1.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton1.ForeColor = System.Drawing.Color.White;
-            this.customRoundedButton1.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.customRoundedButton1.Location = new System.Drawing.Point(974, 15);
-            this.customRoundedButton1.Name = "customRoundedButton1";
-            this.customRoundedButton1.Size = new System.Drawing.Size(132, 43);
-            this.customRoundedButton1.TabIndex = 26;
-            this.customRoundedButton1.Text = "Add User";
-            this.customRoundedButton1.UseVisualStyleBackColor = false;
+            this.AddUserBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.AddUserBtn.BorderRadius = 10;
+            this.AddUserBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.AddUserBtn.FlatAppearance.BorderSize = 0;
+            this.AddUserBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddUserBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddUserBtn.ForeColor = System.Drawing.Color.White;
+            this.AddUserBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.AddUserBtn.Location = new System.Drawing.Point(962, 15);
+            this.AddUserBtn.Name = "AddUserBtn";
+            this.AddUserBtn.Size = new System.Drawing.Size(132, 43);
+            this.AddUserBtn.TabIndex = 26;
+            this.AddUserBtn.Text = "Add User";
+            this.AddUserBtn.UseVisualStyleBackColor = false;
             // 
-            // customRoundedButton3
+            // EditProfileBtn
             // 
-            this.customRoundedButton3.BackColor = System.Drawing.Color.SeaGreen;
-            this.customRoundedButton3.BorderRadius = 10;
-            this.customRoundedButton3.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.customRoundedButton3.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton3.ForeColor = System.Drawing.Color.White;
-            this.customRoundedButton3.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.customRoundedButton3.Location = new System.Drawing.Point(1353, 15);
-            this.customRoundedButton3.Name = "customRoundedButton3";
-            this.customRoundedButton3.Size = new System.Drawing.Size(184, 43);
-            this.customRoundedButton3.TabIndex = 29;
-            this.customRoundedButton3.Text = "Edit Your Profile";
-            this.customRoundedButton3.UseVisualStyleBackColor = false;
+            this.EditProfileBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.EditProfileBtn.BorderRadius = 10;
+            this.EditProfileBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.EditProfileBtn.FlatAppearance.BorderSize = 0;
+            this.EditProfileBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditProfileBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditProfileBtn.ForeColor = System.Drawing.Color.White;
+            this.EditProfileBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.EditProfileBtn.Location = new System.Drawing.Point(1341, 15);
+            this.EditProfileBtn.Name = "EditProfileBtn";
+            this.EditProfileBtn.Size = new System.Drawing.Size(184, 43);
+            this.EditProfileBtn.TabIndex = 29;
+            this.EditProfileBtn.Text = "Edit Your Profile";
+            this.EditProfileBtn.UseVisualStyleBackColor = false;
             // 
-            // customRoundedButton2
+            // ChangepassBtn
             // 
-            this.customRoundedButton2.BackColor = System.Drawing.Color.SeaGreen;
-            this.customRoundedButton2.BorderRadius = 10;
-            this.customRoundedButton2.ClickedColor = System.Drawing.Color.SeaGreen;
-            this.customRoundedButton2.FlatAppearance.BorderSize = 0;
-            this.customRoundedButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customRoundedButton2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customRoundedButton2.ForeColor = System.Drawing.Color.White;
-            this.customRoundedButton2.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.customRoundedButton2.Location = new System.Drawing.Point(1112, 14);
-            this.customRoundedButton2.Name = "customRoundedButton2";
-            this.customRoundedButton2.Size = new System.Drawing.Size(235, 43);
-            this.customRoundedButton2.TabIndex = 28;
-            this.customRoundedButton2.Text = "Change Your Password";
-            this.customRoundedButton2.UseVisualStyleBackColor = false;
+            this.ChangepassBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.ChangepassBtn.BorderRadius = 10;
+            this.ChangepassBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.ChangepassBtn.FlatAppearance.BorderSize = 0;
+            this.ChangepassBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangepassBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangepassBtn.ForeColor = System.Drawing.Color.White;
+            this.ChangepassBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.ChangepassBtn.Location = new System.Drawing.Point(1100, 14);
+            this.ChangepassBtn.Name = "ChangepassBtn";
+            this.ChangepassBtn.Size = new System.Drawing.Size(235, 43);
+            this.ChangepassBtn.TabIndex = 28;
+            this.ChangepassBtn.Text = "Change Your Password";
+            this.ChangepassBtn.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -416,16 +406,6 @@
             this.comboBox1.Size = new System.Drawing.Size(347, 26);
             this.comboBox1.TabIndex = 2;
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
-            this.pictureBox3.Location = new System.Drawing.Point(30, 22);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
-            // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -497,16 +477,6 @@
             this.textBox1.Size = new System.Drawing.Size(309, 26);
             this.textBox1.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
-            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -560,16 +530,6 @@
             this.ParseRangeBtn.Text = "Enter";
             this.ParseRangeBtn.UseVisualStyleBackColor = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
-            this.pictureBox2.Location = new System.Drawing.Point(546, 24);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(43, 42);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 25;
-            this.pictureBox2.TabStop = false;
-            // 
             // EnterBtn
             // 
             this.EnterBtn.BackColor = System.Drawing.Color.SeaGreen;
@@ -587,6 +547,16 @@
             this.EnterBtn.Text = "Enter";
             this.EnterBtn.UseVisualStyleBackColor = false;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
+            this.pictureBox4.Location = new System.Drawing.Point(30, 22);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 1;
+            this.pictureBox4.TabStop = false;
+            // 
             // pictureBox5
             // 
             this.pictureBox5.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
@@ -596,6 +566,36 @@
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 37;
             this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
+            this.pictureBox3.Location = new System.Drawing.Point(30, 22);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Search1;
+            this.pictureBox1.Location = new System.Drawing.Point(30, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Refresh;
+            this.pictureBox2.Location = new System.Drawing.Point(546, 24);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(43, 42);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 25;
+            this.pictureBox2.TabStop = false;
             // 
             // UserManagement
             // 
@@ -616,19 +616,19 @@
             this.tabPage1.PerformLayout();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.gradientPanel2.ResumeLayout(false);
             this.gradientPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -641,10 +641,10 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage1;
-        private Controls.CustomRoundedButton customRoundedButton3;
-        private Controls.CustomRoundedButton customRoundedButton2;
+        private Controls.CustomRoundedButton EditProfileBtn;
+        private Controls.CustomRoundedButton ChangepassBtn;
         private System.Windows.Forms.Panel panel1;
-        private Controls.CustomRoundedButton customRoundedButton1;
+        private Controls.CustomRoundedButton AddUserBtn;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
