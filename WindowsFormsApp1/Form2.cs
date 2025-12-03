@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form2 : Form
     {
+        private int loggedInUserId = 0;
         // Form instances for embedding in panel3
         private Dashboard dashboardForm;
         private SupplierForm supplierForm;
@@ -46,6 +47,11 @@ namespace WindowsFormsApp1
             {
                 label3.Text = !string.IsNullOrWhiteSpace(fullName) ? fullName : "Accounts Payable System";
             }
+        }
+
+        public void SetLoggedInUserId(int userId)
+        {
+            loggedInUserId = userId;
         }
 
         private void Form2_Shown(object sender, EventArgs e)

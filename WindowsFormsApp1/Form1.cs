@@ -2,11 +2,14 @@ using System;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using WindowsFormsApp1.BackendModel;
+using System.Net;
+using System.Net.Sockets;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        private int loggedInUserId = 0;
 
         public Form1()
         {
@@ -63,6 +66,13 @@ namespace WindowsFormsApp1
 
             if (ValidateCredentials(enteredUsername, enteredPassword))
             {
+                // Log successful login
+                LogUserActivity(
+                    loggedInUserId,
+                    "Login",
+                    "Authentication",
+                    "User logged in successfully");
+
                 OpenDashboard();
             }
             else
@@ -84,7 +94,7 @@ namespace WindowsFormsApp1
             {
                 using (MySqlConnection connection = RDBSMConnection.GetConnection())
                 {
-                    string query = "SELECT password_hash, status, full_name FROM users WHERE username = @username";
+                    string query = "SELECT user_id, password_hash, status, full_name FROM users WHERE username = @username";
                     
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -105,7 +115,8 @@ namespace WindowsFormsApp1
                                 string storedPassword = reader["password_hash"]?.ToString() ?? "";
                                 if (password.Equals(storedPassword))
                                 {
-                                    // Retrieve full_name for the logged-in user
+                                    // Retrieve user_id and full_name for the logged-in user
+                                    loggedInUserId = reader.GetInt32(reader.GetOrdinal("user_id"));
                                     loggedInUserFullName = reader["full_name"]?.ToString() ?? "";
                                     
                                     MessageBox.Show(
@@ -142,6 +153,7 @@ namespace WindowsFormsApp1
         {
             Form2 dashboard = new Form2();
             dashboard.SetLoggedInUserFullName(loggedInUserFullName);
+            dashboard.SetLoggedInUserId(loggedInUserId);
             dashboard.WindowState = FormWindowState.Maximized;
             dashboard.SetAutoLoadDashboard(true);
             dashboard.Show();
@@ -160,6 +172,71 @@ namespace WindowsFormsApp1
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // ============================================================
+        //  USER LOGGING
+        // ============================================================
+        private void LogUserActivity(int userId, string action, string module, string details)
+        {
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    // Insert log and populate the `users` column with the user's full name
+                    string query = @"
+                        INSERT INTO userlogs (user_id, users, action, module, details, ip_address, action_timestamp)
+                        SELECT 
+                            u.user_id,
+                            u.full_name,
+                            @action,
+                            @module,
+                            @details,
+                            @ip_address,
+                            NOW()
+                        FROM users u
+                        WHERE u.user_id = @user_id;";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@user_id", userId);
+                        command.Parameters.AddWithValue("@action", action);
+                        command.Parameters.AddWithValue("@module", module);
+                        command.Parameters.AddWithValue("@details", details ?? string.Empty);
+                        command.Parameters.AddWithValue("@ip_address", GetLocalIpAddress());
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Do not block login on logging failures, just trace it.
+                System.Diagnostics.Debug.WriteLine($"Failed to log user activity: {ex.Message}");
+            }
+        }
+
+        private string GetLocalIpAddress()
+        {
+            try
+            {
+                string localIP = "";
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var ip in host.AddressList)
+                {
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        localIP = ip.ToString();
+                        break;
+                    }
+                }
+
+                return string.IsNullOrEmpty(localIP) ? "Unknown" : localIP;
+            }
+            catch
+            {
+                return "Unknown";
+            }
         }
     }
 }

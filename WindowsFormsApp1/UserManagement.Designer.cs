@@ -73,6 +73,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ParseRangeBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.EnterBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
@@ -353,6 +354,7 @@
             // gradientPanel2
             // 
             this.gradientPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel2.Controls.Add(this.EnterBtn);
             this.gradientPanel2.Controls.Add(this.label10);
             this.gradientPanel2.Controls.Add(this.label9);
             this.gradientPanel2.Controls.Add(this.dateTimePicker3);
@@ -371,7 +373,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(1081, 12);
+            this.label10.Location = new System.Drawing.Point(967, 11);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 18);
             this.label10.TabIndex = 22;
@@ -382,7 +384,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(597, 12);
+            this.label9.Location = new System.Drawing.Point(561, 12);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 18);
             this.label9.TabIndex = 21;
@@ -390,7 +392,7 @@
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(1084, 33);
+            this.dateTimePicker3.Location = new System.Drawing.Point(970, 32);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(356, 26);
             this.dateTimePicker3.TabIndex = 3;
@@ -406,7 +408,7 @@
             "Viewed",
             "Login",
             "Exported"});
-            this.comboBox1.Location = new System.Drawing.Point(600, 33);
+            this.comboBox1.Location = new System.Drawing.Point(564, 33);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(347, 26);
             this.comboBox1.TabIndex = 2;
@@ -565,6 +567,23 @@
             this.pictureBox2.TabIndex = 25;
             this.pictureBox2.TabStop = false;
             // 
+            // EnterBtn
+            // 
+            this.EnterBtn.BackColor = System.Drawing.Color.SeaGreen;
+            this.EnterBtn.BorderRadius = 10;
+            this.EnterBtn.ClickedColor = System.Drawing.Color.SeaGreen;
+            this.EnterBtn.FlatAppearance.BorderSize = 0;
+            this.EnterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnterBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnterBtn.ForeColor = System.Drawing.Color.White;
+            this.EnterBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
+            this.EnterBtn.Location = new System.Drawing.Point(1385, 24);
+            this.EnterBtn.Name = "EnterBtn";
+            this.EnterBtn.Size = new System.Drawing.Size(128, 43);
+            this.EnterBtn.TabIndex = 37;
+            this.EnterBtn.Text = "Enter";
+            this.EnterBtn.UseVisualStyleBackColor = false;
+            // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -648,5 +667,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private Controls.CustomRoundedButton customRoundedButton4;
+        private Controls.CustomRoundedButton EnterBtn;
     }
 }

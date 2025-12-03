@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             LoadUsers();
+            LoadUserLogs();
             textBox2.TextChanged += TextBox2_TextChanged;
         }
 
@@ -118,6 +119,58 @@ namespace WindowsFormsApp1
                 dataGridView1.Rows[rowIndex].Cells["Column4"].Value = user.Role;
                 dataGridView1.Rows[rowIndex].Cells["Column5"].Value = user.Status;
                 dataGridView1.Rows[rowIndex].Tag = user.UserId;
+            }
+        }
+
+        /// <summary>
+        /// Loads all records from userlogs (joined with users)
+        /// and binds them to dataGridView2.
+        /// </summary>
+        private void LoadUserLogs()
+        {
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"
+                        SELECT 
+                            ul.action_timestamp   AS log_timestamp,
+                            u.full_name           AS user_fullname,
+                            ul.action             AS user_action,
+                            ul.module             AS module,
+                            ul.details            AS details
+                        FROM userlogs ul
+                        INNER JOIN users u ON ul.user_id = u.user_id
+                        ORDER BY ul.action_timestamp DESC";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+
+                        // We are using designer-created columns, so don't auto-generate.
+                        dataGridView2.AutoGenerateColumns = false;
+
+                        // Map each DataGridView column to the corresponding DataTable column.
+                        // Make sure these column names (dataGridViewTextBoxColumnX) match your designer.
+                        dataGridViewTextBoxColumn1.DataPropertyName = "log_timestamp";   // Timestamp
+                        dataGridViewTextBoxColumn2.DataPropertyName = "user_fullname";   // User (full name)
+                        dataGridViewTextBoxColumn3.DataPropertyName = "user_action";     // Action
+                        dataGridViewTextBoxColumn4.DataPropertyName = "module";          // Module
+                        dataGridViewTextBoxColumn5.DataPropertyName = "details";         // Details
+
+                        dataGridView2.DataSource = table;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to load user logs: {ex.Message}",
+                    "Load Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }
