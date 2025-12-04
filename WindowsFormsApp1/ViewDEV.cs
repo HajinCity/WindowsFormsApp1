@@ -35,6 +35,10 @@ namespace WindowsFormsApp1
             MakeFieldsReadOnly();
             InitializeDocumentControls();
             InitializeAmountFormatting();
+            if (ExportToCSV != null)
+            {
+                ExportToCSV.Click += ExportToCSV_Click;
+            }
         }
 
         public ViewDEV(int devId, int userId) : this()
@@ -487,6 +491,71 @@ namespace WindowsFormsApp1
             {
                 return "Unknown";
             }
+        }
+
+        private void ExportToCSV_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Export DEV Data to CSV";
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                string devNumber = string.IsNullOrWhiteSpace(dev_no.Text) ? "DEV" : dev_no.Text.Trim().Replace(" ", "_");
+                saveFileDialog.FileName = $"DEV_{devNumber}_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                try
+                {
+                    using (var writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                    {
+                        // Write DEV Header Information Section
+                        writer.WriteLine("DEV INFORMATION");
+                        writer.WriteLine("================");
+                        writer.WriteLine($"DEV No.,{EscapeForCsv(dev_no.Text)}");
+                        writer.WriteLine($"Date,{EscapeForCsv(dev_date.Value.ToShortDateString())}");
+                        writer.WriteLine($"Fund Cluster,{EscapeForCsv(fundcluster.Text)}");
+                        writer.WriteLine($"ORS/BURS Serial No.,{EscapeForCsv(orsbursNo.Text)}");
+                        writer.WriteLine($"Payee,{EscapeForCsv(payee.Text)}");
+                        writer.WriteLine($"JEV No.,{EscapeForCsv(jev_no.Text)}");
+                        writer.WriteLine($"Address,{EscapeForCsv(address.Text)}");
+                        writer.WriteLine($"Date of JEV,{EscapeForCsv(dateofJEV.Value.ToShortDateString())}");
+                        writer.WriteLine($"Particulars,{EscapeForCsv(particulars.Text)}");
+                        writer.WriteLine($"Mode of Payment,{EscapeForCsv(mop.Text)}");
+                        writer.WriteLine($"Responsibility Center,{EscapeForCsv(respcenter.Text)}");
+                        writer.WriteLine($"TIN No.,{EscapeForCsv(tinNo.Text)}");
+                        writer.WriteLine($"MFO/PAP,{EscapeForCsv(mfopap.Text)}");
+                        writer.WriteLine($"Tax Type,{EscapeForCsv(taxType.Text)}");
+                        writer.WriteLine($"Gross Amount,{EscapeForCsv(grossAmount.Text)}");
+                        writer.WriteLine($"Deductions,{EscapeForCsv(deductions.Text)}");
+                        writer.WriteLine($"Net Amount,{EscapeForCsv(netAmount.Text)}");
+                        writer.WriteLine($"Status,{EscapeForCsv(Status.Text)}");
+                        writer.WriteLine($"Approving Officer,{EscapeForCsv(ApOfficer.Text)}");
+                    }
+
+                    MessageBox.Show("DEV data exported successfully.", "Export Complete",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Unable to export DEV data: {ex.Message}", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private string EscapeForCsv(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+
+            bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\n");
+            string escaped = value.Replace("\"", "\"\"");
+            return mustQuote ? $"\"{escaped}\"" : escaped;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
