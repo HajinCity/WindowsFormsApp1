@@ -90,6 +90,7 @@
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.ExportToCSV = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.customRoundedPanel11.SuspendLayout();
             this.customRoundedPanel12.SuspendLayout();
             this.customRoundedPanel13.SuspendLayout();
@@ -734,6 +735,23 @@
             this.label3.TabIndex = 118;
             this.label3.Text = "View Disbursement Voucher Information";
             // 
+            // ExportToCSV
+            // 
+            this.ExportToCSV.BackColor = System.Drawing.Color.Turquoise;
+            this.ExportToCSV.BorderRadius = 10;
+            this.ExportToCSV.ClickedColor = System.Drawing.Color.DarkTurquoise;
+            this.ExportToCSV.FlatAppearance.BorderSize = 0;
+            this.ExportToCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportToCSV.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.ForeColor = System.Drawing.Color.White;
+            this.ExportToCSV.HoverColor = System.Drawing.Color.MediumTurquoise;
+            this.ExportToCSV.Location = new System.Drawing.Point(908, 864);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(204, 55);
+            this.ExportToCSV.TabIndex = 160;
+            this.ExportToCSV.Text = "Export to Excel";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
+            // 
             // ViewDEV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,6 +759,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1168, 924);
+            this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.customRoundedPanel11);
             this.Controls.Add(this.customRoundedPanel12);
             this.Controls.Add(this.label13);
@@ -893,5 +912,6 @@
         private Controls.CustomRoundedPanel customRoundedPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private Controls.CustomRoundedButton ExportToCSV;
     }
 }
