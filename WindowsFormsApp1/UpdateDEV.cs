@@ -28,8 +28,18 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             InitializeAmountFormatting();
+            DisableNonEditableFields();
             UpdateDevbtn.Click += UpdateDevbtn_Click;
             cancel.Click += cancel_Click;
+        }
+
+        private void DisableNonEditableFields()
+        {
+            // Disable dev_no, grossAmount, deductions, and netAmount - they should not be updated
+            dev_no.ReadOnly = true;
+            grossAmount.ReadOnly = true;
+            deductions.ReadOnly = true;
+            netAmount.ReadOnly = true;
         }
 
         public UpdateDEV(int devId, int userId = 0) : this()
@@ -170,7 +180,6 @@ namespace WindowsFormsApp1
         {
             var requiredFields = new List<(string Value, string Label)>
             {
-                (dev_no.Text, "DEV No."),
                 (fundcluster.Text, "Fund Cluster"),
                 (orsbursNo.Text, "ORS/BURS Serial No."),
                 (payee.Text, "Payee"),
@@ -182,9 +191,6 @@ namespace WindowsFormsApp1
                 (tinNo.Text, "TIN No."),
                 (mfopap.Text, "MFO/PAP"),
                 (taxType.Text, "Tax Type"),
-                (grossAmount.Text, "Gross Amount"),
-                (deductions.Text, "Deductions"),
-                (netAmount.Text, "Net Amount"),
                 (Status.Text, "Status"),
                 (ApOfficer.Text, "Approving Officer")
             };
@@ -196,24 +202,6 @@ namespace WindowsFormsApp1
                     message = $"{field.Label} is required and cannot be empty.";
                     return false;
                 }
-            }
-
-            if (!TryParseCurrencyValue(grossAmount.Text, out _))
-            {
-                message = "Gross Amount must be a valid number.";
-                return false;
-            }
-
-            if (!TryParseCurrencyValue(deductions.Text, out _))
-            {
-                message = "Deductions must be a valid number.";
-                return false;
-            }
-
-            if (!TryParseCurrencyValue(netAmount.Text, out _))
-            {
-                message = "Net Amount must be a valid number.";
-                return false;
             }
 
             message = string.Empty;
