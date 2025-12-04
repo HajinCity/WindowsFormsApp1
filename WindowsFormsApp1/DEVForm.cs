@@ -279,7 +279,14 @@ namespace WindowsFormsApp1
             string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
             if (columnName == "BtnEdit")
             {
-                using (var updateForm = new UpdateDEV(devId))
+                if (loggedInUserId == 0)
+                {
+                    MessageBox.Show("Unable to determine current user. Please log in again.", "Authentication Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (var updateForm = new UpdateDEV(devId, loggedInUserId))
                 {
                     if (updateForm.ShowDialog(this) == DialogResult.OK)
                     {
