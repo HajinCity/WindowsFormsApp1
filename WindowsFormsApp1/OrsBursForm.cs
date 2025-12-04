@@ -33,6 +33,7 @@ namespace WindowsFormsApp1
         }
 
         private readonly List<OrsBursRecord> orsBursCache = new List<OrsBursRecord>();
+        private int loggedInUserId = 0;
 
         public OrsBursForm()
         {
@@ -46,6 +47,11 @@ namespace WindowsFormsApp1
             ExportCSV.Click += ExportToCSV_Click;
         }
 
+        public void SetLoggedInUserId(int userId)
+        {
+            loggedInUserId = userId;
+        }
+
         private void OrsBursForm_Load(object sender, EventArgs e)
         {
             // Set initial date range to show all data (wide range)
@@ -56,7 +62,14 @@ namespace WindowsFormsApp1
 
         private void AddEntryBtn_Click(object sender, EventArgs e)
         {
-            using (var addForm = new AddORSBURS())
+            if (loggedInUserId == 0)
+            {
+                MessageBox.Show("Unable to determine current user. Please log in again.", "Authentication Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var addForm = new AddORSBURS(loggedInUserId))
             {
                 addForm.ShowDialog(this);
                 // Always refresh data after the form closes to show any new entries

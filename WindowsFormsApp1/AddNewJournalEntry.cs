@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,10 +33,12 @@ namespace WindowsFormsApp1
         // Store original panel1 position and size
         private Point originalPanel1Location;
         private Size originalPanel1Size;
+        private int loggedInUserId;
         
-        public AddNewJournalEntry()
+        public AddNewJournalEntry(int userId)
         {
             InitializeComponent();
+            loggedInUserId = userId;
             InitializeFileUpload();
             createEntryBtn.Click += CreateEntryBtn_Click;
             cancel.Click += (s, e) => this.Close();
@@ -391,6 +395,14 @@ namespace WindowsFormsApp1
             try
             {
                 SaveJournalEntry();
+                
+                // Log user activity
+                LogUserActivity(
+                    loggedInUserId,
+                    "Created",
+                    "General Journal",
+                    $"Created new journal entry: {gjno.Text.Trim()}");
+                
                 MessageBox.Show("Journal entry saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -569,6 +581,67 @@ namespace WindowsFormsApp1
             }
 
             e.Handled = true;
+        }
+
+        private void LogUserActivity(int userId, string action, string module, string details)
+        {
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"
+                        INSERT INTO userlogs (user_id, users, action, module, details, ip_address, action_timestamp)
+                        SELECT 
+                            u.user_id,
+                            u.full_name,
+                            @action,
+                            @module,
+                            @details,
+                            @ip_address,
+                            NOW()
+                        FROM users u
+                        WHERE u.user_id = @user_id;";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@user_id", userId);
+                        command.Parameters.AddWithValue("@action", action);
+                        command.Parameters.AddWithValue("@module", module);
+                        command.Parameters.AddWithValue("@details", details ?? string.Empty);
+                        command.Parameters.AddWithValue("@ip_address", GetLocalIpAddress());
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error but don't block save operation
+                System.Diagnostics.Debug.WriteLine($"Failed to log user activity: {ex.Message}");
+            }
+        }
+
+        private string GetLocalIpAddress()
+        {
+            try
+            {
+                string localIP = "";
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var ip in host.AddressList)
+                {
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        localIP = ip.ToString();
+                        break;
+                    }
+                }
+
+                return string.IsNullOrEmpty(localIP) ? "Unknown" : localIP;
+            }
+            catch
+            {
+                return "Unknown";
+            }
         }
     }
 }

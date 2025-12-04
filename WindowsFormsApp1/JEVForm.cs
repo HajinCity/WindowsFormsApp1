@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
         }
 
         private readonly List<JEVRecord> jevCache = new List<JEVRecord>();
+        private int loggedInUserId = 0;
 
         public JEVForm()
         {
@@ -44,6 +45,11 @@ namespace WindowsFormsApp1
             ExportToCSV.Click += ExportToCSV_Click;
         }
 
+        public void SetLoggedInUserId(int userId)
+        {
+            loggedInUserId = userId;
+        }
+
         private void JEVForm_Load(object sender, EventArgs e)
         {
             // Set initial date range to show all data (wide range)
@@ -54,13 +60,20 @@ namespace WindowsFormsApp1
 
         private void AddJEVbtn_Click(object sender, EventArgs e)
         {
-            using (var addJevEntry = new AddJEVEntry())
+            if (loggedInUserId == 0)
+            {
+                MessageBox.Show("Unable to determine current user. Please log in again.", "Authentication Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var addJevEntry = new AddJEVEntry(loggedInUserId))
             {
                 if (addJevEntry.ShowDialog(this) == DialogResult.OK)
                 {
                     // Refresh data after new entry is added
                     LoadJEVData();
-            }
+                }
             }
         }
 

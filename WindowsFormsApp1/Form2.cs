@@ -194,6 +194,7 @@ namespace WindowsFormsApp1
 
                 // Create and configure SupplierForm
                 supplierForm = new SupplierForm();
+                supplierForm.SetLoggedInUserId(loggedInUserId);
                 supplierForm.TopLevel = false;
                 supplierForm.FormBorderStyle = FormBorderStyle.None;
                 supplierForm.Dock = DockStyle.Fill;
@@ -247,6 +248,7 @@ namespace WindowsFormsApp1
 
                 // Create and configure GeneralJournal form
                 generalJournalForm = new GeneralJournal();
+                generalJournalForm.SetLoggedInUserId(loggedInUserId);
                 generalJournalForm.TopLevel = false;
                 generalJournalForm.FormBorderStyle = FormBorderStyle.None;
                 generalJournalForm.Dock = DockStyle.Fill;
@@ -300,6 +302,7 @@ namespace WindowsFormsApp1
 
                 // Create and configure IARForm
                 iarForm = new IARForm();
+                iarForm.SetLoggedInUserId(loggedInUserId);
                 iarForm.TopLevel = false;
                 iarForm.FormBorderStyle = FormBorderStyle.None;
                 iarForm.Dock = DockStyle.Fill;
@@ -351,6 +354,7 @@ namespace WindowsFormsApp1
                 userManagementForm = null;
 
                 orsBursForm = new OrsBursForm();
+                orsBursForm.SetLoggedInUserId(loggedInUserId);
                 orsBursForm.TopLevel = false;
                 orsBursForm.FormBorderStyle = FormBorderStyle.None;
                 orsBursForm.Dock = DockStyle.Fill;
@@ -398,6 +402,7 @@ namespace WindowsFormsApp1
                 jevForm = null;
 
                 jevForm = new JEVForm();
+                jevForm.SetLoggedInUserId(loggedInUserId);
                 jevForm.TopLevel = false;
                 jevForm.FormBorderStyle = FormBorderStyle.None;
                 jevForm.Dock = DockStyle.Fill;
@@ -445,6 +450,7 @@ namespace WindowsFormsApp1
                 devForm = null;
 
                 devForm = new DEVForm();
+                devForm.SetLoggedInUserId(loggedInUserId);
                 devForm.TopLevel = false;
                 devForm.FormBorderStyle = FormBorderStyle.None;
                 devForm.Dock = DockStyle.Fill;

@@ -26,6 +26,7 @@ namespace WindowsFormsApp1
         private readonly List<JournalEntryRecord> journalCache = new List<JournalEntryRecord>();
         private bool suppressFilterEvents = false;
         private bool hasInitializedDateRange = false;
+        private int loggedInUserId = 0;
 
         public GeneralJournal()
         {
@@ -37,6 +38,11 @@ namespace WindowsFormsApp1
             pictureBox2.Click += PictureBox2_Click;
             ParseRangeBtn.Click += ParseRange_Click;
             this.Load += GeneralJournal_Load;
+        }
+
+        public void SetLoggedInUserId(int userId)
+        {
+            loggedInUserId = userId;
         }
 
         private void GeneralJournal_Load(object sender, EventArgs e)
@@ -61,7 +67,14 @@ namespace WindowsFormsApp1
 
         private void AddEntryBtn_Click(object sender, EventArgs e)
         {
-            using (var addEntryForm = new AddNewJournalEntry())
+            if (loggedInUserId == 0)
+            {
+                MessageBox.Show("Unable to determine current user. Please log in again.", "Authentication Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var addEntryForm = new AddNewJournalEntry(loggedInUserId))
             {
                 if (addEntryForm.ShowDialog(this) == DialogResult.OK)
                 {

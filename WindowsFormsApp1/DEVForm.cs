@@ -32,6 +32,7 @@ namespace WindowsFormsApp1
         private readonly List<DEVRecord> devCache = new List<DEVRecord>();
         private bool suppressFilterEvents = false;
         private bool hasInitializedRange = false;
+        private int loggedInUserId = 0;
 
         public DEVForm()
         {
@@ -48,6 +49,11 @@ namespace WindowsFormsApp1
             {
                 ExportToCSV.Click += ExportToCSV_Click;
             }
+        }
+
+        public void SetLoggedInUserId(int userId)
+        {
+            loggedInUserId = userId;
         }
 
         private void DEVForm_Load(object sender, EventArgs e)
@@ -72,7 +78,14 @@ namespace WindowsFormsApp1
 
         private void addDEVbtn_Click(object sender, EventArgs e)
         {
-            using (var addForm = new AddDevEntry())
+            if (loggedInUserId == 0)
+            {
+                MessageBox.Show("Unable to determine current user. Please log in again.", "Authentication Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var addForm = new AddDevEntry(loggedInUserId))
             {
                 if (addForm.ShowDialog(this) == DialogResult.OK)
                 {

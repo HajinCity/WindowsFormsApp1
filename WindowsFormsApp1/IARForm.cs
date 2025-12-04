@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
         private readonly List<IarRecord> iarCache = new List<IarRecord>();
         private bool suppressFilterEvents = false;
         private bool hasInitializedRange = false;
+        private int loggedInUserId = 0;
 
         public IARForm()
         {
@@ -38,6 +39,11 @@ namespace WindowsFormsApp1
             pictureBox2.Click += PictureBox2_Click;
             ParseRangeBtn.Click += ParseRangeBtn_Click;
             this.Load += IARForm_Load;
+        }
+
+        public void SetLoggedInUserId(int userId)
+        {
+            loggedInUserId = userId;
         }
 
         private void IARForm_Load(object sender, EventArgs e)
@@ -62,7 +68,14 @@ namespace WindowsFormsApp1
 
         private void AddIARbtn_Click(object sender, EventArgs e)
         {
-            using (var addIARForm = new AddIARForm())
+            if (loggedInUserId == 0)
+            {
+                MessageBox.Show("Unable to determine current user. Please log in again.", "Authentication Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var addIARForm = new AddIARForm(loggedInUserId))
             {
                 if (addIARForm.ShowDialog(this) == DialogResult.OK)
                 {

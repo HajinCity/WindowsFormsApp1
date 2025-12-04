@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         }
 
         private readonly List<SupplierRecord> supplierCache = new List<SupplierRecord>();
+        private int loggedInUserId = 0;
 
         public SupplierForm()
         {
@@ -31,6 +32,11 @@ namespace WindowsFormsApp1
             dataGridView2.CellContentClick += DataGridView1_CellContentClick;
             textBox1.TextChanged += TextBox1_TextChanged;
             ExportToCSV.Click += ExportToCSV_Click;
+        }
+
+        public void SetLoggedInUserId(int userId)
+        {
+            loggedInUserId = userId;
         }
 
         private void SupplierForm_Load(object sender, EventArgs e)
@@ -213,7 +219,14 @@ namespace WindowsFormsApp1
 
         private void AddSupplierBtn_Click(object sender, EventArgs e)
         {
-            using (var addSupplierForm = new AddSupplier())
+            if (loggedInUserId == 0)
+            {
+                MessageBox.Show("Unable to determine current user. Please log in again.", "Authentication Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var addSupplierForm = new AddSupplier(loggedInUserId))
             {
                 if (addSupplierForm.ShowDialog(this) == DialogResult.OK)
                 {
