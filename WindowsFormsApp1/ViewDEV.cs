@@ -96,5 +96,10 @@ namespace WindowsFormsApp1
                 return "Unknown";
             }
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();   
+        }
     }
 }
