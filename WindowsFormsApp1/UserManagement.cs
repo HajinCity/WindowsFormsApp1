@@ -105,8 +105,9 @@ namespace WindowsFormsApp1
                 comboBox1.SelectedIndex = 0; // typically "All Actions"
             }
 
-            // Reset date filter to today but don't force-enable it
+            // Reset date filters to today but don't force-enable them
             dateTimePicker3.Value = DateTime.Today;
+            dateTimePicker4.Value = DateTime.Today;
 
             // Ensure grid shows all rows from the refreshed table
             if (userLogsTable != null)
@@ -225,10 +226,11 @@ namespace WindowsFormsApp1
             ApplyUserLogsFilter(
                 keyword: textBox3.Text,
                 actionFilter: null,
-                dateFilter: null);
+                startDate: null,
+                endDate: null);
         }
 
-        // 2 & 3) Keyword + Action (+ optional Date) filter (EnterBtn)
+        // 2 & 3) Keyword + Action + Date Range filter (EnterBtn)
         private void EnterBtn_Click(object sender, EventArgs e)
         {
             string keyword = textBox3.Text;
@@ -241,19 +243,35 @@ namespace WindowsFormsApp1
                 selectedAction = null;
             }
 
-            // Always use the date value when EnterBtn is clicked and the control is enabled.
-            // If you only want the date when a checkbox is checked, you can adjust this.
-            DateTime? dateFilter = dateTimePicker3.Enabled
-                ? dateTimePicker3.Value.Date
-                : (DateTime?)null;
+            // Get date range from dateTimePicker3 (start) and dateTimePicker4 (end)
+            DateTime? startDate = null;
+            DateTime? endDate = null;
+
+            if (dateTimePicker3.Enabled && dateTimePicker4.Enabled)
+            {
+                startDate = dateTimePicker3.Value.Date;
+                endDate = dateTimePicker4.Value.Date.AddDays(1); // Add 1 day to include the entire end date
+
+                // Validate date range
+                if (startDate.Value > dateTimePicker4.Value.Date)
+                {
+                    MessageBox.Show(
+                        "Start date cannot be greater than end date. Please adjust the date range.",
+                        "Invalid Date Range",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+            }
 
             ApplyUserLogsFilter(
                 keyword: keyword,
                 actionFilter: selectedAction,
-                dateFilter: dateFilter);
+                startDate: startDate,
+                endDate: endDate);
         }
 
-        private void ApplyUserLogsFilter(string keyword, string actionFilter, DateTime? dateFilter)
+        private void ApplyUserLogsFilter(string keyword, string actionFilter, DateTime? startDate, DateTime? endDate)
         {
             if (userLogsTable == null)
             {
@@ -280,13 +298,18 @@ namespace WindowsFormsApp1
                 filters.Add($"user_action = '{escapedAction}'");
             }
 
-            // Date filter (from dateTimePicker3) – compare only by date
-            if (dateFilter.HasValue)
+            // Date range filter (from dateTimePicker3 to dateTimePicker4)
+            if (startDate.HasValue && endDate.HasValue)
             {
-                DateTime start = dateFilter.Value.Date;
-                DateTime end = start.AddDays(1);
                 filters.Add(
-                    $"log_timestamp >= #{start:yyyy-MM-dd}# AND log_timestamp < #{end:yyyy-MM-dd}#");
+                    $"log_timestamp >= #{startDate.Value:yyyy-MM-dd}# AND log_timestamp < #{endDate.Value:yyyy-MM-dd}#");
+            }
+            else if (startDate.HasValue)
+            {
+                // Only start date provided
+                DateTime end = startDate.Value.AddDays(1);
+                filters.Add(
+                    $"log_timestamp >= #{startDate.Value:yyyy-MM-dd}# AND log_timestamp < #{end:yyyy-MM-dd}#");
             }
 
             string combinedFilter = string.Join(" AND ", filters);

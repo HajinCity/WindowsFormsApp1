@@ -249,7 +249,14 @@ namespace WindowsFormsApp1
             }
             else if (columnName == "BtnView")
             {
-                using (var viewForm = new ViewJEV(jevId))
+                if (loggedInUserId == 0)
+                {
+                    MessageBox.Show("Unable to determine current user. Please log in again.", "Authentication Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (var viewForm = new ViewJEV(jevId, loggedInUserId))
                 {
                     viewForm.ShowDialog(this);
                 }

@@ -3,6 +3,8 @@ using System.Globalization;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using WindowsFormsApp1.BackendModel;
@@ -12,6 +14,7 @@ namespace WindowsFormsApp1
     public partial class ViewGJEntry : Form
     {
         private readonly int journalId;
+        private readonly int loggedInUserId;
         private byte[] documentBytes;
         private string storedDocumentExtension;
         private Button downloadDocumentButton;
@@ -26,9 +29,10 @@ namespace WindowsFormsApp1
             amount.TextChanged += Amount_TextChanged;
         }
 
-        public ViewGJEntry(int journalId) : this()
+        public ViewGJEntry(int journalId, int userId) : this()
         {
             this.journalId = journalId;
+            this.loggedInUserId = userId;
             if (journalId > 0)
             {
                 LoadJournalDetails();
@@ -157,6 +161,13 @@ namespace WindowsFormsApp1
                             storedDocumentExtension = GuessFileExtension(documentBytes);
 
                             UpdateDocumentSection();
+                            
+                            // Log user activity
+                            LogUserActivity(
+                                loggedInUserId,
+                                "Viewed",
+                                "General Journal",
+                                $"Viewed journal entry: {gjno.Text}");
                         }
                     }
                 }
@@ -333,6 +344,67 @@ namespace WindowsFormsApp1
             amount.SelectionStart = amount.Text.Length;
             amount.SelectionLength = 0;
             isFormattingAmountText = false;
+        }
+
+        private void LogUserActivity(int userId, string action, string module, string details)
+        {
+            try
+            {
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"
+                        INSERT INTO userlogs (user_id, users, action, module, details, ip_address, action_timestamp)
+                        SELECT 
+                            u.user_id,
+                            u.full_name,
+                            @action,
+                            @module,
+                            @details,
+                            @ip_address,
+                            NOW()
+                        FROM users u
+                        WHERE u.user_id = @user_id;";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@user_id", userId);
+                        command.Parameters.AddWithValue("@action", action);
+                        command.Parameters.AddWithValue("@module", module);
+                        command.Parameters.AddWithValue("@details", details ?? string.Empty);
+                        command.Parameters.AddWithValue("@ip_address", GetLocalIpAddress());
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error but don't block view operation
+                System.Diagnostics.Debug.WriteLine($"Failed to log user activity: {ex.Message}");
+            }
+        }
+
+        private string GetLocalIpAddress()
+        {
+            try
+            {
+                string localIP = "";
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var ip in host.AddressList)
+                {
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        localIP = ip.ToString();
+                        break;
+                    }
+                }
+
+                return string.IsNullOrEmpty(localIP) ? "Unknown" : localIP;
+            }
+            catch
+            {
+                return "Unknown";
+            }
         }
     }
 }
