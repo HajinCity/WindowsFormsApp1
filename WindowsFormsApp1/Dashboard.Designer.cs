@@ -65,19 +65,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.totalpaybles = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.totalpaid = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.totalunpaid = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.totalpartiallypaid = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -367,7 +367,7 @@
             // 
             this.customRoundedPanel1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.customRoundedPanel1.BorderRadius = 10;
-            this.customRoundedPanel1.Controls.Add(this.label5);
+            this.customRoundedPanel1.Controls.Add(this.totalpaybles);
             this.customRoundedPanel1.Controls.Add(this.label17);
             this.customRoundedPanel1.Controls.Add(this.label18);
             this.customRoundedPanel1.Location = new System.Drawing.Point(23, 14);
@@ -375,16 +375,16 @@
             this.customRoundedPanel1.Size = new System.Drawing.Size(342, 135);
             this.customRoundedPanel1.TabIndex = 33;
             // 
-            // label5
+            // totalpaybles
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(56, 93);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 18);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "0";
+            this.totalpaybles.AutoSize = true;
+            this.totalpaybles.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalpaybles.ForeColor = System.Drawing.Color.White;
+            this.totalpaybles.Location = new System.Drawing.Point(56, 93);
+            this.totalpaybles.Name = "totalpaybles";
+            this.totalpaybles.Size = new System.Drawing.Size(17, 18);
+            this.totalpaybles.TabIndex = 20;
+            this.totalpaybles.Text = "0";
             // 
             // label17
             // 
@@ -412,7 +412,7 @@
             // 
             this.customRoundedPanel2.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.customRoundedPanel2.BorderRadius = 10;
-            this.customRoundedPanel2.Controls.Add(this.label6);
+            this.customRoundedPanel2.Controls.Add(this.totalpaid);
             this.customRoundedPanel2.Controls.Add(this.label7);
             this.customRoundedPanel2.Controls.Add(this.label8);
             this.customRoundedPanel2.Location = new System.Drawing.Point(440, 14);
@@ -420,16 +420,16 @@
             this.customRoundedPanel2.Size = new System.Drawing.Size(342, 135);
             this.customRoundedPanel2.TabIndex = 34;
             // 
-            // label6
+            // totalpaid
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(56, 93);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 18);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "0";
+            this.totalpaid.AutoSize = true;
+            this.totalpaid.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalpaid.ForeColor = System.Drawing.Color.White;
+            this.totalpaid.Location = new System.Drawing.Point(56, 93);
+            this.totalpaid.Name = "totalpaid";
+            this.totalpaid.Size = new System.Drawing.Size(17, 18);
+            this.totalpaid.TabIndex = 20;
+            this.totalpaid.Text = "0";
             // 
             // label7
             // 
@@ -457,7 +457,7 @@
             // 
             this.customRoundedPanel3.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.customRoundedPanel3.BorderRadius = 10;
-            this.customRoundedPanel3.Controls.Add(this.label9);
+            this.customRoundedPanel3.Controls.Add(this.totalunpaid);
             this.customRoundedPanel3.Controls.Add(this.label10);
             this.customRoundedPanel3.Controls.Add(this.label11);
             this.customRoundedPanel3.Location = new System.Drawing.Point(849, 14);
@@ -465,16 +465,16 @@
             this.customRoundedPanel3.Size = new System.Drawing.Size(342, 135);
             this.customRoundedPanel3.TabIndex = 35;
             // 
-            // label9
+            // totalunpaid
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(56, 93);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 18);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "0";
+            this.totalunpaid.AutoSize = true;
+            this.totalunpaid.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalunpaid.ForeColor = System.Drawing.Color.White;
+            this.totalunpaid.Location = new System.Drawing.Point(56, 93);
+            this.totalunpaid.Name = "totalunpaid";
+            this.totalunpaid.Size = new System.Drawing.Size(17, 18);
+            this.totalunpaid.TabIndex = 20;
+            this.totalunpaid.Text = "0";
             // 
             // label10
             // 
@@ -502,7 +502,7 @@
             // 
             this.customRoundedPanel4.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.customRoundedPanel4.BorderRadius = 10;
-            this.customRoundedPanel4.Controls.Add(this.label12);
+            this.customRoundedPanel4.Controls.Add(this.totalpartiallypaid);
             this.customRoundedPanel4.Controls.Add(this.label13);
             this.customRoundedPanel4.Controls.Add(this.label14);
             this.customRoundedPanel4.Location = new System.Drawing.Point(1260, 14);
@@ -510,16 +510,16 @@
             this.customRoundedPanel4.Size = new System.Drawing.Size(342, 135);
             this.customRoundedPanel4.TabIndex = 36;
             // 
-            // label12
+            // totalpartiallypaid
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(56, 93);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(17, 18);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "0";
+            this.totalpartiallypaid.AutoSize = true;
+            this.totalpartiallypaid.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalpartiallypaid.ForeColor = System.Drawing.Color.White;
+            this.totalpartiallypaid.Location = new System.Drawing.Point(56, 93);
+            this.totalpartiallypaid.Name = "totalpartiallypaid";
+            this.totalpartiallypaid.Size = new System.Drawing.Size(17, 18);
+            this.totalpartiallypaid.TabIndex = 20;
+            this.totalpartiallypaid.Text = "0";
             // 
             // label13
             // 
@@ -778,19 +778,19 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private Controls.CustomRoundedPanel customRoundedPanel4;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label totalpartiallypaid;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private Controls.CustomRoundedPanel customRoundedPanel3;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label totalunpaid;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private Controls.CustomRoundedPanel customRoundedPanel2;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label totalpaid;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private Controls.CustomRoundedPanel customRoundedPanel1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label totalpaybles;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel1;
