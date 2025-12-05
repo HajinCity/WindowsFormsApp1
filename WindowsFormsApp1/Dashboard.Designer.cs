@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea34 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend34 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series56 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea35 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend35 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series57 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series58 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series59 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea36 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend36 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series60 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,42 +51,42 @@
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.gradientPanel1 = new WindowsFormsApp1.Controls.GradientPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.AddUserBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.EditProfileBtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.customRoundedPanel2 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.customRoundedPanel3 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.customRoundedPanel4 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
-            this.gradientPanel1.SuspendLayout();
-            this.customRoundedPanel4.SuspendLayout();
-            this.customRoundedPanel3.SuspendLayout();
-            this.customRoundedPanel2.SuspendLayout();
-            this.customRoundedPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.gradientPanel1.SuspendLayout();
+            this.customRoundedPanel1.SuspendLayout();
+            this.customRoundedPanel2.SuspendLayout();
+            this.customRoundedPanel3.SuspendLayout();
+            this.customRoundedPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -99,17 +99,17 @@
             // 
             // chart2
             // 
-            chartArea34.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea34);
-            legend34.Name = "Legend1";
-            this.chart2.Legends.Add(legend34);
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
             this.chart2.Location = new System.Drawing.Point(16, 11);
             this.chart2.Name = "chart2";
-            series56.ChartArea = "ChartArea1";
-            series56.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series56.Legend = "Legend1";
-            series56.Name = "Series1";
-            this.chart2.Series.Add(series56);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
             this.chart2.Size = new System.Drawing.Size(666, 444);
             this.chart2.TabIndex = 0;
             this.chart2.Text = "chart2";
@@ -146,24 +146,24 @@
             // 
             // chart1
             // 
-            chartArea35.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea35);
-            legend35.Name = "Legend1";
-            this.chart1.Legends.Add(legend35);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(10, 6);
             this.chart1.Name = "chart1";
-            series57.ChartArea = "ChartArea1";
-            series57.Legend = "Legend1";
-            series57.Name = "Series1";
-            series58.ChartArea = "ChartArea1";
-            series58.Legend = "Legend1";
-            series58.Name = "Series2";
-            series59.ChartArea = "ChartArea1";
-            series59.Legend = "Legend1";
-            series59.Name = "Series3";
-            this.chart1.Series.Add(series57);
-            this.chart1.Series.Add(series58);
-            this.chart1.Series.Add(series59);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series2";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series3";
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(1559, 594);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -200,17 +200,17 @@
             // 
             // chart3
             // 
-            chartArea36.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea36);
-            legend36.Name = "Legend1";
-            this.chart3.Legends.Add(legend36);
+            chartArea3.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart3.Legends.Add(legend3);
             this.chart3.Location = new System.Drawing.Point(12, 11);
             this.chart3.Name = "chart3";
-            series60.ChartArea = "ChartArea1";
-            series60.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series60.Legend = "Legend1";
-            series60.Name = "Series1";
-            this.chart3.Series.Add(series60);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chart3.Series.Add(series5);
             this.chart3.Size = new System.Drawing.Size(513, 454);
             this.chart3.TabIndex = 0;
             this.chart3.Text = "chart3";
@@ -233,6 +233,19 @@
             this.label21.TabIndex = 43;
             this.label21.Text = "Accounts Payable Age";
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.customRoundedPanel1);
+            this.panel5.Controls.Add(this.customRoundedPanel2);
+            this.panel5.Controls.Add(this.customRoundedPanel3);
+            this.panel5.Controls.Add(this.customRoundedPanel4);
+            this.panel5.Controls.Add(this.panel1);
+            this.panel5.Controls.Add(this.label19);
+            this.panel5.Location = new System.Drawing.Point(9, 233);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1622, 871);
+            this.panel5.TabIndex = 154;
+            // 
             // gradientPanel1
             // 
             this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
@@ -248,6 +261,30 @@
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Size = new System.Drawing.Size(1572, 98);
             this.gradientPanel1.TabIndex = 153;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(460, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 18);
+            this.label4.TabIndex = 48;
+            this.label4.Text = "Period";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Monthly",
+            "Quarterly",
+            "Yearly"});
+            this.comboBox1.Location = new System.Drawing.Point(18, 47);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(390, 25);
+            this.comboBox1.TabIndex = 47;
             // 
             // AddUserBtn
             // 
@@ -296,146 +333,14 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CustomFormat = "yyyy";
             this.dateTimePicker1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(463, 47);
             this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
             this.dateTimePicker1.Size = new System.Drawing.Size(342, 25);
             this.dateTimePicker1.TabIndex = 44;
-            // 
-            // customRoundedPanel4
-            // 
-            this.customRoundedPanel4.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.customRoundedPanel4.BorderRadius = 10;
-            this.customRoundedPanel4.Controls.Add(this.label12);
-            this.customRoundedPanel4.Controls.Add(this.label13);
-            this.customRoundedPanel4.Controls.Add(this.label14);
-            this.customRoundedPanel4.Location = new System.Drawing.Point(1260, 14);
-            this.customRoundedPanel4.Name = "customRoundedPanel4";
-            this.customRoundedPanel4.Size = new System.Drawing.Size(342, 135);
-            this.customRoundedPanel4.TabIndex = 36;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(56, 93);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(17, 18);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "0";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(27, 93);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(19, 18);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "₱";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(24, 20);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(100, 18);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Partially Paid";
-            // 
-            // customRoundedPanel3
-            // 
-            this.customRoundedPanel3.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.customRoundedPanel3.BorderRadius = 10;
-            this.customRoundedPanel3.Controls.Add(this.label9);
-            this.customRoundedPanel3.Controls.Add(this.label10);
-            this.customRoundedPanel3.Controls.Add(this.label11);
-            this.customRoundedPanel3.Location = new System.Drawing.Point(849, 14);
-            this.customRoundedPanel3.Name = "customRoundedPanel3";
-            this.customRoundedPanel3.Size = new System.Drawing.Size(342, 135);
-            this.customRoundedPanel3.TabIndex = 35;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(56, 93);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 18);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(27, 93);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(19, 18);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "₱";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(24, 20);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 18);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Unpaid";
-            // 
-            // customRoundedPanel2
-            // 
-            this.customRoundedPanel2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.customRoundedPanel2.BorderRadius = 10;
-            this.customRoundedPanel2.Controls.Add(this.label6);
-            this.customRoundedPanel2.Controls.Add(this.label7);
-            this.customRoundedPanel2.Controls.Add(this.label8);
-            this.customRoundedPanel2.Location = new System.Drawing.Point(440, 14);
-            this.customRoundedPanel2.Name = "customRoundedPanel2";
-            this.customRoundedPanel2.Size = new System.Drawing.Size(342, 135);
-            this.customRoundedPanel2.TabIndex = 34;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(56, 93);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 18);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(27, 93);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(19, 18);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "₱";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(24, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 18);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Paid";
             // 
             // customRoundedPanel1
             // 
@@ -482,42 +387,140 @@
             this.label18.TabIndex = 18;
             this.label18.Text = "Total Payables";
             // 
-            // panel5
+            // customRoundedPanel2
             // 
-            this.panel5.Controls.Add(this.customRoundedPanel1);
-            this.panel5.Controls.Add(this.customRoundedPanel2);
-            this.panel5.Controls.Add(this.customRoundedPanel3);
-            this.panel5.Controls.Add(this.customRoundedPanel4);
-            this.panel5.Controls.Add(this.panel1);
-            this.panel5.Controls.Add(this.label19);
-            this.panel5.Location = new System.Drawing.Point(9, 233);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1622, 871);
-            this.panel5.TabIndex = 154;
+            this.customRoundedPanel2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.customRoundedPanel2.BorderRadius = 10;
+            this.customRoundedPanel2.Controls.Add(this.label6);
+            this.customRoundedPanel2.Controls.Add(this.label7);
+            this.customRoundedPanel2.Controls.Add(this.label8);
+            this.customRoundedPanel2.Location = new System.Drawing.Point(440, 14);
+            this.customRoundedPanel2.Name = "customRoundedPanel2";
+            this.customRoundedPanel2.Size = new System.Drawing.Size(342, 135);
+            this.customRoundedPanel2.TabIndex = 34;
             // 
-            // comboBox1
+            // label6
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Monthly",
-            "Quarterly",
-            "Yearly"});
-            this.comboBox1.Location = new System.Drawing.Point(18, 47);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(390, 25);
-            this.comboBox1.TabIndex = 47;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(56, 93);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 18);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "0";
             // 
-            // label4
+            // label7
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(460, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 18);
-            this.label4.TabIndex = 48;
-            this.label4.Text = "Period";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(27, 93);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 18);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "₱";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(24, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 18);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Paid";
+            // 
+            // customRoundedPanel3
+            // 
+            this.customRoundedPanel3.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.customRoundedPanel3.BorderRadius = 10;
+            this.customRoundedPanel3.Controls.Add(this.label9);
+            this.customRoundedPanel3.Controls.Add(this.label10);
+            this.customRoundedPanel3.Controls.Add(this.label11);
+            this.customRoundedPanel3.Location = new System.Drawing.Point(849, 14);
+            this.customRoundedPanel3.Name = "customRoundedPanel3";
+            this.customRoundedPanel3.Size = new System.Drawing.Size(342, 135);
+            this.customRoundedPanel3.TabIndex = 35;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(56, 93);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(17, 18);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(27, 93);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(19, 18);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "₱";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(24, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(58, 18);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Unpaid";
+            // 
+            // customRoundedPanel4
+            // 
+            this.customRoundedPanel4.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.customRoundedPanel4.BorderRadius = 10;
+            this.customRoundedPanel4.Controls.Add(this.label12);
+            this.customRoundedPanel4.Controls.Add(this.label13);
+            this.customRoundedPanel4.Controls.Add(this.label14);
+            this.customRoundedPanel4.Location = new System.Drawing.Point(1260, 14);
+            this.customRoundedPanel4.Name = "customRoundedPanel4";
+            this.customRoundedPanel4.Size = new System.Drawing.Size(342, 135);
+            this.customRoundedPanel4.TabIndex = 36;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(56, 93);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(17, 18);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(27, 93);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(19, 18);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "₱";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(24, 20);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 18);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Partially Paid";
             // 
             // Dashboard
             // 
@@ -545,18 +548,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
-            this.gradientPanel1.ResumeLayout(false);
-            this.gradientPanel1.PerformLayout();
-            this.customRoundedPanel4.ResumeLayout(false);
-            this.customRoundedPanel4.PerformLayout();
-            this.customRoundedPanel3.ResumeLayout(false);
-            this.customRoundedPanel3.PerformLayout();
-            this.customRoundedPanel2.ResumeLayout(false);
-            this.customRoundedPanel2.PerformLayout();
-            this.customRoundedPanel1.ResumeLayout(false);
-            this.customRoundedPanel1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.gradientPanel1.ResumeLayout(false);
+            this.gradientPanel1.PerformLayout();
+            this.customRoundedPanel1.ResumeLayout(false);
+            this.customRoundedPanel1.PerformLayout();
+            this.customRoundedPanel2.ResumeLayout(false);
+            this.customRoundedPanel2.PerformLayout();
+            this.customRoundedPanel3.ResumeLayout(false);
+            this.customRoundedPanel3.PerformLayout();
+            this.customRoundedPanel4.ResumeLayout(false);
+            this.customRoundedPanel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
