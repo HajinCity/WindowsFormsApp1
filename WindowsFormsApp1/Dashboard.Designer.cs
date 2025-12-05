@@ -63,7 +63,7 @@
             this.genRtPbtn = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.exportcsv = new WindowsFormsApp1.Controls.CustomRoundedButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.period = new System.Windows.Forms.DateTimePicker();
             this.customRoundedPanel1 = new WindowsFormsApp1.Controls.CustomRoundedPanel();
             this.totalpaybles = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -275,7 +275,7 @@
             this.gradientPanel1.Controls.Add(this.genRtPbtn);
             this.gradientPanel1.Controls.Add(this.exportcsv);
             this.gradientPanel1.Controls.Add(this.label1);
-            this.gradientPanel1.Controls.Add(this.dateTimePicker1);
+            this.gradientPanel1.Controls.Add(this.period);
             this.gradientPanel1.GradientColor1 = System.Drawing.Color.MediumSeaGreen;
             this.gradientPanel1.GradientColor2 = System.Drawing.Color.Turquoise;
             this.gradientPanel1.Location = new System.Drawing.Point(12, 94);
@@ -352,16 +352,16 @@
             this.label1.TabIndex = 46;
             this.label1.Text = "Report Type";
             // 
-            // dateTimePicker1
+            // period
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(980, 41);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(71, 25);
-            this.dateTimePicker1.TabIndex = 44;
+            this.period.CustomFormat = "yyyy";
+            this.period.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.period.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.period.Location = new System.Drawing.Point(980, 41);
+            this.period.Name = "period";
+            this.period.ShowUpDown = true;
+            this.period.Size = new System.Drawing.Size(71, 25);
+            this.period.TabIndex = 44;
             // 
             // customRoundedPanel1
             // 
@@ -801,7 +801,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker period;
         private System.Windows.Forms.Label label1;
         private Controls.CustomRoundedButton exportcsv;
         private Controls.CustomRoundedButton genRtPbtn;
