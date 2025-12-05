@@ -836,7 +836,15 @@ namespace WindowsFormsApp1
                         writer.WriteLine("DASHBOARD EXPORT");
                         writer.WriteLine("================");
                         writer.WriteLine($"Export Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-                        if (filterStartDate.HasValue && filterEndDate.HasValue)
+                        
+                        // Include month filter if set
+                        if (!string.IsNullOrEmpty(selectedMonthFilter))
+                        {
+                            string[] parts = selectedMonthFilter.Split('-');
+                            string monthDisplay = new DateTime(int.Parse(parts[0]), int.Parse(parts[1]), 1).ToString("MMMM yyyy");
+                            writer.WriteLine($"Filter: {monthDisplay}");
+                        }
+                        else if (filterStartDate.HasValue && filterEndDate.HasValue)
                         {
                             writer.WriteLine($"Date Range: {filterStartDate.Value:yyyy-MM-dd} to {filterEndDate.Value:yyyy-MM-dd}");
                         }
@@ -850,10 +858,23 @@ namespace WindowsFormsApp1
                         writer.WriteLine("SUMMARY TOTALS");
                         writer.WriteLine("==============");
                         writer.WriteLine("Category,Amount");
-                        writer.WriteLine($"Total Payables,{EscapeForCsv(totalpaybles?.Text ?? "0.00")}");
-                        writer.WriteLine($"Total Paid,{EscapeForCsv(totalpaid?.Text ?? "0.00")}");
-                        writer.WriteLine($"Total Unpaid,{EscapeForCsv(totalunpaid?.Text ?? "0.00")}");
-                        writer.WriteLine($"Total Partially Paid,{EscapeForCsv(totalpartiallypaid?.Text ?? "0.00")}");
+                        
+                        // Get actual values from labels and format with currency symbol
+                        string totalPayablesText = totalpaybles?.Text?.Trim() ?? "0.00";
+                        string totalPaidText = totalpaid?.Text?.Trim() ?? "0.00";
+                        string totalUnpaidText = totalunpaid?.Text?.Trim() ?? "0.00";
+                        string totalPartiallyPaidText = totalpartiallypaid?.Text?.Trim() ?? "0.00";
+                        
+                        // Add currency symbol if not present
+                        if (!totalPayablesText.StartsWith("₱")) totalPayablesText = $"₱{totalPayablesText}";
+                        if (!totalPaidText.StartsWith("₱")) totalPaidText = $"₱{totalPaidText}";
+                        if (!totalUnpaidText.StartsWith("₱")) totalUnpaidText = $"₱{totalUnpaidText}";
+                        if (!totalPartiallyPaidText.StartsWith("₱")) totalPartiallyPaidText = $"₱{totalPartiallyPaidText}";
+                        
+                        writer.WriteLine($"Total Payables,{EscapeForCsv(totalPayablesText)}");
+                        writer.WriteLine($"Total Paid,{EscapeForCsv(totalPaidText)}");
+                        writer.WriteLine($"Total Unpaid,{EscapeForCsv(totalUnpaidText)}");
+                        writer.WriteLine($"Total Partially Paid,{EscapeForCsv(totalPartiallyPaidText)}");
                         writer.WriteLine();
                         writer.WriteLine();
 
@@ -869,15 +890,32 @@ namespace WindowsFormsApp1
                             foreach (var month in sortedMonths)
                             {
                                 string[] parts = month.Key.Split('-');
-                                // Format month as "October 2025" to avoid splitting in Excel
+                                // Format month as full name with year (e.g., "January 2025")
                                 string monthName = new DateTime(int.Parse(parts[0]), int.Parse(parts[1]), 1).ToString("MMMM yyyy");
-                                // Format amounts with proper currency formatting (with thousands separator)
-                                string paidAmount = month.Value.paid.ToString("#,##0.00", CultureInfo.InvariantCulture);
-                                string unpaidAmount = month.Value.unpaid.ToString("#,##0.00", CultureInfo.InvariantCulture);
-                                string partiallyPaidAmount = month.Value.partiallyPaid.ToString("#,##0.00", CultureInfo.InvariantCulture);
                                 
-                                writer.WriteLine($"{EscapeForCsv(monthName)},{paidAmount},{unpaidAmount},{partiallyPaidAmount}");
+                                // Format amounts with currency symbol and proper formatting (matching tooltip format)
+                                // Use N2 format for consistent decimal places
+                                string paidAmount = $"₱{month.Value.paid:N2}";
+                                string unpaidAmount = $"₱{month.Value.unpaid:N2}";
+                                string partiallyPaidAmount = $"₱{month.Value.partiallyPaid:N2}";
+                                
+                                // Ensure empty values show as 0.00 instead of blank
+                                if (month.Value.paid == 0) paidAmount = "₱0.00";
+                                if (month.Value.unpaid == 0) unpaidAmount = "₱0.00";
+                                if (month.Value.partiallyPaid == 0) partiallyPaidAmount = "₱0.00";
+                                
+                                writer.WriteLine($"{EscapeForCsv(monthName)},{EscapeForCsv(paidAmount)},{EscapeForCsv(unpaidAmount)},{EscapeForCsv(partiallyPaidAmount)}");
                             }
+                            writer.WriteLine();
+                            writer.WriteLine();
+                        }
+                        else
+                        {
+                            // If no monthly data, still write the section header
+                            writer.WriteLine("MONTHLY PAYMENT TRENDS");
+                            writer.WriteLine("======================");
+                            writer.WriteLine("Month,Paid Amount,Unpaid Amount,Partially Paid Amount");
+                            writer.WriteLine("No data available for the selected date range.");
                             writer.WriteLine();
                             writer.WriteLine();
                         }
