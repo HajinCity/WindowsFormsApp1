@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea28 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend28 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series46 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea29 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend29 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series47 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series48 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series49 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea30 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend30 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series50 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea34 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend34 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series56 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea35 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend35 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series57 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series58 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series59 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea36 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend36 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series60 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
@@ -76,9 +76,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.customRoundedButton1 = new WindowsFormsApp1.Controls.CustomRoundedButton();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -103,17 +103,17 @@
             // 
             // chart2
             // 
-            chartArea28.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea28);
-            legend28.Name = "Legend1";
-            this.chart2.Legends.Add(legend28);
+            chartArea34.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea34);
+            legend34.Name = "Legend1";
+            this.chart2.Legends.Add(legend34);
             this.chart2.Location = new System.Drawing.Point(16, 11);
             this.chart2.Name = "chart2";
-            series46.ChartArea = "ChartArea1";
-            series46.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series46.Legend = "Legend1";
-            series46.Name = "Series1";
-            this.chart2.Series.Add(series46);
+            series56.ChartArea = "ChartArea1";
+            series56.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series56.Legend = "Legend1";
+            series56.Name = "Series1";
+            this.chart2.Series.Add(series56);
             this.chart2.Size = new System.Drawing.Size(666, 444);
             this.chart2.TabIndex = 0;
             this.chart2.Text = "chart2";
@@ -150,24 +150,24 @@
             // 
             // chart1
             // 
-            chartArea29.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea29);
-            legend29.Name = "Legend1";
-            this.chart1.Legends.Add(legend29);
+            chartArea35.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea35);
+            legend35.Name = "Legend1";
+            this.chart1.Legends.Add(legend35);
             this.chart1.Location = new System.Drawing.Point(10, 6);
             this.chart1.Name = "chart1";
-            series47.ChartArea = "ChartArea1";
-            series47.Legend = "Legend1";
-            series47.Name = "Series1";
-            series48.ChartArea = "ChartArea1";
-            series48.Legend = "Legend1";
-            series48.Name = "Series2";
-            series49.ChartArea = "ChartArea1";
-            series49.Legend = "Legend1";
-            series49.Name = "Series3";
-            this.chart1.Series.Add(series47);
-            this.chart1.Series.Add(series48);
-            this.chart1.Series.Add(series49);
+            series57.ChartArea = "ChartArea1";
+            series57.Legend = "Legend1";
+            series57.Name = "Series1";
+            series58.ChartArea = "ChartArea1";
+            series58.Legend = "Legend1";
+            series58.Name = "Series2";
+            series59.ChartArea = "ChartArea1";
+            series59.Legend = "Legend1";
+            series59.Name = "Series3";
+            this.chart1.Series.Add(series57);
+            this.chart1.Series.Add(series58);
+            this.chart1.Series.Add(series59);
             this.chart1.Size = new System.Drawing.Size(1559, 594);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -204,17 +204,17 @@
             // 
             // chart3
             // 
-            chartArea30.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea30);
-            legend30.Name = "Legend1";
-            this.chart3.Legends.Add(legend30);
+            chartArea36.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea36);
+            legend36.Name = "Legend1";
+            this.chart3.Legends.Add(legend36);
             this.chart3.Location = new System.Drawing.Point(12, 11);
             this.chart3.Name = "chart3";
-            series50.ChartArea = "ChartArea1";
-            series50.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series50.Legend = "Legend1";
-            series50.Name = "Series1";
-            this.chart3.Series.Add(series50);
+            series60.ChartArea = "ChartArea1";
+            series60.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series60.Legend = "Legend1";
+            series60.Name = "Series1";
+            this.chart3.Series.Add(series60);
             this.chart3.Size = new System.Drawing.Size(513, 454);
             this.chart3.TabIndex = 0;
             this.chart3.Text = "chart3";
@@ -257,10 +257,10 @@
             // gradientPanel1
             // 
             this.gradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel1.Controls.Add(this.dateTimePicker3);
             this.gradientPanel1.Controls.Add(this.customRoundedButton1);
             this.gradientPanel1.Controls.Add(this.label4);
             this.gradientPanel1.Controls.Add(this.label15);
-            this.gradientPanel1.Controls.Add(this.dateTimePicker3);
             this.gradientPanel1.Controls.Add(this.comboBox1);
             this.gradientPanel1.Controls.Add(this.dateTimePicker2);
             this.gradientPanel1.Controls.Add(this.AddUserBtn);
@@ -308,7 +308,7 @@
             this.AddUserBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddUserBtn.ForeColor = System.Drawing.Color.White;
             this.AddUserBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddUserBtn.Location = new System.Drawing.Point(1094, 20);
+            this.AddUserBtn.Location = new System.Drawing.Point(1094, 25);
             this.AddUserBtn.Name = "AddUserBtn";
             this.AddUserBtn.Size = new System.Drawing.Size(216, 43);
             this.AddUserBtn.TabIndex = 26;
@@ -325,7 +325,7 @@
             this.EditProfileBtn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditProfileBtn.ForeColor = System.Drawing.Color.White;
             this.EditProfileBtn.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.EditProfileBtn.Location = new System.Drawing.Point(1405, 20);
+            this.EditProfileBtn.Location = new System.Drawing.Point(1405, 26);
             this.EditProfileBtn.Name = "EditProfileBtn";
             this.EditProfileBtn.Size = new System.Drawing.Size(184, 43);
             this.EditProfileBtn.TabIndex = 29;
@@ -538,19 +538,10 @@
             // 
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(27, 39);
+            this.dateTimePicker2.Location = new System.Drawing.Point(4, 39);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(237, 25);
+            this.dateTimePicker2.Size = new System.Drawing.Size(261, 25);
             this.dateTimePicker2.TabIndex = 30;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.CalendarFont = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker3.Location = new System.Drawing.Point(286, 39);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(237, 25);
-            this.dateTimePicker3.TabIndex = 31;
             // 
             // label15
             // 
@@ -573,12 +564,21 @@
             this.customRoundedButton1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customRoundedButton1.ForeColor = System.Drawing.Color.White;
             this.customRoundedButton1.HoverColor = System.Drawing.Color.MediumSeaGreen;
-            this.customRoundedButton1.Location = new System.Drawing.Point(532, 24);
+            this.customRoundedButton1.Location = new System.Drawing.Point(572, 29);
             this.customRoundedButton1.Name = "customRoundedButton1";
             this.customRoundedButton1.Size = new System.Drawing.Size(185, 43);
             this.customRoundedButton1.TabIndex = 156;
             this.customRoundedButton1.Text = "Generate Report";
             this.customRoundedButton1.UseVisualStyleBackColor = false;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.CalendarFont = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker3.Location = new System.Drawing.Point(289, 40);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(261, 25);
+            this.dateTimePicker3.TabIndex = 157;
             // 
             // Dashboard
             // 
@@ -657,8 +657,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private Controls.CustomRoundedButton customRoundedButton1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
     }
 }
