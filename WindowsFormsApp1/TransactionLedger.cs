@@ -48,6 +48,12 @@ namespace WindowsFormsApp1
             {
                 ExportToCSV.Click += ExportToCSV_Click;
             }
+
+            // Wire up pictureBox2 click event for refresh
+            if (pictureBox2 != null)
+            {
+                pictureBox2.Click += PictureBox2_Click;
+            }
         }
 
         private void InitializeFilterControls()
