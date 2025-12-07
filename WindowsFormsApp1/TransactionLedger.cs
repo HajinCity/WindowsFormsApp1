@@ -49,10 +49,11 @@ namespace WindowsFormsApp1
                 ExportToCSV.Click += ExportToCSV_Click;
             }
 
-            // Wire up pictureBox2 click event for refresh
+            // Wire up pictureBox2 events (Click is in designer, but add MouseClick as backup)
             if (pictureBox2 != null)
             {
-                pictureBox2.Click += PictureBox2_Click;
+                pictureBox2.MouseClick += PictureBox2_MouseClick;
+                pictureBox2.Enabled = true;
             }
         }
 
@@ -294,15 +295,80 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void PictureBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            // Call the refresh method
+            RefreshData();
+        }
+
         private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            // Call the refresh method
+            RefreshData();
+        }
+
+        private void RefreshData()
         {
             try
             {
-                // Refresh the data by reloading from database
-                LoadSBLPOData();
+                // Suppress filter events while resetting controls
+                suppressFilterEvents = true;
                 
-                // Reapply current filters after refresh
-                ApplyFilter();
+                // Reset all filters
+                if (textBox1 != null)
+                {
+                    textBox1.Clear();
+                }
+                
+                if (comboBox1 != null)
+                {
+                    comboBox1.SelectedIndex = -1; // Reset to no selection
+                }
+                
+                // Reset date range filter flag
+                applyDateRangeFilter = false;
+                
+                // Reset suppress flag
+                suppressFilterEvents = false;
+                
+                // Clear the cache and reload from database
+                sblPoCache.Clear();
+                
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT sbl_id, po_no, supplier, po_amount, ora_serialno, 
+                                           responsibility_code, dev_no, jev_no, checkNo, 
+                                           date_paid, amount_paid, balance, status
+                                    FROM sbl_po
+                                    ORDER BY date_paid DESC, sbl_id DESC";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            sblPoCache.Add(new SBLPORecord
+                            {
+                                Id = reader.GetInt32("sbl_id"),
+                                PoNo = reader["po_no"]?.ToString() ?? "",
+                                Supplier = reader["supplier"]?.ToString() ?? "",
+                                PoAmount = reader["po_amount"]?.ToString() ?? "",
+                                OraSerialNo = reader["ora_serialno"]?.ToString() ?? "",
+                                ResponsibilityCode = reader["responsibility_code"]?.ToString() ?? "",
+                                DevNo = reader["dev_no"]?.ToString() ?? "",
+                                JevNo = reader["jev_no"]?.ToString() ?? "",
+                                CheckNo = reader["checkNo"]?.ToString() ?? "",
+                                DatePaid = reader["date_paid"] == DBNull.Value ? DateTime.MinValue : reader.GetDateTime("date_paid"),
+                                AmountPaid = reader["amount_paid"]?.ToString() ?? "",
+                                Balance = reader["balance"]?.ToString() ?? "",
+                                Status = reader["status"]?.ToString() ?? ""
+                            });
+                        }
+                    }
+                }
+                
+                // Display all data (no filters applied)
+                DisplayAllData();
             }
             catch (Exception ex)
             {
