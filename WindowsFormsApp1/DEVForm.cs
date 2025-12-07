@@ -44,6 +44,13 @@ namespace WindowsFormsApp1
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             this.Load += DEVForm_Load;
             
+            // Wire up pictureBox2 MouseClick as backup (Click can be unreliable)
+            if (pictureBox2 != null)
+            {
+                pictureBox2.MouseClick += PictureBox2_MouseClick;
+                pictureBox2.Enabled = true;
+            }
+            
             // Wire up CSV export button if it exists
             if (ExportToCSV != null)
             {
@@ -222,26 +229,81 @@ namespace WindowsFormsApp1
             ApplyDEVFilter();
         }
 
+        private void PictureBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            // Call the refresh method
+            RefreshDEVData();
+        }
+
         private void PictureBox2_Click(object sender, EventArgs e)
         {
-            // Refresh and display all data from dev table
-            suppressFilterEvents = true;
+            // Call the refresh method
+            RefreshDEVData();
+        }
+
+        private void RefreshDEVData()
+        {
             try
             {
+                // Suppress filter events while resetting controls
+                suppressFilterEvents = true;
+                
                 // Reset date pickers to wide range to show all data
                 dateTimePicker1.Value = DateTime.Today.AddYears(-10);
                 dateTimePicker2.Value = DateTime.Today.AddYears(1);
-            }
-            finally
-            {
+                
+                // Clear search text
+                textBox1.Clear();
+                
+                // Reset suppress flag
                 suppressFilterEvents = false;
+                
+                // Clear the cache and reload from database
+                devCache.Clear();
+                
+                using (MySqlConnection connection = RDBSMConnection.GetConnection())
+                {
+                    string query = @"SELECT dev_id, dev_no, date, ora_serialno, jev_no, payee, 
+                                            responsibility_center, mode_of_payment, gross_amount, 
+                                            deductions, net_amount, tax_type
+                                     FROM dev
+                                     ORDER BY date DESC, dev_id DESC";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            devCache.Add(new DEVRecord
+                            {
+                                Id = reader.GetInt32("dev_id"),
+                                DevNo = reader["dev_no"]?.ToString() ?? "",
+                                Date = reader["date"] == DBNull.Value ? DateTime.MinValue : reader.GetDateTime("date"),
+                                OrsBursNo = reader["ora_serialno"]?.ToString() ?? "",
+                                JevNo = reader["jev_no"]?.ToString() ?? "",
+                                Payee = reader["payee"]?.ToString() ?? "",
+                                Office = reader["responsibility_center"]?.ToString() ?? "",
+                                MOP = reader["mode_of_payment"]?.ToString() ?? "",
+                                GrossAmount = reader["gross_amount"]?.ToString() ?? "",
+                                Deductions = reader["deductions"]?.ToString() ?? "",
+                                NetAmount = reader["net_amount"]?.ToString() ?? "",
+                                TaxType = reader["tax_type"]?.ToString() ?? ""
+                            });
+                        }
+                    }
+                }
+                
+                // Display all data (no filters applied)
+                DisplayAllData();
             }
-
-            // Clear search text
-            textBox1.Clear();
-
-            // Reload and display all data
-            LoadDEVData();
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error refreshing DEV data: {ex.Message}",
+                    "Refresh Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private string FormatAmountDisplay(string amountValue)
