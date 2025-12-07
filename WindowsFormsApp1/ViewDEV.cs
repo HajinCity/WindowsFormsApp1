@@ -286,6 +286,11 @@ namespace WindowsFormsApp1
 
             if (hasDocument)
             {
+                // Hide upload UI elements (read-only view)
+                pictureBox1.Visible = false;
+                if (label21 != null) label21.Visible = false;
+                if (label22 != null) label22.Visible = false;
+
                 downloadDocumentButton.Visible = true;
                 documentStatusLabel.Visible = true;
                 documentStatusLabel.Text = "A document is attached to this entry.";
@@ -293,6 +298,19 @@ namespace WindowsFormsApp1
             }
             else
             {
+                // Show upload UI elements but make them non-interactive (read-only)
+                pictureBox1.Visible = true;
+                if (label21 != null)
+                {
+                    label21.Visible = true;
+                    label21.Text = "No document attached";
+                }
+                if (label22 != null)
+                {
+                    label22.Visible = true;
+                    label22.Text = "";
+                }
+
                 downloadDocumentButton.Visible = false;
                 documentStatusLabel.Visible = true;
                 documentStatusLabel.Text = "No document attached to this entry.";

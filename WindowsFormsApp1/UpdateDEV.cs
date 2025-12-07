@@ -23,12 +23,25 @@ namespace WindowsFormsApp1
         private bool isFormattingGrossAmount;
         private bool isFormattingDeductions;
         private bool isFormattingNetAmount;
+        
+        private Button downloadDocumentButton;
+        private Button changeDocumentButton;
+        private Button removeDocumentButton;
+        private Label documentStatusLabel;
+        
+        private Color originalPanelColor;
+        private Point originalPanel1Location;
+        private Size originalPanel1Size;
+        private const long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20 MB
+        private readonly string[] allowedExtensions = { ".pdf", ".png", ".jpg", ".jpeg", ".docx" };
 
         public UpdateDEV()
         {
             InitializeComponent();
             InitializeAmountFormatting();
             DisableNonEditableFields();
+            InitializeDocumentControls();
+            InitializeFileUpload();
             UpdateDevbtn.Click += UpdateDevbtn_Click;
             cancel.Click += cancel_Click;
         }
@@ -56,6 +69,355 @@ namespace WindowsFormsApp1
         {
             grossAmount.TextChanged += GrossAmount_TextChanged;
             deductions.TextChanged += Deductions_TextChanged;
+        }
+
+        private void InitializeDocumentControls()
+        {
+            downloadDocumentButton = new Button
+            {
+                Text = "Download / View Document",
+                AutoSize = false,
+                Size = new Size(220, 40),
+                BackColor = Color.SeaGreen,
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Visible = false
+            };
+            downloadDocumentButton.FlatAppearance.BorderSize = 0;
+            downloadDocumentButton.Cursor = Cursors.Hand;
+            downloadDocumentButton.Click += DownloadDocumentButton_Click;
+            panel1.Controls.Add(downloadDocumentButton);
+
+            changeDocumentButton = new Button
+            {
+                Text = "Replace Document",
+                AutoSize = false,
+                Size = new Size(220, 35),
+                BackColor = Color.White,
+                ForeColor = Color.SeaGreen,
+                FlatStyle = FlatStyle.Flat,
+                Visible = false
+            };
+            changeDocumentButton.FlatAppearance.BorderSize = 1;
+            changeDocumentButton.FlatAppearance.BorderColor = Color.SeaGreen;
+            changeDocumentButton.Cursor = Cursors.Hand;
+            changeDocumentButton.Click += ChangeDocumentButton_Click;
+            panel1.Controls.Add(changeDocumentButton);
+
+            removeDocumentButton = new Button
+            {
+                Text = "Remove Document",
+                AutoSize = false,
+                Size = new Size(220, 35),
+                BackColor = Color.FromArgb(220, 53, 69),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Visible = false
+            };
+            removeDocumentButton.FlatAppearance.BorderSize = 0;
+            removeDocumentButton.Cursor = Cursors.Hand;
+            removeDocumentButton.Click += RemoveDocumentButton_Click;
+            panel1.Controls.Add(removeDocumentButton);
+
+            documentStatusLabel = new Label
+            {
+                Text = "A document is attached to this entry.",
+                AutoSize = true,
+                ForeColor = Color.FromArgb(64, 64, 64),
+                Visible = false
+            };
+            panel1.Controls.Add(documentStatusLabel);
+
+            panel1.Resize += Panel1_Resize;
+            PositionDocumentControls();
+        }
+
+        private void InitializeFileUpload()
+        {
+            originalPanelColor = panel1.BackColor;
+            originalPanel1Location = panel1.Location;
+            originalPanel1Size = panel1.Size;
+
+            panel1.AllowDrop = true;
+            panel1.DragEnter += Panel1_DragEnter;
+            panel1.DragOver += Panel1_DragOver;
+            panel1.DragLeave += Panel1_DragLeave;
+            panel1.DragDrop += Panel1_DragDrop;
+            panel1.Click += Panel1_Click;
+            panel1.Cursor = Cursors.Hand;
+
+            if (pictureBox1 != null && label21 != null && label22 != null)
+            {
+                foreach (Control control in new Control[] { pictureBox1, label21, label22 })
+                {
+                    control.AllowDrop = true;
+                    control.DragEnter += Panel1_DragEnter;
+                    control.DragOver += Panel1_DragOver;
+                    control.DragLeave += Panel1_DragLeave;
+                    control.DragDrop += Panel1_DragDrop;
+                    control.Click += Panel1_Click;
+                    control.Cursor = Cursors.Hand;
+                }
+            }
+        }
+
+        private void Panel1_Resize(object sender, EventArgs e)
+        {
+            PositionDocumentControls();
+        }
+
+        private void PositionDocumentControls()
+        {
+            int centerX = Math.Max(0, (panel1.Width - 220) / 2);
+
+            if (downloadDocumentButton != null)
+            {
+                downloadDocumentButton.Location = new Point(centerX, 20);
+            }
+
+            if (changeDocumentButton != null)
+            {
+                changeDocumentButton.Location = new Point(centerX, 65);
+            }
+
+            if (removeDocumentButton != null)
+            {
+                removeDocumentButton.Location = new Point(centerX, 105);
+            }
+
+            if (documentStatusLabel != null)
+            {
+                documentStatusLabel.Location = new Point(
+                    Math.Max(0, (panel1.Width - documentStatusLabel.Width) / 2),
+                    150);
+            }
+        }
+
+        private void Panel1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Supported Files|*.pdf;*.png;*.jpg;*.jpeg;*.docx|All Files|*.*";
+                openFileDialog.Multiselect = false;
+                openFileDialog.Title = "Select Document to Upload";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    ProcessFile(openFileDialog.FileName);
+                }
+            }
+        }
+
+        private void Panel1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+                panel1.BackColor = Color.FromArgb(240, 248, 255);
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void Panel1_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void Panel1_DragLeave(object sender, EventArgs e)
+        {
+            panel1.BackColor = originalPanelColor;
+        }
+
+        private void Panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            panel1.BackColor = originalPanelColor;
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files != null && files.Length > 0)
+            {
+                if (files.Length > 1)
+                {
+                    MessageBox.Show("Only one file can be uploaded at a time. The first file will be used.",
+                        "Multiple Files", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                ProcessFile(files[0]);
+            }
+        }
+
+        private void ProcessFile(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+                return;
+
+            try
+            {
+                FileInfo fileInfo = new FileInfo(filePath);
+
+                string extension = fileInfo.Extension.ToLower();
+                if (!allowedExtensions.Contains(extension))
+                {
+                    MessageBox.Show($"File '{fileInfo.Name}' has an unsupported file type.",
+                        "Invalid File Type", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (fileInfo.Length > MAX_FILE_SIZE)
+                {
+                    MessageBox.Show($"File '{fileInfo.Name}' exceeds the maximum file size of 20 MB.",
+                        "File Too Large", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                documentBytes = File.ReadAllBytes(filePath);
+                storedDocumentExtension = fileInfo.Extension;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error processing file '{filePath}': {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            UpdateDocumentSection();
+        }
+
+        private void UpdateDocumentSection()
+        {
+            bool hasDocument = documentBytes != null && documentBytes.Length > 0;
+
+            if (hasDocument)
+            {
+                pictureBox1.Visible = false;
+                if (label21 != null) label21.Visible = false;
+                if (label22 != null) label22.Visible = false;
+
+                downloadDocumentButton.Visible = true;
+                changeDocumentButton.Visible = true;
+                removeDocumentButton.Visible = true;
+                documentStatusLabel.Visible = true;
+                documentStatusLabel.Text = "Document available. Use the buttons below.";
+                downloadDocumentButton.Text = "Download / View Document";
+                changeDocumentButton.Text = "Replace Document";
+            }
+            else
+            {
+                pictureBox1.Visible = true;
+                if (label21 != null)
+                {
+                    label21.Visible = true;
+                    label21.Text = "Click to upload or drag and drop";
+                }
+                if (label22 != null)
+                {
+                    label22.Visible = true;
+                    label22.Text = "PDF,JPG,PNG,DOCX (20MB)";
+                }
+
+                downloadDocumentButton.Visible = false;
+                changeDocumentButton.Visible = false;
+                removeDocumentButton.Visible = false;
+                documentStatusLabel.Visible = false;
+            }
+
+            PositionDocumentControls();
+        }
+
+        private void DownloadDocumentButton_Click(object sender, EventArgs e)
+        {
+            if (documentBytes == null || documentBytes.Length == 0)
+            {
+                MessageBox.Show("No document is available for this entry.", "No Document",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Save DEV Document";
+                string suggestedName = GetSuggestedDocumentFileName();
+                string extension = Path.GetExtension(suggestedName);
+                saveFileDialog.Filter = $"Document (*{extension})|*{extension}|All Files|*.*";
+                saveFileDialog.DefaultExt = extension.TrimStart('.');
+                saveFileDialog.FileName = suggestedName;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        File.WriteAllBytes(saveFileDialog.FileName, documentBytes);
+                        var promptResult = MessageBox.Show(
+                            "Document saved successfully. Do you want to open it now?",
+                            "Document Saved",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+
+                        if (promptResult == DialogResult.Yes)
+                        {
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = saveFileDialog.FileName,
+                                UseShellExecute = true
+                            });
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            $"Unable to save the document: {ex.Message}",
+                            "Save Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void ChangeDocumentButton_Click(object sender, EventArgs e)
+        {
+            Panel1_Click(sender, e);
+        }
+
+        private void RemoveDocumentButton_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Remove the currently attached document?",
+                "Remove Document",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                documentBytes = null;
+                storedDocumentExtension = null;
+                UpdateDocumentSection();
+            }
+        }
+
+        private string GetSuggestedDocumentFileName()
+        {
+            string extension = storedDocumentExtension;
+            if (string.IsNullOrEmpty(extension))
+            {
+                extension = GuessFileExtension(documentBytes);
+            }
+            if (string.IsNullOrEmpty(extension))
+            {
+                extension = ".bin";
+            }
+            if (!extension.StartsWith("."))
+            {
+                extension = "." + extension;
+            }
+
+            string baseName = string.IsNullOrWhiteSpace(dev_no.Text)
+                ? "dev_document"
+                : dev_no.Text.Trim().Replace(" ", "_");
+
+            return $"{baseName}{extension}";
         }
 
         private void LoadDEVDetails()
@@ -129,6 +491,8 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
+                
+                UpdateDocumentSection();
             }
             catch (Exception ex)
             {
